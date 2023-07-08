@@ -51,16 +51,53 @@
 {% endstylesheet %}
 
 {% javascript %}
-  $(".slick-slider").slick({
-   slidesToShow: 3,
-   infinite:false,
-   slidesToScroll: 1,
-   autoplay: true,
-   autoplaySpeed: 2000
-     // dots: false, Boolean
-    // arrows: false, Boolean
-  });
+// Get the slider element
+var slider = document.querySelector(".slick-slider");
 
+// Set the initial configuration
+var config = {
+  slidesToShow: 3,
+  infinite: false,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000
+};
+
+// Initialize the slider
+var slickSlider = new SlickSlider(slider, config);
+
+// SlickSlider constructor
+function SlickSlider(element, config) {
+  var slides = element.getElementsByClassName("slick-slide");
+  var currentSlide = 0;
+
+  // Show the specified number of slides
+  for (var i = 0; i < slides.length; i++) {
+    if (i < config.slidesToShow) {
+      slides[i].style.display = "block";
+    } else {
+      slides[i].style.display = "none";
+    }
+  }
+
+  // Auto-play the slider
+  setInterval(function () {
+    if (currentSlide < slides.length - config.slidesToShow) {
+      slides[currentSlide].style.display = "none";
+      slides[currentSlide + config.slidesToShow].style.display = "block";
+      currentSlide++;
+    } else {
+      // Reset to the first slide
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      currentSlide = 0;
+      for (var j = 0; j < config.slidesToShow; j++) {
+        slides[j].style.display = "block";
+      }
+    }
+  }, config.autoplaySpeed);
+}
 
 
 {% endjavascript %}
