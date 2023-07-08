@@ -5,6 +5,7 @@
     "b9d97d67-de82-4235-8358-41aae599a336": {
       "type": "sliderslick",
       "settings": {
+        "element-1": "hello"
       }
     },
     "footer": {
