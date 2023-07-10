@@ -1,35 +1,10 @@
 {{ "sliderslickcss.css" | asset_url | stylesheet_tag }}
 
 
-<div class="slick-slider">
-{% if section.settings.element-1 !=blank %}
-  <div class="element element-1">{{ section.settings.element-1 }}</div>
-   
-{% endif %}
 
 
 
 
-    <div class="bm-main">
-        <div class="bm-container">
-            <div class="bm-inner">
-                <div class="bm-pencil-banner">
-                    <div class="bm-col">
-                        <span class="icon"></span>
-                        <span>Free shipping on all orders</span>
-                    </div>
-                    <div class="bm-col">
-                        <span class="icon"></span>
-                        <span>60 day money back guarantee</span>
-                    </div>
-                    <div class="bm-col">
-                        <span class="icon"></span>
-                        <span>1-Year Warranty</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 {% schema %}
@@ -56,53 +31,291 @@
 {% endstylesheet %}
 
 {% javascript %}
-// Get the slider element
-var slider = document.querySelector(".slick-slider");
-
-// Set the initial configuration
-var config = {
-  slidesToShow: 3,
-  infinite: false,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000
-};
-
-// Initialize the slider
-var slickSlider = new SlickSlider(slider, config);
-
-// SlickSlider constructor
-function SlickSlider(element, config) {
-  var slides = element.getElementsByClassName("slick-slide");
-  var currentSlide = 0;
-
-  // Show the specified number of slides
-  for (var i = 0; i < slides.length; i++) {
-    if (i < config.slidesToShow) {
-      slides[i].style.display = "block";
-    } else {
-      slides[i].style.display = "none";
+(function () {
+  try {
+    /* main variables */
+    var debug = 1;
+    var variation_name = "test123";
+    /* helper library */
+    var _$;
+    !(function (factory) {
+      _$ = factory();
+    })(function () {
+      var bm = function (s) {
+        if (typeof s === "string") {
+          this.value = Array.prototype.slice.call(document.querySelectorAll(s));
+        }
+        if (typeof s === "object") {
+          this.value = [s];
+        }
+      };
+      bm.prototype = {
+        eq: function (n) {
+          this.value = [this.value[n]];
+          return this;
+        },
+        each: function (fn) {
+          [].forEach.call(this.value, fn);
+          return this;
+        },
+        log: function () {
+          var items = [];
+          for (let index = 0; index < arguments.length; index++) {
+            items.push(arguments[index]);
+          }
+          console && console.log(variation_name, items);
+        },
+        waitForElement: function (
+          selector,
+          trigger,
+          delayInterval,
+          delayTimeout
+        ) {
+          var interval = setInterval(function () {
+            if (_$(selector).value.length) {
+              clearInterval(interval);
+              trigger();
+            }
+          }, delayInterval);
+          setTimeout(function () {
+            clearInterval(interval);
+          }, delayTimeout);
+        },
+      };
+      return function (selector) {
+        return new bm(selector);
+      };
+    });
+    function live(selector, event, callback, context) {
+      /****Helper Functions****/
+      // helper for enabling IE 8 event bindings
+      function addEvent(el, type, handler) {
+        if (el.attachEvent) el.attachEvent("on" + type, handler);
+        else el.addEventListener(type, handler);
+      }
+      // live binding helper using matchesSelector
+      function live(selector, event, callback, context) {
+        addEvent(context || document, event, (e) => {
+          let found,
+            el = e.target || e.srcElement;
+          while (
+            el &&
+            el.matches &&
+            el !== context &&
+            !(found = el.matches(selector))
+          )
+            el = el.parentElement;
+          if (found) callback.call(el, e);
+        });
+      }
+      live(selector, event, callback, context);
     }
+    function waitForjQuery(trigger) {
+      var interval = setInterval(function () {
+        if (window.jQuery !== undefined) {
+          clearInterval(interval);
+          trigger(window.jQuery);
+        }
+      }, 50);
+      setTimeout(function () {
+        clearInterval(interval);
+      }, 15000);
+    }
+    function onwaitforswiper(trigger) {
+      var interval = setInterval(function () {
+        if (typeof Swiper != "undefined") {
+          clearInterval(interval);
+          trigger();
+        }
+      }, 50);
+      setTimeout(function () {
+        clearInterval(interval);
+      }, 15000);
+    }
+    //add swiper slider script
+    function addScript() {
+      var bmScript = document.createElement("script");
+      bmScript.src = "https://unpkg.com/swiper@7/swiper-bundle.min.js";
+      document.getElementsByTagName("head")[0].appendChild(bmScript);
+      // var bmcsslink = document.createElement("link");
+      // bmcsslink.rel = "stylesheet";
+      // bmcsslink.href =
+      //   "https://unpkg.com/swiper@7/swiper-bundle.min.css";
+      // document.getElementsByTagName("head")[0].appendChild(bmcsslink);
+    }
+    addScript();
+    var helper = _$();
+    var sleepsupoort = `
+    <div class="bm-sleep_supoort">
+  <div class="bm-container-md ">
+    <div class="bm-row-main">
+      <div class=" bm-rightsleep-support">
+        <div class="swiperslider-sleep-support">
+          <!-- Slider main wrapper -->
+          <div class="swiper-container-wrapper">
+            <!-- Slider main container -->
+            <div class="swiper swiper_main">
+              <div class="swiper-wrapper">
+              <div class="swiper-slide"><img
+              src="https://trtltravel.com/cdn/shop/products/TPOSLEEPING_69cf0c63-c67d-41db-9fe3-d1acfb07aec6_620x.jpg?v=1675342145"
+              alt=""></div>
+            <div class="swiper-slide"><img
+              src="https://trtltravel.com/cdn/shop/products/TPO_GREY_LINDA_SLEEP_620x.jpg?v=1677083776" alt="">
+            </div>
+            <div class="swiper-slide"><img
+              src="https://cdn.shopify.com/s/files/1/0071/0911/6022/files/TPC_SLEEPING_7b01210e-64ca-4e77-905b-bcf04359116d_300x@2x.jpg?v=1671452020"
+              alt=""></div>
+            <div class="swiper-slide"><img
+              src="https://cdn.shopify.com/s/files/1/0071/0911/6022/files/TPC_SLEEPING_7b01210e-64ca-4e77-905b-bcf04359116d_300x@2x.jpg?v=1671452020"
+              alt=""></div>
+            <div class="swiper-slide"><img
+              src="https://trtltravel.com/cdn/shop/products/DSC03092_c6ff24bf-caed-484c-9265-404bb3796ebe_620x.jpg?v=1677083776"
+              alt=""></div>
+            <div class="swiper-slide"><img
+              src="https://trtltravel.com/cdn/shop/products/DSC03092_c6ff24bf-caed-484c-9265-404bb3796ebe_620x.jpg?v=1677083776"
+              alt=""></div>
+            
+              </div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+          </div>
+          
+          <div class="swiper swiper_thumbnail">
+              <div class="swiper-wrapper">
+              <div class="swiper-slide"><img
+              src="https://trtltravel.com/cdn/shop/products/TPOSLEEPING_69cf0c63-c67d-41db-9fe3-d1acfb07aec6_150x150_crop_center.jpg?v=1675342145"
+              alt=""></div>
+          <div class="swiper-slide"><img
+              src="https://trtltravel.com/cdn/shop/products/TPO_GREY_LINDA_SLEEP_150x150_crop_center.jpg?v=1677083776"
+              alt=""></div>
+          <div class="swiper-slide"><img
+              src="https://cdn.shopify.com/s/files/1/0071/0911/6022/files/TPC_SLEEPING_7b01210e-64ca-4e77-905b-bcf04359116d_300x@2x.jpg?v=1671452020"
+              alt=""></div>
+          <div class="swiper-slide"><img
+              src="https://cdn.shopify.com/s/files/1/0071/0911/6022/files/TPC_SLEEPING_7b01210e-64ca-4e77-905b-bcf04359116d_300x@2x.jpg?v=1671452020"
+              alt=""></div>
+          <div class="swiper-slide"><img
+              src="https://trtltravel.com/cdn/shop/products/DSC03092_c6ff24bf-caed-484c-9265-404bb3796ebe_150x150_crop_center.jpg?v=1677083776"
+              alt=""></div>
+          <div class="swiper-slide"><img
+              src="https://trtltravel.com/cdn/shop/products/DSC03092_c6ff24bf-caed-484c-9265-404bb3796ebe_150x150_crop_center.jpg?v=1677083776"
+              alt=""></div>
+              </div>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div class=" bm-leftsleep-support">
+          <div class="bm-block">
+            <p class="text-muted">TRTL TRAVEL PILLOW</p>
+            <h3 class="text-dark">THE SLEEP SUPPORT AND COMFORT YOU NEED WHILE TRAVELING</h3>
+            <div></div>
+            <div class="bm-row ">
+              <div class="bm-col">
+                <div>
+                  <div id="image-wrapper-25722627358913-cbb7c" class="image-wrapper overflow-hidden ">
+                    <picture class="d-block">
+                      <img
+                        data-src="//cdn.shopify.com/s/files/1/0071/0911/6022/files/pod-1_722f141f-4596-48fe-b7f8-58f5253b9374_small.png?v=1670412987"
+                        data-srcset="//cdn.shopify.com/s/files/1/0071/0911/6022/files/pod-1_722f141f-4596-48fe-b7f8-58f5253b9374_small.png?v=1670412987 1x, //cdn.shopify.com/s/files/1/0071/0911/6022/files/pod-1_722f141f-4596-48fe-b7f8-58f5253b9374.png?v=1670412987 2x"
+                        loading="lazy" class="img-fluid lazyload loaded" alt=""
+                        src="//cdn.shopify.com/s/files/1/0071/0911/6022/files/pod-1_722f141f-4596-48fe-b7f8-58f5253b9374_small.png?v=1670412987"
+                        srcset="//cdn.shopify.com/s/files/1/0071/0911/6022/files/pod-1_722f141f-4596-48fe-b7f8-58f5253b9374_small.png?v=1670412987 1x, //cdn.shopify.com/s/files/1/0071/0911/6022/files/pod-1_722f141f-4596-48fe-b7f8-58f5253b9374.png?v=1670412987 2x">
+                    </picture>
+                  </div>
+                </div>
+              </div>
+              <div class="bm-col text-col">
+                <h5 class="text-dark fw-bold">HYPOALLERGENIC FABRIC</h5>
+                <div class="font-ibm-mono">Machine washable supersoft, hypoallergenic fleece and foam is
+                  stretched to create a comforting hammock effect.</div>
+              </div>
+            </div>
+            <div class="bm-row ">
+              <div class="bm-col">
+                <div>
+                  <div id="image-wrapper-25722623164609-cbb7c" class="image-wrapper overflow-hidden ">
+                    <picture class="d-block">
+                      <img
+                        data-src="//cdn.shopify.com/s/files/1/0071/0911/6022/files/neck_support_black_small.png?v=1670412880"
+                        data-srcset="//cdn.shopify.com/s/files/1/0071/0911/6022/files/neck_support_black_small.png?v=1670412880 1x, //cdn.shopify.com/s/files/1/0071/0911/6022/files/neck_support_black.png?v=1670412880 2x"
+                        loading="lazy" class="img-fluid lazyload loaded" alt=""
+                        src="//cdn.shopify.com/s/files/1/0071/0911/6022/files/neck_support_black_small.png?v=1670412880"
+                        srcset="//cdn.shopify.com/s/files/1/0071/0911/6022/files/neck_support_black_small.png?v=1670412880 1x, //cdn.shopify.com/s/files/1/0071/0911/6022/files/neck_support_black.png?v=1670412880 2x">
+                    </picture>
+                  </div>
+                </div>
+              </div>
+              <div class="bm-col text-col">
+                <h5 class="text-dark fw-bold">INTERNAL SUPPORT STRUCTURE</h5>
+                <div class="font-ibm-mono">The internal support system provides premium comfort while you nap,
+                  keeping your head and neck in an ergonomic position.</div>
+              </div>
+            </div>
+            <div class="bm-row bm-cta-row">
+              <div class="btn slep-supportbtn"> <a>WATCH how it works</a></div>
+            </div>
+            <div class="ytplayeroverlay"></div>
+            <div class="ytplayer-content">
+              <div class="yt-player-inner-content">
+                <div class="ytplayer-cross-icon">✕</div>
+                <iframe src="https://www.youtube.com/embed/8Fmtcsy08X8" title="How to use your Trtl Pillow"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+                <div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    `;
+    function swiperslider() {
+      var swiper_thumbnail = new Swiper(".swiper_thumbnail", {
+        slidesPerView: 6,
+      });
+      var swiper = new Swiper(".swiper_main", {
+        loop: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+          swiper: swiper_thumbnail,
+        },
+      });
+    }
+    /* Variation Init */
+    function init() {
+      helper.log("Log inside from init");
+      document
+        .querySelector('[id*="__partners"]')
+        .insertAdjacentHTML("afterend", sleepsupoort);
+      onwaitforswiper(swiperslider);
+      // click event
+    }
+    live(".slep-supportbtn a", "click", function () {
+      console.log("click");
+      document.querySelector("body") &&
+        document.querySelector("body").classList.add("show-ytplayer-popup");
+    });
+    //ytplayeroverlay
+    live(".ytplayeroverlay, .ytplayer-cross-icon", "click", function () {
+      console.log("click");
+      document.querySelector("body") &&
+        document.querySelector("body").classList.remove("show-ytplayer-popup");
+    });
+    /* Initialise variation */
+    waitForjQuery(function () {
+      helper.waitForElement('[id*="__partners"]', init, 50, 15000);
+    });
+  } catch (e) {
+    if (debug) console.log(e, "error in Test" + variation_name);
   }
-
-  // Auto-play the slider
-  setInterval(function () {
-    if (currentSlide < slides.length - config.slidesToShow) {
-      slides[currentSlide].style.display = "none";
-      slides[currentSlide + config.slidesToShow].style.display = "block";
-      currentSlide++;
-    } else {
-      // Reset to the first slide
-      for (var i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      currentSlide = 0;
-      for (var j = 0; j < config.slidesToShow; j++) {
-        slides[j].style.display = "block";
-      }
-    }
-  }, config.autoplaySpeed);
-}
+})();
 
 
 {% endjavascript %}
