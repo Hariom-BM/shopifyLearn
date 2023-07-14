@@ -37,7 +37,8 @@
   }
 
 
- html body  .header--middle-center:not(.drawer-menu){
+  @media(min-width:990px){
+  html body  .header--middle-center:not(.drawer-menu){
   grid-template-areas: "heading navigation  icons";
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -53,6 +54,9 @@ display:flex;
 justify-content:center;
 }
 
+}
+
+ 
   
 
 
