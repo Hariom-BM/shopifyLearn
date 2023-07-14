@@ -55,6 +55,9 @@
       {% if section.settings.top_heading != blank %}
         <h1>{{ section.settings.top_heading }}</h1>
       {% endif %}
+  {% if section.settings.top_heading != blank %}
+        <p>{{ section.settings.top_main_description }}</p>
+      {% endif %}
         <div class="section_container">
             {% if section.settings.layout == 'left' %}
             {{ section_left_content  }}
