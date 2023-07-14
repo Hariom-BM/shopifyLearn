@@ -1,0 +1,320 @@
+{% capture section_left_content %}               
+    {% for block in section.blocks %}
+        {% if block.type == 'section_left_content' %}
+        <div class="section_left_content">
+          {% if block.settings.section_left_heading != blank %}
+            <h2>{{ block.settings.section_left_heading }}</h2>
+          {% endif %}
+          {% if block.settings.section_left_para != blank %}
+            <p>{{ block.settings.section_left_para }}</p>
+          {% endif %}
+          <ul class="benefits">
+          {% for block in section.blocks %}  
+            {% if block.type == 'benefits_block' %}
+                <li>
+            {% if block.settings.benefit_icon != blank %}<img
+                        src="{{ block.settings.benefit_icon | img_url: 'master' }}">{% endif %}
+               {% if block.settings.benefit_copy != blank %}
+                 <p>{{ block.settings.benefit_copy }}</p>
+                 {% endif %}
+              </li>
+              {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+          {% endif %}
+      {% endfor %} 
+{% endcapture %}
+{% capture tab_container %}  
+    <div class="tab_container">
+        <div class="tab_header">
+          {% for block in section.blocks %}
+            {% if block.type == 'tab-header-item' %}
+              <div class="tab-header-item">{{ block.settings.header_text }}</div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="tab_content_wrapper">
+          {% for block in section.blocks %}
+            {% if block.type == 'tab_content' %}
+              <div class="tab_content">
+              {% if block.settings.tab_content == 'image' %}
+                  <img src="{{ block.settings.image | img_url: 'master' }}">
+                {% endif %}
+               {% if block.settings.tab_content == 'video' %}
+                 {{ block.settings.video | video_tag: image_size: '360x', autoplay:true, muted:true, loop:true, controls:false, preview_image:true }}
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+    </div>
+{% endcapture %} 
+<div class="what_fits_inside_section">
+    <div class="what_fits_inside_inner">
+      {% if section.settings.top_heading != blank %}
+        <h1>{{ section.settings.top_heading }}</h1>
+      {% endif %}
+        <div class="section_container">
+            {% if section.settings.layout == 'left' %}
+            {{ section_left_content  }}
+            {{ tab_container }}
+             {% endif %}
+             {% if section.settings.layout == 'right' %}
+             {{ tab_container }}
+             {{ section_left_content  }}
+             {% endif %}
+        </div>
+    </div>
+</div>
+{% schema %}
+ {
+"name": "what_fits_inside Section",
+"settings": [
+    {
+      "type": "text",
+      "id": "top_heading",
+      "label": "Top Heading"
+      },
+      {
+      "type": "html",
+      "id": "top_main_description",
+      "label": "top_main_Description"
+      },
+     {
+    "type": "select",
+    "id": "layout",
+    "label": "Position",
+    "default": "left",
+    "options":
+      [
+        {
+          "value": "left",
+          "label": "Image on left"
+        },
+        {
+          "value": "right",
+          "label": "Image on right"
+        }
+      ]
+   }  
+],
+"blocks":[
+   {
+    "name": "section Left Content",
+    "type": "section_left_content",
+    "settings": [
+        {
+      "type": "text",
+      "id": "section_left_heading",
+      "label": "Section Left Heading"
+      },
+      {
+      "type": "text",
+      "id": "section_left_para",
+      "label": "Section Left Para"
+      }
+    ]
+  },
+     {
+    "name": "Benefits Block",
+    "type": "benefits_block",
+    "settings": [
+      {
+      "type": "image_picker",
+      "id": "benefit_icon",
+      "label": "Benefit Icon"
+      },
+      {
+      "type": "text",
+      "id": "benefit_copy",
+      "label": "Benefit Copy"
+      }
+    ]
+  },
+  {
+    "name": "Tab Header Item",
+    "type": "tab-header-item",
+    "settings": [
+        {
+      "type": "text",
+      "id": "header_text",
+      "label": "Tab Header Text"
+      }
+    ]
+  },
+  {
+  "name": "Tab Content",
+  "type": "tab_content",
+  "settings":[
+      {
+    "type": "select",
+    "id": "tab_content",
+    "label": "Tab Content",
+    "default": "video",
+    "options":
+      [
+        {
+          "value": "video",
+          "label": "Video"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        }
+      ]
+   }, 
+      {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+      },
+      {
+      "type": "video",
+      "id": "Video",
+      "label": "Video",
+      "info": "We can only add mp3/mp4 Video Here"
+      }
+    ]
+  }
+],
+
+"presets": [
+  {
+  "name": "what_fits_inside Section"
+  }
+]
+
+}
+{% endschema %}
+
+{% style %}
+
+    .what_fits_inside_inner .benefits li span {
+    color: #13294B;
+    font-family: Century Gothic;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+    .what_fits_inside_inner .section_container {
+        display: flex;
+        gap: 20px;  
+    }
+
+    .what_fits_inside_inner {
+        max-width: 1300px;
+        width: 100%;
+      margin: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .what_fits_inside_inner .section_left_content {
+        width: 45%;
+    }
+    .what_fits_inside_inner .tab_container {
+        width: 55%;
+    } 
+  
+    .what_fits_inside_inner .tab_header {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    }
+
+    .what_fits_inside_inner .tab_content {
+        width: 100%;
+        display: none;
+    }
+    .what_fits_inside_inner .tab_content.active {
+        display: block;
+         font-weight: 700;
+    }
+    .what_fits_inside_inner .tab-header-item{
+        color: #13294B;
+    font-family: Century Gothic;
+    font-size: 20px;
+    font-style: normal;
+    line-height: normal;
+      cursor: pointer;
+    }
+    .what_fits_inside_inner .tab-header-item.active { 
+    text-decoration-line: underline;
+      font-weight: 700;
+    }
+
+    .section_left_content h2 {
+      font-weight: 700;
+    color: #13294B;
+    font-family: Century Gothic;
+    font-size: 35px;
+    font-style: normal;  
+    line-height: normal;
+}
+    .what_fits_inside_inner .tab-header-item {
+     font-weight: normal;
+   }
+.section_left_content p {
+    color: #13294B;
+    font-family: Century Gothic;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+}
+.what_fits_inside_inner .benefits{
+    padding-left: 0px;
+}
+.what_fits_inside_inner .benefits li {
+    list-style: none;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 10px;
+}
+
+.what_fits_inside_inner .benefits li img {    
+     width: 20px;     
+     height: 20px; 
+    }
+
+    .what_fits_inside_inner img {
+        width: 100%;
+    }
+    @media (max-width:768px) {
+        .what_fits_inside_inner .section_left_content,.what_fits_inside_inner .tab_container{
+            width: 100%;
+        }
+        .what_fits_inside_inner .section_container{
+            flex-wrap: wrap;
+        }
+      .what_fits_inside_inner .tab-header-item{
+        font-size: 18px;
+        font-weight: 400;
+      }
+    }
+{% endstyle %}
+
+{% javascript %}
+     var circleBorders = document.querySelectorAll(".tab_header .tab-header-item ");
+    var contentParagraphs = document.querySelectorAll(".tab_content_wrapper .tab_content");
+
+    function showContent(index) {
+        for (var i = 0; i < circleBorders.length; i++) {
+            circleBorders[i].classList.remove("active");
+            contentParagraphs[i].classList.remove("active");
+        }
+
+        circleBorders[index].classList.add("active");
+        contentParagraphs[index].classList.add("active");
+    }
+
+    circleBorders.forEach(function (circle, index) {
+        circle.addEventListener("click", function () {
+            showContent(index);
+        });
+    });
+
+    // Show the initial content (one_content)
+    showContent(0);
+{% endjavascript %}
