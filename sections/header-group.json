@@ -8,7 +8,7 @@
         ".header__heading-link .h2 {font-size: 16px;}"
       ],
       "settings": {
-        "logo_position": "middle-center",
+        "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "always",
