@@ -24,14 +24,14 @@
     </div>
 
     <div class="bm-knot-right">
-      <h1>{{ productName }}</h1>
+      <h1>{{ section.settings.productName }}</h1>
       <p>
-        <span>{{ productSubtitle }}</span>
-        {{ productDescriptionLong }}
+        <span>{{ section.settings.productSubtitle }}</span>
+        {{ section.settings.productDescriptionLong }}
       </p>
       <ul>
         {% for feature in productFeatures %}
-        <li>{{ feature }}</li>
+        <li>{{ section.settings.feature }}</li>
         {% endfor %}
       </ul>
     </div>
