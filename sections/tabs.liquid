@@ -1,11 +1,9 @@
-
-
 <!-- In your Shopify Liquid section file -->
 <div class="bm-knot-hero-tabs">
   <div class="bm-knot-inner-tabs">
     <div class="bm-tabs">
       {% for block in section.blocks %}
-        {% if block.type == "slide" %}
+        {% if block.type == "step" %}
           <div class="bm-step">
             <span>{{ block.settings.position }}</span>
             <div class="tab-content-wrapper">
