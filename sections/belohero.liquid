@@ -1,12 +1,57 @@
+<!-- In your Shopify Liquid section file -->
+<section class="image-text-section">
+  <div class="container">
+    <div class="image-block">
+
+    </div>
+    <div class="text-block">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Add the following code to your theme.liquid file or any other appropriate file -->
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Image Text Section",
+  "settings": [
+   
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Section Title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Section Description"
+    }
+  ]
+}
 {% endschema %}
 
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
+<!-- Add the following CSS to your theme's stylesheet or within a style tag -->
+<style>
+  .image-text-section {
+    /* Add styling for the section container */
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    /* Add any additional styling for the container */
+  }
+  
+  .image-block {
+    flex: 1;
+    /* Add any styling for the image block */
+  }
+  
+  .text-block {
+    flex: 1;
+    /* Add any styling for the text block */
+  }
+</style>
