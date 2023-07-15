@@ -2,6 +2,12 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "7539b910-1475-461c-a7ad-caab39317fd1": {
+      "type": "tabs",
+      "settings": {
+        "productFeatures": ""
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -48,6 +54,7 @@
     }
   },
   "order": [
+    "7539b910-1475-461c-a7ad-caab39317fd1",
     "footer"
   ]
 }
