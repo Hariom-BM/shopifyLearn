@@ -2881,7 +2881,7 @@ details-disclosure > details {
   background-attachment: fixed;
 }
 body{
-  background:#fff;
+  background:#fff !important;
 }
 
 @media screen and (forced-colors: active) {
