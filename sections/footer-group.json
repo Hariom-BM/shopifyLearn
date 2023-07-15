@@ -22,11 +22,21 @@
             "image-url": "shopify:\/\/shop_images\/David_Blessing_r1_BAY85685_1_Compressed.png",
             "image_alt": ""
           }
+        },
+        "4c3e5bf2-811c-4c3c-a003-b15e5e40e23b": {
+          "type": "step",
+          "settings": {
+            "position": "3",
+            "description": "Choose desired height and massage tip to target the muscle you want to massage.",
+            "image-url": "shopify:\/\/shop_images\/David_Blessing_r1_BAY85685_1_Compressed.png",
+            "image_alt": ""
+          }
         }
       },
       "block_order": [
         "33c39e65-11c1-4f4c-a6ab-788bdc893031",
-        "c22cb579-90e2-4c84-8dd7-f6d437d44167"
+        "c22cb579-90e2-4c84-8dd7-f6d437d44167",
+        "4c3e5bf2-811c-4c3c-a003-b15e5e40e23b"
       ],
       "settings": {
       }
