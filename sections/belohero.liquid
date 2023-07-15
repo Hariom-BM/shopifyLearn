@@ -2,7 +2,7 @@
 <section class="image-text-section">
   <div class="container">
     <div class="image-block">
-    <img src="{{ section.settings.image-url }}" alt="{{ section.settings.image_alt }}">
+    <img src="{{ section.settings.image-url | img_url }}" alt="{{ section.settings.image_alt }}">
     </div>
     <div class="text-block">
       <h2>{{ section.settings.title }}</h2>
