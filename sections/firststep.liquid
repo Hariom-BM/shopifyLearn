@@ -1,12 +1,63 @@
+<!-- In your Shopify Liquid section file -->
+<section class="bm-knot-hero">
+  <div class="bm-knot-inner">
+    <div class="bm-knot-left">
+      <div class="img-wrapper">
+        <img src="{{ section.settings.image-url }}" alt="{{ section.settings.image_alt }}">
+      </div>
+      <div class="bm-knot-batch">
+        <p>{{ section.settings.batch_text }}</p>
+      </div>
+    </div>
+
+    <div class="bm-knot-right">
+      <h1>{{ section.settings.title }}</h1>
+      <p><span>{{ section.settings.highlight }}</span>{{ section.settings.description }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Add the following code to your theme.liquid file or any other appropriate file -->
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "BM Knot Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image-url",
+      "label": "Image"
+      
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image Alt Text",
+      "default": "Image Alt Text"
+    },
+    {
+      "type": "text",
+      "id": "batch_text",
+      "label": "Batch Text",
+      "default": "Doctor Recommended Massage Therapy Device"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Dr. Knot"
+    },
+    {
+      "type": "text",
+      "id": "highlight",
+      "label": "Highlight Text",
+      "default": "The world's best hands-free massager"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "The description goes here"
+    }
+  ]
+}
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
