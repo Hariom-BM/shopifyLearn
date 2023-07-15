@@ -2873,10 +2873,15 @@ details-disclosure > details {
   word-break: break-word;
 }
 
+
+
 .gradient {
   background: rgb(var(--color-background));
   background: var(--gradient-background);
   background-attachment: fixed;
+}
+body{
+  background:#fff;
 }
 
 @media screen and (forced-colors: active) {
