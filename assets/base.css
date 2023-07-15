@@ -2299,9 +2299,7 @@ product-info .loading-overlay:not(.hidden) ~ *,
   background-color: rgb(var(--color-background));
 }
 
-.header-wrapper--border-bottom {
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
-}
+
 
 .header {
   display: grid;
