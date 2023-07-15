@@ -2,7 +2,7 @@
 <section class="image-text-section">
   <div class="container">
     <div class="image-block">
-
+    <img src="{{ section.settings.image-url }}" alt="{{ section.settings.image_alt }}">
     </div>
     <div class="text-block">
       <h2>{{ section.settings.title }}</h2>
@@ -16,7 +16,12 @@
 {
   "name": "Image Text Section",
   "settings": [
-   
+     {
+      "type": "image_picker",
+      "id": "image-url",
+      "label": "Image"
+      
+    },
     {
       "type": "text",
       "id": "title",
