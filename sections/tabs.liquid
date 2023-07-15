@@ -69,32 +69,32 @@
   <div class="bm-knot-inner">
     <div class="bm-knot-left">
       <div class="img-wrapper">
-        <img src="{{ settings.indexImageUrl }}" alt="">
+        <img src="{{ section.settings.indexImageUrl }}" alt="">
       </div>
       <div class="bm-knot-batch">
-        <p>{{ settings.productTitle }}</p>
+        <p>{{ section.settings.productTitle }}</p>
       </div>
       <div class="text-line">
-        <p>{{ settings.productDescription }}</p>
+        <p>{{ section.settings.productDescription }}</p>
       </div>
       <div class="bm-index-wrapper">
         <div class="index">
           <div class="index-img">
-            <img src="{{ settings.indexImageUrl }}" alt="">
+            <img src="{{ section.settings.indexImageUrl }}" alt="">
           </div>
           <div class="text-wrapper">
-            <h5>{{ settings.indexTitle }}</h5>
-            <p>{{ settings.indexDescription }}</p>
+            <h5>{{ section.settings.indexTitle }}</h5>
+            <p>{{ section.settings.indexDescription }}</p>
           </div>
         </div>
       </div>
     </div>
 
     <div class="bm-knot-right">
-      <h1>{{ section.settings.productName }}</h1>
+      <h1>{{section.settings.settings.productName }}</h1>
       <p>
-        <span>{{ settings.productSubtitle }}</span>
-        {{ settings.productDescriptionLong }}
+        <span>{{ section.settings.productSubtitle }}</span>
+        {{ section.settings.productDescriptionLong }}
       </p>
       <ul>
         {% for feature in settings.productFeatures  %}
