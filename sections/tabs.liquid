@@ -1,106 +1,65 @@
 {% schema %}
 {
-  "name": "BM Knot Hero",
-  "settings": [
+  "name": "BM Knot Hero Tabs",
+  "tag": "section",
+  "class": "bm-knot-hero-tabs",
+  "settings": [],
+  "blocks": [
     {
-      "type": "text",
-      "id": "productTitle",
-      "label": "Product Title"
-    },
-    {
-      "type": "textarea",
-      "id": "productDescription",
-      "label": "Product Description"
-    },
-    {
-      "type": "text",
-      "id": "indexImageUrl",
-      "label": "Index Image URL"
-    },
-    {
-      "type": "text",
-      "id": "indexTitle",
-      "label": "Index Title"
-    },
-    {
-      "type": "textarea",
-      "id": "indexDescription",
-      "label": "Index Description"
-    },
-    {
-      "type": "text",
-      "id": "productName",
-      "label": "Product Name"
-    },
-    {
-      "type": "text",
-      "id": "productSubtitle",
-      "label": "Product Subtitle"
-    },
-    {
-      "type": "textarea",
-      "id": "productDescriptionLong",
-      "label": "Product Long Description"
-    },
-    {
-      "type": "text",
-      "id": "productFeatures",
-      "label": "Product Features",
-      "info": "Enter each feature on a new line"
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "position",
+          "label": "Position"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_url",
+          "label": "Image URL"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt Text"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "bm-knot-tabs",
+      "name": "bm-knot-hero-tabs",
       "category": "Custom"
     }
   ]
 }
 {% endschema %}
 
-<style>
-  .bm-knot-hero img {
-    max-width: 200px;
-    height: auto;
-  }
-</style>
-
-<div class="bm-knot-hero">
-  <div class="bm-knot-inner">
-    <div class="bm-knot-left">
-      <div class="img-wrapper">
-        <img src="{{ section.settings.indexImageUrl }}" alt="">
-      </div>
-      <div class="bm-knot-batch">
-        <p>{{ section.settings.productTitle }}</p>
-      </div>
-      <div class="text-line">
-        <p>{{ section.settings.productDescription }}</p>
-      </div>
-      <div class="bm-index-wrapper">
-        <div class="index">
-          <div class="index-img">
-            <img src="{{ section.settings.indexImageUrl }}" alt="">
+<!-- In your Shopify Liquid section file -->
+<div class="bm-knot-hero-tabs">
+  <div class="bm-knot-inner-tabs">
+    <div class="bm-tabs">
+      {% for block in section.blocks %}
+        {% if block.type == "slide" %}
+          <div class="bm-step">
+            <span>{{ block.settings.position }}</span>
+            <div class="tab-content-wrapper">
+              <div class="left-content">
+                <p>{{ block.settings.description }}</p>
+              </div>
+              <div class="right-content">
+                <img src="{{ block.settings.image_url }}" alt="{{ block.settings.image_alt }}">
+              </div>
+            </div>
           </div>
-          <div class="text-wrapper">
-            <h5>{{ section.settings.indexTitle }}</h5>
-            <p>{{ section.settings.indexDescription }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bm-knot-right">
-      <h1>{{section.settings.settings.productName }}</h1>
-      <p>
-        <span>{{ section.settings.productSubtitle }}</span>
-        {{ section.settings.productDescriptionLong }}
-      </p>
-      <ul>
-        {% for feature in settings.productFeatures  %}
-        <li>{{ feature }}</li>
-        {% endfor %}
-      </ul>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 </div>
