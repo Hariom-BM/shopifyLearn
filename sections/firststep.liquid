@@ -3,7 +3,7 @@
   <div class="bm-knot-inner">
     <div class="bm-knot-left">
       <div class="img-wrapper">
-        <img src="{{ section.settings.image-url }}" alt="{{ section.settings.image_alt }}">
+        <img src="{{ section.settings.image-url| img_url:'450x' }}" alt="{{ section.settings.image_alt }}">
       </div>
       <div class="bm-knot-batch">
         <p>{{ section.settings.batch_text }}</p>
@@ -59,5 +59,6 @@
       "default": "The description goes here"
     }
   ]
+
 }
 {% endschema %}
