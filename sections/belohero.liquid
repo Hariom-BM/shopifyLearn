@@ -1,66 +1,102 @@
-<!-- In your Shopify Liquid section file -->
-<section class="image-text-section">
-  <div class="container">
-    <div class="image-block">
-    <img src="{{ section.settings.image-url | img_url }}" alt="{{ section.settings.image_alt }}" width="500">
+<div class="bm-knot-hero">
+  <div class="bm-knot-inner">
+    <div class="bm-knot-left">
+      <div class="img-wrapper">
+        <img src="" alt="">
+      </div>
+      <div class="bm-knot-batch">
+        <p>{{ productTitle }}</p>
+      </div>
+      <div class="text-line">
+        <p>{{ productDescription }}</p>
+      </div>
+      <div class="bm-index-wrapper">
+        <div class="index">
+          <div class="index-img">
+            <img src="{{ indexImageUrl }}" alt="">
+          </div>
+          <div class="text-wrapper">
+            <h5>{{ indexTitle }}</h5>
+            <p>{{ indexDescription }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="text-block">
-      <h2>{{ section.settings.title }}</h2>
-      <p>{{ section.settings.description }}</p>
+
+    <div class="bm-knot-right">
+      <h1>{{ productName }}</h1>
+      <p>
+        <span>{{ productSubtitle }}</span>
+        {{ productDescriptionLong }}
+      </p>
+      <ul>
+        {% for feature in productFeatures %}
+        <li>{{ feature }}</li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
-</section>
+</div>
 
-<!-- Add the following code to your theme.liquid file or any other appropriate file -->
+
+
 {% schema %}
 {
-  "name": "Image Text Section",
+  "name": "BM Knot Hero",
   "settings": [
-     {
-      "type": "image_picker",
-      "id": "image-url",
-      "label": "Image"
-      
-    },
     {
       "type": "text",
-      "id": "title",
-      "label": "Title",
-      "default": "Section Title"
+      "id": "productTitle",
+      "label": "Product Title"
     },
     {
       "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "default": "Section Description"
+      "id": "productDescription",
+      "label": "Product Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "indexImageUrl",
+      "label": "Index Image URL"
+    },
+    {
+      "type": "text",
+      "id": "indexTitle",
+      "label": "Index Title"
+    },
+    {
+      "type": "textarea",
+      "id": "indexDescription",
+      "label": "Index Description"
+    },
+    {
+      "type": "text",
+      "id": "productName",
+      "label": "Product Name"
+    },
+    {
+      "type": "text",
+      "id": "productSubtitle",
+      "label": "Product Subtitle"
+    },
+    {
+      "type": "textarea",
+      "id": "productDescriptionLong",
+      "label": "Product Long Description"
+    },
+    {
+      "type": "text",
+      "id": "productFeatures",
+      "label": "Product Features",
+      "info": "Enter each feature on a new line"
     }
-  ],  "presets":[
-        {
-          "name":"bm-heroner"
-        }
-      ]  
+  ],
+  "presets": [
+    {
+      "name": "bm-knot-hero",
+      "category": "Custom"
+    }
+  ]
 }
 {% endschema %}
 
-<!-- Add the following CSS to your theme's stylesheet or within a style tag -->
-<style>
-  .image-text-section {
-    /* Add styling for the section container */
-  }
-  
-  .container {
-    display: flex;
-    align-items: center;
-    /* Add any additional styling for the container */
-  }
-  
-  .image-block {
-    flex: 1;
-    /* Add any styling for the image block */
-  }
-  
-  .text-block {
-    flex: 1;
-    /* Add any styling for the text block */
-  }
-</style>
