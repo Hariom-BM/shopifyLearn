@@ -11,7 +11,7 @@
                 <p>{{ block.settings.description }}</p>
               </div>
               <div class="right-content">
-                <img src="{{ block.settings.image_url }}" alt="{{ block.settings.image_alt }}">
+                <img src="{{ block.settings.image-url | img_url }}" alt="{{ block.settings.image_alt }}">
               </div>
             </div>
           </div>
@@ -45,7 +45,7 @@
         },
         {
           "type": "image_picker",
-          "id": "image_url",
+          "id": "image-url",
           "label": "Image URL"
         },
         {

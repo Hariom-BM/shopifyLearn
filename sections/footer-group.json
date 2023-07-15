@@ -4,8 +4,29 @@
   "sections": {
     "7539b910-1475-461c-a7ad-caab39317fd1": {
       "type": "tabs",
+      "blocks": {
+        "33c39e65-11c1-4f4c-a6ab-788bdc893031": {
+          "type": "step",
+          "settings": {
+            "position": "1",
+            "description": "Choose desired height and massage tip to target the muscle you want to massage.",
+            "image_alt": ""
+          }
+        },
+        "c22cb579-90e2-4c84-8dd7-f6d437d44167": {
+          "type": "step",
+          "settings": {
+            "position": "2",
+            "description": "",
+            "image_alt": ""
+          }
+        }
+      },
+      "block_order": [
+        "33c39e65-11c1-4f4c-a6ab-788bdc893031",
+        "c22cb579-90e2-4c84-8dd7-f6d437d44167"
+      ],
       "settings": {
-        "productFeatures": ""
       }
     },
     "footer": {
