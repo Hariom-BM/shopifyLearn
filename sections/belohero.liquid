@@ -2,7 +2,7 @@
   <div class="bm-knot-inner">
     <div class="bm-knot-left">
       <div class="img-wrapper">
-        <img src="{{ indexImageUrl | asset_url }}" alt="">
+        <img src="{{ heroImageUrl | asset_url }}" alt="">
       </div>
       <div class="bm-knot-batch">
         <p>{{ section.settings.productTitle }}</p>
@@ -55,6 +55,11 @@
       "label": "Product Description"
     },
     {
+      "type": "image_picker",
+      "id": "heroImageUrl",
+      "label": "hero Image URL"
+    },
+     {
       "type": "image_picker",
       "id": "indexImageUrl",
       "label": "Index Image URL"
