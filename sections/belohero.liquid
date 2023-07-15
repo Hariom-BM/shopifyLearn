@@ -13,7 +13,7 @@
       <div class="bm-index-wrapper">
         <div class="index">
           <div class="index-img">
-            <img src="{{ indexImageUrl }}" alt="">
+            <img src="{{ indexImageUrl | asset_url }}" alt="">
           </div>
           <div class="text-wrapper">
             <h5>{{ section.settings.indexTitle }}</h5>
@@ -99,4 +99,15 @@
   ]
 }
 {% endschema %}
+
+
+
+
+
+{% style %}
+.bm-knot-inner{
+  display:flex;
+}
+
+{% endstyle %}
 
