@@ -117,10 +117,10 @@
 
 
   var checkActive=document.querySelectorAll('.bm-step span')
-     checkActive.forEach(function (el) {
-          el.addEventListener('click',function () {
+     checkActive.forEach(function (ele) {
+          ele.addEventListener('click',function () {
           removeClass()
-          el.parentElement.classList.add('active')
+          ele.parentElement.classList.add('active')
 
      })
   })
