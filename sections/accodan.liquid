@@ -105,8 +105,14 @@
 {% endstylesheet %}
 
 <script>
+    function remove(){
+      var accontent=document.querySelectorAll('.accordion-content')
+  accontent.forEach(function(el){
+        el.classList.remove('active')
+  })
+    }
 
-
-  var acc=document.querySelectorAll('.accordion') acc.forEach(function(el){ el.addEventListener('click',function(dl) {
-  el.nextElementSibling.classList.add('active') }) })
+    var acc=document.querySelectorAll('.accordion') acc.forEach(function(el){ el.addEventListener('click',function(dl) {
+      remove()
+    el.nextElementSibling.classList.add('active') }) })
 </script>
