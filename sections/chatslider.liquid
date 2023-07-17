@@ -1,8 +1,22 @@
+<div class="slick-slider">
+  {% for slide in section.blocks %}
+    <div class="slick-slide">
+      <img src="{{ slide.settings.image_url }}" alt="{{ slide.settings.image_alt }}">
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    $('.slick-slider').slick();
+  });
+</script>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Section name",
+  "settings": []
+}
 {% endschema %}
 
 {% stylesheet %}
