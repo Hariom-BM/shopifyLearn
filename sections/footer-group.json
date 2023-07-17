@@ -2,6 +2,23 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "5fe4ff43-ce1f-46e2-ac0b-a4f2fcb93190": {
+      "type": "accbm",
+      "blocks": {
+        "a2d98c85-304e-47ee-b6e6-fc951bf5e6d9": {
+          "type": "accordion",
+          "settings": {
+            "title": "cnzczczccz",
+            "content": "<p>xczxzxczc<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "a2d98c85-304e-47ee-b6e6-fc951bf5e6d9"
+      ],
+      "settings": {
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -48,6 +65,7 @@
     }
   },
   "order": [
+    "5fe4ff43-ce1f-46e2-ac0b-a4f2fcb93190",
     "footer"
   ]
 }
