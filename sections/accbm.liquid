@@ -1,11 +1,11 @@
 <section class="bm-container">
-  <h1>{{ section.settings.title }}</h1>
+  <h1>{{ block.settings.title }}</h1>
 
   {% for accordion in section.settings.accordions %}
-    <button class="accordion">{{ accordion.title }}</button>
+    <button class="accordion">{{ block.accordion.title }}</button>
     <div class="accordion-content">
       <p>
-        {{ accordion.content }}
+        {{ block.accordion.content }}
       </p>
     </div>
   {% endfor %}
