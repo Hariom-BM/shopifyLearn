@@ -11,10 +11,18 @@
             "title": ",n kjb mn mn",
             "content": "<p>mn mn mn mn m <\/p>"
           }
+        },
+        "4204e220-bfe7-4554-8fc4-945f4afc40ce": {
+          "type": "accordion",
+          "settings": {
+            "title": "mn n n",
+            "content": "<p>n n n <\/p>"
+          }
         }
       },
       "block_order": [
-        "0fb0cedc-39a6-4f54-8e86-0390b5cb10ca"
+        "0fb0cedc-39a6-4f54-8e86-0390b5cb10ca",
+        "4204e220-bfe7-4554-8fc4-945f4afc40ce"
       ],
       "settings": {
       }
