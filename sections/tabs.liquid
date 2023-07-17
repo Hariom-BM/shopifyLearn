@@ -3,7 +3,7 @@
   <div class="bm-knot-inner-tabs">
     <div class="bm-tabs">
       {% for block in section.blocks %}
-        {% if block.type == "step" %}
+        {% if block.type == 'step' %}
           <div class="bm-step">
             <span>{{ block.settings.position }}</span>
             <div class="tab-content-wrapper">
@@ -20,7 +20,6 @@
     </div>
   </div>
 </div>
-
 
 {% schema %}
 {
@@ -66,38 +65,29 @@
 {% endschema %}
 
 {% style %}
-  {% endstyle %}
-
-
-
-
-
+  .bm-tabs{
+    display:flex;
+    justify-content:space-between;
+  }
+{% endstyle %}
 
 <script>
+    console.log('kjbjjk ')
+
+  function removeClass() {
+   var remove=document.querySelectorAll('.bm-step span')
+      remove.forEach(function (el) {
+          el.parentElement.classList.remove('active')
+  })
+  }
 
 
+  var checkActive=document.querySelectorAll('.bm-step span')
+     checkActive.forEach(function (el) {
+          el.addEventListener('click',function () {
+        removeClass()
+          el.parentElement.classList.add('active')
 
-  console.log('kjbjjk ')
-  
-function removeClass() {
- var remove=document.querySelectorAll('.bm-step span')
-    remove.forEach(function (el) {
-        el.parentElement.classList.remove('active') 
-})
-}
- 
-
-var checkActive=document.querySelectorAll('.bm-step span')
-   checkActive.forEach(function (el) {
-        el.addEventListener('click',function () {
-      removeClass()
-        el.parentElement.classList.add('active')
-           
-   })
-})
-
-     </script>
-
-
-
-
+     })
+  })
+</script>
