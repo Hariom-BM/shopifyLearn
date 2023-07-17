@@ -1,0 +1,49 @@
+<section class="container">
+  <h1>{{ section.settings.title }}</h1>
+
+  {% for accordion in section.settings.accordions %}
+    <button class="accordion">{{ section.settings.accordion }}</button>
+    <div class="accordion-content">
+      <p>
+        {{ section.settings.accordion }}
+      </p>
+    </div>
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "Simple Accordions",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Accordion Title",
+          "id": "title"
+        },
+        {
+          "type": "richtext",
+          "label": "Accordion Content",
+          "id": "content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple Accordions",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
