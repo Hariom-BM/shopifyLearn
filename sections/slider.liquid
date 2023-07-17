@@ -85,55 +85,60 @@
 {% endstylesheet %}
 
 <script>
-    //create swiper slider
-    function swiperslider() {
-      var swiper = document.querySelector(".bm-slide-conatiner");
-      new Swiper(swiper, {
-        slidesPerView: 3,
-        grabCursor: true,
-        loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        // autoplay: {
-        //   delay: 4000,
-        //   disableOnInteraction: false,
-        // },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-          0: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 4,
-          },
-        },
-      });
-    }
-
   //add swiper slider script
-  function addScript() {
-    var bmScript = document.createElement("script");
-    bmScript.src =
-      "https://unpkg.com/swiper@7/swiper-bundle.min.js";
-    document.getElementsByTagName("head")[0].appendChild(bmScript);
-  }
-  addScript();
+   function addScript() {
+     var bmScript = document.createElement("script");
+     bmScript.src =
+       "https://unpkg.com/swiper@7/swiper-bundle.min.js";
+     document.getElementsByTagName("head")[0].appendChild(bmScript);
+   }
+   addScript();
 
-  //add swiper slider css
-  function addcssScript() {
-    var bmcsslink = document.createElement("link");
-    bmcsslink.rel = "stylesheet";
-    bmcsslink.href =
-      "https://unpkg.com/swiper@7/swiper-bundle.min.css";
-    document.getElementsByTagName("head")[0].appendChild(bmcsslink);
-  }
-  addcssScript();
+
+
+
+     //create swiper slider
+     function swiperslider() {
+       var swiper = document.querySelector(".bm-slide-conatiner");
+       new Swiper(swiper, {
+         slidesPerView: 3,
+         grabCursor: true,
+         loop: true,
+         pagination: {
+           el: ".swiper-pagination",
+           clickable: true,
+         },
+         // autoplay: {
+         //   delay: 4000,
+         //   disableOnInteraction: false,
+         // },
+         navigation: {
+           nextEl: ".swiper-button-next",
+           prevEl: ".swiper-button-prev",
+         },
+         breakpoints: {
+           0: {
+             slidesPerView: 1,
+           },
+           768: {
+             slidesPerView: 2,
+           },
+           1024: {
+             slidesPerView: 4,
+           },
+         },
+       });
+     }
+
+
+
+   //add swiper slider css
+   function addcssScript() {
+     var bmcsslink = document.createElement("link");
+     bmcsslink.rel = "stylesheet";
+     bmcsslink.href =
+       "https://unpkg.com/swiper@7/swiper-bundle.min.css";
+     document.getElementsByTagName("head")[0].appendChild(bmcsslink);
+   }
+   addcssScript();
 </script>
