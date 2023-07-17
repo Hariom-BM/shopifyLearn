@@ -59,10 +59,17 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "f4df8cce-eaaa-443a-a359-572368d63746": {
+      "type": "accodan",
+      "settings": {
+        "title": ""
+      }
     }
   },
   "order": [
     "218c6dac-fecc-483a-a5c2-ff166c9fe03c",
-    "fb53ffbc-4d9b-466d-8ba4-c15fe5f02e22"
+    "fb53ffbc-4d9b-466d-8ba4-c15fe5f02e22",
+    "f4df8cce-eaaa-443a-a359-572368d63746"
   ]
 }

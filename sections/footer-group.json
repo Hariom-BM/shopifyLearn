@@ -5,26 +5,19 @@
     "3435e0df-3069-4cbf-9926-25a28d9c6d16": {
       "type": "accodan",
       "blocks": {
-        "0fb0cedc-39a6-4f54-8e86-0390b5cb10ca": {
+        "eac09834-6594-4753-ac2d-667e9f1dfa7c": {
           "type": "accordion",
           "settings": {
-            "title": ",n kjb mn mn",
-            "content": "<p>mn mn mn mn m <\/p>"
-          }
-        },
-        "4204e220-bfe7-4554-8fc4-945f4afc40ce": {
-          "type": "accordion",
-          "settings": {
-            "title": "mn n n",
-            "content": "<p>n n n <\/p>"
+            "title": "What surfaces can Dr Knot be used on?",
+            "content": "It can mount to any smooth sealed surfaces like metal, plastic, laminate, and smooth painted drywall (at least two coats of paint)."
           }
         }
       },
       "block_order": [
-        "0fb0cedc-39a6-4f54-8e86-0390b5cb10ca",
-        "4204e220-bfe7-4554-8fc4-945f4afc40ce"
+        "eac09834-6594-4753-ac2d-667e9f1dfa7c"
       ],
       "settings": {
+        "title": "cvxcvcv"
       }
     },
     "footer": {
