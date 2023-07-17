@@ -107,12 +107,16 @@
 <script>
     function remove(){
       var accontent=document.querySelectorAll('.accordion-content')
-  accontent.forEach(function(el){
-        el.classList.remove('active')
+         accontent.forEach(function(el){
+         el.classList.remove('active')
   })
     }
 
-    var acc=document.querySelectorAll('.accordion') acc.forEach(function(el){ el.addEventListener('click',function(dl) {
+    var acc=document.querySelectorAll('.accordion')
+      acc.forEach(function(el){
+        el.addEventListener('click',function() {
       remove()
-    el.nextElementSibling.classList.add('active') }) })
+      el.nextElementSibling.classList.add('active')
+        })
+      })
 </script>
