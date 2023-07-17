@@ -81,10 +81,46 @@
             "title": "Soft Air Cushion",
             "commitment": "Has an air pocket to  prevent ricochet off near by bones"
           }
+        },
+        "1981bc58-d4e4-44a2-a574-5135118028b6": {
+          "type": "slide",
+          "settings": {
+            "image_url": "",
+            "title": "Standard Ball",
+            "commitment": "Used for larger muscles to cover more surface area and for surface level muscles"
+          }
+        },
+        "015a2498-193f-4315-aa23-d7c13d128c18": {
+          "type": "slide",
+          "settings": {
+            "image_url": "",
+            "title": "",
+            "commitment": ""
+          }
+        },
+        "9ee646c1-5652-4d08-abf8-bfc353546005": {
+          "type": "slide",
+          "settings": {
+            "image_url": "",
+            "title": "",
+            "commitment": ""
+          }
+        },
+        "5d416855-0ccd-44b9-9cd6-b3af844f61b2": {
+          "type": "slide",
+          "settings": {
+            "image_url": "",
+            "title": "",
+            "commitment": ""
+          }
         }
       },
       "block_order": [
-        "cf254896-5665-4265-a4b0-200d63ddc2cb"
+        "cf254896-5665-4265-a4b0-200d63ddc2cb",
+        "1981bc58-d4e4-44a2-a574-5135118028b6",
+        "015a2498-193f-4315-aa23-d7c13d128c18",
+        "9ee646c1-5652-4d08-abf8-bfc353546005",
+        "5d416855-0ccd-44b9-9cd6-b3af844f61b2"
       ],
       "settings": {
         "MainTitle": "Different Tips For Different Needs",
