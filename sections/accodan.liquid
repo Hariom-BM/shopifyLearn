@@ -108,7 +108,7 @@
     function remove(){
       var accontent=document.querySelectorAll('.accordion-content')
          accontent.forEach(function(el){
-         el.classList.remove('active')
+         el.classList.remove('is-open')
   })
     }
 
@@ -116,7 +116,7 @@
       acc.forEach(function(el){
         el.addEventListener('click',function() {
       remove()
-      el.nextElementSibling.classList.add('active')
+      el.nextElementSibling.classList.add('is-open')
         })
       })
 </script>
