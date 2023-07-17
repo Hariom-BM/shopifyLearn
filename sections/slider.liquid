@@ -2,7 +2,7 @@
   <div class="bm-inner">
     <div class="bm-left-block">
       <div class="left-container">
-        <h2 class="bm-title">{{ section.settings.title }}</h2>
+        <h2 class="bm-title">{{ section.settings['main-title'] }}</h2>
         <p class="bm-desc">{{ section.settings.description }}</p>
         <div class="bm-cta">
           <a href="{{ section.settings.cta_link }}" class="bm-link">
@@ -47,7 +47,7 @@
     {
       "type": "text",
       "label": "Title",
-      "id": "title"
+      "id": "main-title"
     },
     {
       "type": "textarea",
