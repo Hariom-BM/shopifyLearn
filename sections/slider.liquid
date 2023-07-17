@@ -85,6 +85,20 @@
 {% endstylesheet %}
 
 <script>
+      function onwaitforswiper(trigger) {
+      var interval = setInterval(function () {
+        if (typeof Swiper != "undefined") {
+          clearInterval(interval);
+          trigger();
+        }
+      }, 50);
+      setTimeout(function () {
+        clearInterval(interval);
+      }, 15000);
+    }
+
+
+
     //create swiper slider
     function swiperslider() {
       var swiper = document.querySelector(".bm-slider-wrapper");
