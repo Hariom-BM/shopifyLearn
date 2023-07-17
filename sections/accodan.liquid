@@ -1,6 +1,5 @@
 <div class="container">
   <h1>{{ settings.title }}</h1>
-
   {% for accordion in section.settings.accordions %}
     <div class="accordion-content">
       <p>
@@ -9,6 +8,7 @@
     </div>
   {% endfor %}
 </div>
+
 {% schema %}
 {
   "name": "Simple Accordions",
