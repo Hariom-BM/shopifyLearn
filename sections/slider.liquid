@@ -1,8 +1,21 @@
+<div class="wrapper">
+  <header>
+    <div class="headline">
+      <h1>{{ section.settings.title }}</h1>
+    </div>
+    <ul id="slides">
+      <li class="slide slide1 showing"></li>
+      <li class="slide slide2"></li>
+      <li class="slide slide3"></li>
+    </ul>
+  </header>
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Section name",
+  "settings": []
+}
 {% endschema %}
 
 {% stylesheet %}
