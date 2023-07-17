@@ -5,7 +5,13 @@
     </div>
     <ul id="slides">
       {% for slide in section.blocks %}
-        <li class="slide {{ slide.settings.slide_class }}"></li>
+        <li class="slide {{ slide.settings.slide_class }} {{ slide.settings.show_class }}">
+          <h2>{{ slide.settings.title }}</h2>
+          <div class="img-wrapper">
+            <img src="{{ slide.settings.image_url }}" alt="{{ slide.settings.image_alt }}">
+          </div>
+          <p>{{ slide.settings.content }}</p>
+        </li>
       {% endfor %}
     </ul>
   </header>
@@ -30,13 +36,38 @@
           "type": "text",
           "label": "Slide Class",
           "id": "slide_class"
+        },
+        {
+          "type": "text",
+          "label": "Slide Title",
+          "id": "title"
+        },
+        {
+          "type": "text",
+          "label": "Image URL",
+          "id": "image_url"
+        },
+        {
+          "type": "text",
+          "label": "Image Alt Text",
+          "id": "image_alt"
+        },
+        {
+          "type": "textarea",
+          "label": "Content",
+          "id": "content"
+        },
+        {
+          "type": "text",
+          "label": "Show Class",
+          "id": "show_class"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "BM Slider",
+      "name": "Header Slider",
       "category": "Custom"
     }
   ]
