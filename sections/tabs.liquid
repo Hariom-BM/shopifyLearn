@@ -107,7 +107,7 @@
 
 <script>
     console.log('kjbjjk ')
-  document.querySelector('.bm-step').classList.add('active')
+
   function removeClass() {
    var remove=document.querySelectorAll('.bm-step span')
       remove.forEach(function (el) {
@@ -117,6 +117,7 @@
 
 
   var checkActive=document.querySelectorAll('.bm-step span')
+   document.querySelector('.bm-step').classList.add('active')
      checkActive.forEach(function (el) {
           el.addEventListener('click',function () {
         removeClass()
