@@ -2,6 +2,24 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "c40bcf98-0542-41f9-9354-22c5ba40ca66": {
+      "type": "chatslider",
+      "blocks": {
+        "de3d42af-3099-40c2-8361-3ed4d71b783f": {
+          "type": "slide",
+          "settings": {
+            "image_url": "",
+            "MainTitle": "kjbkhbkbv",
+            "image_alt": ".,nk.nk,"
+          }
+        }
+      },
+      "block_order": [
+        "de3d42af-3099-40c2-8361-3ed4d71b783f"
+      ],
+      "settings": {
+      }
+    },
     "3435e0df-3069-4cbf-9926-25a28d9c6d16": {
       "type": "accodan",
       "blocks": {
@@ -82,6 +100,7 @@
     }
   },
   "order": [
+    "c40bcf98-0542-41f9-9354-22c5ba40ca66",
     "3435e0df-3069-4cbf-9926-25a28d9c6d16",
     "footer"
   ]
