@@ -11,32 +11,6 @@
         </div>
       </div>
     </div>
-    <div class="bm-slider-wrapper swiper">
-      <div class="bm-slide-conatiner swiper-wrapper">
-        {% for slide in section.blocks %}
-          <div class="bm-slide swiper-slide">
-            <div class="img-block">
-              <img src="{{ slide.settings.image_url }}" alt="">
-            </div>
-            <div class="slide-content">
-              <div class="title-block">
-                <p class="main-line">
-                  {{ slide.settings.title }}
-                  <span class="sub-line">{{ slide.settings.subtitle }}</span>
-                </p>
-              </div>
-              <div class="num-block">{{ slide.settings.amount }}</div>
-              <div class="commit-line">{{ slide.settings.commitment }}</div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-      <div class="swiper-pagination"></div>
-      <div class="swipper-btn">
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      </div>
-    </div>
   </div>
 </div>
 
