@@ -2,72 +2,6 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "a03f30a7-e481-4aa1-9b7d-543a6a5b61f6": {
-      "type": "bm-accordian",
-      "blocks": {
-        "e2303005-cfe1-4c37-8291-0cd91e7404b0": {
-          "type": "accordion",
-          "settings": {
-            "title": "cvxbxb",
-            "content": "<p>ljbjbjbjbjb<\/p>"
-          }
-        }
-      },
-      "block_order": [
-        "e2303005-cfe1-4c37-8291-0cd91e7404b0"
-      ],
-      "settings": {
-      }
-    },
-    "7539b910-1475-461c-a7ad-caab39317fd1": {
-      "type": "tabs",
-      "blocks": {
-        "33c39e65-11c1-4f4c-a6ab-788bdc893031": {
-          "type": "step",
-          "settings": {
-            "position": "1",
-            "description": "Choose desired height and massage tip to target the muscle you want to massage.",
-            "image-url": "shopify:\/\/shop_images\/David_Blessing_r1_BAY85685_1_Compressed.png",
-            "image_alt": ""
-          }
-        },
-        "c22cb579-90e2-4c84-8dd7-f6d437d44167": {
-          "type": "step",
-          "settings": {
-            "position": "2",
-            "description": "Choose desired height and massage tip to target the muscle you want to massage.",
-            "image-url": "shopify:\/\/shop_images\/David_Blessing_r1_BAY85685_1_Compressed.png",
-            "image_alt": ""
-          }
-        },
-        "4c3e5bf2-811c-4c3c-a003-b15e5e40e23b": {
-          "type": "step",
-          "settings": {
-            "position": "3",
-            "description": "Choose desired height and massage tip to target the muscle you want to massage.",
-            "image-url": "shopify:\/\/shop_images\/David_Blessing_r1_BAY85685_1_Compressed.png",
-            "image_alt": ""
-          }
-        },
-        "d794902e-63bc-402f-9785-85d5f1671087": {
-          "type": "step",
-          "settings": {
-            "position": "4",
-            "description": "Choose desired height and massage tip to target the muscle you want to massage.",
-            "image-url": "shopify:\/\/shop_images\/David_Blessing_r1_BAY85685_1_Compressed.png",
-            "image_alt": ""
-          }
-        }
-      },
-      "block_order": [
-        "33c39e65-11c1-4f4c-a6ab-788bdc893031",
-        "c22cb579-90e2-4c84-8dd7-f6d437d44167",
-        "4c3e5bf2-811c-4c3c-a003-b15e5e40e23b",
-        "d794902e-63bc-402f-9785-85d5f1671087"
-      ],
-      "settings": {
-      }
-    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -114,8 +48,6 @@
     }
   },
   "order": [
-    "a03f30a7-e481-4aa1-9b7d-543a6a5b61f6",
-    "7539b910-1475-461c-a7ad-caab39317fd1",
     "footer"
   ]
 }
