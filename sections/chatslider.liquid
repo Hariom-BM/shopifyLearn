@@ -14,8 +14,32 @@
 
 {% schema %}
 {
-  "name": "Section name",
-  "settings": []
+  "name": "Slick Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "url",
+          "label": "Image URL",
+          "id": "image_url"
+        },
+        {
+          "type": "text",
+          "label": "Image Alt Text",
+          "id": "image_alt"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slick Slider",
+      "category": "Custom"
+    }
+  ]
 }
 {% endschema %}
 
