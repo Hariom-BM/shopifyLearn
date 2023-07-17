@@ -8,7 +8,7 @@
         <li class="slide {{ slide.settings.slide_class }} {{ slide.settings.show_class }}">
           <h2>{{ slide.settings.title }}</h2>
           <div class="img-wrapper">
-            <img src="{{ slide.settings.image_url | asset_img_url }}" alt="{{ slide.settings.image_alt }}">
+            <img src="{{ slide.settings.image_url | image_url }}" alt="{{ slide.settings.image_alt }}">
           </div>
           <p>{{ slide.settings.content }}</p>
         </li>
