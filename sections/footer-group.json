@@ -2,6 +2,11 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "a03f30a7-e481-4aa1-9b7d-543a6a5b61f6": {
+      "type": "bm-accordian",
+      "settings": {
+      }
+    },
     "7539b910-1475-461c-a7ad-caab39317fd1": {
       "type": "tabs",
       "blocks": {
@@ -97,6 +102,7 @@
     }
   },
   "order": [
+    "a03f30a7-e481-4aa1-9b7d-543a6a5b61f6",
     "7539b910-1475-461c-a7ad-caab39317fd1",
     "footer"
   ]
