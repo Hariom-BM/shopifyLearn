@@ -65,11 +65,17 @@
       "settings": {
         "title": ""
       }
+    },
+    "2cff8ab1-ed75-4630-9080-c01ce11adcbc": {
+      "type": "tabs",
+      "settings": {
+      }
     }
   },
   "order": [
     "218c6dac-fecc-483a-a5c2-ff166c9fe03c",
     "fb53ffbc-4d9b-466d-8ba4-c15fe5f02e22",
-    "f4df8cce-eaaa-443a-a359-572368d63746"
+    "f4df8cce-eaaa-443a-a359-572368d63746",
+    "2cff8ab1-ed75-4630-9080-c01ce11adcbc"
   ]
 }
