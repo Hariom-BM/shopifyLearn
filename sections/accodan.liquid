@@ -1,15 +1,15 @@
-<section class="container">
+<div class="container">
   <h1>{{ section.settings.title }}</h1>
 
   {% for accordion in section.settings.accordions %}
-    <button class="accordion">{{ section.settings.accordion }}</button>
+    <button class="accordion">{{ accordion.accordion_title }}</button>
     <div class="accordion-content">
       <p>
-        {{ section.settings.accordion }}
+        {{ accordion.accordion_content }}
       </p>
     </div>
   {% endfor %}
-</section>
+</div>
 
 {% schema %}
 {
