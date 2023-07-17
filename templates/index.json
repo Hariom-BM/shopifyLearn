@@ -77,12 +77,11 @@
         "cf254896-5665-4265-a4b0-200d63ddc2cb": {
           "type": "slide",
           "settings": {
-            "slide_class": ",jnlj",
-            "title": ".lkn k",
             "image_url": "",
-            "image_alt": "",
-            "content": "knlkn lkn lkn lkn",
-            "show_class": ""
+            "title": ".lkn k",
+            "subtitle": "dfzdf",
+            "amount": "zxvxv",
+            "commitment": "ZXvxvxv"
           }
         }
       },
@@ -90,7 +89,10 @@
         "cf254896-5665-4265-a4b0-200d63ddc2cb"
       ],
       "settings": {
-        "title": ""
+        "MainTitle": "",
+        "MainDescription": "",
+        "cta_link": "",
+        "cta_text": ""
       }
     }
   },
