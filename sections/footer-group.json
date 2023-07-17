@@ -2,19 +2,19 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "5fe4ff43-ce1f-46e2-ac0b-a4f2fcb93190": {
-      "type": "accbm",
+    "3435e0df-3069-4cbf-9926-25a28d9c6d16": {
+      "type": "accodan",
       "blocks": {
-        "a2d98c85-304e-47ee-b6e6-fc951bf5e6d9": {
+        "0fb0cedc-39a6-4f54-8e86-0390b5cb10ca": {
           "type": "accordion",
           "settings": {
-            "title": "cnzczczccz",
-            "content": "<p>xczxzxczc<\/p>"
+            "title": ",n kjb mn mn",
+            "content": "<p>mn mn mn mn m <\/p>"
           }
         }
       },
       "block_order": [
-        "a2d98c85-304e-47ee-b6e6-fc951bf5e6d9"
+        "0fb0cedc-39a6-4f54-8e86-0390b5cb10ca"
       ],
       "settings": {
       }
@@ -65,7 +65,7 @@
     }
   },
   "order": [
-    "5fe4ff43-ce1f-46e2-ac0b-a4f2fcb93190",
+    "3435e0df-3069-4cbf-9926-25a28d9c6d16",
     "footer"
   ]
 }
