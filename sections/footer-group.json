@@ -11,10 +11,18 @@
             "title": "What surfaces can Dr Knot be used on?",
             "content": "It can mount to any smooth sealed surfaces like metal, plastic, laminate, and smooth painted drywall (at least two coats of paint)."
           }
+        },
+        "c9734cdc-70bd-403c-b481-73ea46dda856": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I leave Dr Knot suction-cupped to the wall?",
+            "content": "Even though the device will stay on the wall for days. After each use it is recommended to remove the device off"
+          }
         }
       },
       "block_order": [
-        "eac09834-6594-4753-ac2d-667e9f1dfa7c"
+        "eac09834-6594-4753-ac2d-667e9f1dfa7c",
+        "c9734cdc-70bd-403c-b481-73ea46dda856"
       ],
       "settings": {
         "title": "Frequently Asked Questions"
