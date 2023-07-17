@@ -104,11 +104,7 @@
   }
 {% endstylesheet %}
 
-{% javascript %}
-    var acc=document.querySelectorAll('.accordion')
-  acc.forEach(function(el){
-     el.addEventListener('click',function(dl) {
-        el.nextElementSibling.classList.add('active')
-     })
-  })
-{% endjavascript %}
+<script>
+  var acc=document.querySelectorAll('.accordion') acc.forEach(function(el){ el.addEventListener('click',function(dl) {
+  el.nextElementSibling.classList.add('active') }) })
+</script>
