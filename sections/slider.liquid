@@ -42,12 +42,27 @@
 
 {% schema %}
 {
-  "name": "Header Slider",
+  "name": "BM Slider",
   "settings": [
     {
       "type": "text",
       "label": "Title",
       "id": "title"
+    },
+    {
+      "type": "textarea",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "url",
+      "label": "CTA Link",
+      "id": "cta_link"
+    },
+    {
+      "type": "text",
+      "label": "CTA Text",
+      "id": "cta_text"
     }
   ],
   "blocks": [
@@ -56,34 +71,29 @@
       "name": "Slide",
       "settings": [
         {
-          "type": "text",
-          "label": "Slide Class",
-          "id": "slide_class"
-        },
-        {
-          "type": "text",
-          "label": "Slide Title",
-          "id": "title"
-        },
-        {
-          "type": "text",
+          "type": "url",
           "label": "Image URL",
           "id": "image_url"
         },
         {
           "type": "text",
-          "label": "Image Alt Text",
-          "id": "image_alt"
-        },
-        {
-          "type": "textarea",
-          "label": "Content",
-          "id": "content"
+          "label": "Title",
+          "id": "title"
         },
         {
           "type": "text",
-          "label": "Show Class",
-          "id": "show_class"
+          "label": "Subtitle",
+          "id": "subtitle"
+        },
+        {
+          "type": "text",
+          "label": "Amount",
+          "id": "amount"
+        },
+        {
+          "type": "text",
+          "label": "Commitment",
+          "id": "commitment"
         }
       ]
     }
