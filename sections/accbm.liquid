@@ -2,10 +2,10 @@
   <h1>{{ block.settings.title }}</h1>
 
   {% for accordion in section.settings.accordions %}
-    <button class="accordion">{{ block.accordion.title }}</button>
+    <button class="accordion">{{ block.settings.title }}</button>
     <div class="accordion-content">
       <p>
-        {{ block.accordion.content }}
+        {{ block.settings.content }}
       </p>
     </div>
   {% endfor %}
