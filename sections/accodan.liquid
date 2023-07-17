@@ -14,7 +14,13 @@
 {% schema %}
 {
   "name": "Simple Accordions",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title"
+    }
+  ],
   "blocks": [
     {
       "type": "accordion",
@@ -26,7 +32,7 @@
           "id": "title"
         },
         {
-          "type": "richtext",
+          "type": "textarea",
           "label": "Accordion Content",
           "id": "content"
         }
