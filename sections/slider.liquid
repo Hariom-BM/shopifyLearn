@@ -85,60 +85,168 @@
 {% endstylesheet %}
 
 <script>
-    //add swiper slider script
-     function addScript() {
-       var bmScript = document.createElement("script");
-       bmScript.src =
-         "https://unpkg.com/swiper@7/swiper-bundle.min.js";
-       document.getElementsByTagName("head")[0].appendChild(bmScript);
-     }
-     addScript();
+    (function () {
+    try {
+      /* main variables */
+      var debug = 1;
+      var variation_name = "test123";
+      /* helper library */
+      var _$;
+      !(function (factory) {
+        _$ = factory();
+      })(function () {
+        var bm = function (s) {
+          if (typeof s === "string") {
+            this.value = Array.prototype.slice.call(document.querySelectorAll(s));
+          }
+          if (typeof s === "object") {
+            this.value = [s];
+          }
+        };
+        bm.prototype = {
+          eq: function (n) {
+            this.value = [this.value[n]];
+            return this;
+          },
+          each: function (fn) {
+            [].forEach.call(this.value, fn);
+            return this;
+          },
+          log: function () {
+            var items = [];
+            for (let index = 0; index < arguments.length; index++) {
+              items.push(arguments[index]);
+            }
+            console && console.log(variation_name, items);
+          },
+          waitForElement: function (
+            selector,
+            trigger,
+            delayInterval,
+            delayTimeout
+          ) {
+            var interval = setInterval(function () {
+              if (_$(selector).value.length) {
+                clearInterval(interval);
+                trigger();
+              }
+            }, delayInterval);
+            setTimeout(function () {
+              clearInterval(interval);
+            }, delayTimeout);
+          },
+        };
+        return function (selector) {
+          return new bm(selector);
+        };
+      });
+      function live(selector, event, callback, context) {
+        /****Helper Functions****/
+        // helper for enabling IE 8 event bindings
+        function addEvent(el, type, handler) {
+          if (el.attachEvent) el.attachEvent("on" + type, handler);
+          else el.addEventListener(type, handler);
+        }
+        // live binding helper using matchesSelector
+        function live(selector, event, callback, context) {
+          addEvent(context || document, event, (e) => {
+            let found,
+              el = e.target || e.srcElement;
+            while (
+              el &&
+              el.matches &&
+              el !== context &&
+              !(found = el.matches(selector))
+            )
+              el = el.parentElement;
+            if (found) callback.call(el, e);
+          });
+        }
+        live(selector, event, callback, context);
+      }
+      function waitForjQuery(trigger) {
+        var interval = setInterval(function () {
+          if (window.jQuery !== undefined) {
+            clearInterval(interval);
+            trigger(window.jQuery);
+          }
+        }, 50);
+        setTimeout(function () {
+          clearInterval(interval);
+        }, 15000);
+      }
+      function onwaitforswiper(trigger) {
+        var interval = setInterval(function () {
+          if (typeof Swiper != "undefined") {
+            clearInterval(interval);
+            trigger();
+          }
+        }, 50);
+        setTimeout(function () {
+          clearInterval(interval);
+        }, 15000);
+      }
+      //add swiper slider script
+      function addScript() {
+        var bmScript = document.createElement("script");
+        bmScript.src = "https://unpkg.com/swiper@7/swiper-bundle.min.js";
+        document.getElementsByTagName("head")[0].appendChild(bmScript);
+        // var bmcsslink = document.createElement("link");
+        // bmcsslink.rel = "stylesheet";
+        // bmcsslink.href =
+        //   "https://unpkg.com/swiper@7/swiper-bundle.min.css";
+        // document.getElementsByTagName("head")[0].appendChild(bmcsslink);
+      }
+      addScript();
+
+    function swiperslider() {
+        var swiper_thumbnail = new Swiper(".swiper_thumbnail", {
+          slidesPerView: 6,
+        });
+        var swiper = new Swiper(".swiper_main", {
+          loop: true,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          thumbs: {
+            swiper: swiper_thumbnail,
+          },
+        });
+      }
 
 
 
 
-       //create swiper slider
-       function swiperslider() {
-         var swiper = document.querySelector(".bm-slide-conatiner");
-         new Swiper(swiper, {
-           slidesPerView: 3,
-           grabCursor: true,
-           loop: true,
-           pagination: {
-             el: ".swiper-pagination",
-             clickable: true,
-           },
-           // autoplay: {
-           //   delay: 4000,
-           //   disableOnInteraction: false,
-           // },
-           navigation: {
-             nextEl: ".swiper-button-next",
-             prevEl: ".swiper-button-prev",
-           },
-           breakpoints: {
-             0: {
-               slidesPerView: 1,
-             },
-             768: {
-               slidesPerView: 2,
-             },
-             1024: {
-               slidesPerView: 4,
-             },
-           },
-         });
-       }
-  swiperslider()
 
 
-     //add swiper slider css
-     function addcssScript() {
-       var bmcsslink = document.createElement("link");
-       bmcsslink.rel = "stylesheet";
-       bmcsslink.href =
-         "https://unpkg.com/swiper@7/swiper-bundle.min.css";
-       document.getElementsByTagName("head")[0].appendChild(bmcsslink);
-     }
-     addcssScript();
+      var helper = _$();
+          /* Variation Init */
+      function init() {
+        helper.log("Log inside from init");
+        document
+          .querySelector('[id*="__partners"]')
+          .insertAdjacentHTML("afterend", sleepsupoort);
+        onwaitforswiper(swiperslider);
+        // click event
+      }
+      live(".slep-supportbtn a", "click", function () {
+        console.log("click");
+        document.querySelector("body") &&
+          document.querySelector("body").classList.add("show-ytplayer-popup");
+      });
+      //ytplayeroverlay
+      live(".ytplayeroverlay, .ytplayer-cross-icon", "click", function () {
+        console.log("click");
+        document.querySelector("body") &&
+          document.querySelector("body").classList.remove("show-ytplayer-popup");
+      });
+      /* Initialise variation */
+      waitForjQuery(function () {
+        helper.waitForElement('[id*="__partners"]', init, 50, 15000);
+      });
+    } catch (e) {
+      if (debug) console.log(e, "error in Test" + variation_name);
+    }
+  })();
 </script>
