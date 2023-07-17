@@ -7,11 +7,14 @@
   {% endfor %}
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    $('.slick-slider').slick();
-  });
-</script>
+{% javascript %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      $('.slick-slider').slick();
+    });
+  </script>
+{% endjavascript %}
 
 {% schema %}
 {
@@ -51,6 +54,3 @@
 
 {% stylesheet %}
 {% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
