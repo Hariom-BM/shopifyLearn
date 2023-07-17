@@ -65,3 +65,31 @@
 }
 {% endschema %}
 
+
+
+{% javascript %}
+
+  
+function removeClass() {
+ var remove=document.querySelectorAll('.bm-step span')
+    remove.forEach(function (el) {
+        el.parentElement.classList.remove('active') 
+})
+}
+ 
+
+var checkActive=document.querySelectorAll('.bm-step span')
+   checkActive.forEach(function (el) {
+        el.addEventListener('click',function () {
+      removeClass()
+        el.parentElement.classList.add('active')
+           
+   })
+})
+
+  
+{% endjavascript %}
+
+
+
+
