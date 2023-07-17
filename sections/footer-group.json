@@ -4,6 +4,18 @@
   "sections": {
     "a03f30a7-e481-4aa1-9b7d-543a6a5b61f6": {
       "type": "bm-accordian",
+      "blocks": {
+        "e2303005-cfe1-4c37-8291-0cd91e7404b0": {
+          "type": "accordion",
+          "settings": {
+            "title": "hello",
+            "content": "<p>ljbjbjbjbjb<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "e2303005-cfe1-4c37-8291-0cd91e7404b0"
+      ],
       "settings": {
       }
     },
