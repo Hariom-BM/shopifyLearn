@@ -1,9 +1,9 @@
 <div class="container">
-  <h1>{{ settings.title }}</h1>
-  {% for accordion in section.settings.accordions %}
+  <h1>{{ section.settings.title }}</h1>
+  {% for accordion in section.blocks %}
     <div class="accordion-content">
       <p>
-        {{ accordion.settings.accordions }}
+        {{ accordion.settings.title }}
       </p>
     </div>
   {% endfor %}
