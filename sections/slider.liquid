@@ -224,23 +224,11 @@
           /* Variation Init */
       function init() {
         helper.log("Log inside from init");
-        document
-          .querySelector('[id*="__partners"]')
-          .insertAdjacentHTML("afterend", sleepsupoort);
+
         onwaitforswiper(swiperslider);
         // click event
       }
-      live(".slep-supportbtn a", "click", function () {
-        console.log("click");
-        document.querySelector("body") &&
-          document.querySelector("body").classList.add("show-ytplayer-popup");
-      });
-      //ytplayeroverlay
-      live(".ytplayeroverlay, .ytplayer-cross-icon", "click", function () {
-        console.log("click");
-        document.querySelector("body") &&
-          document.querySelector("body").classList.remove("show-ytplayer-popup");
-      });
+
       /* Initialise variation */
       waitForjQuery(function () {
         helper.waitForElement('[id*="__partners"]', init, 50, 15000);
