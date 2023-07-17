@@ -1,6 +1,7 @@
 <div class="slick-slider">
   {% for slide in section.blocks %}
     <div class="slick-slide">
+      <h2 class="bm-title">{{ section.settings.MainTitle }}</h2>
       <img src="{{ slide.settings.image_url }}" alt="{{ slide.settings.image_alt }}">
     </div>
   {% endfor %}
@@ -26,6 +27,11 @@
           "label": "Image URL",
           "id": "image_url"
         },
+         {
+      "type": "text",
+      "label": "Main Title",
+      "id": "MainTitle"
+    },
         {
           "type": "text",
           "label": "Image Alt Text",
