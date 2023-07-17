@@ -1,20 +1,43 @@
-<div class="wrapper">
-  <header>
-    <div class="headline">
-      <h1>{{ section.settings.title }}</h1>
+<div class="bm-wrapper">
+  <div class="bm-inner">
+    <div class="bm-left-block">
+      <div class="left-container">
+        <h2 class="bm-title">{{ section.settings.title }}</h2>
+        <p class="bm-desc">{{ section.settings.description }}</p>
+        <div class="bm-cta">
+          <a href="{{ section.settings.cta_link }}" class="bm-link">
+            <button class="bm-button">{{ section.settings.cta_text }}</button>
+          </a>
+        </div>
+      </div>
     </div>
-    <ul id="slides">
-      {% for slide in section.blocks %}
-        <li class="slide {{ slide.settings.slide_class }} {{ slide.settings.show_class }}">
-          <h2>{{ slide.settings.title }}</h2>
-          <div class="img-wrapper">
-            <img src="{{ slide.settings.image_url | image_url }}" alt="{{ slide.settings.image_alt }}">
+    <div class="bm-slider-wrapper swiper">
+      <div class="bm-slide-conatiner swiper-wrapper">
+        {% for slide in section.blocks %}
+          <div class="bm-slide swiper-slide">
+            <div class="img-block">
+              <img src="{{ slide.settings.image_url }}" alt="">
+            </div>
+            <div class="slide-content">
+              <div class="title-block">
+                <p class="main-line">
+                  {{ slide.settings.title }}
+                  <span class="sub-line">{{ slide.settings.subtitle }}</span>
+                </p>
+              </div>
+              <div class="num-block">{{ slide.settings.amount }}</div>
+              <div class="commit-line">{{ slide.settings.commitment }}</div>
+            </div>
           </div>
-          <p>{{ slide.settings.content }}</p>
-        </li>
-      {% endfor %}
-    </ul>
-  </header>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swipper-btn">
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% schema %}
