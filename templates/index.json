@@ -70,12 +70,35 @@
       "type": "tabs",
       "settings": {
       }
+    },
+    "3510a9cc-88a4-4483-8c39-38d60b7da531": {
+      "type": "slider",
+      "blocks": {
+        "cf254896-5665-4265-a4b0-200d63ddc2cb": {
+          "type": "slide",
+          "settings": {
+            "slide_class": ",jnlj",
+            "title": ".lkn k",
+            "image_url": "",
+            "image_alt": "",
+            "content": "knlkn lkn lkn lkn",
+            "show_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "cf254896-5665-4265-a4b0-200d63ddc2cb"
+      ],
+      "settings": {
+        "title": ""
+      }
     }
   },
   "order": [
     "218c6dac-fecc-483a-a5c2-ff166c9fe03c",
     "fb53ffbc-4d9b-466d-8ba4-c15fe5f02e22",
     "f4df8cce-eaaa-443a-a359-572368d63746",
-    "2cff8ab1-ed75-4630-9080-c01ce11adcbc"
+    "2cff8ab1-ed75-4630-9080-c01ce11adcbc",
+    "3510a9cc-88a4-4483-8c39-38d60b7da531"
   ]
 }
