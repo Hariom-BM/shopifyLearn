@@ -4,16 +4,16 @@
       <h1>{{ section.settings.title }}</h1>
     </div>
     <ul id="slides">
-      <li class="slide slide1 showing"></li>
-      <li class="slide slide2"></li>
-      <li class="slide slide3"></li>
+      {% for slide in section.blocks %}
+        <li class="slide {{ slide.settings.slide_class }}"></li>
+      {% endfor %}
     </ul>
   </header>
 </div>
 
 {% schema %}
 {
-  "name": "Bm Slider",
+  "name": "Header Slider",
   "settings": [
     {
       "type": "text",
@@ -21,9 +21,22 @@
       "id": "title"
     }
   ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Slide Class",
+          "id": "slide_class"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "BM Slider",
+      "name": "Header Slider",
       "category": "Custom"
     }
   ]
