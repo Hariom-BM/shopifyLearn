@@ -1,16 +1,16 @@
 <div class="bm-container page-width ">
-  <h1>{{ section.settings.title }}</h1>
+  <div class="accordion-content-wrapper">
+    <h1>{{ section.settings.title }}</h1>
 
-  {% for accordion in section.blocks %}
-    <div class="accordion-content-wrapper">
+    {% for accordion in section.blocks %}
       <button class="accordion">{{ accordion.settings.title }}</button>
       <div class="accordion-content">
         <p>
           {{ accordion.settings.content }}
         </p>
       </div>
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>
 
 {% schema %}
