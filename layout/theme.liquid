@@ -262,6 +262,8 @@
       {{ content_for_layout }}
     </main>
 
+    {{ content }}
+
     {% sections 'footer-group' %}
 
     <ul hidden>
@@ -270,6 +272,7 @@
     </ul>
 
     <script>
+      
       
       
       window.shopUrl = '{{ request.origin }}';
@@ -299,6 +302,7 @@
         pauseSlideshow: `{{ 'sections.slideshow.pause_slideshow' | t }}`,
         playSlideshow: `{{ 'sections.slideshow.play_slideshow' | t }}`,
       };
+
 
 
     </script>
