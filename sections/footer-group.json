@@ -2,6 +2,22 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "191c8474-e4b0-46ad-85e8-58e77366d763": {
+      "type": "bmCard",
+      "blocks": {
+        "64c4b360-1ae3-4e07-84ec-08c059d2cfaf": {
+          "type": "card_wrapper",
+          "settings": {
+            "image_src": "shopify:\/\/shop_images\/David_Blessing_r1_BAY85685_1_Compressed.png"
+          }
+        }
+      },
+      "block_order": [
+        "64c4b360-1ae3-4e07-84ec-08c059d2cfaf"
+      ],
+      "settings": {
+      }
+    },
     "c40bcf98-0542-41f9-9354-22c5ba40ca66": {
       "type": "chatslider",
       "blocks": {
@@ -100,6 +116,7 @@
     }
   },
   "order": [
+    "191c8474-e4b0-46ad-85e8-58e77366d763",
     "c40bcf98-0542-41f9-9354-22c5ba40ca66",
     "3435e0df-3069-4cbf-9926-25a28d9c6d16",
     "footer"
