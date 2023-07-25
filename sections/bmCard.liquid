@@ -1,12 +1,52 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Custom Card Wrapper",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "card_wrapper",
+      "name": "Card Wrapper",
+      "settings": []
+    }
+  ]
+}
 {% endschema %}
 
 {% stylesheet %}
+  /* Add your custom CSS styles here */
+  .card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* Add any other styles for the wrapper as needed */
+  }
+
+  .card {
+    width: 45%; /* Adjust the width as per your design */
+    /* Add any other styles for the card as needed */
+  }
+
+  /* Add any other custom CSS styles for the cards here */
 {% endstylesheet %}
 
-{% javascript %}
-{% endjavascript %}
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'card_wrapper' %}
+      <div class="card-wrapper">
+        <div class="card-inner">
+          {% for card in block.settings.cards %}
+            <div class="card {% if forloop.first %}left{% endif %}">
+              <div class="card-inner">
+                <img src="{{ card.image_src }}" alt="{{ card.title }}">
+                <div class="title">{{ card.title }}</div>
+                <div class="reviews">{{ card.rating }}</div>
+                <p>"{{ card.review }}"</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      {%- comment -%} Unsupported block type: {{ block.type }} {%- endcomment -%}
+  {% endcase %}
+{% endfor %}
