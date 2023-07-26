@@ -3,8 +3,8 @@
     <h1>{{ section.settings.title }}</h1>
 
     {% for accordion in section.blocks %}
+      <button class="accordion">{{ accordion.settings.title }}</button>
       <div class="accordion-content">
-        <button class="accordion">{{ accordion.settings.title }}</button>
         <p>
           {{ accordion.settings.content }}
         </p>
