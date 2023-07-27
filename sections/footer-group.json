@@ -2,79 +2,6 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "b569f3c1-5b5e-416d-b062-aaa9d03a6a17": {
-      "type": "EASY-SETUP",
-      "settings": {
-      }
-    },
-    "191c8474-e4b0-46ad-85e8-58e77366d763": {
-      "type": "bmCard",
-      "blocks": {
-        "64c4b360-1ae3-4e07-84ec-08c059d2cfaf": {
-          "type": "card_wrapper",
-          "settings": {
-            "image_src": "shopify:\/\/shop_images\/David_Blessing_r1_BAY85685_1_Compressed.png"
-          }
-        }
-      },
-      "block_order": [
-        "64c4b360-1ae3-4e07-84ec-08c059d2cfaf"
-      ],
-      "settings": {
-      }
-    },
-    "c40bcf98-0542-41f9-9354-22c5ba40ca66": {
-      "type": "chatslider",
-      "blocks": {
-        "de3d42af-3099-40c2-8361-3ed4d71b783f": {
-          "type": "slide",
-          "settings": {
-            "image_url": "",
-            "MainTitle": "kjbkhbkbv",
-            "image_alt": ".,nk.nk,"
-          }
-        }
-      },
-      "block_order": [
-        "de3d42af-3099-40c2-8361-3ed4d71b783f"
-      ],
-      "settings": {
-      }
-    },
-    "3435e0df-3069-4cbf-9926-25a28d9c6d16": {
-      "type": "accodan",
-      "blocks": {
-        "eac09834-6594-4753-ac2d-667e9f1dfa7c": {
-          "type": "accordion",
-          "settings": {
-            "title": "What surfaces can Dr Knot be used on?",
-            "content": "It can mount to any smooth sealed surfaces like metal, plastic, laminate, and smooth painted drywall (at least two coats of paint)."
-          }
-        },
-        "c9734cdc-70bd-403c-b481-73ea46dda856": {
-          "type": "accordion",
-          "settings": {
-            "title": "Can I leave Dr Knot suction-cupped to the wall?",
-            "content": "Even though the device will stay on the wall for days. After each use it is recommended to remove the device off"
-          }
-        },
-        "12ee0e27-bba3-4524-8e3e-8c8429a21980": {
-          "type": "accordion",
-          "settings": {
-            "title": "Dr Knot is not mounting on my wall?",
-            "content": "Even though the device will stay on the wall for days. After each use it is recommended to remove the device off"
-          }
-        }
-      },
-      "block_order": [
-        "eac09834-6594-4753-ac2d-667e9f1dfa7c",
-        "c9734cdc-70bd-403c-b481-73ea46dda856",
-        "12ee0e27-bba3-4524-8e3e-8c8429a21980"
-      ],
-      "settings": {
-        "title": "Frequently Asked Questions"
-      }
-    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -121,10 +48,6 @@
     }
   },
   "order": [
-    "b569f3c1-5b5e-416d-b062-aaa9d03a6a17",
-    "191c8474-e4b0-46ad-85e8-58e77366d763",
-    "c40bcf98-0542-41f9-9354-22c5ba40ca66",
-    "3435e0df-3069-4cbf-9926-25a28d9c6d16",
     "footer"
   ]
 }
