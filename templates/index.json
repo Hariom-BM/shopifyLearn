@@ -163,8 +163,13 @@
     "f24f9438-0c3a-4381-b496-f8d73643c844": {
       "type": "slider",
       "settings": {
-        "MainTitle": "",
-        "MainDescription": ""
+        "MainTitle": "lknkln",
+        "MainDescription": "lknlnlnn"
+      }
+    },
+    "f815ba6d-43f9-4e8e-afe0-b1ec20596237": {
+      "type": "EASY-SETUP",
+      "settings": {
       }
     }
   },
@@ -173,6 +178,7 @@
     "featured_collection",
     "f1552b18-6017-4231-810d-74e61da22c37",
     "38cdf60f-e431-43b5-aac3-7e6215447d67",
-    "f24f9438-0c3a-4381-b496-f8d73643c844"
+    "f24f9438-0c3a-4381-b496-f8d73643c844",
+    "f815ba6d-43f9-4e8e-afe0-b1ec20596237"
   ]
 }
