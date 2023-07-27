@@ -40,10 +40,26 @@
       ],
       "settings": {
       }
+    },
+    "486a4614-e67e-45d1-9fc3-85b0cd57cd57": {
+      "type": "belohero",
+      "settings": {
+        "productTitle": "Doctor Recommended Massage Therapy Device",
+        "productDescription": "Get the perfect massage anytime in the comfort of your home",
+        "heroImageUrl": "shopify:\/\/shop_images\/image_91.png",
+        "indexImageUrl": "shopify:\/\/shop_images\/DSC08419.png",
+        "indexTitle": "24\/7 Hasslefree Massage",
+        "indexDescription": "No more scheduling expensive massages, asking family to give you a massage, rolling around on the floor with foam rollers and massage balls.",
+        "productName": "",
+        "productSubtitle": "",
+        "productDescriptionLong": "",
+        "productFeatures": ""
+      }
     }
   },
   "order": [
     "header",
-    "announcement-bar"
+    "announcement-bar",
+    "486a4614-e67e-45d1-9fc3-85b0cd57cd57"
   ]
 }
