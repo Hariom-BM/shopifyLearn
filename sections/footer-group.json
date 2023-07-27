@@ -2,6 +2,11 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "b569f3c1-5b5e-416d-b062-aaa9d03a6a17": {
+      "type": "EASY-SETUP",
+      "settings": {
+      }
+    },
     "191c8474-e4b0-46ad-85e8-58e77366d763": {
       "type": "bmCard",
       "blocks": {
@@ -116,6 +121,7 @@
     }
   },
   "order": [
+    "b569f3c1-5b5e-416d-b062-aaa9d03a6a17",
     "191c8474-e4b0-46ad-85e8-58e77366d763",
     "c40bcf98-0542-41f9-9354-22c5ba40ca66",
     "3435e0df-3069-4cbf-9926-25a28d9c6d16",

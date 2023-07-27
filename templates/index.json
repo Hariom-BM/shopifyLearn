@@ -68,6 +68,30 @@
     },
     "2cff8ab1-ed75-4630-9080-c01ce11adcbc": {
       "type": "tabs",
+      "blocks": {
+        "784214fc-af60-48ba-b1d1-651026b837ce": {
+          "type": "step",
+          "settings": {
+            "position": "sdvssg",
+            "description": "dvzdvzdv",
+            "image-url": "shopify:\/\/shop_images\/David_Blessing_r1_BAY85685_1_Compressed.png",
+            "image_alt": ""
+          }
+        },
+        "15ec8ac7-51a6-4586-bd88-84a7dbae4047": {
+          "type": "step",
+          "settings": {
+            "position": "2",
+            "description": ";kmk;nk;n;",
+            "image-url": "shopify:\/\/shop_images\/DSC08419.png",
+            "image_alt": ".m"
+          }
+        }
+      },
+      "block_order": [
+        "784214fc-af60-48ba-b1d1-651026b837ce",
+        "15ec8ac7-51a6-4586-bd88-84a7dbae4047"
+      ],
       "settings": {
       }
     },
@@ -124,9 +148,7 @@
       ],
       "settings": {
         "MainTitle": "Different Tips For Different Needs",
-        "MainDescription": "Each massage tip is designed for a unique purpose. Every tip was selected to work on large or small muscles, around bones, as well as how deep you need to massage effectively into the muscle.",
-        "cta_link": "",
-        "cta_text": ""
+        "MainDescription": "Each massage tip is designed for a unique purpose. Every tip was selected to work on large or small muscles, around bones, as well as how deep you need to massage effectively into the muscle."
       }
     }
   },
