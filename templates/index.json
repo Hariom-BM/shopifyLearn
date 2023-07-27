@@ -86,11 +86,21 @@
             "image-url": "shopify:\/\/shop_images\/DSC08419.png",
             "image_alt": ".m"
           }
+        },
+        "eb55aafa-26a5-4488-b7b2-abd5db9bc8c2": {
+          "type": "step",
+          "settings": {
+            "position": "3",
+            "description": "kjkkjkbkbk",
+            "image-url": "shopify:\/\/shop_images\/person-stands-on-rocks-poking-out-of-the-ocean-shoreline.jpg",
+            "image_alt": ""
+          }
         }
       },
       "block_order": [
         "784214fc-af60-48ba-b1d1-651026b837ce",
-        "15ec8ac7-51a6-4586-bd88-84a7dbae4047"
+        "15ec8ac7-51a6-4586-bd88-84a7dbae4047",
+        "eb55aafa-26a5-4488-b7b2-abd5db9bc8c2"
       ],
       "settings": {
       }
