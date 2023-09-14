@@ -1,0 +1,100 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available in the "Featured Collection" section in the theme editor.
+
+  Theme Store required settings
+  - Collection
+
+  Theme Store optional settings
+  - Heading: title of the featured collection section
+{%- endcomment -%}
+
+<section class="featured-collection" style="background-image: url({{ 'background-bridal-suite.jpg' | asset_img_url: '1600x' }});">
+
+  <div class="featured-collection__container wrapper wrapper--small">
+    {% if section.settings.title != blank %}
+      <h2 class="h1 featured-collection__title">{% if section.settings.title_link != blank %}<a href="{{ section.settings.title_link }}">{% endif %}{{ section.settings.title | escape }}{% if section.settings.title_link != blank %}</a>{% endif %}</h2>
+    {% endif %}
+ <div class="featured-collection-des">
+ {% if section.settings.collection_desc != blank %}
+    {{section.settings.collection_desc}}
+    {% endif %}
+    </div>
+    {%- assign collection = collections[section.settings.collection] -%}
+
+    <div class="featured-collection__grid">
+
+    {% for product in collection.products limit: 4 %}
+      <div class="container">
+        {% if forloop.index == 1 %}
+        <img class="graphic graphic-confetti lazyload"
+               loading="lazy"
+               src="{{ 'loading-image.png' | asset_url }}"
+               data-src="{{ 'watercolor-confetti.png' | asset_img_url: 'medium' }}" 
+               alt="" 
+               aria-hidden="true">
+        <noscript>
+          <img src="{{ 'watercolor-confetti.png' | asset_img_url: 'medium' }}" alt="" aria-hidden="true" class="graphic graphic-confetti">
+        </noscript>
+        {% endif %}
+
+        {% if forloop.index == 3 %}
+         <img class="graphic graphic-ring lazyload"
+               loading="lazy"
+               src="{{ 'loading-image.png' | asset_url }}"
+               data-src="{{ 'ring.png' | asset_img_url: 'medium' }}"
+               alt=""
+               aria-hidden="true" >
+        <noscript>
+            <img src="{{ 'ring.png' | asset_img_url: 'medium' }}" alt="" aria-hidden="true" class="graphic graphic-confetti">
+          </noscript>
+        {% endif %}
+
+        {% render 'product-preview' with product as product %}
+
+      </div>
+    {% endfor %}
+    </div>
+
+    {% render 'btn-primary' with {
+      url: collection.url,
+      text: 'Shop All'
+    } %}
+
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+       {
+        "type": "url",
+        "id": "title_link",
+        "label": "Link"        
+      },
+      {
+      "type": "richtext",
+      "id": "collection_desc",
+      "label": "Description"
+    },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

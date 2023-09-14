@@ -1,0 +1,155 @@
+<!doctype html>
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
+<head>
+  
+  <!-- Hotjar Tracking Code for https://shop-confete.com/ -->
+  <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:3537692,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TCFFR89');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Global site tag (gtag.js) - Google Ads: 615600315 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-615600315"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-615600315');
+</script>
+
+  <!-- Google Remarketing Start -->
+{% assign shopify_store_country  = 'US' %}
+{% if shop.currency == 'CAD' %}
+{% assign shopify_store_country  = 'CA' %}
+{% elsif shop.currency == 'GBP' %}
+{% assign shopify_store_country = 'GB' %}
+{% endif %}
+ {% if template contains 'product' %}
+ <script type="text/javascript">
+      gtag('event', 'page_view', {
+          'send_to': 'AW-615600315',
+          'value': '{{ product.selected_or_first_available_variant.price | money_without_currency  | remove: ','  }}',
+          'items': [{
+              'id': {{ product.selected_or_first_available_variant.id }},
+              'google_business_vertical': 'retail'
+          }]
+      });
+    </script>  
+  {% endif %}
+<!-- Google Remarketing End -->
+  
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', '');
+
+    window.theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }}
+    };
+
+    {% if template.directory == 'customers' %}
+      theme.allCountryOptionTags = {{ all_country_option_tags | json }};
+    {% endif %}
+  </script>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_accent }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  
+  {% if template contains 'collection' and current_tags %}
+  	<meta name="robots" content="noindex, follow" />   
+  {% endif %} 
+  
+  {% if collection.current_vendor %}
+    <meta name="robots" content="noindex, follow" /> 
+  {% endif %} 
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {%- endif -%}
+
+  {%- capture seo_title -%}
+    {{ page_title }}
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' -%} &vert; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {%- endif -%}
+    {%- if current_page != 1 -%}
+      &vert; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- assign escaped_page_title = page_title | escape -%}
+    {%- unless escaped_page_title contains shop.name -%}
+    
+    {%- endunless -%}
+  {%- endcapture -%}
+  <title>{{ seo_title | strip }}</title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {% include 'social-meta-tags' %}
+  {% include 'style-tags', layout: 'theme' %}
+  {% include 'css-variables' %}
+
+  
+
+  {% include 'script-tags', layout: 'theme' %}
+<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"97010970"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+  {{ content_for_header }}
+</head>
+
+<body id="{{ page_title | handle }}" class="{{ template.suffix }} template-{{ template.name | handle }} {% if page.handle == 'contact-us' %}contact-page{% endif %}">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8BWQ4T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+ 
+  {% render 'newsletter-modal' %}
+    
+  {% section 'header' %}
+
+  <main role="main" id="MainContent">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+  {% render "ajax-cart-complete" %}
+ {{ 'ajax-cart.scss' | asset_url | stylesheet_tag }}
+{{ '//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js' | script_tag }}
+
+{{ 'ajaxinate.min.js' | asset_url | script_tag }}
+
+{{ 'rivets-cart.js' | asset_url | script_tag }}
+{% include 'swymSnippet' %}
+
+
+<!-- Back in Stock helper snippet -->
+{% render 'back-in-stock-helper' %}
+<!-- End Back in Stock helper snippet -->
+{% render "easystock" %}
+{% render 'common_scripts' %}</body>
+</html>

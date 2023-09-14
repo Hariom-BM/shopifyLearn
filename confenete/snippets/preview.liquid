@@ -1,0 +1,24 @@
+<div class="preview preview-post">
+  {% if article.image %}
+    <a href="{{ article.url }}">
+      <img class="product-images__image" src="{{ article.image | img_url: '100' }}" srcset="{{ article.image | img_url: '800x800', crop: 'center' }} 800w, {{ article.image | img_url: '400x400', crop: 'center' }} 400w" sizes="50vw" alt="{{ article.image.alt | escape }}">
+    </a>
+  {% endif %}
+    <h2>
+      <a href="{{ article.url }}">{{ article.title }}</a>
+    </h2>
+
+    <div class="rte">
+      {% if article.excerpt.size > 0 %}
+        {{ article.excerpt }}
+      {% else %}
+        <p>
+          {{ article.content | strip_html | truncatewords: 20 }}
+        </p>
+      {% endif %}
+    </div>
+
+    <p>
+      <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} >></a>
+    </p>
+</div>

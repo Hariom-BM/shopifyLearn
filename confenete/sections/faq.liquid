@@ -1,0 +1,80 @@
+<div class="s-faq">
+  <div class="s-faq__top">
+    <div class="s-faq__top-inner">
+        <h2 class="h1">{{ section.settings.faq_title }}</h2>
+        {{ section.settings.faq_copy }}
+    </div>
+  </div>
+  <div class="s-faq__container wrapper">
+    <div class="s-faq__categories">
+      {% for block in section.blocks %}
+        <div class="s-faq__category">
+          <button class="u-btn-reset h3 {% if forloop.first == true %} active {% endif %}" data-tab="{{ block.settings.title }}">{{ block.settings.title }}</button>
+        </div>
+      {% endfor %}
+      <div class="s-faq__contact">
+        <span class="email-svg">
+        {% render 'icon-email' %}
+        </span>
+        <h3>Contact Us</h3>
+        <a href="mailto:{{ section.settings.faq_email }}">{{ section.settings.faq_email }}</a>
+      </div>
+    </div>
+    <div class="s-faq__content">
+      {% for block in section.blocks %}
+        <div class="s-faq__faq {% if forloop.first == true %} active {% endif %}" data-tab="{{ block.settings.title }}">
+          {{ block.settings.faq }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "faq_copy",
+      "label": "Copy"
+    },
+    {
+      "type": "text",
+      "id": "faq_email",
+      "label": "Email"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Question Category",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Category"
+        }, {
+          "id": "faq",
+          "type": "richtext",
+          "label": "FAQ"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "category": "FAQ"
+    }
+  ]
+}
+
+{% endschema %}

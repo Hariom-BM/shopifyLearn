@@ -1,0 +1,117 @@
+{% liquid
+  assign product_1 = all_products[section.settings.product_1]
+  assign product_2 = all_products[section.settings.product_2]
+%}
+
+
+<div class="s-featured-products" data-section-id="{{ section.id }}" data-section-type="product">
+
+  <div class="s-featured-products__grid wrapper wrapper--medium">
+
+    <div class="s-featured-products__product">
+       <div class="s-featured-products__image">
+      <h3 class="u-rotate-left">
+        <a href="{{section.settings.product__1_link}}">New Arrivals</a></h3>
+      <a href="{{section.settings.product__1_link}}">
+       
+          <img class="u-border u-border-beige lazyload"
+               loading="lazy"
+               src="{{ 'loading-image.png' | asset_url }}"
+               data-src="{{ product_1.featured_image | img_url:'master' }}"
+               alt="{{ product_1.featured_image.alt }}"
+               >
+          <noscript>
+          	<img class="u-border u-border-beige" src="{{ product_1.featured_image | img_url:'master' }}" alt="{{ product_1.featured_image.alt }}">
+          </noscript></a>
+        </div>
+      {% if section.settings.product_1_desc != 'blank' %}
+<div class="featured-product-desc">
+  <h2 class="product-1-title">{{section.settings.product-1-title}}</h2>
+  {{section.settings.product_1_desc}}
+  </div>
+    {% endif %} 
+      
+    </div>
+
+    <div class="s-featured-products__product">
+     <h3 class="u-rotate-right">
+       <a href="{{section.settings.product__2_link}}">Most-Loved Styles</a></h3>
+        <div class="s-featured-products__image">
+           <a href="{{section.settings.product__2_link}}">
+          <img class="u-border u-border-beige lazyload"
+               loading="lazy"
+               src="{{ 'loading-image.png' | asset_url }}"
+               data-src="{{ product_2.featured_image | img_url:'master' }}"
+               alt="{{ product_2.featured_image.alt }}">
+          <noscript>
+          	<img class="u-border u-border-beige" src="{{ product_2.featured_image | img_url:'master' }}" alt="{{ product_2.featured_image.alt }}">
+          </noscript>
+              </a>
+        </div>
+     
+     
+      {% if section.settings.product_2_desc != 'blank' %}   
+<div class="featured-product-desc">
+  <h2 class="product-2-title">{{section.settings.product-2-title}}</h2>
+   {{section.settings.product_2_desc}}
+  </div>
+      {% endif %}
+    </div>
+
+  </div>
+
+</div>
+
+{% schema %}
+{
+"name": "Two featured products",
+"settings": [
+{
+"type": "product",
+"id": "product_1",
+"label": "Product one"
+},
+{
+"type": "text",
+"id": "product-1-title",
+"label": "Title"
+},
+{
+"type": "richtext",
+"id": "product_1_desc",
+"label": "Description"
+},
+{
+"type": "url",
+"id": "product__1_link",
+"label": "Product 1 Link"
+},
+{
+"type": "product",
+"id": "product_2",
+"label": "Product two"
+},
+{
+"type": "text",
+"id": "product-2-title",
+"label": "Title"
+},
+{
+"type": "richtext",
+"id": "product_2_desc",
+"label": "Description"
+},
+{
+"type": "url",
+"id": "product__2_link",
+"label": "Product 2 Link"
+}
+],
+"presets": [
+{
+"name": "Two featured products",
+"category": "Product"
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,15 @@
+{% if product.metafields.shop_the_look.product %}
+
+<div class="s-shop-the-look">
+  <div class="s-shop-the-look__container wrapper wrapper--mediumish">
+    <h2 class="s-shop-the-look__title">Shop The Look</h2>
+    <div class="s-shop-the-look__products four-product-grid">
+      {% for handle in product.metafields.shop_the_look.product %}
+        {% assign productObj = all_products[handle] %}
+        {% render 'product-preview' with {product: productObj} %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endif %}

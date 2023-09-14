@@ -1,0 +1,49 @@
+{% liquid
+  assign text = section.settings.text
+  assign image = section.settings.image
+%}
+
+
+<section class="s-get-inspired">
+  <div class="s-get-inspired__start">
+    <h3 class="horizontal-heading start">{{ text }}</h3>
+    <img
+      src="{{ image.src | img_url: 'small' }}"
+      srcset="{{ image.src | img_url: '431x637'}} 431w, {{ image.src | img_url: '862x1274'}} 862w"
+      sizes="33vw"
+      loading="lazy"
+      alt="{{ image.alt | escape }}"/>
+    <h3 class="horizontal-heading end">{{ text }}</h3>
+  </div>
+  <div class="s-get-inspired__end">
+    <h3 class="start">Sign up for our newsletter</h3>
+    {% render 'newsletter' %}
+    <h3 class="end">Sign up for our newsletter</h3>
+  </div>
+</section>
+
+
+
+{% schema %}
+  {
+    "name": "Get Inspired",
+    "settings": [
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Get Inspired",
+        "category": "Our Story"
+      }
+    ]
+  }
+{% endschema %}

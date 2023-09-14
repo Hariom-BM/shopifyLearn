@@ -1,0 +1,138 @@
+<div class="wrapper">
+<div class="collection-block background-image no-filter-image left-leaf-image">
+ <div class="wrap"> 
+   {% if section.settings.main-sec-heading != blank %}
+   <{{section.settings.heading_tag}}>{{section.settings.main-sec-heading}}</{{section.settings.heading_tag}}>
+     {%  endif %}
+   <div class="col-main-desc">{{block.settings.main-desc}}</div>
+     <div class="collection-btn-links">
+       {% for block in section.blocks %}
+    {% if block.settings.collection-link != blank or block.settings.image != blank or block.settings.col-desc != blank %}
+     <div class="bgb_img">
+       <a href="{{ block.settings.collection_link }}">
+    {% if block.settings.image != blank %}
+        <img class="lazyload" data-src="{{ block.settings.image | img_url: 'master' }}" loading="lazy"/> 
+    {% endif %}
+    {% if block.settings.col-heading != blank %}
+    <h3>{{block.settings.col-heading}}</h3>
+    {% endif %}
+    
+    {% if block.settings.col-desc != blank %}
+    {{block.settings.col-desc}}
+    {% endif %}
+    
+       </a>
+</div> 
+      {% endif %}
+      {% endfor %}
+     </div>
+       
+   </div>
+</div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Bridal Collection",
+	"class" :"bride_round_images",
+    "settings": [
+     {
+            "id":"block-background-image",
+            "type":"image_picker",
+            "label":"Background Image"
+			},
+            {
+            "id":"main-sec-heading",
+            "type":"text",
+            "label":"Heading"
+			},
+          {
+   			"type":      "select",
+  			 "id":        "heading_tag",
+  			 "label":     "Heading Tag",
+  			 "options": [
+     			{
+                 
+                 "value": "h1",
+                 "label": "h1"
+               },
+               {
+                
+                 "value": "h2",
+                 "label": "H2"
+               },
+          {
+                 
+                 "value": "h3",
+                 "label": "H3"
+               },
+                  {
+               
+               "value": "h4",
+               "label": "H4"
+             },
+        {
+               
+               "value": "h5",
+               "label": "H5"
+             },{
+               
+               "value": "h6",
+               "label": "H6"
+             }
+           ],
+           "default":   "h3"
+   
+			},
+      {
+            "id":"main-desc",
+            "type":"richtext",
+            "label":"Main Desc"
+			}
+], 
+	"blocks": [
+      {
+      "type":"collection-columns",
+      "name":"Collection Columns",   
+      "settings":[			
+            {
+            "id":"col-heading",
+            "type":"text",
+            "label":"Heading"
+			},
+            {
+            "id":"col-desc",
+            "type":"richtext",
+            "label":"description"
+			},
+        {
+                "type":"url",
+                "id":"collection_link", 
+				"label": "Collection link"
+              }, 
+			 
+				{
+                  "id": "image",
+                  "type": "image_picker",
+                  "label": "Image"
+                }
+
+    ]
+    }
+
+]
+
+}
+
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+

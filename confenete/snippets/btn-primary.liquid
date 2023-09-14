@@ -1,0 +1,11 @@
+<span class="glitter">
+  <a href="{{ url }}" class="btn btn-primary">{{ text }}</a>
+  <img class="lazyload"
+       loading="lazy"
+       src="{{ 'loading-image.png' | asset_url }}"
+       data-src="{{ 'glitter.png' | asset_img_url: 'master' }}"
+       aria-hidden="hidden">
+  <noscript>
+  	<img src="{{ 'glitter.png' | asset_img_url: 'master' }}" aria-hidden="hidden">
+  </noscript>
+</span>

@@ -1,0 +1,771 @@
+<div class="overlay"></div>
+
+{%- paginate collection.products by 10 %}
+  <div class="collection-template">
+    {% include 'breadcrumbs' %}
+
+    <div class="collection-template__products wrapper" id="products">
+      <div class="description">
+        {% comment %}
+          <div class="collection-title">
+            <h1>{{ collection.title }}</h1>
+          </div>
+        {% endcomment %}
+        {% if collection.description != blank %}
+          {% assign descriptions = collection.description | split: '<!-- split -->' %}
+          {% assign short_desc = descriptions[0] %}
+          {% assign long_desc = descriptions[1] %}
+          <div class="collection-top-description rte">
+            <!-- {{ short_desc }} -->
+          </div>
+        {% endif %}
+      </div>
+      <div class="sort-by--d">
+        {% render 'sort-by' %}
+      </div>
+      <div class="collection-filter-wrapper">
+        <div class="collection-filter-inner">
+          <div class="bm-filter">filter +</div>
+          <div class="bm-sort-by">sort by +</div>
+        </div>
+        <div class="sort-by-options bm-sort-by-options">
+          <div class="selected bm-selected">
+            {% if option.value == selected %}
+              {{ option.name }}
+            {% endif %}
+          </div>
+          <div class="collection-radio-container" id="sort_by" name="sort_by">
+            {% for option in collection.sort_options %}
+              <label class="radio-label">
+                <input
+                  type="radio"
+                  class="radio-input"
+                  name="sort_by"
+                  value="{{ option.value }}"
+                  {% if option.value == selected %}
+                    checked
+                  {% endif %}
+                >
+                {{ option.name }}
+              </label>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="collection-template__main">
+        <div class="sidebar-container">
+          {% render 'sidebar' %}
+
+          <div class="sort-by--r">
+            {% render 'sort-by' %}
+          </div>
+        </div>
+
+        <div class="collection-template__grid-container">
+          <div class="collection-template__grid product-grid" id="AjaxinateContainer">
+            {% for product in collection.products %}
+              {% render 'product-preview' with product as product %}
+              <!-- custom square product -->
+              {% if forloop.index == 6 %}
+                {% render 'collection-square' %}
+              {% endif %}
+              <!-- custom square product -->
+            {% endfor %}
+          </div>
+
+          {% include 'pagination' %}
+
+          <!-- <div class="description bottom-description rte">{{ long_desc }}</div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Collection Square",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    },
+    {
+      "type": "color",
+      "label": "Background Color",
+      "id": "background_color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "label": "Font Size",
+      "id": "font_size",
+      "default": "16px"
+    },
+    {
+      "type": "color",
+      "label": "Font Color",
+      "id": "font_color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "label": "Square Description",
+      "id": "square_description"
+    },
+    {
+      "type": "url",
+      "label": "Shop Now",
+      "id": "shop_now_url"
+    },
+    {
+      "type": "text",
+      "label": "Shop Link Text",
+      "id": "shop_link",
+      "default": "Shop Now"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var endlessScroll = new Ajaxinate({
+      container: "#AjaxinateContainer",
+      pagination: "#AjaxinatePagination",
+      method: "click",
+      offset: 1000,
+    });
+  });
+</script>
+
+<!-- collection ATC functionality css -->
+{% style %}
+  .brand-name {
+  	margin-bottom: 0;
+  }
+
+  .product-preview .sold-out {
+  	top: 40%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+  	background: none;
+  }
+
+  /* sort by filter */
+  .collection-template__products::focus-visible {
+  	display: none !important;
+  	outline: 0 !important;
+  }
+
+
+  .collection-radio-container {
+  	display: flex;
+  	flex-direction: column;
+  }
+
+  #products select {
+  	display: none;
+  }
+
+  .collection-radio-container .radio-label {
+  	padding: 10px 20px;
+  	color: var(--Mustard, #C0803B);
+  	font-family: Inter;
+  	font-size: 15px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 30px;
+  	letter-spacing: 1.5px;
+  	text-transform: capitalize;
+  	margin-right: 0;
+  	cursor: pointer;
+  }
+
+  .s-sort-by.h3 {
+  	position: relative;
+  }
+
+  .collection-radio-container {
+  	border: 1px solid #C0803B;
+  	background: #FFF;
+  	color: #C0803B;
+  	position: absolute;
+  	z-index: 999;
+  	right: 0;
+  	top: 100%;
+  	min-width: 260px;
+  	display: none;
+  }
+
+  .bm-selected {
+  	/* min-width: 191px; */
+  	height: 50px;
+  	background: #fdece6;
+  	background-position: calc(100% - 2rem), calc(100% - 1.5rem);
+  	background-repeat: no-repeat;
+  	background-size: 0.5rem 0.5rem;
+  	color: #c0803b;
+  	cursor: pointer;
+  	font-size: 1.2rem;
+  	letter-spacing: .2em;
+  	text-transform: uppercase;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+
+  }
+
+  #products .s-sort-by.h3 .sort-by-options {
+  	min-width: 191px;
+  	height: 50px;
+  	background: #fdece6;
+  	background-image: linear-gradient(45deg, transparent 50%, #c0803b 0), linear-gradient(135deg, #c0803b 50%, transparent 0);
+  	background-position: calc(100% - 2rem), calc(100% - 1.5rem);
+  	background-repeat: no-repeat;
+  	background-size: 0.5rem 0.5rem;
+  	color: #c0803b;
+  	cursor: pointer;
+  	font-size: 1.2rem;
+  	letter-spacing: .2em;
+  	text-transform: uppercase;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	padding: 0 4rem 0 2rem;
+  }
+
+  .active .collection-radio-container {
+  	display: flex;
+  }
+
+
+  .collection-filter-inner {
+  	display: flex;
+  	justify-content: space-between;
+  	padding: 20px 0;
+  }
+
+  .collection-filter-inner div {
+  	color: var(--Mustard, #C0803B);
+  	text-align: center;
+  	font-family: Inter;
+  	font-size: 16px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 28px;
+  	/* 175% */
+  	letter-spacing: -0.8px;
+  	text-transform: uppercase;
+  }
+
+  .sidebar-container .sort-by--r {
+  	display: none !important;
+  }
+
+  .sort-by-options .bm-show.collection-radio-container {
+  	display: flex;
+  }
+
+  .filter-overlay .overlay {
+  	position: fixed;
+  	/* Sit on top of the page content */
+  	width: 100%;
+  	/* Full width (cover the whole page) */
+  	height: 100%;
+  	/* Full height (cover the whole page) */
+  	top: 0;
+  	left: 0;
+  	right: 0;
+  	bottom: 0;
+  	background-color: rgba(0, 0, 0, 0.5);
+  	/* Black background with opacity */
+  	z-index: 2;
+  	/* Specify a stack order in case you're using a different order for other elements */
+  	cursor: pointer;
+  	/* Add a pointer on hover */
+  }
+
+  .bm-sort-by-options {
+  	position: relative;
+  }
+
+
+  @media(min-width:951px) {
+  	#products .collection-filter-wrapper {
+  		display: none !important;
+  	}
+
+  }
+
+
+  @media(max-width:950px) {
+  	.bm-sort-by-options .selected.bm-selected {
+  		display: none !important;
+  	}
+
+  	.collection-template .sidebar-container {
+  		display: none;
+  	}
+
+  	.collection-radio-container {
+  		top: 0;
+  	}
+
+  	.collection-template .sidebar-container {
+  		position: absolute;
+  		z-index: 9;
+
+  	}
+
+  	.collection-template .sidebar-container.bm-show {
+  		display: block
+  	}
+  }
+
+
+  /* sort by filter end  */
+
+
+  /* hover to add whislist */
+
+
+  .product-preview {
+  	position: relative;
+  }
+
+  .wishlist-icon {
+  	width: 32px;
+  	height: 32px;
+  	position: absolute;
+  	top: 12px;
+  	right: 12px;
+  	opacity: 0;
+  	display: flex;
+  	background-color: #C0803B;
+  	cursor: pointer;
+  	z-index: 9;
+  	justify-content: center;
+  	align-items: center;
+  	border-radius: 100%;
+  }
+
+  .wishlist-icon::after {
+  	content: "";
+  	font-size: 20px;
+  	line-height: 18px;
+  	font-family: "swym-font";
+  	line-height: inherit;
+  	color: #fff;
+  }
+
+
+  .product-preview:hover .wishlist-icon {
+  	opacity: 1;
+  }
+
+  /* hover to add whislist end */
+
+  .product-preview .collection-products-item {
+  	position: absolute;
+  	bottom: 12px;
+  	left: 12px;
+  	right: 12px;
+  	z-index: 9;
+  }
+
+  .collection-products-item>form>* {
+  	display: none;
+  }
+
+
+  .collection-template__grid-container .product-preview form .radio-container {
+  	position: absolute;
+  	bottom: 12px;
+  	left: 12px;
+  	right: 12px;
+  	width: 90%;
+  	left: 12px;
+  	right: 12px;
+  	padding: 8px 0px;
+  	margin-top: -2px;
+  	justify-content: center;
+  	align-items: center;
+  	gap: 20px;
+  	border: 1px solid var(--Mustard, #C0803B);
+  	background: var(--White, #FFF);
+  }
+
+  .collection-template__grid-container .product-preview .quick-add {
+  	bottom: 21px;
+  	left: 12px;
+  	right: 12px;
+  	position: absolute;
+  	z-index: 9;
+  	width: 90%;
+  	padding: 8px 0px;
+  	border: 1px solid var(--Mustard, #C0803B);
+  	background: var(--White, #FFF);
+  	text-align: center;
+  	color: var(--Mustard, #C0803B);
+  	text-align: center;
+  	font-family: Inter;
+  	font-size: 15px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 30px;
+  	letter-spacing: 1.5px;
+  	opacity: 0;
+  }
+
+  .size-chart .collection-products-item {
+  	opacity: 0;
+  }
+
+  .size-chart .collection-products-item:hover {
+  	opacity: 1;
+  }
+
+  .product-preview:hover .quick-add {
+  	opacity: 1;
+  }
+
+  .size-chart .quick-add {
+  	display: none !important;
+  }
+
+  .size-chart .collection-products-item>form .radio-container {
+  	display: flex !important;
+  }
+
+  .collection-products-item .radio-container label {
+  	padding: 5px 10px;
+
+  }
+
+  .collection-products-item .radio-container label.active {
+  	background: #FFF0E7;
+  }
+
+  .collection-template__grid-container .product-preview form .button-container.glitter {
+  	display: none !important;
+  }
+
+  .collection-products-item.size-chart .product-preview form .radio-container {
+  	display: flex;
+  }
+
+  .collection-template__grid-container .product-preview form .radio-container input {
+  	display: none;
+  }
+
+
+  @media screen and (max-width: 767px) {
+  	.collection-template__grid.product-grid {
+  		grid-template-columns: 1fr 1fr;
+  	}
+
+  	.graphic-inner.wrapper {
+  		flex-direction: column !important;
+  	}
+  }
+
+
+  /* collection square css  */
+
+  .collection-psquare {
+  	height: 100%;
+  	width: 100%;
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	border: var(--border-width) solid #FCCEBD;
+  	background-position: center;
+  	grid-column-start: 1;
+  	grid-column-end: 3;
+  }
+
+  .psquare-inner {
+  	padding: 24px;
+  	max-width: 350px;
+  }
+
+  .psquare-inner p {
+  	margin-bottom: 12px;
+  }
+
+  .psquare-inner a {
+  	color: var(--Dark-Grey, #2D2D2D);
+  	font-family: Inter;
+  	font-size: 13px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: 16.3px;
+  	/* 125.385% */
+  	letter-spacing: 2.6px;
+  	text-decoration-line: underline;
+  }
+
+
+  /* Mobile Styles */
+  @media (max-width: 767px) {
+  	.collection-psquare {
+  		background-image: url('{{ section.settings.background_image_mobile | img_url:' master' }}');
+  	}
+
+  	.responsive-text {
+  		font-size: {
+  				{
+  				section.settings.font_size_mobile
+  			}
+  		}
+
+  		;
+  	}
+  }
+
+  /* Tablet Styles */
+  @media (min-width: 768px) and (max-width: 1023px) {
+  	.collection-psquare {
+  		background-image: url('{{ section.settings.background_image_tablet | img_url:' master' }}');
+  	}
+
+  	.responsive-text {
+  		font-size: {
+  				{
+  				section.settings.font_size_tablet
+  			}
+  		}
+
+  		;
+  	}
+  }
+
+  /* Desktop Styles */
+  @media (min-width: 1024px) {
+  	.collection-psquare {
+  		background-image: url('{{ section.settings.background_image_desktop | img_url:' master' }}');
+  	}
+
+  	.responsive-text {
+  		font-size: {
+  				{
+  				section.settings.font_size_desktop
+  			}
+  		}
+
+  		;
+  	}
+  }
+{% endstyle %}
+
+<script>
+    // Function to handle both filter and sort-by clicks
+  function handleFilterSortClick(selector, containerSelector, otherButtonSelector) {
+    document.querySelector(selector).addEventListener('click', function () {
+      const container = document.querySelector(containerSelector);
+      const body = document.querySelector('body');
+      container.classList.add('bm-show');
+      body.classList.add('filter-overlay');
+
+      // Add a click event listener to the document to close the options when clicking outside
+      document.addEventListener('click', function (event) {
+        const container = document.querySelector(containerSelector);
+        const button = document.querySelector(selector);
+        const otherButton = document.querySelector(otherButtonSelector);
+
+        // Check if the click target is not within the button or its child elements
+        // and also not within the other button
+        if (
+          !button.contains(event.target) &&
+          !container.contains(event.target) &&
+          !otherButton.contains(event.target)
+        ) {
+          container.classList.remove('bm-show');
+          body.classList.remove('filter-overlay');
+        }
+      });
+    });
+  }
+
+  // Handle filter click
+  handleFilterSortClick('.bm-filter', '.collection-template__main .sidebar-container', '.bm-sort-by');
+
+  // Handle sort-by click
+  handleFilterSortClick('.bm-sort-by', '.bm-sort-by-options .collection-radio-container', '.bm-filter');
+
+
+
+
+
+      // hero banner text
+        var toggleButton = document.querySelectorAll('.toggle-desc')
+        toggleButton.forEach(function (el) {
+          el.addEventListener('click', function () {
+            document.querySelector('.collection-page-hero-description').classList.toggle('col-hero-text--open')
+          })
+
+        })
+
+
+        // filter funtionality
+        document.querySelectorAll('.radio-input').forEach(function (el) {
+          // document.querySelector('.radio-input[checked]').click()
+
+          el.addEventListener('click', function () {
+            // Update inner HTML when any radio input is clicked
+            var selectedItem = el.closest('label').textContent;
+            document.querySelector('.selected').innerHTML = selectedItem;
+
+            // Uncheck all other radio inputs
+            document.querySelectorAll('.radio-input').forEach(function (input) {
+              if (input !== el) {
+                input.checked = false;
+              }
+            });
+          });
+
+          if (el.checked) {
+            // Set the inner HTML initially for the checked radio input
+            var selectedItem = el.closest('label').textContent;
+            document.querySelector('.selected').innerHTML = selectedItem;
+          }
+        });
+
+
+        document.body.addEventListener('click', function (e) {
+          const sortByOptions = document.querySelector('.sort-by-options');
+
+          if (!sortByOptions.contains(e.target)) {
+            sortByOptions.classList.remove('active');
+          }
+        });
+        document.querySelector('.sort-by-options').addEventListener('click', function (e) {
+          e.stopPropagation(); // Prevent the click event from reaching the body listener
+          this.classList.toggle('active');
+        });
+
+
+
+
+        // Add event listener to the parent element of 'btn-load-more' using event delegation
+        document.querySelector('.collection-template__main').addEventListener('click', function (e) {
+          if (e.target && e.target.classList.contains('btn-load-more')) {
+            // Delay the execution by 500 milliseconds (adjust the delay as needed)
+            setTimeout(() => {
+              addWishlistIconToProductPreview();
+            }, 2000);
+          }
+        });
+
+
+
+
+
+        function initializeProductPage() {
+          // Get all product items
+          const productItems = document.querySelectorAll('.product-preview');
+
+          // Function to remove 'size-chart' class from all product items except a specific one
+          function removeSizeChartClassExcept(productItemToKeep) {
+            productItems.forEach(function (productItem) {
+              if (productItem !== productItemToKeep) {
+                productItem.classList.remove('size-chart');
+              }
+            });
+          }
+          productItems.forEach(function (productItem) {
+            const labelElements = productItem.querySelectorAll('.radio-container label');
+            const button = productItem.querySelector('.button-container.glitter button');
+
+            labelElements.forEach(function (label) {
+              label.addEventListener('click', function (event) {
+                event.preventDefault();
+                const labelText = this.textContent.trim(); // Use textContent consistently and trim whitespace
+
+                // Remove 'active' class from all labels within the same productItem
+                labelElements.forEach(function (otherLabel) {
+                  otherLabel.classList.remove('active');
+                });
+
+                // Add 'active' class to the clicked label
+                this.classList.add('active');
+
+                const radioContainer = this.closest('.radio-container');
+                const selectElement = radioContainer.nextElementSibling;
+
+                if (selectElement.tagName === 'SELECT') {
+                  const options = selectElement.querySelectorAll('option');
+
+                  options.forEach(function (option) {
+                    if (labelText === option.textContent.trim()) {
+                      option.selected = true;
+
+                    } else {
+                      option.selected = false; // Deselect non-matching options
+                    }
+                  });
+                }
+
+                if (button) {
+                  button.click();
+                }
+
+                // Remove 'size-chart' class from all product items except the clicked one
+                removeSizeChartClassExcept(productItem);
+              });
+            });
+
+            const quickAddButton = productItem.querySelector('.quick-add');
+            quickAddButton.addEventListener('click', function (event) {
+
+              console.log('quickAddButton')
+              event.preventDefault();
+              productItem.classList.add('size-chart');
+
+              // Remove 'size-chart' class from all product items except the clicked one
+              removeSizeChartClassExcept(productItem);
+            });
+          });
+
+
+
+
+          // Add an outside click event listener to remove 'size-chart' class from all product items
+          document.body.addEventListener('click', function (event) {
+            const clickedProductItem = event.target.closest('.product-preview');
+            if (!clickedProductItem) {
+              // No product item was clicked, so remove 'size-chart' class from all product items
+              productItems.forEach(function (productItem) {
+                productItem.classList.remove('size-chart');
+              });
+            }
+          });
+
+
+        }
+
+        // call function for ATC
+        initializeProductPage()
+
+
+        // Add event listener to the parent element of 'btn-load-more' using event delegation
+        document.querySelector('.collection-template__main').addEventListener('click', function (e) {
+          if (e.target && e.target.classList.contains('btn-load-more')) {
+            // Delay the execution by 500 milliseconds (adjust the delay as needed)
+            setTimeout(() => {
+              initializeProductPage()
+            }, 2500);
+          }
+        });
+</script>

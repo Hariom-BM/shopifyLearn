@@ -1,0 +1,317 @@
+{% liquid
+  assign email = section.settings.header_email
+%}
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available in the "Header" section in the theme editor.
+
+  Theme Store required settings
+  - Show announcement
+  - Text: message to announce
+  - Link: link of the announcement bar
+
+  Theme Store optional settings
+  - Home page only: only shows on the home page
+{%- endcomment -%}
+<section data-section-id="{{ section.id }}" data-section-type="header">
+  {% render 'announcement-bar' %}
+
+  <header role="banner" class="site-header">
+    <div class="site-header__wishlist">
+      <div class="wrapper">
+        <a href="#swym-wishlist" class="swym-wishlist"> {% include 'heart' %} Wishlist </a>
+      </div>
+    </div>
+
+    <div class="site-header__container">
+      {% render 'search-dropdown' %}
+
+      <div class="site-header__end wrapper">
+        <div class="grid-start">
+          {% render 'hamburger' %}
+
+          <nav class="nav-main nav-main-left" role="navigation">
+            <ul class="nav-main__container u-ul-reset">
+              {% for link in linklists['main-menu'].links %}
+                {% if link.links != blank %}
+                  <li>
+                    <a href="{{ link.url }}" class="nav-drop-trigger nav-text" data-dropdown="{{ link.title }}">
+                      {{ link.title }}
+                    </a>
+                    <ul class="nav-dropdown u-ul-reset" data-dropdown="{{ link.title }}">
+                      <div class="nav-dropdown__container wrapper">
+                        {% for childlink in link.links %}
+                          <li>
+                            <a class="childlink-title" href="{{ childlink.url }}">
+                              {{ childlink.title }}
+                            </a>
+
+                            <ul class="u-ul-reset">
+                              {% for subchildlink in childlink.links %}
+                                <li>
+                                  <a href="{{ subchildlink.url }}">
+                                    {{ subchildlink.title }}
+                                  </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          </li>
+                        {% endfor %}
+                      </div>
+                    </ul>
+                  </li>
+                {% else %}
+                  <li>
+                    <a href="{{ link.url }}" class="nav-text">
+                      {{ link.title }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+
+        <div class="logo-image-container grid-middle">
+          <a href="/" class="logo-image" aria-label="Home">
+            {%
+              render 'logo' with {
+              id: 'logo-confete'
+              }
+            %}
+          </a>
+        </div>
+
+        <div class="grid-end">
+          <nav class="nav-main nav-main-right" role="navigation">
+            <ul class="u-ul-reset">
+              {% for link in linklists['main-menu-right'].links %}
+                {% if link.links != blank %}
+                  <li>
+                    <a class="nav-text" href="{{ link.url }}">
+                      {{ link.title }}
+                      {% include 'icon-arrow-down' %}
+                    </a>
+                    <ul>
+                      {% for childlink in link.links %}
+                        <li>
+                          <a href="{{ childlink.url }}">
+                            {{ childlink.title }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+                {% else %}
+                  <li>
+                    <a class="nav-text" href="{{ link.url }}">
+                      {{ link.title }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </nav>
+
+          {% if shop.customer_accounts_enabled %}
+            {% if customer %}
+              <a href="/account" class="nav-text account-link">{{ 'layout.customer.account' | t }}</a>
+            {% else %}
+              <span class="nav-text account-link">
+                {{ 'layout.customer.log_in' | t | customer_login_link }}
+              </span>
+            {% endif %}
+          {% endif %}
+
+          <a href="/cart" class="cart-link nav-text u-mb-0 js-ajax-cart-drawer-trigger">
+            {% render 'icon-bag' %}
+            Bag (<span class="js-ajax-cart-counter" data-cart-count>{{- cart.item_count -}}</span>)
+          </a>
+          <a href="mailto:{{header_email}}" class="u-serif mobile-menu-email-icon">{% render 'icon-email' %}</a>
+        </div>
+      </div>
+      <div class="mobile-search">
+        {% render 'search' with { id: 'js-slide-out-search'} %}
+      </div>
+    </div>
+  </header>
+</section>
+
+{% render 'slide-out' %}
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Announcement bar"
+      },
+{
+		"type": "text",
+        "id": "header_email",
+        "label": "Email",
+        "default": "hi@shop-confete.com"
+      },
+      {
+        "type": "checkbox",
+        "id": "announcement_bar_enabled",
+        "label": "Show announcement",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "announcement_bar_home_page_only",
+        "label": "Show on home page only",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "announcement_bar_text",
+        "label": "Announcement text",
+        "default": "Announce something here"
+      },
+      {
+        "type": "url",
+        "id": "announcement_bar_link",
+        "label": "Announcement link",
+        "info": "Optional"
+},
+{
+        "type": "text",
+        "id": "header_phone",
+        "label": "Phone Number",
+        "default": "(415) 483-5667"
+      },
+
+{
+        "type": "text",
+        "id": "header_formatted_phone",
+        "label": "Formatted Phone Number",
+        "default": "(415) 483-5667"
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 50,
+        "max": 450,
+        "step": 10,
+        "unit": "px",
+        "label": "Custom logo width",
+        "default": 250
+      },
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu",
+        "default": "main-menu"
+      }
+    ]
+  }
+{% endschema %}
+{% if template.name == 'index' or page.handle == 'our-story' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "{{ shop.name }}",
+      {% if section.settings.logo %}
+        {% assign image_size = section.settings.logo.width | append:'x' %}
+        "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+      {% endif %}
+      "sameAs": [
+        "{{ settings.social_twitter_link }}",
+        "{{ settings.social_facebook_link }}",
+        "{{ settings.social_pinterest_link }}",
+        "{{ settings.social_instagram_link }}",
+        "{{ settings.social_tumblr_link }}",
+        "{{ settings.social_snapchat_link }}",
+        "{{ settings.social_youtube_link }}",
+        "{{ settings.social_vimeo_link }}"
+      ],
+      "url": "{{ shop.url }}{{ page.url }}",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3150 SE Division St. #216",
+        "addressLocality": "Portland",
+        "addressRegion": "OR",
+        "postalCode": "97202",
+        "addressCountry": "US"
+      },
+       "contactPoint": {
+       "@type": "ContactPoint",
+       "telephone": "(415) 483-5667",
+       "contactType": "customer service",
+       "areaServed": "US",
+       "availableLanguage": "en"
+     }
+    }
+  </script>
+{% endif %}
+
+{% if template.name == 'index' %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ shop.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
+    }
+  </script>
+{% endif %}
+
+{% if page.handle == 'contact-us' %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ClothingStore",
+      "name": "{{ shop.name }}",
+       {% if section.settings.logo %}
+        {% assign image_size = section.settings.logo.width | append:'x' %}
+        "logo": "https:{{ section.settings.logo | img_url: image_size }}",
+      {% endif %}
+      "@id": "https://shop-confete.com/",
+      "url": "{{ shop.url }}{{ page.url }}",
+      "telephone": "415-483-5667",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3150 SE Division St. #216",
+        "addressLocality": "Portland",
+        "addressRegion": "OR",
+        "postalCode": "97202",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.50471109999999,
+        "longitude": -122.6330804
+      },
+       "image": "https://cdn.shopify.com/s/files/1/0310/9965/0188/files/Confete_Logo_2-01_4126x.png?v=1587761073",
+    "priceRange": "$$",
+     "sameAs": [
+        "{{ settings.social_twitter_link }}",
+        "{{ settings.social_facebook_link }}",
+        "{{ settings.social_pinterest_link }}",
+        "{{ settings.social_instagram_link }}",
+        "{{ settings.social_tumblr_link }}",
+        "{{ settings.social_snapchat_link }}",
+        "{{ settings.social_youtube_link }}",
+        "{{ settings.social_vimeo_link }}"
+      ]
+    }
+  </script>
+{% endif %}

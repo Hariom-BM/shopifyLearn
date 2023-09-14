@@ -1,0 +1,19 @@
+<div class="preview preview-post">
+  {% if article.image %}
+    <a href="{{ article.url }}">
+      <img class="product-images__image" src="{{ article.image | img_url: '100' }}" srcset="{{ article.image | img_url: '227x307', crop: 'center' }} 227w, {{ article.image | img_url: '454x614', crop: 'center' }} 454w" sizes="33vw" alt="{{ article.image.alt | escape }}">
+    </a>
+  {% endif %}
+  {% if article.tags.size > 0 %}
+    <ul class="u-ul-reset">
+      {% for tag in article.tags %}
+        <li>
+          <a class="h3" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+    <h2>
+      <a href="{{ article.url }}">{{ article.title }}</a>
+    </h2>
+</div>

@@ -1,0 +1,9 @@
+<div class="newsletter-modal" id="js-newsletter-modal">
+  <div class="newsletter-modal__container">
+    {% render 'close-button' with {id: 'js-newsletter-close'} %}
+    {% render 'newsletter' %}
+  </div>
+</div>
+<style type="text/css">
+  .newsletter-modal.active { display:none !important; }
+</style>

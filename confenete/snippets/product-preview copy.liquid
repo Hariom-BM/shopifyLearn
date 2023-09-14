@@ -1,0 +1,30 @@
+<div class="product-preview">
+  {% render 'product-tags' with product as product %}
+  <figure class="product-preview__image">
+    <img
+      src="{{ product.featured_image | img_url }}"
+      srcset="{{ product.featured_image | img_url: '589x386'}} 589w, {{ product.featured_image | img_url: '1178x772'}} 1178w"
+      sizes="50vw"
+      alt="{{ product.featured_image.alt | escape }}">
+    <figcaption class="product-preview__caption">
+      <div class="title-and-price">
+        <h2 class="h5 u-mb-0">{{ product.title | escape }}</h2>
+        {% render 'price' with product as product %}
+      </div>
+      <div class="description-and-reviews">
+        {% if product.metafields.custom_fields["short_description"] != blank %}
+         <p>{{ product.metafields.custom_fields["short_description"] }}</p>
+        {% endif %}
+        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+      </div>
+      <div class="product-preview__buttons">
+      <a href="{{ product.url | within: collection }}" class="btn btn-primary"><span>View Details</span></a>
+      {% if product.available %}
+        {% render 'add-to-cart' with product as product %}
+        {% else %}
+        {% render 'sold-out' with product as product %}
+      {% endif %}
+      </div>
+    </figcaption>
+  </figure>
+</div>

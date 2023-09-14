@@ -1,0 +1,14 @@
+<div
+  class="collection-psquare"
+  style="background-image: url('{{ section.settings.background_image | img_url:'master' }}');"
+>
+  <div class="psquare-inner" style="background-color: {{ section.settings.background_color }};">
+    <p
+      class="responsive-text"
+      style="font-size: {{ section.settings.font_size }}; color: {{ section.settings.font_color }};"
+    >
+      {{ section.settings.square_description }}
+    </p>
+    <a class="shop-link" href="{{ section.settings.shop_now_url }}">{{ section.settings.shop_link }}</a>
+  </div>
+</div>

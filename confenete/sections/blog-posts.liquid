@@ -1,0 +1,60 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available when you add "Blog posts" section in the Theme Editor.
+
+  Theme Store required settings
+  - Heading: title of the blog posts section
+  - Blog (which blog category to show in your store)
+
+  Theme Store optional settings
+  - Number of posts to show
+  - Show author
+  - Show date
+{%- endcomment -%}
+<section class="s-blog-posts">
+  {% if section.settings.title != blank %}
+    <h2 class="h1">{{ section.settings.title | escape }}</h2>
+  {% endif %}
+
+  {%- assign blog = blogs[section.settings.blog] -%}
+
+  <ul class="s-blog-posts__posts wrapper">
+    <div class="confete-left">
+      <img src="{{ 'blog-confete-left.png' | asset_img_url: 'master'  }}" class="u-block">
+    </div>
+    {% for article in blog.articles limit: 4 %}
+      {% include 'preview-home' %}
+    {% endfor %}
+    <div class="confete-right">
+      <img src="{{ 'blog-confete-right.png' | asset_img_url: 'master' }}" class="u-block">
+    </div>
+  </ul>
+</section>
+
+{% schema %}
+  {
+    "name": "Blog posts",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Blog posts"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog posts",
+        "category": "Blog",
+        "settings": {
+          "blog": "News"
+        }
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,99 @@
+<div class="wrapper">
+    <section class="image-with-text engagement-wrapper">  
+          {% capture image_layout %}
+            <div class="image-with-text-image">
+              {% if section.settings.image != blank %}
+              <img
+                   src="{{ section.settings.image | img_url : 'master'}}" 
+                   alt="{{ section.settings.image.alt | escape }}">
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+          {% endcapture %}
+
+          {% if section.settings.layout == 'left' %}
+            {{ image_layout }}
+          {% endif %}
+
+          <div class="image-with-text-text">
+            {% if section.settings.title != blank %}
+              <h2>{{ section.settings.title | escape }}</h2>
+            {% endif %}
+            {% if section.settings.text != blank %}
+              <div class="content">
+                <p>{{ section.settings.text }}</p>
+            </div>
+            {% endif %}
+            {% if section.settings.info != blank %}              
+            <div class="info">{{ section.settings.info}}</div>
+             
+            {% endif %}
+          </div>
+
+          {% if section.settings.layout == 'right' %}
+            {{ image_layout }}
+          {% endif %}
+
+    </section>
+  
+  <div class="rte">
+    	{{ page.content }}
+  </div>
+</div>
+{% render 'engagement-stories-form' %}
+
+
+{% schema %}
+  {
+    "name": "Image with text",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Image alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image with text"
+      },
+      {
+        "type": "html",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+      },
+
+      {
+        "type": "richtext",
+        "id": "info",
+        "label": "Info",
+        "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

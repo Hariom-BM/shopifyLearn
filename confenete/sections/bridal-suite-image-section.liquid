@@ -1,0 +1,42 @@
+<div class="bridal-image">
+  {% for block in section.blocks %}
+    {% if block.settings.image != blank %}
+      <div class="img_column">
+      <img src="{{ block.settings.image | img_url: 'master'}}"/>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "Images",
+    "settings": [
+      
+    ],
+    "blocks": [
+      {
+      "type":"image",
+      "name":"Bride Suite images",   
+      "settings":[
+        {
+        "id":"image",
+        "type":"image_picker",
+        "label":"Image 1"
+      },
+      {
+        "id":"alt-text",
+        "type":"text",
+        "label":"Alt Text"
+      }
+      ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

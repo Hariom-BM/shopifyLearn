@@ -1,0 +1,174 @@
+<div class="bridal-collection">
+   {% if section.settings.upper-text != blank %}
+ <div class="center-text"> {{section.settings.upper-text}}
+  </div>
+  {% endif %}
+  {% for block in section.blocks %}
+
+{% if block.type == 'image-with-text' %}
+  <div class="image-and-text {{block.settings.frontpage_image_position}}">
+  {% if block.settings.heading != blank or  block.settings.description != blank %}
+  <div class="text-column" style="text-align:{{block.settings.alignment}};">
+    
+  <div class="desktop-heading">  
+    {% if block.settings.heading != blank %}
+    <h2>
+    {{block.settings.heading}}
+    </h2>
+    {% endif %}
+   </div> 
+    
+  {% if block.settings.description != blank %}
+  <div class="section-description">
+  {{block.settings.description}}
+  </div>
+  {% endif %}
+ 
+    {% if block.settings.btn-link != blank %}
+    <span class="glitter">
+  
+  <a href="{{block.settings.btn-link}}" class="btn btn-primary">
+  {{block.settings.section-btn}}
+  </a>  
+   <img class="" loading="lazy" src="https://cdn.shopify.com/s/files/1/0310/9965/0188/t/20/assets/glitter.png?v=9754221181165546540"/>      
+    </span>
+    {% endif %}
+    </div>   
+      
+  {% endif %}
+   {% if block.settings.section-image != blank %}
+  <div class="image-column">
+    {% if block.settings.mobile-heading != blank %}
+    <div class="mobile-heading">
+      <h3>{{block.settings.mobile-heading}}</h3>
+    </div>
+    {% endif %}
+    
+  <img src ="{{block.settings.section-image | img_url :'master' }}" alt ="{{block.settings.section-image.alt}}">
+  </div>
+  
+  {% endif %}
+  
+ 
+</div>
+{% endif %}
+{% endfor %}
+  <div class="bottom-center-text">
+    <h2>{{section.settings.bottom-text-heading}}</h2>
+    {{section.settings.bottom-text}}
+  </div>
+  </div>
+{% schema %}
+  {
+    "name": "Bridal Collection",
+    "settings": [
+		{
+            "type":"richtext",
+            "id":"upper-text", 
+			"label":"Upper Text"
+              	
+		},
+		{
+			"type":"richtext",
+			"id":"bottom-text",
+			"label":"Bottom Text"
+		},
+		{
+			"type":"text",
+			"id":"bottom-text-heading",
+			"label":"Bottom Heading"
+		}
+	],
+	"blocks":[
+		{
+			"type":"image-with-text",
+      "name":"Image With Text",   
+      "settings":[
+			
+			{
+                "type":"text",
+                "id":"section-heading", 
+				"label":"Section title"
+              },
+			 {
+                "type":"text",
+                "id":"heading", 
+				"label":"Heading"
+              },
+              {
+                "type":"richtext",
+                "id":"description", 
+				"label":"Description"
+              },
+			  
+			  {
+                "type":"text",
+                "id":"section-btn", 
+				"label": "Btn"
+              }, 
+			  {
+                "type":"url",
+                "id":"btn-link", 
+				"label": "Btn link"
+              }, 
+			  {
+                "type":"select",
+                "id":"alignment", 
+				"label": "Text Alignment", 
+				"options":[
+					{
+                    "label":"left",
+                    "value":"left"
+					}, 
+					{
+                    "label":"center",
+                    "value":"center"
+					}, 
+					{
+                    "label":"right",
+                    "value":"right"
+                    }
+                    ],
+                    "default": "left"
+
+                 },
+				{
+                "type":"image_picker",
+                "id":"section-image", 
+				"label": "Select-Image"
+               },
+				{
+					"type":"text",
+					"id":"mobile-heading",
+					"label":"Mobile Heading"
+				},
+			 {
+            "type": "select",
+            "id": "frontpage_image_position",
+            "label": "Image position",
+            "default": "row",
+            "options": [
+              {
+                "value": "row-reverse",
+                "label": "Left"
+              },
+              {
+                "value": "row",
+                "label": "Right"
+              }
+            ]
+          } 
+
+          ]
+
+            }
+		
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

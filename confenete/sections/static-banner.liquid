@@ -1,0 +1,139 @@
+{% if section.settings.enable-banner %}
+{% for block in section.blocks %}
+  {% if block.settings.banner-image != blank or block.settings.description != blank %}
+<div class="static-banner">
+  
+  
+ {% if block.settings.description != blank or block.settings.add-heading != blank %}
+  <div class="content-container">
+    {% if block.settings.add-heading != blank or block.settings.subheading != blank %}
+     <p class="banner-heading">{{block.settings.add-heading}}</p>
+     <p class="banner-text">{{block.settings.subheading}}</p>
+    {% endif %} 
+    <div class="shipping">{{block.settings.description}}</div>
+      {% if block.settings.code != blank or block.settings.code-text != blank %}
+    
+    <div class="code-text">
+      {{block.settings.code-text}}
+      <span class="coupon-code">{{block.settings.code}}</span>
+    </div>
+    
+      {% endif %}  
+    
+  
+  
+  </div>
+  {% endif %}
+</div>
+  {% endif %}
+<style>
+ @media only screen and (min-width:768px){
+.static-banner{
+	background-image:url({{block.settings.banner-image | img_url : 'master' }});
+  height:450px;
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-position:bottom;
+}
+ }
+  .static-banner{
+  position:relative;
+  }  
+@media only screen and (max-width:767px){
+.static-banner{
+	background-image:url({{block.settings.mobile-banner | img_url : 'master' }});
+  height:450px;
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-position:bottom;
+}
+ }
+
+  
+</style>
+
+{% endfor %}
+{% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "Static Banner",
+	"class": "static-banner",
+    "settings": [
+     {
+	  "type":"checkbox",
+	  "id": "enable-banner",
+	  "label":"Enable Banner",
+	  "default":true
+    }
+], 
+	"blocks": [
+    {
+      "type": "Banner",
+      "name": "Banner-with-text",
+      "settings": [
+
+	{
+	  "type":"text",
+	  "id": "add-heading",
+	  "label":"Add heading"
+    },
+{
+	  "type":"text",
+	  "id": "subheading",
+	  "label":"Subheading"
+    },
+	{
+	  "type":"richtext",
+	  "id": "description",
+	  "label":"Description"
+    },
+{
+	  "type":"richtext",
+	  "id": "code-text",
+	  "label":"Code Text"
+    },
+	{
+	  "type":"text",
+	  "id": "code",
+	  "label":"Code"
+    },
+	{
+	  "type":"url",
+	  "id": "btn-link",
+	  "label":"Btn Link"
+    },
+	{
+	  "type":"image_picker",
+	  "id": "banner-image",
+	  "label":"Banner Image"
+	},
+	{
+		"type":"image_picker",
+		"id":"mobile-banner",
+		"label":"Mobile Banner"
+	}
+  ]
+ }
+],
+  "presets": [{
+   "name": "Static Banner",
+   "category": "Banner"
+   
+}
+]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+

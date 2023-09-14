@@ -1,0 +1,19 @@
+{% if shop.customer_accounts_enabled %}
+  <ul class="accounts u-ul-reset">
+    {% if customer %}
+      <li>
+        <a href="/account">My Account</a>
+      </li>
+      <li>
+        {{ 'layout.customer.log_out' | t | customer_logout_link }}
+      </li>
+    {% else %}
+      <li>
+        {{ 'layout.customer.log_in' | t | customer_login_link }}
+      </li>
+      <li>
+        {{ 'layout.customer.create_account' | t | customer_register_link }}
+      </li>
+    {% endif %}
+  </ul>
+{% endif %}

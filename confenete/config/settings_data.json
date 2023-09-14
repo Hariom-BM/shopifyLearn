@@ -1,0 +1,1030 @@
+{
+  "current": {
+    "color_accent": "#c4cdd5",
+    "color_body_text": "#bf803b",
+    "color_main_bg": "#ffffff",
+    "font_heading": "playfair_display_n4",
+    "font_body": "montserrat_n4",
+    "share_image": "",
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "https:\/\/facebook.com\/shopconfete",
+    "social_pinterest_link": "https:\/\/pinterest.com\/shopconfete",
+    "social_instagram_link": "https:\/\/instagram.com\/shop.confete",
+    "social_snapchat_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "cart_notes_enable": false,
+    "favicon": "shopify:\/\/shop_images\/favicon_Confete_V1R2_1.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "featured-collection": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "The Bridal Suite",
+          "title_link": "https:\/\/shop-confete.com\/pages\/the-bridal-suite",
+          "collection_desc": "<p>A thoughtfully-curated, special collection for the bride-to-be, <a href=\"https:\/\/shop-confete.com\/collections\/the-bridal-suite\" title=\"https:\/\/shop-confete.com\/collections\/the-bridal-suite\">The Bridal Suite<\/a> has everything that you need—from fun, white event dresses to elegant <a href=\"https:\/\/shop-confete.com\/collections\/accessories\" title=\"https:\/\/shop-confete.com\/collections\/accessories\">accessories<\/a> for your big day to bridal-themed sweatshirts to get ready in. Let us help you craft your dream bridal attire wardrobe.<\/p>",
+          "collection": "the-bridal-suite"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "header_email": "hi@shop-confete.com",
+          "announcement_bar_enabled": false,
+          "announcement_bar_home_page_only": false,
+          "announcement_bar_text": "Free shipping over $150.  $6 flat rate shipping on all other orders.",
+          "announcement_bar_link": "",
+          "header_phone": "(415) 483-5667",
+          "header_formatted_phone": "(415) 483-5667",
+          "logo": "shopify:\/\/shop_images\/Confete_Logo_2-01.png",
+          "logo_max_width": 350,
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_menu": "footer",
+          "footer_image": "shopify:\/\/shop_images\/Footer_Glasses-01.png",
+          "newsletter_heading": "Stay in the know.",
+          "email": "hi@shop-confete.com",
+          "phone_number": "tel:+14154835667",
+          "formatted_phone_number": "(415) 483-5667",
+          "newsletter_text": "Let's be friends! Join our email list to get 10% off your first purchase."
+        }
+      },
+      "1590088248718": {
+        "type": "hero",
+        "blocks": {
+          "d7d39503-c000-4f5b-9345-6427bd2fe6f1": {
+            "type": "text",
+            "disabled": true,
+            "settings": {
+              "layout": "default",
+              "hero_image": "shopify:\/\/shop_images\/It_s_our_Labor_Day_weekend_sale_3.png",
+              "hero_subheading": "",
+              "hero_heading": "Spend More, Save More",
+              "hero_text": "Save big in our Labor Day sale!  Ends 9\/4 - 11:59pm PST.",
+              "hero_btn_text": "Shop Now",
+              "hero_btn_url": "shopify:\/\/collections\/best-sellers",
+              "hero_banner_url": "",
+              "text_color": "#bf803b"
+            }
+          },
+          "58ca888c-5dd5-47fd-b783-1c62f5a17d32": {
+            "type": "text",
+            "settings": {
+              "layout": "default",
+              "hero_image": "shopify:\/\/shop_images\/Home_Page_Dimensions_-_2023-08-26T141939.978.png",
+              "hero_subheading": "",
+              "hero_heading": "Pre-Fall Favs",
+              "hero_text": "Our favorite new looks for the season ahead, plus some of our bestselling styles get a fall make-over!",
+              "hero_btn_text": "SHOP NOW",
+              "hero_btn_url": "shopify:\/\/collections\/hello-fall",
+              "hero_banner_url": "",
+              "text_color": "#bf803b"
+            }
+          },
+          "30bcacc0-e268-40dd-9033-a785aabeb3cb": {
+            "type": "text",
+            "settings": {
+              "layout": "default",
+              "hero_image": "shopify:\/\/shop_images\/LasVegasBachelorettePartyOutfits.png",
+              "hero_subheading": "",
+              "hero_heading": "The Vegas Bachelorette Weekend",
+              "hero_text": "Rhinestones, feathers and glitter - does it get any more Vegas than that?!",
+              "hero_btn_text": "Shop Now",
+              "hero_btn_url": "shopify:\/\/collections\/the-vegas-bachelorette-edit",
+              "hero_banner_url": "",
+              "text_color": "#bf803b"
+            }
+          },
+          "dc125a2a-1e3f-46c3-b882-827b2355fd0f": {
+            "type": "text",
+            "settings": {
+              "layout": "default",
+              "hero_image": "shopify:\/\/shop_images\/Home_Page_Dimensions_-_2023-07-25T104131.561.png",
+              "hero_subheading": "",
+              "hero_heading": "City of Light",
+              "hero_text": "We’re sweeping you away to the City of Light to celebrate our very first bridal destination collection, shot in Paris.",
+              "hero_btn_text": "Shop Now",
+              "hero_btn_url": "shopify:\/\/collections\/city-of-light",
+              "hero_banner_url": "",
+              "text_color": "#bf803b"
+            }
+          },
+          "0e6a01e1-0c73-4b30-8ebf-b06c8a5b3d4c": {
+            "type": "text",
+            "settings": {
+              "layout": "default",
+              "hero_image": "shopify:\/\/shop_images\/Home_Page_Dimensions_72.png",
+              "hero_subheading": "",
+              "hero_heading": "Bridal Trends 2023",
+              "hero_text": "Bold bows, oversized floral and feather embellishment top our list of 2023's hottest bridal style trends.",
+              "hero_btn_text": "Shop Now",
+              "hero_btn_url": "shopify:\/\/collections\/2023-bridal-trends",
+              "hero_banner_url": "",
+              "text_color": "#bf803b"
+            }
+          },
+          "fe2575c0-c830-47c3-adb8-b3c839d2eb21": {
+            "type": "text",
+            "settings": {
+              "layout": "default",
+              "hero_image": "shopify:\/\/shop_images\/EnglishFloralPuffSleeveDress_1.jpg",
+              "hero_subheading": "",
+              "hero_heading": "Let’s Dress Up",
+              "hero_text": "Because you’re worth celebrating, we carry a wide selection of stylish event dresses and formal bridal attire for all of life’s special occasions.",
+              "hero_btn_text": "Shop Now",
+              "hero_btn_url": "shopify:\/\/collections\/occasion",
+              "hero_banner_url": "",
+              "text_color": "#bf803b"
+            }
+          }
+        },
+        "block_order": [
+          "d7d39503-c000-4f5b-9345-6427bd2fe6f1",
+          "58ca888c-5dd5-47fd-b783-1c62f5a17d32",
+          "30bcacc0-e268-40dd-9033-a785aabeb3cb",
+          "dc125a2a-1e3f-46c3-b882-827b2355fd0f",
+          "0e6a01e1-0c73-4b30-8ebf-b06c8a5b3d4c",
+          "fe2575c0-c830-47c3-adb8-b3c839d2eb21"
+        ],
+        "settings": {
+          "enable_slider": true
+        }
+      },
+      "1590090367109": {
+        "type": "welcome",
+        "settings": {
+          "welcome_image": "shopify:\/\/shop_images\/Welcome_Photos_Group-01.png",
+          "welcome_text": "<p>We are your one-stop-shop for all the special moments in your life. Need a <a href=\"https:\/\/shop-confete.com\/collections\/rehearsal-dinner\" title=\"https:\/\/shop-confete.com\/collections\/rehearsal-dinner\">rehearsal dinner dress<\/a>? We have you covered. Going on a girl’s trip? We have something for your favorite gals. Or maybe, you just want to dress up for no reason! We’re here to help you dress, plan, and celebrate.<\/p>",
+          "welcome_btn_text": "Learn More",
+          "welcome_btn_url": "shopify:\/\/pages\/our-story"
+        }
+      },
+      "1590359615071": {
+        "type": "featured-products",
+        "settings": {
+          "product_1": "paradis-green-plisse-tiered-maxi-dress",
+          "product-1-title": "",
+          "product_1_desc": "<p>Ready to elevate everyday style or any special occasion look?  Meet your one-stop shop for all the stylish event <a href=\"https:\/\/shop-confete.com\/collections\/dresses\" title=\"https:\/\/shop-confete.com\/collections\/dresses\">dresses<\/a>, standout pieces and <a href=\"https:\/\/shop-confete.com\/collections\/whats-new\" title=\"https:\/\/shop-confete.com\/collections\/whats-new\">latest trends<\/a> for 2023.<br\/>  <strong>SHOP <\/strong><a href=\"https:\/\/shop-confete.com\/collections\/whats-new\" title=\"https:\/\/shop-confete.com\/collections\/whats-new\"><strong>NEW ARRIVALS<\/strong><\/a><strong>. <\/strong><\/p>",
+          "product__1_link": "https:\/\/shop-confete.com\/collections\/whats-new",
+          "product_2": "walking-down-the-aisle-white-mini-dress",
+          "product-2-title": "",
+          "product_2_desc": "<p>Botanical prints, sequin star event <a href=\"https:\/\/shop-confete.com\/collections\/dresses\" title=\"https:\/\/shop-confete.com\/collections\/dresses\">dresses<\/a>, gold <a href=\"https:\/\/shop-confete.com\/collections\/accessories\" title=\"https:\/\/shop-confete.com\/collections\/accessories\">accessories<\/a>, and oversized straw hats—this is what our gals are reaching for this year. Because dressing up is always a good idea. <br\/><strong>SHOP OUR <\/strong><a href=\"https:\/\/shop-confete.com\/collections\/best-sellers\" title=\"https:\/\/shop-confete.com\/collections\/best-sellers\"><strong>FAN FAVORITES<\/strong><\/a><strong>.<\/strong><\/p>",
+          "product__2_link": "https:\/\/shop-confete.com\/collections\/best-sellers"
+        }
+      },
+      "1591382647708": {
+        "type": "collection-list",
+        "blocks": {
+          "1591382647708-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "whats-new",
+              "image": "shopify:\/\/shop_images\/Tezza-7100.jpg"
+            }
+          },
+          "da06e0c9-e941-453a-9e7d-bb7ab9f9ad05": {
+            "type": "collection",
+            "settings": {
+              "collection": "rehearsal-dinner",
+              "image": "shopify:\/\/shop_images\/Cassie_Nathan_Downtown-69.jpg"
+            }
+          },
+          "b374ffa7-2f64-4ae3-be65-9317808841f3": {
+            "type": "collection",
+            "settings": {
+              "collection": "hello-fall",
+              "image": "shopify:\/\/shop_images\/Untitled_design_44.png"
+            }
+          },
+          "1592837711447": {
+            "type": "collection",
+            "settings": {
+              "collection": "european-summer",
+              "image": "shopify:\/\/shop_images\/ACS_2897.jpg"
+            }
+          },
+          "1b7199a3-992c-4313-b4e7-7e693268d420": {
+            "type": "collection",
+            "settings": {
+              "collection": "wedding-guest",
+              "image": "shopify:\/\/shop_images\/ACS_2892.jpg"
+            }
+          },
+          "1374473a-c4dc-4d26-b62f-46b16d362777": {
+            "type": "collection",
+            "settings": {
+              "collection": "resortwear",
+              "image": "shopify:\/\/shop_images\/tiedye.jpg"
+            }
+          },
+          "4f74ddc4-02d3-4480-9791-103ab7df518e": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-may-edit",
+              "image": "shopify:\/\/shop_images\/may.jpg"
+            }
+          },
+          "da572f20-851c-49fc-99f7-ae63fc230266": {
+            "type": "collection",
+            "settings": {
+              "collection": "plus-size-clothing",
+              "image": "shopify:\/\/shop_images\/plussizerainbowdress.jpg"
+            }
+          },
+          "94e157f1-478e-4d21-995c-29168606ca17": {
+            "type": "collection",
+            "settings": {
+              "collection": "bags",
+              "image": "shopify:\/\/shop_images\/Tezza-6556.jpg"
+            }
+          },
+          "c0e22888-284f-4944-aa03-b82291196dbb": {
+            "type": "collection",
+            "settings": {
+              "collection": "bridal-bestsellers",
+              "image": "shopify:\/\/shop_images\/DKP_ConfeteCar_1.jpg"
+            }
+          },
+          "1591382647708-2": {
+            "type": "collection",
+            "settings": {
+              "collection": "wedding-after-party",
+              "image": "shopify:\/\/shop_images\/atelierdujour-225.jpg"
+            }
+          },
+          "96228177-3c1f-4ae3-9dc3-cb86e7cb6065": {
+            "type": "collection",
+            "disabled": true,
+            "settings": {
+              "collection": "the-april-edit",
+              "image": "shopify:\/\/shop_images\/matildewhiteembroideredmiidress.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "1591382647708-0",
+          "da06e0c9-e941-453a-9e7d-bb7ab9f9ad05",
+          "b374ffa7-2f64-4ae3-be65-9317808841f3",
+          "1592837711447",
+          "1b7199a3-992c-4313-b4e7-7e693268d420",
+          "1374473a-c4dc-4d26-b62f-46b16d362777",
+          "4f74ddc4-02d3-4480-9791-103ab7df518e",
+          "da572f20-851c-49fc-99f7-ae63fc230266",
+          "94e157f1-478e-4d21-995c-29168606ca17",
+          "c0e22888-284f-4944-aa03-b82291196dbb",
+          "1591382647708-2",
+          "96228177-3c1f-4ae3-9dc3-cb86e7cb6065"
+        ],
+        "settings": {
+          "title": "What Are You Looking For?"
+        }
+      },
+      "1591383870262": {
+        "type": "our-story",
+        "settings": {
+          "heading": "Our Story",
+          "text": "We’re the girl who dresses up for absolutely no reason at all. Confête is a brand rooted in love, inclusion, friendship, travel, and making every day a celebration.",
+          "btn_text": "Learn More",
+          "btn_url": "shopify:\/\/pages\/our-story"
+        }
+      },
+      "1591720482170": {
+        "type": "instagram",
+        "settings": {
+          "heading_image": "shopify:\/\/shop_images\/On_the_Gram-01.png",
+          "hashtag": "#confetegirl"
+        }
+      },
+      "product": {
+        "type": "product",
+        "settings": {
+        }
+      },
+      "instagram": {
+        "type": "instagram",
+        "settings": {
+          "heading_image": "shopify:\/\/shop_images\/On_the_Gram-01.png",
+          "hashtag": "#confetegirl"
+        }
+      },
+      "related-products": {
+        "type": "related-products",
+        "settings": {
+          "show_related_products": true,
+          "related_title": "Other Products You'd Love",
+          "related_grid_num": "4",
+          "related_grid_row": "1"
+        }
+      },
+      "hero-page": {
+        "type": "hero-page",
+        "settings": {
+          "hero_image": "shopify:\/\/shop_images\/Header-Image.jpg"
+        }
+      },
+      "rich-text-and-images": {
+        "type": "rich-text-and-images",
+        "settings": {
+          "subheading": "Our Story",
+          "heading": "How it all began...",
+          "rich_text_start": "<p>It began in 2018 while planning a whimsical wedding in Montana. Our founder, Amanda Maynard, had been scouring the internet, site after site, looking for the perfect rehearsal dinner dress. Sadly, the perfect <a href=\"https:\/\/shop-confete.com\/collections\/rehearsal-dinner\" title=\"https:\/\/shop-confete.com\/collections\/rehearsal-dinner\">rehearsal dinner dress<\/a> was nowhere to be found.<br\/><\/p><p>As more and more of her friends got married, many began to express that same frustration over the lack of retailers that had beautiful, unique, and affordable dresses for all of the events surrounding a wedding.<br\/><\/p><p>That’s when she dreamed up <a href=\"https:\/\/shop-confete.com\/\" title=\"https:\/\/shop-confete.com\/\">Confête<\/a>—an online shopping destination for not only wedding-related events but for those gals who want to make every day a celebration!<\/p>",
+          "image": "shopify:\/\/shop_images\/Our_Story_Group-01.png",
+          "rich_text_end": "<p>Hand-picked by Amanda herself, each Confête piece is quality made and guaranteed to be a special outfit or accessory for the celebrations in your life. From the <a href=\"https:\/\/shop-confete.com\/collections\/rehearsal-dinner\" title=\"https:\/\/shop-confete.com\/collections\/rehearsal-dinner\">rehearsal dinner<\/a> to the<a href=\"https:\/\/shop-confete.com\/collections\/bachelorette-party\" title=\"https:\/\/shop-confete.com\/collections\/bachelorette-party\"> bachelorette party<\/a> and even the <a href=\"https:\/\/shop-confete.com\/collections\/honeymoon\" title=\"https:\/\/shop-confete.com\/collections\/honeymoon\">honeymoon<\/a>, we have <a href=\"https:\/\/shop-confete.com\/collections\/dresses\" title=\"https:\/\/shop-confete.com\/collections\/dresses\">dresses<\/a>, <a href=\"https:\/\/shop-confete.com\/collections\/tops\" title=\"https:\/\/shop-confete.com\/collections\/tops\">tops<\/a>, <a href=\"https:\/\/shop-confete.com\/collections\/bottoms\" title=\"https:\/\/shop-confete.com\/collections\/bottoms\">bottoms<\/a>, <a href=\"https:\/\/shop-confete.com\/collections\/accessories\" title=\"https:\/\/shop-confete.com\/collections\/accessories\">accessories<\/a>, and more for the bride-to-be. We also carry <a href=\"https:\/\/shop-confete.com\/collections\/wedding-guest\" title=\"https:\/\/shop-confete.com\/collections\/wedding-guest\">wedding gues<\/a>t, <a href=\"https:\/\/shop-confete.com\/collections\/baby-shower\" title=\"https:\/\/shop-confete.com\/collections\/baby-shower\">baby shower<\/a>, <a href=\"https:\/\/shop-confete.com\/collections\/occasion\" title=\"https:\/\/shop-confete.com\/collections\/occasion\">party clothing<\/a>, and accessories for other life occasions.<br\/><\/p><p>With a <a href=\"https:\/\/shop-confete.com\/collections\/plus\" title=\"https:\/\/shop-confete.com\/collections\/plus\">large range of sizes<\/a> and an extensive selection of styles, we have the perfect outfit for every woman to fall in love with today. During your cherished moments in life, the last thing you should be worrying about is finding an outfit. We make shopping for these milestones simple at Confête. <br\/><\/p><p>Confête is your one-stop-shop for all things stunning and stylish. Make every day a special occasion by choosing to become a #confêtegirl today.<br\/><\/p><p><\/p>"
+        }
+      },
+      "engagement-stories": {
+        "type": "engagement-stories",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/banner.jpg",
+          "layout": "left",
+          "title": "Love Notes",
+          "text": "Share your engagement story with us &amp; get <span>15% off <\/span>your next purchase.",
+          "info": "<p>January 1st - March 31st<\/p>"
+        }
+      },
+      "16113074942a627e8a": {
+        "type": "rich-text",
+        "settings": {
+          "title": "",
+          "text": "<p>Whether you&#x27;re searching for a romantic, tulle ball gown for your engagement photos, a modern-style sheath dress for a rehearsal dinner, or any other white dress for a wedding occasion, Confête is here to help you plan, style, and celebrate. Shop our bridal attire.<br\/><br\/>Say goodbye to scrambling to choose what to wear for special occasions. Confête makes it simple to find event dresses and stylish formal attire for <a href=\"https:\/\/shop-confete.com\/collections\/the-bridal-suite\" title=\"https:\/\/shop-confete.com\/collections\/the-bridal-suite\">bridal showers<\/a>, <a href=\"https:\/\/shop-confete.com\/collections\/baby-shower\" title=\"https:\/\/shop-confete.com\/collections\/baby-shower\">baby showers<\/a>, and more. Whether you’re looking to catch eyes at the next cocktail party or simply want to get dressed up for the fun of it, Confête has everything you need to elevate your style game.<br\/><\/p><p>Are you a bride-to-be? From the<a href=\"https:\/\/shop-confete.com\/collections\/bachelorette-party\" title=\"https:\/\/shop-confete.com\/collections\/bachelorette-party\"> bachelorette party<\/a> to the <a href=\"https:\/\/shop-confete.com\/collections\/rehearsal-dinner\" title=\"https:\/\/shop-confete.com\/collections\/rehearsal-dinner\">rehearsal dinner<\/a> and <a href=\"https:\/\/shop-confete.com\/collections\/occasion\" title=\"https:\/\/shop-confete.com\/collections\/occasion\">beyond<\/a>, find the perfect <a href=\"https:\/\/shop-confete.com\/collections\/the-bridal-suite\" title=\"https:\/\/shop-confete.com\/collections\/the-bridal-suite\">bridal attire<\/a> at Confête today.<br\/><\/p><p>Our #confêtegirls can’t get enough of these best-selling pieces. With everything from <a href=\"https:\/\/shop-confete.com\/collections\/dresses\" title=\"https:\/\/shop-confete.com\/collections\/dresses\">event dresses<\/a> to dazzling <a href=\"https:\/\/shop-confete.com\/collections\/hair-accessories\" title=\"https:\/\/shop-confete.com\/collections\/hair-accessories\">accessories<\/a>, Confête makes getting dressed up fun with stunning and stylish pieces for every occasion. Get your hands on these <a href=\"https:\/\/shop-confete.com\/collections\/best-sellers\" title=\"https:\/\/shop-confete.com\/collections\/best-sellers\">best-sellers<\/a> today!<br\/><\/p>",
+          "checkbox": true,
+          "button-title": "Read More"
+        }
+      },
+      "featured-collection-template": {
+        "type": "featured-collection-template",
+        "settings": {
+          "title": "",
+          "collection_desc": "",
+          "collection": "best-sellers"
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+        }
+      },
+      "static-banner": {
+        "type": "static-banner",
+        "blocks": {
+          "30861eb1-c119-4347-8065-ab61f5c87c0b": {
+            "type": "Banner",
+            "settings": {
+              "add-heading": "",
+              "subheading": "",
+              "description": "",
+              "code-text": "",
+              "code": "",
+              "btn-link": "",
+              "banner-image": "shopify:\/\/shop_images\/bridal-banner.jpg",
+              "mobile-banner": "shopify:\/\/shop_images\/bridal-banner-mobile.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "30861eb1-c119-4347-8065-ab61f5c87c0b"
+        ],
+        "settings": {
+          "enable-banner": true
+        }
+      },
+      "bridal-collection": {
+        "type": "bridal-collection",
+        "blocks": {
+          "464543c5-45ba-4d37-bd0e-5ddd619eb636": {
+            "type": "image-with-text",
+            "settings": {
+              "section-heading": "",
+              "heading": "Engagement Party",
+              "description": "<p>The engagement party is your first chance to embrace your bridal look and the first step on your way to wedded bliss! Find a look that makes you feel comfortable, beautiful, and confident as you show off your new ring and excitement as a future Mrs.<\/p><p>Take a look at our unique and special bride-to-be dresses and bridal occasion dresses to find the perfect one.<\/p>",
+              "section-btn": "SHOP NOW",
+              "btn-link": "https:\/\/shop-confete.com\/collections\/the-bridal-suite",
+              "alignment": "left",
+              "section-image": "shopify:\/\/shop_images\/white-polka-dot-romper.jpg",
+              "mobile-heading": "",
+              "frontpage_image_position": "row"
+            }
+          },
+          "fee628fc-957c-492e-9c20-fe1c43a3ff15": {
+            "type": "image-with-text",
+            "settings": {
+              "section-heading": "",
+              "heading": "Engagement Pictures",
+              "description": "<p>Whether your <a href=\"https:\/\/shop-confete.com\/collections\/engagement-photos\"><span style=\"text-decoration:underline\">engagement pictures<\/span><\/a> are for your Save The Dates or you’re marking a special moment in time with your significant other to look back on, you need an outfit that perfectly represents your personality.<\/p><p>Browse our collection of dresses to find an outfit that speaks to your unique style.<\/p>",
+              "section-btn": "SHOP NOW",
+              "btn-link": "https:\/\/shop-confete.com\/collections\/dresses",
+              "alignment": "left",
+              "section-image": "shopify:\/\/shop_images\/white-eyelet-midi-dress.jpg",
+              "mobile-heading": "",
+              "frontpage_image_position": "row-reverse"
+            }
+          },
+          "bacd40d1-77c7-4199-aabc-45f2281e6953": {
+            "type": "image-with-text",
+            "settings": {
+              "section-heading": "",
+              "heading": "Bridal Shower",
+              "description": "<p>There are few things as iconic as the <a href=\"https:\/\/shop-confete.com\/collections\/bridal-shower\"><span style=\"text-decoration:underline\">bridal shower<\/span><\/a>. This is a beautiful day celebrating your next chapter with those you care about the most.<\/p><p>Explore our wide selection of bride-to-be dresses and bridal event dresses — from sleek and sophisticated to glitz and glam and everything in between.<\/p>",
+              "section-btn": "SHOP NOW",
+              "btn-link": "https:\/\/shop-confete.com\/collections\/bridal-shower",
+              "alignment": "left",
+              "section-image": "shopify:\/\/shop_images\/floral-maxi-dress.jpg",
+              "mobile-heading": "",
+              "frontpage_image_position": "row"
+            }
+          },
+          "c1df0b74-ce41-4413-9f4c-4bedc8b27ea1": {
+            "type": "image-with-text",
+            "settings": {
+              "section-heading": "",
+              "heading": "Bachelorette Party",
+              "description": "<p>It’s time to relax from all of the wedding planning and celebrate your last moments as a single lady with your favorite gal pals!<\/p><p>Whether you’re looking for an over-the-top outfit or an understated, classic ensemble, we have a stunning variety of bridal occasion dresses to perfectly match your personality. Shop our <a href=\"https:\/\/shop-confete.com\/collections\/bachelorette-party\"><span style=\"text-decoration:underline\">bachelorette party outfits<\/span><\/a> today!<\/p>",
+              "section-btn": "SHOP NOW",
+              "btn-link": "https:\/\/shop-confete.com\/collections\/bachelorette-party",
+              "alignment": "left",
+              "section-image": "shopify:\/\/shop_images\/white-feather-mini-dress.jpg",
+              "mobile-heading": "",
+              "frontpage_image_position": "row-reverse"
+            }
+          },
+          "d2b386ef-6b37-4a91-be87-0aaf0c1b190b": {
+            "type": "image-with-text",
+            "settings": {
+              "section-heading": "",
+              "heading": "Rehearsal Dinner",
+              "description": "<p>You’ve gathered your friends and families together to run through your big day and celebrate your upcoming nuptials.<\/p><p>Let yourself glow at your <a href=\"https:\/\/shop-confete.com\/collections\/rehearsal-dinner\"><span style=\"text-decoration:underline\">rehearsal dinner<\/span><\/a> in one of your final bride-to-be dresses before you say “I do”!<\/p>",
+              "section-btn": "SHOP NOW",
+              "btn-link": "https:\/\/shop-confete.com\/collections\/rehearsal-dinner",
+              "alignment": "left",
+              "section-image": "shopify:\/\/shop_images\/white-scalloped-jumpsuit.jpg",
+              "mobile-heading": "",
+              "frontpage_image_position": "row"
+            }
+          },
+          "0c79feff-9c6b-4c8d-a28f-14ce127ff040": {
+            "type": "image-with-text",
+            "settings": {
+              "section-heading": "",
+              "heading": "Wedding Day",
+              "description": "<p>It’s time to find the perfect wedding dress for the day you’ve always dreamed about. <\/p><p>Whether you’re looking for a dress in satin, lace, tulle, or sequins, we have a selection of casual and semi-formal styles for every type of bride. Browse our stunning designs and silhouettes, and watch your wedding dreams come to life!<\/p>",
+              "section-btn": "SHOP NOW",
+              "btn-link": "https:\/\/shop-confete.com\/collections\/the-micro-wedding",
+              "alignment": "left",
+              "section-image": "shopify:\/\/shop_images\/sleek-bridal-gown.jpg",
+              "mobile-heading": "",
+              "frontpage_image_position": "row-reverse"
+            }
+          },
+          "ecf92886-24c4-4f72-a17a-b4919167a5e7": {
+            "type": "image-with-text",
+            "settings": {
+              "section-heading": "",
+              "heading": "Wedding After-Party",
+              "description": "<p>Whether you’re looking for a second wedding dress for your reception or you want a relaxed dress to dance the night away, we have something for you. <\/p><p>Hello, outfit change! Explore our beautiful collection of bride-to-be dresses and <a href=\"https:\/\/shop-confete.com\/collections\/wedding-after-party\"><span style=\"text-decoration:underline\">wedding after-party dresses<\/span><\/a> today!<\/p>",
+              "section-btn": "SHOP NOW",
+              "btn-link": "https:\/\/shop-confete.com\/collections\/wedding-after-party",
+              "alignment": "left",
+              "section-image": "shopify:\/\/shop_images\/sequin-feather-mini-dress.jpg",
+              "mobile-heading": "",
+              "frontpage_image_position": "row"
+            }
+          },
+          "debd2b26-ff5c-475d-901e-f09d1a7f66e0": {
+            "type": "image-with-text",
+            "settings": {
+              "section-heading": "",
+              "heading": "Honeymoon",
+              "description": "<p>When it comes to the <a href=\"https:\/\/shop-confete.com\/collections\/honeymoon\"><span style=\"text-decoration:underline\">honeymoon<\/span><\/a>, no one deserves a chance to sit back and relax more than the newlyweds.<\/p><p>Browse our selection of honeymoon outfits and <a href=\"https:\/\/shop-confete.com\/collections\/resortwear\"><span style=\"text-decoration:underline\">resort wear<\/span><\/a> to find the perfect ensembles to celebrate your new wedded bliss!<\/p>",
+              "section-btn": "SHOP NOW",
+              "btn-link": "https:\/\/shop-confete.com\/collections\/honeymoon",
+              "alignment": "left",
+              "section-image": "shopify:\/\/shop_images\/long-sleeve-eyelet-mini-dress.jpg",
+              "mobile-heading": "",
+              "frontpage_image_position": "row-reverse"
+            }
+          }
+        },
+        "block_order": [
+          "464543c5-45ba-4d37-bd0e-5ddd619eb636",
+          "fee628fc-957c-492e-9c20-fe1c43a3ff15",
+          "bacd40d1-77c7-4199-aabc-45f2281e6953",
+          "c1df0b74-ce41-4413-9f4c-4bedc8b27ea1",
+          "d2b386ef-6b37-4a91-be87-0aaf0c1b190b",
+          "0c79feff-9c6b-4c8d-a28f-14ce127ff040",
+          "ecf92886-24c4-4f72-a17a-b4919167a5e7",
+          "debd2b26-ff5c-475d-901e-f09d1a7f66e0"
+        ],
+        "settings": {
+          "upper-text": "<p>Congratulations on your recent engagement! Let’s pop the bubbly and start shopping for bride-to-be dresses for all events surrounding your big day — from your engagement party to your bridal shower, wedding day, and beyond, we have everything you need to curate the perfect bride-to-be wardrobe. Let’s start shopping!<\/p>",
+          "bottom-text": "<p>As a newly engaged bride-to-be, this is one of the most special times of your life as you prepare to say “I do” to your other half. At <a href=\"https:\/\/shop-confete.com\/pages\/our-story\"><span style=\"text-decoration:underline\">Confête<\/span><\/a>, it is our goal to help you find the perfect bride-to-be dresses and bridal occasion dresses as you celebrate each event surrounding your wedding day. Don’t forget to check out our <a href=\"https:\/\/shop-confete.com\/collections\/bridal-accessories\"><span style=\"text-decoration:underline\">bridal accessories<\/span><\/a> — from <a href=\"https:\/\/shop-confete.com\/collections\/jewelry\"><span style=\"text-decoration:underline\">jewelry<\/span><\/a> and <a href=\"https:\/\/shop-confete.com\/collections\/hair-accessories\"><span style=\"text-decoration:underline\">hair accessories<\/span><\/a> to <a href=\"https:\/\/shop-confete.com\/collections\/bags\"><span style=\"text-decoration:underline\">bags<\/span><\/a> and <a href=\"https:\/\/shop-confete.com\/collections\/hats\"><span style=\"text-decoration:underline\">hats<\/span><\/a> to perfectly finish off your outfits!<\/p>",
+          "bottom-text-heading": "Let’s Dress Up"
+        }
+      },
+      "image-with-text-square": {
+        "type": "image-with-text-square",
+        "settings": {
+          "heading": "We are our customer!",
+          "text": "<p>Think about the outfits you were wearing during the most pivotal moments of your life.  We believe in style that makes you feel strong, confident, and special, and we're here to help you find that.  <br\/><\/p><p>We love love.  We believe in celebrating with family and friends for no reason, finding fun in all the little things in life, going all out during the holidays, expanding our horizons through travel and new experiences, and sometimes we just want to wear sequins for no reason!<\/p>",
+          "image": "shopify:\/\/shop_images\/bride-handbag.jpg"
+        }
+      },
+      "obsessing": {
+        "type": "obsessing",
+        "blocks": {
+          "a64f664c-c0a2-4593-b19b-c1bc0a5ed42b": {
+            "type": "image",
+            "settings": {
+              "obsessing_image": "shopify:\/\/shop_images\/watercolor-florals.jpg",
+              "obsessing_link": "https:\/\/shop-confete.com\/products\/english-rose-puff-sleeve-floral-blue-and-pink-maxi",
+              "obsessing_text": "Watercolor Florals"
+            }
+          },
+          "3046e3e1-b6c2-455d-80ea-8c37fc321e76": {
+            "type": "image",
+            "settings": {
+              "obsessing_image": "shopify:\/\/shop_images\/ribbon-tie-shoulders.jpg",
+              "obsessing_link": "https:\/\/shop-confete.com\/products\/arabella-ribbon-tie-maxi-dress?variant=34882745893030",
+              "obsessing_text": "Ribbon-Tie Shoulders"
+            }
+          },
+          "5b0b669d-f95b-472d-af4a-739775991a63": {
+            "type": "image",
+            "settings": {
+              "obsessing_image": "shopify:\/\/shop_images\/belmond-das-cataratas.jpg",
+              "obsessing_link": "https:\/\/www.belmond.com\/hotels\/south-america\/brazil\/iguassu-falls\/belmond-hotel-das-cataratas\/about",
+              "obsessing_text": "Belmond das Cataratas"
+            }
+          },
+          "f41bdc94-9075-4cb9-b855-937a523dca10": {
+            "type": "image",
+            "settings": {
+              "obsessing_image": "shopify:\/\/shop_images\/what-i-wore-when.jpg",
+              "obsessing_link": "https:\/\/www.iheart.com\/podcast\/1119-what-i-wore-when-52558539\/",
+              "obsessing_text": "What I Wore When Podcast"
+            }
+          },
+          "edb335d6-4f58-4448-bafb-4f794706aa4f": {
+            "type": "image",
+            "settings": {
+              "obsessing_image": "shopify:\/\/shop_images\/tulle.jpg",
+              "obsessing_link": "https:\/\/shop-confete.com\/products\/blue-tulle-mini",
+              "obsessing_text": "Lots and Lots of Tulle"
+            }
+          }
+        },
+        "block_order": [
+          "a64f664c-c0a2-4593-b19b-c1bc0a5ed42b",
+          "3046e3e1-b6c2-455d-80ea-8c37fc321e76",
+          "5b0b669d-f95b-472d-af4a-739775991a63",
+          "f41bdc94-9075-4cb9-b855-937a523dca10",
+          "edb335d6-4f58-4448-bafb-4f794706aa4f"
+        ],
+        "settings": {
+          "obsessing_heading": "Currently Obsessing"
+        }
+      },
+      "get-inspired": {
+        "type": "get-inspired",
+        "settings": {
+          "text": "Get Inspired",
+          "image": "shopify:\/\/shop_images\/get-inspired.jpg"
+        }
+      },
+      "faq": {
+        "type": "faq",
+        "blocks": {
+          "b07fe548-5e91-41eb-9a29-ab8bef1f4159": {
+            "type": "text",
+            "settings": {
+              "title": "Orders & Payment",
+              "faq": "<p><strong>What methods of payment do you accept?<br\/><\/strong><\/p><p>Confête accepts Visa, Discover, Mastercard, American Express, Paypal, Google Pay and Apple Pay.  <br\/><\/p><p>Prices are listed in US dollars.  <br\/><\/p><p>Please note orders CANNOT be cancelled or altered after they are placed as payment is processed automatically. <br\/><\/p><p><strong>How can I track my order?<br\/><\/strong><\/p><p>Once you place your order, you will receive a confirmation email sent to the email address associated with your order.  Orders generally take 2-4 business days for processing and shipping.  <br\/><\/p><p>Once your order has been shipped, you will receive an email with the tracking number for your package.  <br\/><\/p><p>You can always see your orders and the status of your orders by logging into your account. (with link to my account page)<br\/><br\/><\/p><p><strong>How do I cancel or change my order?<br\/><\/strong><\/p><p>We want to make sure we get your order out to you as quickly as possible.  For this reason, once the order is placed, it cannot be changed.  <br\/><\/p><p><strong>Can I use more than one discount code in my order?<br\/><\/strong><\/p><p>No. You can use only ONE discount code per order.<\/p>"
+            }
+          },
+          "925acf4d-2078-4a62-8f4e-834b328016ef": {
+            "type": "text",
+            "settings": {
+              "title": "My Account Page",
+              "faq": "<p><strong>Account page questions<\/strong><\/p><p><strong>What methods of payment do you accept?<br\/><\/strong><\/p><p>Confête accepts Visa, Discover, Mastercard, American Express, Paypal, Google Pay and Apple Pay.  <br\/><\/p><p>Prices are listed in US dollars.  <br\/><\/p><p>Please note orders CANNOT be cancelled or altered after they are placed as payment is processed automatically. <br\/><\/p><p><strong>How can I track my order?<br\/><\/strong><\/p><p>Once you place your order, you will receive a confirmation email sent to the email address associated with your order.  Orders generally take 2-4 business days for processing and shipping.  <br\/><\/p><p>Once your order has been shipped, you will receive an email with the tracking number for your package.  <br\/><\/p><p>You can always see your orders and the status of your orders by logging into your account. (with link to my account page)<br\/><br\/><\/p><p><strong>How do I cancel or change my order?<br\/><\/strong><\/p><p>We want to make sure we get your order out to you as quickly as possible.  For this reason, once the order is placed, it cannot be changed.  <br\/><\/p><p><strong>Can I use more than one discount code in my order?<br\/><\/strong><\/p><p>No. You can use only ONE discount code per order.<\/p>"
+            }
+          },
+          "f007e60a-80ee-4b92-9de0-39520e1d412d": {
+            "type": "text",
+            "settings": {
+              "title": "Shipping",
+              "faq": "<p><strong>Shipping questions<\/strong><\/p><p><strong>What methods of payment do you accept?<br\/><\/strong><\/p><p>Confête accepts Visa, Discover, Mastercard, American Express, Paypal, Google Pay and Apple Pay.  <br\/><\/p><p>Prices are listed in US dollars.  <br\/><\/p><p>Please note orders CANNOT be cancelled or altered after they are placed as payment is processed automatically. <br\/><\/p><p><strong>How can I track my order?<br\/><\/strong><\/p><p>Once you place your order, you will receive a confirmation email sent to the email address associated with your order.  Orders generally take 2-4 business days for processing and shipping.  <br\/><\/p><p>Once your order has been shipped, you will receive an email with the tracking number for your package.  <br\/><\/p><p>You can always see your orders and the status of your orders by logging into your account. (with link to my account page)<br\/><br\/><\/p><p><strong>How do I cancel or change my order?<br\/><\/strong><\/p><p>We want to make sure we get your order out to you as quickly as possible.  For this reason, once the order is placed, it cannot be changed.  <br\/><\/p><p><strong>Can I use more than one discount code in my order?<br\/><\/strong><\/p><p>No. You can use only ONE discount code per order.<\/p>"
+            }
+          },
+          "984e31b0-3eda-4155-85b8-5ea40ac2eba9": {
+            "type": "text",
+            "settings": {
+              "title": "Return Center & Policy",
+              "faq": "<p><strong>Return Center & Policy Questions<\/strong><\/p><p><strong>What methods of payment do you accept?<br\/><\/strong><\/p><p>Confête accepts Visa, Discover, Mastercard, American Express, Paypal, Google Pay and Apple Pay.  <br\/><\/p><p>Prices are listed in US dollars.  <br\/><\/p><p>Please note orders CANNOT be cancelled or altered after they are placed as payment is processed automatically. <br\/><\/p><p><strong>How can I track my order?<br\/><\/strong><\/p><p>Once you place your order, you will receive a confirmation email sent to the email address associated with your order.  Orders generally take 2-4 business days for processing and shipping.  <br\/><\/p><p>Once your order has been shipped, you will receive an email with the tracking number for your package.  <br\/><\/p><p>You can always see your orders and the status of your orders by logging into your account. (with link to my account page)<br\/><br\/><\/p><p><strong>How do I cancel or change my order?<br\/><\/strong><\/p><p>We want to make sure we get your order out to you as quickly as possible.  For this reason, once the order is placed, it cannot be changed.  <br\/><\/p><p><strong>Can I use more than one discount code in my order?<br\/><\/strong><\/p><p>No. You can use only ONE discount code per order.<\/p>"
+            }
+          },
+          "7e4bd759-0149-46af-a7e8-71aa19fd2031": {
+            "type": "text",
+            "settings": {
+              "title": "Sizing",
+              "faq": "<p><strong>What methods of payment do you accept?<br\/><\/strong><\/p><p>Confête accepts Visa, Discover, Mastercard, American Express, Paypal, Google Pay and Apple Pay.  <br\/><\/p><p>Prices are listed in US dollars.  <br\/><\/p><p>Please note orders CANNOT be cancelled or altered after they are placed as payment is processed automatically. <br\/><\/p><p><strong>How can I track my order?<br\/><\/strong><\/p><p>Once you place your order, you will receive a confirmation email sent to the email address associated with your order.  Orders generally take 2-4 business days for processing and shipping.  <br\/><\/p><p>Once your order has been shipped, you will receive an email with the tracking number for your package.  <br\/><\/p><p>You can always see your orders and the status of your orders by logging into your account. (with link to my account page)<br\/><br\/><\/p><p><strong>How do I cancel or change my order?<br\/><\/strong><\/p><p>We want to make sure we get your order out to you as quickly as possible.  For this reason, once the order is placed, it cannot be changed.  <br\/><\/p><p><strong>Can I use more than one discount code in my order?<br\/><\/strong><\/p><p>No. You can use only ONE discount code per order.<\/p>"
+            }
+          },
+          "abca912e-180f-42c7-96d7-b213ca1221c9": {
+            "type": "text",
+            "settings": {
+              "title": "Partnerships",
+              "faq": "<p><strong>Partnerships questions<\/strong><\/p><p><strong>What methods of payment do you accept?<br\/><\/strong><\/p><p>Confête accepts Visa, Discover, Mastercard, American Express, Paypal, Google Pay and Apple Pay.  <br\/><\/p><p>Prices are listed in US dollars.  <br\/><\/p><p>Please note orders CANNOT be cancelled or altered after they are placed as payment is processed automatically. <br\/><\/p><p><strong>How can I track my order?<br\/><\/strong><\/p><p>Once you place your order, you will receive a confirmation email sent to the email address associated with your order.  Orders generally take 2-4 business days for processing and shipping.  <br\/><\/p><p>Once your order has been shipped, you will receive an email with the tracking number for your package.  <br\/><\/p><p>You can always see your orders and the status of your orders by logging into your account. (with link to my account page)<br\/><br\/><\/p><p><strong>How do I cancel or change my order?<br\/><\/strong><\/p><p>We want to make sure we get your order out to you as quickly as possible.  For this reason, once the order is placed, it cannot be changed.  <br\/><\/p><p><strong>Can I use more than one discount code in my order?<br\/><\/strong><\/p><p>No. You can use only ONE discount code per order.<\/p>"
+            }
+          },
+          "225a57f6-7673-4aa8-b6a6-909483fbbbc2": {
+            "type": "text",
+            "settings": {
+              "title": "Terms of Use",
+              "faq": "<p><strong>Terms of Use questions<\/strong><\/p><p><strong>What methods of payment do you accept?<br\/><\/strong><\/p><p>Confête accepts Visa, Discover, Mastercard, American Express, Paypal, Google Pay and Apple Pay.  <br\/><\/p><p>Prices are listed in US dollars.  <br\/><\/p><p>Please note orders CANNOT be cancelled or altered after they are placed as payment is processed automatically. <br\/><\/p><p><strong>How can I track my order?<br\/><\/strong><\/p><p>Once you place your order, you will receive a confirmation email sent to the email address associated with your order.  Orders generally take 2-4 business days for processing and shipping.  <br\/><\/p><p>Once your order has been shipped, you will receive an email with the tracking number for your package.  <br\/><\/p><p>You can always see your orders and the status of your orders by logging into your account. (with link to my account page)<br\/><br\/><\/p><p><strong>How do I cancel or change my order?<br\/><\/strong><\/p><p>We want to make sure we get your order out to you as quickly as possible.  For this reason, once the order is placed, it cannot be changed.  <br\/><\/p><p><strong>Can I use more than one discount code in my order?<br\/><\/strong><\/p><p>No. You can use only ONE discount code per order.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "b07fe548-5e91-41eb-9a29-ab8bef1f4159",
+          "925acf4d-2078-4a62-8f4e-834b328016ef",
+          "f007e60a-80ee-4b92-9de0-39520e1d412d",
+          "984e31b0-3eda-4155-85b8-5ea40ac2eba9",
+          "7e4bd759-0149-46af-a7e8-71aa19fd2031",
+          "abca912e-180f-42c7-96d7-b213ca1221c9",
+          "225a57f6-7673-4aa8-b6a6-909483fbbbc2"
+        ],
+        "settings": {
+          "faq_title": "FAQs",
+          "faq_copy": "<p>We want to make sure your time spent on shop-confete.com is as smooth and simple as possible.  Below you’ll find answers to some of our frequently asked questions.  If you don’t see your question answered here, please email us at hi@confeteshop.com.<\/p>",
+          "faq_email": ""
+        }
+      },
+      "contact-form": {
+        "type": "contact-form",
+        "settings": {
+          "sidebar_intro": "We are a small, local business, so our online help team is not available on weekends and holidays.  We will be back with you on the following business day.",
+          "hours": "Monday - Friday\n9am - 5pm PT",
+          "email": "email@confeteshop.com",
+          "phone": "(415) 483-5667",
+          "sidebar_outro": "For questions about orders, please include order number and name on the order in the body of the email.",
+          "heading": "Contact Us",
+          "text": "<p>At Confête, satisfied customers and friends are our number one priority.  Please let us know if there’s any way we can help, improve or you just want to say hello!<\/p>"
+        }
+      },
+      "emails": {
+        "type": "emails",
+        "settings": {
+          "heading_1": "Press",
+          "email_1": "press@confeteshop.com",
+          "heading_2": "Collaborate",
+          "email_2": "partners@confeteshop.com"
+        }
+      },
+      "16637324535a24e300": {
+        "type": "featured-collection-without-ring",
+        "settings": {
+          "title": "What's New",
+          "collection_desc": "",
+          "collection": "whats-new"
+        }
+      },
+      "bridal-banner": {
+        "type": "bridal-banner",
+        "settings": {
+          "add-heading": "The <span class=\"italic_heading\">Bridal Suite<\/span>",
+          "description": "<p>Everything you need for your dream bridal closet<\/p>",
+          "btn-link": "",
+          "banner-image": "shopify:\/\/shop_images\/bridal-suit-banner.jpg",
+          "mobile-banner": "shopify:\/\/shop_images\/bridal-suit-banner.jpg",
+          "responsive-banner": "shopify:\/\/shop_images\/bridal-suit-banner.jpg"
+        }
+      },
+      "bridal-suite": {
+        "type": "bridal-suite",
+        "blocks": {
+          "b8be7b91-ca4c-4dab-b92a-73548ffd9438": {
+            "type": "image-columns",
+            "settings": {
+              "block-heading": "Shop the Event",
+              "image-1-heading": "",
+              "first_image": "shopify:\/\/shop_images\/Engagement_Party_1_1.jpg",
+              "first_btn": "Engagement Party",
+              "btn-link-1": "https:\/\/shop-confete.com\/collections\/engagement-party",
+              "image-2-heading": "",
+              "second_image": "shopify:\/\/shop_images\/Bridal_Shower_1_1.jpg",
+              "second_btn": "Bridal Shower",
+              "btn-link-2": "shopify:\/\/collections\/bridal-shower"
+            }
+          }
+        },
+        "block_order": [
+          "b8be7b91-ca4c-4dab-b92a-73548ffd9438"
+        ],
+        "settings": {
+        }
+      },
+      "bride_collection_list": {
+        "type": "bride_collection_list",
+        "blocks": {
+          "2d8a6f13-fe67-4980-b2d5-2386c37b8fc5": {
+            "type": "collection",
+            "settings": {
+              "collection": "bridal-accessories",
+              "image": "shopify:\/\/shop_images\/Accessories_in_Slider_1.jpg"
+            }
+          },
+          "fa737fff-d4e6-4d67-be2d-b6c67ae67adb": {
+            "type": "collection",
+            "settings": {
+              "collection": "rehearsal-dinner",
+              "image": "shopify:\/\/shop_images\/Rehearsal_in_Slider_1.jpg"
+            }
+          },
+          "bc5df3b7-d61d-434f-9d3a-1875ae073004": {
+            "type": "single-collection",
+            "settings": {
+              "collection_name": "the-micro-wedding",
+              "collection_title": "Micro-Wedding",
+              "collection_image": "shopify:\/\/shop_images\/MicroWedding_1.png"
+            }
+          },
+          "e09b9926-0283-461c-a90a-154eba9c49d7": {
+            "type": "collection",
+            "settings": {
+              "collection": "sunglasses",
+              "image": "shopify:\/\/shop_images\/Sunglasses_1.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "2d8a6f13-fe67-4980-b2d5-2386c37b8fc5",
+          "fa737fff-d4e6-4d67-be2d-b6c67ae67adb",
+          "bc5df3b7-d61d-434f-9d3a-1875ae073004",
+          "e09b9926-0283-461c-a90a-154eba9c49d7"
+        ],
+        "settings": {
+          "title": "The Best Bridal Style In the Game",
+          "enable_slider": false
+        }
+      },
+      "bridal_collection_round_images": {
+        "type": "bridal_collection_round_images",
+        "blocks": {
+          "98af7f34-4b90-438a-a812-b9e669d2ff1d": {
+            "type": "collection-columns",
+            "settings": {
+              "col-heading": "NON-TRADITIONAL BRIDAL SHOWER",
+              "col-desc": "",
+              "collection_link": "shopify:\/\/collections\/non-traditional-bridal-shower-looks",
+              "image": "shopify:\/\/shop_images\/Non_Trad_Bridal_Shower_2_1.jpg"
+            }
+          },
+          "91ed88c9-0c26-448c-b44f-68f9b8749267": {
+            "type": "collection-columns",
+            "settings": {
+              "col-heading": "BACHELORETTE PARTY",
+              "col-desc": "",
+              "collection_link": "shopify:\/\/collections\/bachelorette-party",
+              "image": "shopify:\/\/shop_images\/Bachelorette_1_1.jpg"
+            }
+          },
+          "5c4067f9-f39d-4024-9cc6-5e3bcea92195": {
+            "type": "collection-columns",
+            "settings": {
+              "col-heading": "REHEARSAL DINNER",
+              "col-desc": "",
+              "collection_link": "shopify:\/\/collections\/rehearsal-dinner",
+              "image": "shopify:\/\/shop_images\/Rehearsal.jpg"
+            }
+          },
+          "b9d770cf-10eb-40a6-98c2-594456eca8b9": {
+            "type": "collection-columns",
+            "settings": {
+              "col-heading": "WEDDING GUEST",
+              "col-desc": "",
+              "collection_link": "shopify:\/\/collections\/wedding-guest",
+              "image": "shopify:\/\/shop_images\/Wedding_Guest_1_1.jpg"
+            }
+          },
+          "bbaaf20b-08d9-4a4c-bd0f-156ae5c5b61d": {
+            "type": "collection-columns",
+            "settings": {
+              "col-heading": "WEDDING AFTER-PARTY",
+              "col-desc": "",
+              "collection_link": "shopify:\/\/collections\/wedding-after-party",
+              "image": "shopify:\/\/shop_images\/After_Party_1_1.jpg"
+            }
+          },
+          "f6945101-f1bd-44e7-8718-33ad80414f13": {
+            "type": "collection-columns",
+            "settings": {
+              "col-heading": "HONEYMOON",
+              "col-desc": "",
+              "collection_link": "shopify:\/\/collections\/honeymoon",
+              "image": "shopify:\/\/shop_images\/honeymoon.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "98af7f34-4b90-438a-a812-b9e669d2ff1d",
+          "91ed88c9-0c26-448c-b44f-68f9b8749267",
+          "5c4067f9-f39d-4024-9cc6-5e3bcea92195",
+          "b9d770cf-10eb-40a6-98c2-594456eca8b9",
+          "bbaaf20b-08d9-4a4c-bd0f-156ae5c5b61d",
+          "f6945101-f1bd-44e7-8718-33ad80414f13"
+        ],
+        "settings": {
+          "main-sec-heading": "Style By Occasion",
+          "heading_tag": "h2",
+          "main-desc": ""
+        }
+      },
+      "collection-btns": {
+        "type": "collection-btns",
+        "blocks": {
+          "5440843b-4331-4898-a5a1-4fdb25aeb948": {
+            "type": "collection-btns",
+            "settings": {
+              "collection_subheading": "Engagement photos",
+              "collection_link": "https:\/\/shop-confete.com\/collections\/engagement-photos"
+            }
+          },
+          "9188f564-6ca3-4513-805a-32305f7172e3": {
+            "type": "collection-btns",
+            "settings": {
+              "collection_subheading": "Bridal brunch",
+              "collection_link": "https:\/\/shop-confete.com\/collections\/bridal-brunch"
+            }
+          },
+          "f38e73f6-2128-4fe3-adcb-21d2671a1446": {
+            "type": "collection-btns",
+            "settings": {
+              "collection_subheading": "Day of accessories",
+              "collection_link": "https:\/\/shop-confete.com\/collections\/day-of-accessories"
+            }
+          }
+        },
+        "block_order": [
+          "5440843b-4331-4898-a5a1-4fdb25aeb948",
+          "9188f564-6ca3-4513-805a-32305f7172e3",
+          "f38e73f6-2128-4fe3-adcb-21d2671a1446"
+        ],
+        "settings": {
+          "collection_heading": ""
+        }
+      },
+      "bridal-suite-image-section": {
+        "type": "bridal-suite-image-section",
+        "blocks": {
+          "2ffe610e-0774-448b-90bb-22700b8963a3": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/IMG_3565_1.jpg",
+              "alt-text": ""
+            }
+          },
+          "40a53fd6-3b66-46c1-97d2-0e4adf220734": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/IMG_3563_1.jpg",
+              "alt-text": ""
+            }
+          },
+          "74468635-4f23-4459-8a08-80250be1fda6": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/IMG_3561_1.jpg",
+              "alt-text": ""
+            }
+          },
+          "008dfb9c-b87f-4f4a-9aa2-4fbc714f00b7": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screen_Shot_2022-12-19_at_11.47.19_AM.jpg",
+              "alt-text": ""
+            }
+          }
+        },
+        "block_order": [
+          "2ffe610e-0774-448b-90bb-22700b8963a3",
+          "40a53fd6-3b66-46c1-97d2-0e4adf220734",
+          "74468635-4f23-4459-8a08-80250be1fda6",
+          "008dfb9c-b87f-4f4a-9aa2-4fbc714f00b7"
+        ],
+        "settings": {
+        }
+      },
+      "bridal_featured-collection": {
+        "type": "bridal_featured-collection",
+        "settings": {
+          "title": "Bridal Babe Faves",
+          "collection_desc": "",
+          "collection": "the-bridal-suite"
+        }
+      },
+      "collection-graphics": {
+        "type": "collection-graphics",
+        "settings": {
+          "big_image": "shopify:\/\/shop_images\/CMT_3888.png",
+          "small_image": "shopify:\/\/shop_images\/CMT_3382.png",
+          "background_color": "#ffffff",
+          "title": "DRESSES FOR EVERY OCCASION",
+          "dynamic_text": "",
+          "cta": "SEE MORE",
+          "cta_link": "",
+          "flex_direction": "row"
+        }
+      }
+    },
+    "content_for_index": [
+      "1590088248718",
+      "16637324535a24e300",
+      "1590090367109",
+      "1591382647708",
+      "featured-collection",
+      "1590359615071",
+      "1591383870262",
+      "1591720482170",
+      "16113074942a627e8a"
+    ],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "sections": {
+        "collection-list": {
+          "type": "collection-list",
+          "blocks": {
+            "collection-list-0": {
+              "type": "collection",
+              "settings": {
+              }
+            },
+            "collection-list-1": {
+              "type": "collection",
+              "settings": {
+              }
+            },
+            "collection-list-2": {
+              "type": "collection",
+              "settings": {
+              }
+            }
+          },
+          "block_order": [
+            "collection-list-0",
+            "collection-list-1",
+            "collection-list-2"
+          ],
+          "settings": {
+          }
+        },
+        "featured-collection": {
+          "type": "featured-collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "featured-product": {
+          "type": "featured-product",
+          "settings": {
+          }
+        }
+      },
+      "content_for_index": [
+        "collection-list",
+        "featured-collection",
+        "featured-product"
+      ]
+    }
+  }
+}

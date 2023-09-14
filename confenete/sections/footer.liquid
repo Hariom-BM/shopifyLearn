@@ -1,0 +1,139 @@
+{% liquid
+  assign footer_menu = section.settings.footer_menu
+  assign footer_image = section.settings.footer_image
+  assign email = section.settings.email
+assign phone_number = section.settings.phone_number
+assign formatted_phone_number = section.settings.formatted_phone_number
+  assign newsletter_heading = section.settings.newsletter_heading
+  assign newsletter_text = section.settings.newsletter_text
+%}
+
+
+<footer class="site-footer">
+  <div class="site-footer__start">
+    <div class="site-footer__start-start">
+      <div class="site-footer__start-start-inner">
+        <img class="site-footer__image lazyload"
+             loading="lazy"
+             src="{{ 'loading-image.png' | asset_url }}"
+             data-src="{{ footer_image | img_url: '136x194'}}" alt="Champage glasses"
+             aria-hidden="true">
+        <noscript>
+        	<img class="site-footer__image" src="{{ footer_image | img_url: '136x194'}}" alt="Champage glasses" aria-hidden="true">
+        </noscript>
+        {% if linklists[footer_menu].links.size > 0 %}
+          <ul class="site-footer__menu u-ul-reset">
+            {% for link in linklists[footer_menu].links %}
+              <li><a href="{{ link.url }}" class="nav-text">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="site-footer__start-end" id="contact_form">
+
+      <div class="site-footer__start-end-inner">
+<!--         <h2>{{ newsletter_heading }}</h2>
+        <p>{{ newsletter_text}}</p>
+        {% form 'customer', customer, id: "customer_form" %}
+          {{ form.errors | default_errors }}
+          {% if form.posted_successfully? %}
+            <p>{{ 'general.newsletter_form.confirmation' | t }}</p>
+          {% else %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <label for="Email" class="label-hidden">Email</label>
+            <input type="email"
+              name="contact[email]"
+              id="Email"
+              value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+              placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+              autocorrect="off"
+              autocapitalize="off">
+            <button class="btn btn-secondary" type="submit" name="commit" id="NewsletterSubscribe" aria-label="Subscribe">
+              <span>{{ 'general.newsletter_form.submit' | t }}</span>
+            </button>
+          {% endif %}
+        {% endform %} -->
+        <div class="klaviyo-form-RHvqeA"></div>
+      </div>
+    
+    </div>
+
+  </div>
+
+  <div class="site-footer__end site-footer-copyright-details">
+    <div class="site-footer__end-container wrapper wrapper--largeish">
+      <div class="site-footer__end-start">
+        <a href="mailto:hi@shop-confete.com">
+        <span class="email-link">
+          {% render 'icon-email' %}
+          <span class="h3 u-mb-0">Contact Us</span>
+        </span>
+          </a>
+        <a href="mailto:{{email}}" class="u-serif">{{email}}</a>
+        <a href="{{phone_number}}" class="h3 u-mb-0 footer-phone-number">{{formatted_phone_number}}</a>
+        
+      </div>
+
+      <div class="site-footer__end-end"
+      >
+        <span class="nav-text">
+        {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}.
+        <span class="credit">
+          Site by <a href="https://thestudio9company.com" target="_blank">S9CO</a> + <a href="https://kindredstudio.ca" target="_blank">KS</a>
+        </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "footer_menu",
+        "label": "Footer menu",
+        "default": "footer"
+      },
+      {
+        "type": "image_picker",
+        "id": "footer_image",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_heading",
+        "label": "Newsletter Heading"
+      },
+      {
+        "type": "text",
+        "id": "email",
+        "label": "Email"
+      },
+{
+        "type": "text",
+        "id": "phone_number",
+        "label": "Phone Number"
+      },
+{
+        "type": "text",
+        "id": "formatted_phone_number",
+        "label": "Formatted Phone Number"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_text",
+        "label": "Newsletter Text"
+      }
+    ]
+  }
+
+{% endschema %}
+
+
+
+<script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>

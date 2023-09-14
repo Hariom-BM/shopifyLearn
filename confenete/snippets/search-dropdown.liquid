@@ -1,0 +1,14 @@
+<div class="search-dropdown" id="search-dropdown">
+  {% render 'close-button' with {id: 'js-search-close'} %}
+  <form action="/search" method="get" role="search" id="search_form">
+    <label for="Search-{{ section.id }}" class="label-hidden">
+      {{ 'general.search.placeholder' | t }}
+    </label>
+
+    <input type="search"
+      name="q"
+      id="Search-{{ section.id }}"
+      value="{{ search.terms | escape }}"
+      placeholder="{{ 'general.search.placeholder' | t }}">
+  </form>
+</div>

@@ -1,0 +1,208 @@
+<div
+  class="collection-graphic "
+  style="background-color: {{ section.settings.background_color | default: '#ffffff' }};"
+>
+  <div class="graphic-inner wrapper" style="flex-direction:{{section.settings.flex_direction }};">
+    <div class="image-wrapper" style="flex-direction:{{section.settings.flex_direction }};">
+      <div class="big-img">
+        <img src="{{ section.settings.big_image | img_url: '600x600' }}" alt="">
+      </div>
+      <div class="small-img">
+        <img src="{{ section.settings.small_image | img_url: '300x300' }}" alt="">
+      </div>
+    </div>
+    <div class="graphic-about">
+      <h2
+        class="graphic-title"
+        style="font-size: {{ section.settings.font_size_title }}; color: {{ section.settings.font_color_title }};"
+      >
+        {{ section.settings.title }}
+      </h2>
+
+      <div
+        class="graphic-rich-text"
+        style="font-size: {{ section.settings.font_size_desc }}; color: {{ section.settings.font_color_desc }};"
+      >
+        {{ section.settings.dynamic_text }}
+      </div>
+
+      <div class="graphic-semore">
+        {{ section.settings.cta | link_to: section.settings.cta_link }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Graphics",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Big Image",
+      "id": "big_image"
+    },
+    {
+      "type": "image_picker",
+      "label": "Small Image",
+      "id": "small_image"
+    },
+    {
+      "type": "color",
+      "label": "Background Color",
+      "id": "background_color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "label": "Title",
+      "id": "title"
+    },
+      {
+      "type": "color",
+      "label": "Font Color title",
+      "id": "font_color_title",
+      "default": "#000000"
+    },
+     {
+      "type": "text",
+      "label": "Font Size",
+      "id": "font_size_title",
+      "default": "16px"
+    },
+       {
+      "type": "color",
+      "label": "Font Color desc",
+      "id": "font_color_desc",
+      "default": "#000000"
+    },
+      {
+      "type": "text",
+      "label": "Font size desc",
+      "id": "font_size_desc"
+    },
+    {
+      "type": "richtext",
+      "label": "Dynamic Content",
+      "id": "dynamic_text"
+    },
+    {
+      "type": "text",
+      "label": "CTA Text",
+      "id": "cta"
+    },
+    {
+      "type": "url",
+      "label": "CTA Link",
+      "id": "cta_link"
+    },
+    {
+      "type": "select",
+      "label": "Flex Direction",
+      "id": "flex_direction",
+      "options": [
+        {
+          "value": "row",
+          "label": "Row (Default)"
+        },
+        {
+          "value": "column",
+          "label": "Column"
+        },
+        {
+          "value": "column-reverse",
+          "label": "Column reverse"
+        },
+        {
+          "value": "row-reverse",
+          "label": "Row reverse"
+        }
+      ]
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  .collection-graphic{
+      padding:60px 30px 30px;
+  }
+  .collection-graphic .image-wrapper{
+    display:flex;
+    align-items:center;
+
+  }
+
+  .graphic-inner{
+    display:flex;
+    gap:40px;
+  }
+
+   .graphic-inner >div{
+     flex:45%;
+   }
+
+  .small-img{
+    margin-left:-40px;
+  }
+
+  .image-wrapper[style="flex-direction:row-reverse;"] .small-img{
+    margin-right:-40px;
+    z-index:9;
+  }
+
+  .graphic-about .graphic-title{
+    margin-bottom:0;
+  }
+  .graphic-rich-text{
+    padding:16px 0 24px;
+  }
+
+   .graphic-semore a{
+     padding: 12px 40px;
+     background: var(--Mustard, #C0803B);
+     color: var(--White, #FFF);
+      font-family: Inter;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 16.3px; /* 125.385% */
+      letter-spacing: 2.6px;
+      text-transform: uppercase;
+   }
+
+  .graphic-rich-text p a{
+    text-decoration:underline;
+  }
+
+
+
+
+      /* Mobile Styles */
+    @media (max-width: 767px) {
+      .image-wrapper {
+       flex-direction: ;
+      }
+    }
+
+    /* Tablet Styles */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .image-wrapper {
+       flex-direction: ;
+      }
+    }
+
+    /* Desktop Styles */
+    @media (min-width: 1024px) {
+        .image-wrapper {
+       flex-direction: ;
+      }
+    }
+{% endstyle %}

@@ -1,0 +1,526 @@
+{%- paginate collection.products by 9 %}
+  <div class="collection-template">
+    {% include 'breadcrumbs' %}
+    <div class="collection-image wrapper">
+      {% if collection.handle == 'all' %}
+        <img
+          class="lazyload"
+          loading="lazy"
+          src="{{ 'loading-image.png' | asset_url }}"
+          data-src="{{ 'background-our-story.jpg' | asset_img_url }}"
+        >
+        <noscript>
+          <img src="{{ 'background-our-story.jpg' | asset_img_url }}">
+        </noscript>
+      {% else %}
+        {% if collection.image %}
+          <picture>
+            <source media="(max-width: 767px)" srcset="{{ collection.image | img_url: '500x309', crop:'center'}} 500w">
+            <img
+              class="lazyload"
+              loading="lazy"
+              src="{{ 'loading-image.png' | asset_url }}"
+              data-src="{{ collection.image | img_url: '2000x910', crop:'center'}}"
+              alt="{{ collection.image.alt | escape }}"
+              width="1800"
+              height="428"
+            >
+            <noscript>
+              <img
+                src="{{ collection.image | img_url: '2000x910', crop:'center'}}"
+                alt="{{ collection.image.alt | escape }}"
+              >
+            </noscript>
+          </picture>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <div class="collection-template__products wrapper" id="products">
+      <div class="description">
+        {% comment %}
+          <div class="collection-title">
+            <h1>{{ collection.title }}</h1>
+          </div>
+        {% endcomment %}
+        {% if collection.description != blank %}
+          {% assign descriptions = collection.description | split: '<!-- split -->' %}
+          {% assign short_desc = descriptions[0] %}
+          {% assign long_desc = descriptions[1] %}
+          <div class="collection-top-description rte">
+            <!-- {{ short_desc }} -->
+          </div>
+        {% endif %}
+      </div>
+      <div class="sort-by--d">
+        {% render 'sort-by' %}
+      </div>
+      <div class="collection-template__main">
+        <div class="sidebar-container">
+          {% render 'sidebar' %}
+
+          <div class="sort-by--r">
+            {% render 'sort-by' %}
+          </div>
+        </div>
+
+        <div class="collection-template__grid-container">
+          <div class="collection-template__grid product-grid" id="AjaxinateContainer">
+            {% for product in collection.products %}
+              {% render 'product-preview' with product as product %}
+            {% endfor %}
+          </div>
+
+          {% include 'pagination' %}
+          <div class="description bottom-description rte">{{ long_desc }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endpaginate %}
+
+{% section 'instagram' %}
+
+<script>
+var toggleButton = document.querySelectorAll('.toggle-desc')
+toggleButton.forEach(function (el) {
+  el.addEventListener('click', function () {
+    document.querySelector('.collection-page-hero-description').classList.toggle('col-hero-text--open')
+  })
+
+})
+
+
+// filter funtionality
+document.querySelectorAll('.radio-input').forEach(function (el) {
+  // document.querySelector('.radio-input[checked]').click()
+
+  el.addEventListener('click', function () {
+    // Update inner HTML when any radio input is clicked
+    var selectedItem = el.closest('label').textContent;
+    document.querySelector('.selected').innerHTML = selectedItem;
+
+    // Uncheck all other radio inputs
+    document.querySelectorAll('.radio-input').forEach(function (input) {
+      if (input !== el) {
+        input.checked = false;
+      }
+    });
+  });
+
+  if (el.checked) {
+    // Set the inner HTML initially for the checked radio input
+    var selectedItem = el.closest('label').textContent;
+    document.querySelector('.selected').innerHTML = selectedItem;
+  }
+});
+
+
+document.body.addEventListener('click', function (e) {
+  const sortByOptions = document.querySelector('.sort-by-options');
+
+  if (!sortByOptions.contains(e.target)) {
+    sortByOptions.classList.remove('active');
+  }
+});
+document.querySelector('.sort-by-options').addEventListener('click', function (e) {
+  e.stopPropagation(); // Prevent the click event from reaching the body listener
+  this.classList.toggle('active');
+});
+
+
+
+function initializeProductPage() {
+  // Get all product items
+  const productItems = document.querySelectorAll('.product-preview');
+
+  // Function to remove 'size-chart' class from all product items except a specific one
+  function removeSizeChartClassExcept(productItemToKeep) {
+    productItems.forEach(function (productItem) {
+      if (productItem !== productItemToKeep) {
+        productItem.classList.remove('size-chart');
+      }
+    });
+  }
+  productItems.forEach(function (productItem) {
+    const labelElements = productItem.querySelectorAll('.radio-container label');
+    const button = productItem.querySelector('.button-container.glitter button');
+
+    labelElements.forEach(function (label) {
+      label.addEventListener('click', function (event) {
+        event.preventDefault();
+        const labelText = this.textContent.trim(); // Use textContent consistently and trim whitespace
+
+        label.classList.remove('active');
+
+        // Add 'active' class to the clicked label
+        this.classList.add('active');
+
+        const radioContainer = this.closest('.radio-container');
+        const selectElement = radioContainer.nextElementSibling;
+
+        if (selectElement.tagName === 'SELECT') {
+          const options = selectElement.querySelectorAll('option');
+
+          options.forEach(function (option) {
+            console.log(labelText === option.textContent.trim());
+            if (labelText === option.textContent.trim()) {
+              option.selected = true;
+              if (button) {
+                button.click();
+              }
+
+            } else {
+              option.selected = false; // Deselect non-matching options
+            }
+          });
+        }
+
+        
+
+        // Remove 'size-chart' class from all product items except the clicked one
+        removeSizeChartClassExcept(productItem);
+      });
+    });
+
+    const quickAddButton = productItem.querySelector('.quick-add');
+    quickAddButton.addEventListener('click', function (event) {
+
+      console.log('quickAddButton')
+      event.preventDefault();
+      productItem.classList.add('size-chart');
+
+      // Remove 'size-chart' class from all product items except the clicked one
+      removeSizeChartClassExcept(productItem);
+    });
+  });
+
+
+
+
+  // Add an outside click event listener to remove 'size-chart' class from all product items
+  document.body.addEventListener('click', function (event) {
+    const clickedProductItem = event.target.closest('.product-preview');
+    if (!clickedProductItem) {
+      // No product item was clicked, so remove 'size-chart' class from all product items
+      productItems.forEach(function (productItem) {
+        productItem.classList.remove('size-chart');
+      });
+    }
+  });
+
+
+}
+
+// call function for ATC
+initializeProductPage()
+
+
+// Add event listener to the parent element of 'btn-load-more' using event delegation
+document.querySelector('.collection-template__main').addEventListener('click', function (e) {
+  if (e.target && e.target.classList.contains('btn-load-more')) {
+    // Delay the execution by 500 milliseconds (adjust the delay as needed)
+    setTimeout(() => {
+      initializeProductPage()
+    }, 2500);
+  }
+});
+</script>
+
+{% style %}
+    /* hero desc block  */
+    .collection-image.wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .collection-page-hero-description {
+      position: absolute;
+      background: #FFF0E7;
+      max-width: 462px;
+      right: 0;
+      top: 50%;
+      width: 100%;
+      left: 94%;
+      transform: translate(-90%, -50%);
+      padding: 20px;
+    }
+
+    .collection-page-hero-description h2 {
+
+      font-family: Libre Caslon Text;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 25px;
+      letter-spacing: 1px;
+      text-align: left;
+      margin: 0;
+      padding-bottom: 16px;
+    }
+
+    .collection-page-hero-description .collection-top-description p {
+
+      font-family: Inter;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: 1.2999999523162842px;
+      text-align: left;
+      /* white-space: nowrap; */
+      text-overflow: ellipsis;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      margin-bottom: 0;
+
+    }
+
+    .toggle-desc {
+      color: var(--Mustard, #C0803B);
+      font-family: Inter;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 16.3px;
+      /* 125.385% */
+      letter-spacing: 2.6px;
+      text-decoration-line: underline;
+      padding-top: 16px;
+      cursor: pointer;
+    }
+
+    .less {
+      display: none;
+    }
+
+    .collection-page-hero-description.col-hero-text--open .less {
+      display: block;
+    }
+
+    .collection-page-hero-description.col-hero-text--open .more {
+      display: none;
+    }
+
+
+
+    .collection-page-hero-description.col-hero-text--open .collection-top-description p {
+      white-space: break-spaces;
+      text-overflow: initial;
+      display: block;
+      width: 100%;
+      overflow: visible;
+    }
+
+    /* hero desc block  end */
+
+
+
+    /* sort by filter */
+
+
+    .collection-radio-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #products select {
+      display: none;
+    }
+
+    .collection-radio-container .radio-label {
+      padding: 10px 20px;
+      color: var(--Mustard, #C0803B);
+      font-family: Inter;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 30px;
+      letter-spacing: 1.5px;
+      text-transform: capitalize;
+      margin-right: 0;
+      cursor: pointer;
+    }
+
+    .s-sort-by.h3 {
+      position: relative;
+    }
+
+    .collection-radio-container {
+      border: 1px solid #C0803B;
+      background: #FFF;
+      color: #C0803B;
+      position: absolute;
+      z-index: 999;
+      right: 0;
+      top: 100%;
+      min-width: 260px;
+      display: none;
+    }
+
+    .selected {
+      /* min-width: 191px; */
+      height: 50px;
+      background: #fdece6;
+      background-position: calc(100% - 2rem), calc(100% - 1.5rem);
+      background-repeat: no-repeat;
+      background-size: 0.5rem 0.5rem;
+      color: #c0803b;
+      cursor: pointer;
+      font-size: 1.2rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #products .s-sort-by.h3 .sort-by-options {
+      min-width: 191px;
+      height: 50px;
+      background: #fdece6;
+      background-image: linear-gradient(45deg, transparent 50%, #c0803b 0), linear-gradient(135deg, #c0803b 50%, transparent 0);
+      background-position: calc(100% - 2rem), calc(100% - 1.5rem);
+      background-repeat: no-repeat;
+      background-size: 0.5rem 0.5rem;
+      color: #c0803b;
+      cursor: pointer;
+      font-size: 1.2rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4rem 0 2rem;
+    }
+
+    .active .collection-radio-container {
+      display: flex;
+    }
+
+    /* sort by filter end  */
+
+
+    /* hover to add whislist */
+
+    .product-preview {
+      position: relative;
+    }
+
+    .wishlist-icon {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      opacity: 0;
+      display: block;
+      background-color: #C0803B;
+      cursor: pointer;
+      z-index: 9;
+    }
+
+
+
+    .product-preview:hover .wishlist-icon {
+      opacity: 1;
+    }
+
+   /* hover to add whislist end */
+
+    .product-preview .collection-products-item{
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      z-index:9;
+    }
+
+  .collection-products-item >form >*{
+    display:none;
+  }
+
+
+    .collection-template__grid-container .product-preview form .radio-container {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      width: 90%;
+      left: 12px;
+      right: 12px;
+      padding: 8px 0px;
+      margin-top: -2px;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid var(--Mustard, #C0803B);
+      background: var(--White, #FFF);
+    }
+
+    .collection-template__grid-container .product-preview .quick-add {
+      bottom: 21px;
+      left: 12px;
+      right: 12px;
+      position: absolute;
+      z-index: 9;
+      width: 90%;
+      padding: 8px 0px;
+      border: 1px solid var(--Mustard, #C0803B);
+      background: var(--White, #FFF);
+      text-align: center;
+      color: var(--Mustard, #C0803B);
+      text-align: center;
+      font-family: Inter;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 30px;
+      letter-spacing: 1.5px;
+      opacity: 0;
+    }
+  .size-chart .collection-products-item{
+    opacity:0;
+  }
+
+  .size-chart .collection-products-item:hover{
+    opacity:1;
+  }
+
+    .product-preview:hover .quick-add {
+      opacity: 1;
+    }
+
+   .size-chart .quick-add {
+      display: none !important;
+    }
+
+  .size-chart .collection-products-item>form .radio-container{
+    display:flex !important;
+  }
+
+    .collection-products-item .radio-container label {
+      padding: 5px 10px;
+
+    }
+
+    .collection-products-item .radio-container label.active {
+      background: #FFF0E7;
+    }
+
+    .collection-template__grid-container .product-preview form .button-container.glitter {
+      display:none !important;
+    }
+
+    .collection-products-item.size-chart .product-preview form .radio-container {
+      display: flex;
+    }
+
+  .collection-template__grid-container .product-preview form .radio-container input{
+    display:none;
+  }
+{% endstyle %}
+
+{% render 'ajax-cart-complete'  %}

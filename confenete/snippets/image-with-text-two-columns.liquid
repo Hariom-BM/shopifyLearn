@@ -1,0 +1,36 @@
+<section class="image-with-text-two-columns">
+
+  {% for block in section.blocks %}
+    <div class="image-with-text-two-columns__column"
+      style="--bg-color:{{ block.settings.bg_color }}; --text-color:{{ block.settings.text_color }}">
+
+      <div class="image-with-text-two-columns__image u-hover-zoom">
+        {% if block.settings.image != blank %}
+          <img
+            src="{{ block.settings.image | img_url }}"
+            srcset="{{ block.settings.image | img_url: '800x640'}} 800w, {{ block.settings.image | img_url: '1600x1280'}} 1600w"
+            sizes="(max-width: 767px) 100vw, 50vw"
+            alt="{{ block.settings.image.alt | escape }}">
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+
+      <div class="image-with-text-two-columns__text">
+        {% if block.settings.subheading != blank %}
+          <div class="caption-container">
+            <span class="caption">{{ block.settings.subheading | escape }}</span>
+          </div>
+        {% endif %}
+        {% if block.settings.heading != blank %}
+          <h4>{{ block.settings.heading | escape }}</h4>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div>{{ block.settings.text }}</div>
+        {% endif %}
+      </div>
+
+    </div>
+  {% endfor %}
+
+</section>

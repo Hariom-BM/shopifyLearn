@@ -1,0 +1,143 @@
+<section class="s-hero">
+  <div class="s-hero__container wrapper">
+    <div class="swiper-container" {% if section.settings.enable_slider == true %} id="hero-slider" {% endif %}>
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% liquid
+            assign layout = block.settings.layout
+            assign mobile_image = block.settings.mobile_image
+            assign hero_image = block.settings.hero_image
+            assign hero_image_2 = block.settings.hero_image_2
+            assign hero_heading = block.settings.hero_heading
+            assign hero_subheading = block.settings.hero_subheading
+            assign hero_text = block.settings.hero_text
+             assign hero_banner_url = block.settings.hero_banner_url
+            assign hero_btn_url = block.settings.hero_btn_url
+            assign hero_btn_text = block.settings.hero_btn_text
+            assign text_color = block.settings.text_color
+          %}
+          <div class="swiper-slide layout-{{ layout }}">
+            {% if layout == 'default' %}
+              {% include 'hero-default' %}
+            {% endif %}
+            {% if layout == 'full-width-text-right' or layout == 'full-width-text-left' %}
+              {% include 'hero-full-width' %}
+            {% endif %}
+            {% if layout == 'two-images' %}
+              {% include 'hero-two-images' %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "Hero (default)",
+  "max_blocks": 12,
+   "settings": [
+      {
+          "type": "checkbox",
+          "id": "enable_slider",
+          "label": "Enable Slider",
+         "default": false
+        }
+      
+    ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "full-width-text-right",
+              "label": "Full Width, Text on Right"
+            },
+            {
+              "value": "full-width-text-left",
+              "label": "Full Width, Text on Left"
+            },
+            {
+              "value": "two-images",
+              "label": "Two Images"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "hero_image",
+          "label": "Image"
+        },
+{
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "hero_image_2",
+          "label": "Image 2",
+          "info": "Only appears on Two Images layout"
+        },
+        {
+          "type": "text",
+          "id": "hero_subheading",
+          "label": "Subheading",
+          "info": "Only appears on Two Images layout"
+        },
+        {
+          "type": "text",
+          "id": "hero_heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "hero_text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "hero_btn_text",
+          "label": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "hero_btn_url",
+          "label": "Button link"
+        },
+         {
+          "type": "url",
+          "id": "hero_banner_url",
+          "label": "Banner link"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#bf803b",
+          "info": "Text color for full width option"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "category": "Hero"
+    }
+  ]
+}
+
+{% endschema %}

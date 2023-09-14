@@ -1,0 +1,105 @@
+<div class="bm-description bm-bottom-description">
+  <div
+    class="bm-description-inner wrapper"
+    style="background-color: {{ section.settings.background_color }}; font-size: {{ section.settings.font_size }}px;"
+  >
+    <h2 style="color: {{ section.settings.heading_color }};">{{ section.settings.heading }}</h2>
+    <div style="color: {{ section.settings.text_color }}">{{ section.settings.description | newline_to_br }}</div>
+    {% if section.settings.cta_text != blank and section.settings.cta_link != blank %}
+      <a href="{{ section.settings.cta_link }}" class="cta-button">{{ section.settings.cta_text }}</a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Description",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "color",
+      "label": "Heading Color",
+      "id": "heading_color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "label": "Heading Size (px)",
+      "id": "heading_size",
+      "default": "16"
+    },
+    {
+      "type": "richtext",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "color",
+      "label": "Text Color",
+      "id": "text_color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "label": "Font Size (px)",
+      "id": "font_size",
+      "default": "16"
+    },
+    {
+      "type": "color",
+      "label": "Background Color",
+      "id": "background_color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "label": "Remove Section",
+      "id": "remove_section",
+      "default": false
+    },
+    {
+      "type": "text",
+      "label": "CTA Text",
+      "id": "cta_text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "label": "CTA Link",
+      "id": "cta_link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Bottom Description",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+    .bm-bottom-description{
+    padding:60px 0;
+  }
+
+    .bm-description-inner{
+      background: var(--Mustard, #C0803B);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding:48px;
+      text-align:center;
+    }
+
+   .bm-description-inner p{
+     margin-bottom:0;
+   }
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

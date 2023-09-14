@@ -1,0 +1,87 @@
+{
+  "sections": {
+    "product-grid": {
+      "type": "collection-list",
+      "disabled": true,
+      "settings": {
+        "title": "Collection list"
+      }
+    },
+    "b84a153e-4646-433d-9066-73b7ac7c5538": {
+      "type": "collection-hero-banner",
+      "settings": {
+        "justify_direction": "flex-end",
+        "align_direction": "center"
+      }
+    },
+    "banner": {
+      "type": "main-collection",
+      "settings": {
+        "background_image": "shopify:\/\/shop_images\/20230520-08-55-IMG_7068_1.png",
+        "background_color": "rgba(0,0,0,0)",
+        "font_size": "16px",
+        "font_color": "#000000",
+        "square_description": "Go To Paris, Wear The Dress, Have The Best Time Of Your Life",
+        "shop_now_url": "",
+        "shop_link": "SHOP THE PARIS COLLECTION"
+      }
+    },
+    "c07f7990-e523-4bd5-8449-399c6ef38057": {
+      "type": "collection-bottom-short-desc",
+      "settings": {
+        "heading": "Dress Up with Confête",
+        "heading_color": "#ffffff",
+        "heading_size": "16",
+        "description": "<p>From casual to extravagant, let us clothe you in the most beautiful special event dresses imaginable. You’re guaranteed to feel your most gorgeous in our offerings. Don’t forget you get <a href=\"https:\/\/shop-confete.com\/pages\/shipping-returns\" title=\"free shipping\">free shipping<\/a> on orders over $150. Fill your shopping bag and take home a dress for every occasion from Confête. Let’s dress up!<\/p>",
+        "text_color": "#ffffff",
+        "font_size": "16",
+        "background_color": "#bf803b",
+        "remove_section": false,
+        "cta_text": "Shop Now",
+        "cta_link": ""
+      }
+    },
+    "6d270459-3a15-4660-985f-b842e08c0864": {
+      "type": "collection-graphics",
+      "settings": {
+        "big_image": "shopify:\/\/shop_images\/CMT_3888.png",
+        "small_image": "shopify:\/\/shop_images\/CMT_3382.png",
+        "background_color": "#fff0e7",
+        "title": "DRESSES FOR EVERY OCCASION",
+        "font_color_title": "#2d2d2d",
+        "font_size_title": "16px",
+        "font_color_desc": "#2d2d2d",
+        "font_size_desc": "#000000",
+        "dynamic_text": "<p>For your bachelorette party, try a plunging neckline and mid-length number for an elegant dinner gathering or a sparkling sequin mini for a night on the town. Our boutique dresses online come in a wide variety of styles to suit practically every aesthetic. Next up is your <a href=\"https:\/\/shop-confete.com\/collections\/rehearsal-dinner\" target=\"_blank\" title=\"rehearsal dinner!\">rehearsal dinner!<\/a> This special night can be anything from serious and refined to whimsical and romantic. However you celebrate the night before your big day, you’ll find a dress to match with us!<\/p>",
+        "cta": "see more",
+        "cta_link": "",
+        "flex_direction": "row"
+      }
+    },
+    "ee717416-fa93-4dde-9cb4-0d539d6ea6ac": {
+      "type": "collection-graphics",
+      "settings": {
+        "big_image": "shopify:\/\/shop_images\/DKP-Confete-27.png",
+        "small_image": "shopify:\/\/shop_images\/DKP-Confete-14.png",
+        "background_color": "#fff0e7",
+        "title": "DRESSES FOR EVERY OCCASION",
+        "font_color_title": "#2d2d2d",
+        "font_size_title": "16px",
+        "font_color_desc": "#000000",
+        "font_size_desc": "#000000",
+        "dynamic_text": "<p>From casual to extravagant, let us clothe you in the most beautiful special event dresses imaginable. You’re guaranteed to feel your most gorgeous in our offerings. Don’t forget you get <a href=\"https:\/\/shop-confete.com\/pages\/shipping-returns\" target=\"_blank\" title=\"free shipping\">free shipping<\/a> on orders over $150. Fill your shopping bag and take home a dress for every occasion from Confête. Let’s dress up!<\/p>",
+        "cta": "see more",
+        "cta_link": "",
+        "flex_direction": "row-reverse"
+      }
+    }
+  },
+  "order": [
+    "product-grid",
+    "b84a153e-4646-433d-9066-73b7ac7c5538",
+    "banner",
+    "c07f7990-e523-4bd5-8449-399c6ef38057",
+    "6d270459-3a15-4660-985f-b842e08c0864",
+    "ee717416-fa93-4dde-9cb4-0d539d6ea6ac"
+  ]
+}

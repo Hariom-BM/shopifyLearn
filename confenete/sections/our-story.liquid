@@ -1,0 +1,64 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign text = section.settings.text
+  assign btn_url = section.settings.btn_url
+  assign btn_text = section.settings.btn_text
+%}
+
+<section class="s-our-story" style="background-color: #fdece6">
+{% comment %} <section class="s-our-story" style="background-image: url({{ 'background-our-story.jpg' | asset_img_url: '1600x' }}); background-repeat: no-repeat; background-size: cover;"> {% endcomment %}
+
+  <div class="s-our-story__container wrapper wrapper--tiny wrapper--section u-text-center">
+    <h2 class="h1">{{ heading }}</h2>
+    <p class="u-mb-spacer-smallish">{{ text }}</p>
+      {% render 'btn-primary' with {
+        url: btn_url,
+        text: btn_text
+      } %}
+  </div>
+
+</section>
+
+{% schema %}
+
+{
+  "name": "Our Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Story",
+      "category": "CTA"
+    }
+  ]
+}
+
+{% endschema %}
+
+{% comment %} 
+{
+  "id": "video_url",
+  "type": "video_url",
+  "label": "Video URL",
+  "accept": ["youtube", "vimeo"]
+}, {% endcomment %}

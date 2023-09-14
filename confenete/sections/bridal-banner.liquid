@@ -1,0 +1,93 @@
+ {% if section.settings.banner-image != blank or section.settings.description != blank %}
+<div class="bridalpage-banner static-banner">
+   <div class="wrapper">
+ <div class="content-container">   
+    {% if section.settings.add-heading != blank %}
+     <h1 class="banner-heading">{{section.settings.add-heading}}</h1>    
+    {% endif %} 
+     {% if section.settings.description != blank %}
+    <div class="description">
+      {{section.settings.description}}</div>
+      {% endif %}        
+  </div>  
+  </div>
+</div>
+  {% endif %}
+<style>
+  @media only screen and (min-width:481px){
+    .bridalpage-banner{
+      background-image:url({{section.settings.banner-image | img_url : 'master' }});
+      
+    }
+    
+  }
+
+  @media only screen and (max-width:480px){
+    .bridalpage-banner{
+      background-image:url({{section.settings.mobile-banner | img_url : 'master' }});
+      
+    }
+    
+  }
+  
+  
+</style>
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Bridal Banner",
+	
+    "settings": [
+{
+	  "type":"text",
+	  "id": "add-heading",
+	  "label":"Add heading"
+    },
+
+	{
+	  "type":"richtext",
+	  "id": "description",
+	  "label":"Description"
+    },
+
+	{
+	  "type":"url",
+	  "id": "btn-link",
+	  "label":"Btn Link"
+    },
+	{
+	  "type":"image_picker",
+	  "id": "banner-image",
+	  "label":"Banner Image"
+	},
+	{
+		"type":"image_picker",
+		"id":"mobile-banner",
+		"label":"Mobile Banner"
+	},
+{
+		"type":"image_picker",
+		"id":"responsive-banner",
+		"label":"Responsive Banner"
+	}
+     
+]
+
+}
+
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+
+

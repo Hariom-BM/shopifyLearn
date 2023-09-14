@@ -1,0 +1,75 @@
+<div class="slide-out" id="js-slide-out">
+  <a href="/cart" class="cart-link nav-text u-mb-0 js-ajax-cart-drawer-trigger">
+    {% render 'icon-bag' %}
+    Bag
+    (<span class="js-ajax-cart-counter-mobile" data-cart-count>{{ cart.item_count }}</span>)
+  
+  </a>
+  <nav role="navigation" class="nav-slide-out">
+    <ul class="first-ul u-ul-reset">
+      {% for link in linklists[section.settings.menu].links %}
+        {% if link.links != blank %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+            <ul class="childlinks u-ul-reset">
+              {% for childlink in link.links %}
+                <li>
+                  <a class="childlink-link" href="{{ childlink.url }}">
+                    {{ childlink.title }}
+
+                    <img width="10" height="23" loading="lazy" class="chevron" src="{{ 'chevron-right.png' | asset_img_url }}" alt="right arrow" aria-hidden="hidden">
+                  </a>
+
+                <ul class="sublinks u-ul-reset">
+                  {% for subchildlink in childlink.links %}
+                    <li>
+                      <a href="{{ subchildlink.url }}">
+                        {{ subchildlink.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  
+                </ul>
+              {% endfor %}
+            
+          </li>
+        {% else %}
+          <li>
+            <a href="{{ link.url }}">
+              {{ link.title }}
+            </a>
+          </li>
+              </ul>
+        {% endif %}
+      {% endfor %}
+            </li>
+    </ul>
+  </nav>
+  <div class="slide-out__links">
+    <div class="slide-out__links-link">
+      {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+          <a href="/account" class="nav-text account-link">{{ 'layout.customer.account' | t }}</a>
+        {% else %}
+          <span class="nav-text account-link">
+            {{ 'layout.customer.log_in' | t | customer_login_link }}
+          </span>
+        {% endif %}
+      {% endif %}
+    </div>
+    <div class="slide-out__links-link">
+      <a href="/pages/customer-support" class="slide-out__help u-regular">Need Help?</a>
+    </div>
+    <div class="slide-out__links-link">
+      <a href="#swym-wishlist" class="swym-wishlist">
+        {% render 'heart' %} Wishlist
+       </a>
+    </div>
+    <div class="slide-out__links-link">
+      {% render 'search' with { id: 'js-slide-out-search'} %}
+    </div>
+  </div>
+
+</div>

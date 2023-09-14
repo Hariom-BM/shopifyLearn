@@ -1,0 +1,82 @@
+{% paginate search.results by 9 %}
+
+<div class="search-page wrapper page-wrapper">
+
+  <h1>
+    {% if search.performed %}
+      <span class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}:</span>
+        {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
+    {% else %}
+      {{ 'general.search.title' | t }}
+    {% endif %}
+  </h1>
+
+  <form action="/search" method="get" role="search">
+    <label for="Search" class="label-hidden">
+      {{ 'general.search.placeholder' | t }}
+    </label>
+    <input type="search"
+           name="q"
+           id="Search"
+           value="{{ search.terms | escape }}"
+           placeholder="{{ 'general.search.placeholder' | t }}">
+    <button type="submit" class="btn">
+      {% include 'icon-search' %}
+      <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+    </button>
+  </form>
+
+  {% if search.performed %}
+    {% if search.results_count == 0 %}
+      <p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+    {% else %}
+
+    <div class="search-page__main">
+
+      {% comment %} {% render 'sidebar' %} {% endcomment %}
+
+      <div class="search-page__grid-container">
+
+        <div class="search-page__grid product-grid" id="AjaxinateContainer">
+          {% for product in search.results %}
+            {% render 'product-preview' with product as product %}
+          {% endfor %}
+        </div>
+
+        {% comment %} {% include 'pagination' %} {% endcomment %}
+
+      </div>
+
+    </div>
+
+
+      {% comment %} <div class="product-grid">
+        <h2 class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}</h2>
+        <div class="product-grid">
+          {% for item in search.results %}
+              {% render 'product-preview' with {product: item} %}
+          {% endfor %}
+        </div>
+      </div> {% endcomment %}
+
+      {% if paginate.pages > 1 %}
+        {% include 'pagination' %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+</div>
+
+{% endpaginate %}
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+    var endlessScroll = new Ajaxinate({
+      container: "#AjaxinateContainer",
+      pagination: "#AjaxinatePagination",
+      method: "click",
+      offset: 1000,
+    });
+  });
+</script>

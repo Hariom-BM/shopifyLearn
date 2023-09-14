@@ -1,0 +1,161 @@
+<div class="wrapper collections_wrapper">
+  <div class="flex-column">
+  <div class="single_collection">
+    <section class="list_collection">
+  <div class="collection__container">    
+    <div class="collection-list__products">
+    <div class="collection-list__grid swiper-container" {% if section.settings.enable_slider %}id="list_collection_slider"{% endif %}>
+      <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+       {% if block.type == 'single-collection' %}
+        {%- assign collectionlist = collections[block.settings.collection_name] -%}
+        <div class="swiper-slide">
+        <a href="{{ collectionlist.url  }}" class="collection-list__item" {{ block.shopify_attributes }}>
+          <div class="collection-list__image">
+            {%  if block.settings.collection_title != blank %}
+           <h3> {{ block.settings.collection_title }}</h3>
+              {%  else %}
+              <h3>{{ collectionlist.title  }}</h3>
+              {% endif %}
+            <div class="collection-list__image-inner">
+              <img loading="lazy"
+                   src="{{ 'loading-image.png' | asset_url }}"
+                   data-src="{{ block.settings.collection_image | img_url: 'master'}}"
+                   alt="{{ collectionlist.title }}"
+                   class="u-block lazyload">
+              <noscript>
+              	<img src="{{ block.settings.collection_image | img_url: 'master' }}" alt="{{ collection.title }}" class="u-block">
+              </noscript>
+            </div>
+          </div>
+        
+        </a>
+        </div>{% endif %}
+      {% endfor %}
+      </div>
+    </div>
+      {% comment %}
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+       {% endcomment %}
+    </div>
+
+  </div>
+
+</section>
+ </div>
+ 
+  <div class="collection_list">
+<section class="collection-list">
+
+  <div class="collection-list__container wrapper wrapper--medium">
+
+    {% if section.settings.title != blank %}
+      <h2 class="h1 collection-list__title">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+
+    <div class="collection-list__products">
+    <div class="collection-list__grid swiper-container" id="collection_list_slider">
+      <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+       {% if block.type == 'collection' %}
+        {%- assign collection = collections[block.settings.collection] -%}
+        <div class="swiper-slide">
+        <a href="{{ collection.url  }}" class="collection-list__item" {{ block.shopify_attributes }}>
+          <div class="collection-list__image">
+            <div class="collection-list__image-inner">
+              <img loading="lazy"
+                   src="{{ 'loading-image.png' | asset_url }}"
+                   data-src="{{ block.settings.image | img_url: '370x500', crop: 'center' }}"
+                   alt="{{ collection.title }}"
+                   class="u-block lazyload">
+              <noscript>
+              	<img src="{{ block.settings.image | img_url: '370x500', crop: 'center' }}" alt="{{ collection.title }}" class="u-block">
+              </noscript>
+            </div>
+          </div>
+          <h3>{{ collection.title  }}</h3>
+        </a>
+        </div>
+         {% endif %}
+      {% endfor %}
+      </div>
+    </div>
+     
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+     
+    </div>
+
+  </div>
+
+</section>
+  </div>
+</div>
+</div>
+{% schema %}
+ {
+    "name": "List Collection",
+    "class" :"bride_collection_list",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      }, 
+       {
+        "type": "checkbox",
+        "id": "enable_slider",
+        "label": "Enable Slider",
+        "default": false
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          },
+          {
+            "label": "Image",
+            "id": "image",
+            "type": "image_picker"
+          }
+        ]
+      },
+      {
+        "type": "single-collection",
+        "name": "Single Collection",
+        "settings": [
+          {
+            "label": "Select Collection",
+            "id": "collection_name",
+            "type": "collection"
+          },
+          {
+            "label": "title",
+            "id": "collection_title",
+            "type": "text"
+          },
+          {
+            "label": "Collection Image",
+            "id": "collection_image",
+            "type": "image_picker"
+          }
+        ]
+      }
+    ]
+    
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

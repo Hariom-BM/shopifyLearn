@@ -1,0 +1,48 @@
+{%- assign selected = collection.sort_by | default: collection.default_sort_by -%}
+
+<!--
+  <div class="s-sort-by h3">
+    <label for="sort_by">Sort:</label>
+    <select id="sort_by" name="sort_by">
+      {% for option in collection.sort_options %}
+        <option
+          value="{{ option.value }}"
+          {% if option.value == selected %}
+            selected
+          {% endif %}
+        >
+          {{ option.name }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+-->
+
+<!-- {%- assign selected = collection.sort_by | default: collection.default_sort_by -%} -->
+
+<div class="s-sort-by h3">
+  <label for="sort_by">Sort:</label>
+  <div class="sort-by-options">
+    <div class="selected bm-selected">
+      {% if option.value == selected %}
+        {{ option.name }}
+      {% endif %}
+    </div>
+    <div class="collection-radio-container" id="sort_by" name="sort_by">
+      {% for option in collection.sort_options %}
+        <label class="radio-label">
+          <input
+            type="radio"
+            class="radio-input"
+            name="sort_by"
+            value="{{ option.value }}"
+            {% if option.value == selected %}
+              checked
+            {% endif %}
+          >
+          {{ option.name }}
+        </label>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+
+
+{% liquid
+  assign heading_image = section.settings.heading_image
+  assign hashtag = section.settings.hashtag
+%}
+
+<section class="s-instagram">
+
+  <div class="s-instagram__container wrapper">
+
+    <h3 class="s-instagram__hashtag-start u-rotate-left">{{ hashtag }}</h3>
+
+    <img loading="lazy"
+         src="{{ 'loading-image.png' | asset_url }}"
+         data-src="{{ heading_image | img_url: 'master' }}" 
+         class="u-block s-instagram__heading-image lazyload" width="350" height="206">
+    <noscript>
+    	<img src="{{ heading_image | img_url: 'master' }}" class="u-block s-instagram__heading-image">
+    </noscript>
+
+    <div id="insta-feed"></div>
+
+    <img loading="lazy"
+         src="{{ 'loading-image.png' | asset_url }}"
+         data-src="{{ 'insta-confetti.png' | asset_img_url: '380x360' }}"
+         class="s-instagram__confetti lazyload" width="380" height="359">
+    <noscript>
+    	<img src="{{ 'insta-confetti.png' | asset_img_url: '380x360' }}" class="s-instagram__confetti">
+    </noscript>
+
+    <h3 class="s-instagram__hashtag-end u-rotate-right">{{ hashtag }}</h3>
+
+  </div>
+
+</section>
+
+{% schema %}
+
+{
+  "name": "Instagram",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "heading_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "hashtag",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram",
+      "category": "Instagram"
+    }
+  ]
+}
+
+{% endschema %}

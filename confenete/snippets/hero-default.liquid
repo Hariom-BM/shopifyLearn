@@ -1,0 +1,13 @@
+ <div class="s-hero__start">
+    <img loading="lazy" width="743" height="723" class="u-block" src="{{ hero_image | img_url: '100', crop: 'center' }}" srcset="{{ hero_image | img_url: '1390x1354', crop: 'center' }} 1390w, {{ hero_image | img_url: '695x677', crop: 'center' }} 695w" sizes="66vw" alt="{{ background_image.title }}">
+  </div>
+  <div class="s-hero__end">
+    <div class="s-hero__end-container">
+      <h1>{{ hero_heading }}</h1>
+      <p>{{ hero_text }}</p>
+        {% render 'btn-primary' with {
+          url: hero_btn_url,
+          text: hero_btn_text
+        } %}
+    </div>
+  </div>

@@ -1,0 +1,142 @@
+{% comment %} Get lists of colours and sizes {% endcomment %}
+{% paginate collection.products by 500 %}
+  {% for product in collection.products %}
+    {% for tag in product.tags %}
+      {% assign sizeString = 'size-' %}
+      {% assign checkForSize = tag | split:sizeString %}
+
+      {% if checkForSize[0] == blank %}
+        {% assign list_of_sizes = list_of_sizes | append: tag | append: ',' %}
+      {% endif %}
+
+      {% assign colorString = 'color-' %}
+      {% assign checkForColor= tag | split:colorString %}
+
+      {% if checkForColor[0] == blank %}
+        {% assign list_of_colors = list_of_colors | append: tag | append: ',' %}
+      {% endif %}
+
+    {% endfor %}
+  {% endfor %}
+{% endpaginate %}
+
+
+{% comment %} Clean up duplicates {% endcomment %}
+{% assign list_of_sizes = list_of_sizes | split: ',' | uniq | compact %}
+{% assign list_of_colors = list_of_colors | split: ',' | uniq | compact %}
+{% assign list_of_prices = "Under $100, $100-200, $200+" | split: ',' %}
+
+
+<aside class="sidebar">
+  <div class="sidebar__container">
+    
+    <button class="h3 btn sidebar__section-heading top-level-trigger active">
+      Browse By
+       <img src="{{ 'chevron-right.png' | asset_img_url }}" alt="right chevron" aria-hidden="hidden">
+    </button>
+  
+    
+    <ul class="link-container top-level-hidden u-ul-reset">
+      {% for link in linklists['sidebar-menu'].links %}
+        {% if link.links != blank %}
+          <li>
+            <a class="btn h3 accordion-trigger" href="{{ link.url }}">
+              {{ link.title }}
+              <span class="indicator">+</span>
+            </a>
+            <ul class="childlink-container u-ul-reset">
+              {% for childlink in link.links %}
+                <li>
+                  <a class="childlink-title h3" href="{{ childlink.url }}">
+                    {{ childlink.title }}
+                  </a>
+                  <ul class="subchildlink-container u-ul-reset">
+                    {% for subchildlink in childlink.links %}
+                      <li>
+                        <a class="h3" href="{{ subchildlink.url }}">
+                          {{ subchildlink.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+          <li>
+            <a href="{{ link.url }}" class="nav-text">
+              {{ link.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <button class="h3 btn sidebar__section-heading top-level-trigger active filter-btn">
+      Filter By
+      <img src="{{ 'chevron-right.png' | asset_img_url }}" alt="right chevron" aria-hidden="hidden">
+    </button>
+    <div class="product-filter top-level-hidden" data-product-filter>
+      <div class="product-filter__container">
+        <div class="product-filter__block">
+          {% if list_of_sizes.size > 0 %}
+            <button class="toggle filter-title btn btn-product-tabs" data-expand-trigger>Size</button>
+              <ul class="toggle_list" data-expand-content>
+              {% for size_tag in list_of_sizes %}
+              {% assign sizeString = size_tag | remove: 'size-' | upcase %}
+                {% if current_tags contains size_tag %}
+                  <li class="active {{ size_tag }}">{{ sizeString | link_to_remove_tag: size_tag }}</li>
+                {% else %}
+                  <li class="{{ size_tag }}">{{ sizeString | link_to_add_tag: size_tag }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="product-filter__block">
+            {% if list_of_colors.size > 0 %}
+              <button class="toggle filter-title btn btn-product-tabs" data-expand-trigger>Color </button>
+                <ul class="toggle_list" data-expand-content>
+                {% for color_tag in list_of_colors %}
+                  {% assign colorString = color_tag | remove: 'color-' | capitalize %}
+                  {% if current_tags contains color_tag %}
+                    <li class="active">{{ colorString | link_to_remove_tag: color_tag }}</li>
+                  {% else %}
+                    <li>{{ colorString | link_to_add_tag: color_tag }}</li>
+                  {% endif %}
+                {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="product-filter__block">
+            <button class="toggle filter-title btn btn-product-tabs" data-expand-trigger>Designer</button>
+              <ul class="toggle_list" data-expand-content>
+              {% for product_vendor in collection.all_vendors %}
+              <li class=”{{ product_vendor | handleize }}”>
+              {{ product_vendor | link_to_vendor }}
+              </li>
+              {% endfor %}
+              </ul>
+        </div>
+        <div class="product-filter__block">
+            {% if list_of_prices.size > 0 %}
+              <button class="toggle filter-title btn btn-product-tabs" data-expand-trigger>Price $ </button>
+              <ul class="toggle_list" data-expand-content>
+                {% assign selected_price = "" %}
+                {% for tag in list_of_prices %}
+                    {% assign selected_price = tag | strip %}
+                    {% if current_tags contains selected_price %}
+                        <li class="active">{{ selected_price | link_to_remove_tag: selected_price }}</li>
+                        {% assign selected_price = priceTags %}
+                    {% else %}
+                        <li>{{ selected_price | link_to_add_tag: selected_price }}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

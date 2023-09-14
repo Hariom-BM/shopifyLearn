@@ -1,0 +1,29 @@
+<div class="s-hero__start">
+   {% if hero_banner_url != blank and hero_btn_url == blank %}
+  <a href="{{ hero_banner_url }}">
+    {% endif %}
+  <picture class="s-hero__background u-block desktop-image">
+    <source media="(max-width: 700px)" srcset="{{ hero_image | img_url: '500x523', crop: 'left' }}">
+    <img class="u-block" src="{{ hero_image | img_url: '100', crop: 'center' }}" srcset="{{ hero_image | img_url: '1779x1011', crop: 'center' }} 1779w, {{ hero_image | img_url: '1186x674', crop: 'center' }} 1186w, {{ hero_image | img_url: '593x337', crop: 'center' }} 593w" sizes="200vw" alt="{{ background_image.title }}">
+  </picture>
+  <img src="{{mobile_image| img_url: 'master'}}" class="mobile-image">
+     {% if hero_banner_url != blank and hero_btn_url == blank %}
+  </a>
+   {% endif %}
+</div>
+{% if hero_heading != blank or hero_btn_url != blank %}
+<div class="s-hero__end">
+  <div class="s-hero__end-container">
+    <div class="inner">
+      <h1 style="color:{{ text_color }};">{{ hero_heading }}</h1>
+      <p style="color:{{ text_color }};">{{ hero_text }}</p>
+       {% if hero_btn_url != blank %}
+        {% render 'btn-primary' with {
+          url: hero_btn_url,
+          text: hero_btn_text
+        } %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}

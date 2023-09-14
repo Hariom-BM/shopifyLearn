@@ -1,0 +1,135 @@
+<!doctype html>
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-N8BWQ4T');</script>
+  <!-- End Google Tag Manager -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "56b138lu6q");
+</script>
+  <meta name="google-site-verification" content="hvaO59h6PbWAP2lRdYcC9rrMoiWhdyzTRmAu2gByNFU" />
+  <meta name="google-site-verification" content="16h_47o_fO4kUzrDp1BpDWro_12S4Ee9TAmNSuXpGME" />
+  <meta name="msvalidate.01" content="67A0B0928F502FC05C78741822BA4163" />
+  <meta name="facebook-domain-verification" content="bplucal0ulnsrecanebgkl9sj35kzh" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="{{ settings.color_accent }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {%- endif -%}
+
+  {%- capture seo_title -%}
+    {{ page_title }}
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' -%} &vert; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {%- endif -%}
+    {%- if current_page != 1 -%}
+      &vert; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- assign escaped_page_title = page_title | escape -%}
+    {%- unless escaped_page_title contains shop.name -%}
+     &nbsp;&vert;&nbsp;{{ shop.name }}
+    {%- endunless -%}
+  {%- endcapture -%}
+  <title>{{ seo_title | strip }}</title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  {% include 'social-meta-tags' %}
+  {% include 'style-tags', layout: 'theme' %}
+  {% include 'css-variables' %}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', '');
+
+    window.theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }}
+    };
+
+    {% if template.directory == 'customers' %}
+      theme.allCountryOptionTags = {{ all_country_option_tags | json }};
+    {% endif %}
+  </script>
+
+  {% include 'script-tags', layout: 'theme' %}
+
+  {{ content_for_header }}
+  <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script><!--<![endif]-->
+  <!--[if lte IE 9]><script src="{{ 'lazysizes.min.js' | asset_url }}"></script><![endif]-->
+  <link rel="preconnect" href="https://pay.shopify.com">
+  <link rel="dns-prefetch" href="https://pay.shopify.com">
+
+  <link rel="preconnect" href="https://recovermycart.com">
+  <link rel="dns-prefetch" href="https://recovermycart.com">
+
+  <link rel="preconnect" href="https://istock.myshopapps.com">
+  <link rel="dns-prefetch" href="https://istock.myshopapps.com">
+
+  <link rel="preconnect" href="https://shopify.cleverecommerce.com">
+  <link rel="dns-prefetch" href="https://shopify.cleverecommerce.com">
+
+  <link rel="preconnect" href="https://apps.pixelunion.net">
+  <link rel="dns-prefetch" href="https://apps.pixelunion.net">
+
+  <link rel="preconnect" href="https://pay.shopify.com">
+  <link rel="dns-prefetch" href="https://pay.shopify.com">
+
+  <link rel="preconnect" href="https://connect.facebook.net">
+  <link rel="dns-prefetch" href="https://connect.facebook.net">
+
+  <link rel="preconnect" href="https://www.facebook.com">
+  <link rel="dns-prefetch" href="https://www.facebook.com">
+
+  <link rel="preconnect" href="https://www.instagram.com">
+  <link rel="dns-prefetch" href="https://www.instagram.com">
+
+  <link rel="preconnect" href="https://monorail-edge.shopifysvc.com">
+  <link rel="dns-prefetch" href="https://monorail-edge.shopifysvc.com">
+
+  <link rel="preconnect" href="https://app.backinstock.org">
+  <link rel="dns-prefetch" href="https://app.backinstock.org">
+
+  <link rel="preconnect" href="https://instafeed.nfcube.com">
+  <link rel="dns-prefetch" href="https://instafeed.nfcube.com">
+</head>
+
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8BWQ4T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+  {% render 'newsletter-modal' %}
+
+  {% section 'header' %}
+
+  <main role="main" id="MainContent">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+  
+{{ 'ajaxinate.min.js' | asset_url | script_tag }}
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<div class="product-tabs wrapper">
+
+  <div class="product-tabs__container">
+
+    <div class="product-tabs__buttons">
+      <button class="product-tabs__btn btn btn-product-tabs accordion" >Details</button>
+      {% if product.description != blank %}
+      {% if product.description contains '<!-- split -->'%}
+          {% assign descriptions = product.description | split: "<!-- split -->" %}
+          {% assign short_desc = descriptions[0] %}
+          {% assign long_desc = descriptions[1] %}
+      <div class="product-tabs__content panel top-description">
+        <div data-item="rte-content" itemprop="description">
+          {{ short_desc }}
+        </div>
+      </div>			
+           
+      {% else %}
+      <div class="product-tabs__content panel product_description">
+        {{ product.description }}
+      </div>
+      {% endif %}
+      {% endif %}
+
+      <button class="product-tabs__btn btn btn-product-tabs accordion">Size & Fit</button>
+      <div class="product-tabs__content panel" >
+        {{ product.metafields.size_and_fit.size_text }}
+      </div>
+      <button class="product-tabs__btn btn btn-product-tabs accordion" >Shipping</button>
+      <div class="product-tabs__content panel" >
+        {{ product.metafields.shipping.shipping_text }}
+      </div>
+      <button class="product-tabs__btn btn btn-product-tabs accordion" >Returns</button>
+      <div class="product-tabs__content panel">
+        {{ product.metafields.returns.returns_text }}
+      </div>
+    </div>
+
+    
+  
+  </div>
+
+</div>
+<script>
+ 
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>

@@ -1,0 +1,106 @@
+{% liquid
+  assign tag_1 = section.settings.tag_1
+  assign image_1 = section.settings.image_1
+  assign tag_2 = section.settings.tag_2
+  assign image_2 = section.settings.image_2
+  assign tag_3 = section.settings.tag_3
+  assign image_3 = section.settings.image_3
+  assign tag_4 = section.settings.tag_4
+  assign image_4 = section.settings.image_4
+%}
+
+
+<div class="s-blog-tags">
+  <div class="s-blog-tags__container wrapper">
+    <h3>Explore More</h3>
+    <div class="s-blog-tags__tags">
+      <div class="confete-left">
+        <img src="{{ 'blog-tags-confete-left.png' | asset_img_url: 'master'  }}" class="u-block">
+      </div>
+      <div class="s-blog-tags__tag">
+        <img src="{{ image_1 | img_url: 'master' }}" alt="" class="u-block">
+        <div class="tag-name">
+          {{ tag_1 | link_to_tag: tag_1 }}
+        </div>
+      </div>
+      <div class="s-blog-tags__tag">
+        <img src="{{ image_2 | img_url: 'master' }}" alt="" class="u-block">
+        <div class="tag-name">
+          {{ tag_2 | link_to_tag: tag_2 }}
+        </div>
+      </div>
+      <div class="s-blog-tags__tag">
+        <img src="{{ image_3 | img_url: 'master' }}" alt="" class="u-block">
+        <div class="tag-name">
+          {{ tag_3 | link_to_tag: tag_3 }}
+        </div>
+      </div>
+      <div class="s-blog-tags__tag">
+        <img src="{{ image_4 | img_url: 'master' }}" alt="" class="u-block">
+        <div class="tag-name">
+          {{ tag_4 | link_to_tag: tag_4 }}
+        </div>
+      </div>
+      <div class="confete-right">
+        <img src="{{ 'blog-tags-confete-right.png' | asset_img_url: 'master' }}" class="u-block">
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+
+{
+  "name": "Blog Tags",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_1",
+      "label": "Tag 1",
+      "info": "The tag entered here must exactly match one added to an article"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "text",
+      "id": "tag_2",
+      "label": "Tag 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "text",
+      "id": "tag_3",
+      "label": "Tag 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3"
+    },
+    {
+      "type": "text",
+      "id": "tag_4",
+      "label": "Tag 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Tags",
+      "category": "Blog"
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,54 @@
+{% liquid
+  assign heading_1 = section.settings.heading_1
+  assign email_1 = section.settings.email_1
+  assign heading_2 = section.settings.heading_2
+  assign email_2 = section.settings.email_2
+%}
+
+<section class="s-emails">
+  <div class="s-emails__container wrapper">
+    <div class="s-emails__start">
+      <h3>{{ heading_1 }}</h3>
+      <a href="mailto:{{ email_1 }}">{{ email_1 }}</a>
+    </div>
+    <div class="s-emails__end">
+      <h3>{{ heading_2 }}</h3>
+      <a href="mailto:{{ email_2 }}">{{ email_2 }}</a>
+    </div>
+  </div>
+</section>
+{% schema %}
+
+{
+  "name": "Emails",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Heading 1"
+    },
+    {
+      "type": "text",
+      "id": "email_1",
+      "label": "Email 1"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Heading 2"
+    },
+    {
+      "type": "text",
+      "id": "email_2",
+      "label": "Email 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Emails",
+      "category": "Our Story"
+    }
+  ]
+}
+
+{% endschema %}

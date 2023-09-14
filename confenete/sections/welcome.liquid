@@ -1,0 +1,110 @@
+{% liquid
+  assign welcome_image = section.settings.welcome_image
+  assign welcome_heading = section.settings.welcome_heading
+  assign welcome_text = section.settings.welcome_text
+  assign welcome_btn_url = section.settings.welcome_btn_url
+  assign welcome_btn_text = section.settings.welcome_btn_text
+%}
+
+<section class="s-welcome">
+
+  <div class="s-welcome__container wrapper wrapper--small wrapper--section">
+
+    <div class="s-welcome__grid">
+
+      <img class="graphic graphic-confetti lazyload"
+           loading="lazy"
+           src="{{ 'loading-image.png' | asset_url }}"
+           data-src="{{ 'welcome-confetti.png' | asset_img_url: 'medium' }}"
+           alt=""
+           aria-hidden="true">
+      <noscript>
+        <img src="{{ 'welcome-confetti.png' | asset_img_url: 'medium' }}" alt="" aria-hidden="true" class="graphic graphic-confetti">
+      </noscript>
+      <div class="s-welcome__image">
+        <img loading="lazy"
+           	 src="{{ 'loading-image.png' | asset_url }}"
+             data-src="{{ 'welcome.png' | asset_url }}"
+             alt=""
+             class="welcome-graphic lazyload">
+        <img loading="lazy"
+           	 src="{{ 'loading-image.png' | asset_url }}"
+             data-src="{{ welcome_image | img_url: '1140x' }}"
+             alt=""
+             class="welcome-image u-block lazyload">
+        <noscript>
+          <img src="{{ 'welcome.png' | asset_url }}" alt="" class="welcome-graphic">
+          <img src="{{ welcome_image | img_url: '1140x' }}" alt="" class="welcome-image u-block">
+        </noscript>
+      </div>
+
+      <div class="s-welcome__text-container u-border">
+       <img loading="lazy"
+           	src="{{ 'loading-image.png' | asset_url }}"
+            data-src="{{ 'welcome-watercolor.png' | asset_img_url: 'medium' }}"
+            alt=""
+            aria-hidden="true"
+            class="graphic graphic-watercolor lazyload">
+        <noscript>
+          <img src="{{ 'welcome-watercolor.png' | asset_img_url: 'medium' }}" alt="" aria-hidden="true" class="graphic graphic-watercolor">
+        </noscript>
+        <p>{{ welcome_text }}</p>
+        <img loading="lazy"
+           	 src="{{ 'loading-image.png' | asset_url }}"
+             data-src="{{ 'glasses.png' | asset_img_url: 'medium' }}"
+             alt=""
+             aria-hidden="true"
+             class="graphic graphic-glasses lazyload">
+        <noscript>
+          <img src="{{ 'glasses.png' | asset_img_url: 'medium' }}" alt="" aria-hidden="true" class="graphic graphic-glasses">
+        </noscript>
+      </div>
+
+    </div>
+
+    <div class="btn-container">
+      {% render 'btn-primary' with {
+        url: welcome_btn_url,
+        text: welcome_btn_text
+      } %}
+    </div>
+
+  </div>
+
+</section>
+
+{% schema %}
+
+{
+  "name": "Welcome",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "welcome_image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "welcome_text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "welcome_btn_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "welcome_btn_url",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Welcome",
+      "category": "Home"
+    }
+  ]
+}
+
+{% endschema %}

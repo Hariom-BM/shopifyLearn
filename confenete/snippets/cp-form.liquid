@@ -1,0 +1,101 @@
+{%- form 'product', product, class: 'cp-product-form' -%}
+  {%- render 'product-data', product: product -%}
+  <input
+    type="text"
+    style="display: none;"
+    pattern="[0-9]*"
+    name="quantity"
+    value="1"
+    aria-label="{{ 'product.form.quantity' | t }}"
+  >
+  {%- assign variant_in_stock = false -%}
+  {%- assign color_option_value = '' -%}
+
+  {% comment %} Product size options {% endcomment %}
+  <div class="cp-prod-variants">
+    {%- unless product.has_only_default_variant -%}
+      {%- for variant in product.variants -%}
+        {% assign size_labelArray = variant.title | split: '/' %}
+        {% assign size_label = size_labelArray[1] %}
+        {% if variant.available %}
+          {%- assign variant_in_stock = true -%}
+        {% endif %}
+        {%- assign color_option_value = size_labelArray[0] -%}
+        <label
+          for="option-1"
+          data-product-id="{{variant.id}}"
+          class="cp-variant-option"
+          {% if variant == selected_variant %}
+            selected="selected"
+          {% endif %}
+          {% unless variant.available %}
+            disabled="disabled"
+          {% endunless %}
+          value="{{ variant.id }}"
+          data-sku="{{ variant.sku }}"
+        >
+          <span>{{ size_label }}</span>
+          <input style="display: none;" type="radio" name="option-1" value="{{ size_label }}">
+        </label>
+      {%- endfor -%}
+    {%- else -%}
+      <input type="hidden" name="id" data-sku="{{ selected_variant.sku }}" value="{{ selected_variant.id }}">
+    {%- endunless -%}
+  </div>
+
+  {% comment %} quick add to cart button {% endcomment %}
+  {% if variant_in_stock == false %}
+    <div class="cp-addTocart-btn cp-sold-out">
+      <span>Out of stock</span>
+    </div>
+  {% else %}
+    <input style="display: none;" name="option-0" value="{{color_option_value}}" checked="checked">
+    <div class="cp-addTocart-btn">
+      <button type="submit" data-use-primary-button="true" data-action="add-to-cart" style="display: none;">
+        Quick add +
+      </button>
+      <span>Quick add +</span>
+    </div>
+  {% endif %}
+{%- endform -%}
+
+<style>
+  .cp-product-form{
+     position: absolute;
+     bottom: 16px;
+     width: 100%;
+     z-index: 1;
+     background: white;
+  }
+  .cp-product-form .cp-prod-variants{
+     display: flex;
+     padding: 20px 10px 12px;
+     justify-content: flex-start;
+     align-items: center;
+     flex-wrap: wrap;
+     max-width: 236px;
+     margin: 0 auto;
+  }
+  .cp-product-form .cp-prod-variants .cp-variant-option{
+     padding: 0 4px 8px;
+   }
+   .cp-product-form .cp-prod-variants .cp-variant-option[disabled]{
+     pointer-events: none;
+   }
+   .cp-product-form .cp-prod-variants .cp-variant-option span{
+     width: 42px;
+     height: 38px;
+     padding: 10px;
+     background: #fff;
+     border: 2px solid #eae8e5;
+     cursor: pointer;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+   }
+   .cp-product-form .cp-prod-variants .cp-variant-option[disabled] span{
+     background: #f2f2f2;
+     border-color: #efefef;
+     color: #38130033;
+   }
+</style>

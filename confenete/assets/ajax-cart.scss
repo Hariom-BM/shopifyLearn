@@ -1,0 +1,145 @@
+.ajax-cart__modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 40;
+  max-width: 575px;
+  background: getColor('white', 'default');
+  border: 1px solid #e9e9e9;
+  padding: 50px 65px;
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, visibility;
+
+}
+.ajax-cart__overlay.is-open ,
+.ajax-cart__modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ajax-cart__overlay{
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, visibility;
+}
+
+.ajax-cart__drawer{
+  position: fixed;
+  z-index: 40;
+  right: -400px;
+  top: 0;
+  width: 400px;
+  height: 100%;
+  background: #f6f6f6;
+  will-change: transform;
+  border-left: 1px solid #e9e9e9;
+  max-width:100%;
+}
+.ajax-cart__drawer.is-open {
+  right:0;
+  z-index:999999;
+}
+.ajax-cart-modal {
+    position: relative;
+
+    &__close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    &__content {
+        padding: 20px;
+    }
+
+}
+
+.ajax-cart-drawer {
+    position: relative;
+    height: 100%;
+
+}
+.ajax-cart-drawer .ajax-cart-drawer__close{
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  cursor:pointer;
+  width:20px;
+}
+.ajax-cart-drawer .ajax-cart-drawer__content {
+  padding: 25px 25px 25px;
+  height: 70%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.ajax-cart-drawer .ajax-cart-drawer__buttons {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  bottom: 0;  
+  background: #f6f6f6;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+ width: calc(100% - 40px);
+
+
+}
+.ajax-cart-drawer .ajax-cart-drawer__buttons .btn:last-child {
+  margin-top: 20px;
+}
+.ajax-cart-drawer .single-item{
+  display:flex;
+  justify-content: space-between;
+  background: #fff;
+  margin: 15px 0;
+  padding: 15px 10px;
+  align-items: center;
+
+}
+.ajax-cart-drawer .single-item .ajax-cart-item__image{
+	width:120px;
+}
+.ajax-cart-drawer .single-item .product-img{width:25%;}
+.ajax-cart-drawer .single-item .item-info{width:70%;}
+html.is-locked{
+  height:100%;
+  overflow:hidden;
+}
+.ajax-cart-drawer .cart-totals{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  color:#000000;
+}
+.ajax-cart-drawer .ajax-cart-item__price{
+  font-size:14px;
+  font-weight:bold;
+}
+.ajax-cart-drawer .ajax-cart-item__quantity{
+  font-size:14px;
+}
+.ajax-cart__modal{
+	background: #f6f6f6;	
+}
+.ajax-cart__modal .ajax-cart-modal__close{
+  top: -30px;
+  right: -40px;
+  position:absolute;
+}
+.item-info,
+.ajax-cart-item__title a, 
+.ajax-cart-item__title a:hover{
+  color:#000000 !important;
+}

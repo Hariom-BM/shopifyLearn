@@ -1,0 +1,35 @@
+<div class="newsletter-form-container">
+      <img class="c-mark" src="{{ 'c-mark.png' | asset_img_url }}" alt="Confete Mark" loading="lazy" width="73" height="100">
+      {% form 'customer' %}
+      {{ form.errors | default_errors }}
+      {% if form.posted_successfully? %}
+      <div class="text-container">
+        <h3>Thank you!</h3>
+        <p class="success">Don’t forget to confirm subscription in your inbox.</p>
+      </div>
+      {% else %}
+      <div class="text-container">
+        <h2>Sign Up<br><i><span class="smol">for our</span></i><br> Newsletter</h2>
+      </div>
+      <div class="input-container">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label class="hide" for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+        <input type="text"
+          name="contact[name]"
+          id="ContactFormName"
+          placeholder="{{ 'contact.form.name' | t }}"
+          value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+        <input type="email"
+          name="contact[email]"
+          id="Email"
+          value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+          placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+          autocorrect="off"
+          autocapitalize="off">
+        <button class="btn btn-secondary" type="submit" name="commit" id="Subscribe">
+          <span>{{ 'general.newsletter_form.submit' | t }}</span>
+        </button>
+      </div>
+    {% endif %}
+  {% endform %}
+    </div>

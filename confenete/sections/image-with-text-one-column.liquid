@@ -1,0 +1,101 @@
+<section
+  class="image-with-text-one-column"
+  style="
+    --bg-color:{{ section.settings.bg_color }};
+    --text-color:{{ section.settings.text_color }};
+    background-image: url({{ section.settings.image | img_url: 'master' }});
+  ">
+
+  <div class="image-with-text-one-column__text">
+    {% if section.settings.subheading != blank %}
+    <div class="caption-container">
+      <span class="caption">{{ section.settings.subheading | escape }}</span>
+    </div>
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <h3>{{ section.settings.title | escape }}</h3>
+    {% endif %}
+    {% if section.settings.text != blank %}
+      <div>{{ section.settings.text }}</div>
+    {% endif %}
+  </div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "Image with text 1 column",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "select",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#e87722",
+        "options": [
+          {
+            "value": "#bc204b",
+            "label": "Pink"
+          },
+          {
+            "value": "#514689",
+            "label": "Purple"
+          },
+          {
+            "value": "#ffc72c",
+            "label": "Yellow"
+          },
+          {
+            "value": "#74aa50",
+            "label": "Green"
+          },
+          {
+            "value": "#e87722",
+            "label": "Orange"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#fff",
+        "options": [
+          {
+            "value": "#fff",
+            "label": "White"
+          },
+          {
+            "value": "#222",
+            "label": "Black"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image with text one column",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,20 @@
+<div class="s-hero__start">
+  <picture class="s-hero__background u-block">
+    <source media="(max-width: 700px)" srcset="{{ hero_image | img_url: '500x500', crop: 'top' }}">
+    <img class="u-block" src="{{ hero_image | img_url: '1184x1354', crop: 'center' }}" srcset="{{ hero_image | img_url: '1184x1354', crop: 'center' }} 1184w, {{ hero_image | img_url: '592x677', crop: 'center' }} 592w" sizes="50vw">
+  </picture>
+  <picture class="s-hero__background u-block">
+    <source media="(max-width: 700px)" srcset="{{ hero_image_2 | img_url: '500x500', crop: 'top' }}">
+    <img class="u-block" src="{{ hero_image_2 | img_url: '1184x1354', crop: 'center' }}" srcset="{{ hero_image_2 | img_url: '1184x1354', crop: 'center' }} 1184w, {{ hero_image_2 | img_url: '592x677', crop: 'center' }} 592w" sizes="50vw">
+  </picture>
+</div>
+<div class="s-hero__end">
+  <div class="s-hero__end-container">
+    <h3>{{ hero_subheading }}</h3>
+    <h1>{{ hero_heading }}</h1>
+      {% render 'btn-primary' with {
+        url: hero_btn_url,
+        text: hero_btn_text
+      } %}
+  </div>
+</div>

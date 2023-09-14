@@ -1,0 +1,58 @@
+<section class="s-featured-collections" style="background-image: url({{ 'background-featured-collections.jpg' | asset_img_url: '1600x' }});">
+
+  <div class="s-featured-collections__container wrapper wrapper--small">
+    {% if section.settings.title != blank %}
+      <h2 class="h1 s-featured-collections__title">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+
+    <div class="s-featured-collections__grid">
+
+      {% for block in section.blocks %}
+
+        {% assign collection = collections[block.collection] %}
+
+        <div class="s-featured-collections__item">
+          <a href="{{ collection.url }}">
+            <img src="{{ collection.image | img_url: '370x500' }}" alt="">
+            <h3>{{ collection.title }}</h3>
+          </a>
+        </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured collections",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

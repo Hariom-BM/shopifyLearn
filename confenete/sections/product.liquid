@@ -1,0 +1,218 @@
+<section class="product-template" data-section-id="{{ section.id }}" data-section-type="product">  
+<div itemscope itemtype="http://schema.org/Product">
+  <meta itemprop="name" content="{{ product.title }}" /> 
+  <meta itemprop="brand" content="{{ product.vendor }}" />   
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: product_image_size }}" />
+  <meta itemprop="sku" content="{{ product.selected_or_first_available_variant.id}}" />
+  <meta itemprop="description" content="{{ product.description | escape }}" />   
+  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+    <link itemprop="availability" href="http://schema.org/{% if product.selected_or_first_available_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+    <meta itemprop="price" content="{{ product.selected_or_first_available_variant.price | money_without_currency}}">
+    <meta itemprop="priceValidUntil" content="{{'now' | date: '%Y' }}">
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+    <meta itemprop="sku" content="{{ product.selected_or_first_available_variant.id }}">
+  </div>
+  
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+ {% include 'breadcrumbs' %}
+  
+  <div class="product-template__container wrapper">
+   
+    {% comment %} <div class="product-image-slider">
+      <div class="swiper-wrapper">
+        {% for image in product.images %}
+          <div class="swiper-slide">
+          <img class="lazyload"
+                 loading="lazy"
+                 src="{{ 'loading-image.png' | asset_url }}"
+                 data-src="{{ image | img_url: '750x999', crop: 'center' }}" />
+            <noscript>
+              <img src="{{ image | img_url: '750x999', crop: 'center' }}" />
+            </noscript>
+          </div>
+        {% endfor %}
+      </div>
+    </div> {% endcomment %}
+
+  <div class="product-image-container">
+    <div class="product-main-image-slider">
+      <ul class="swiper-wrapper">
+        {% for image in product.images %}
+          <li class="swiper-slide product_image" data-product-image-wrapper data-image-id="{{ image.id }}">
+          <img class="u-block lazyload"
+                 loading="lazy"
+                 src="{{ 'loading-image.png' | asset_url }}"
+                 data-src="{{ image | img_url: '750x999', crop: 'center' }}" data-product-featured-image/>
+            <noscript>
+              <img src="{{ image | img_url: '750x999', crop: 'center' }}" />
+            </noscript>
+          </li>
+        {% endfor %}
+      </ul>
+      
+    </div>
+   <div class="swiper_button_prev"></div>
+    <div class="swiper_button_next"></div>
+</div>
+  
+    {% comment %}
+    {% for image in product.images %}
+    {% capture wrapper_class %}
+      {%- unless featured_image == image -%}
+        hide
+      {%- endunless -%}
+    {% endcapture %}
+    <div class="{{ wrapper_class }}  product_image" data-product-image-wrapper data-image-id="{{ image.id }}">
+      <img class="u-block"
+      data-product-featured-image
+      src="{{ image.src | img_url: '750x1000', crop: 'center' }}" />
+    </div>
+
+  {% endfor %}
+{% endcomment %}
+  {% if product.images.size > 1 %}
+     <div class="product_thumbnails">
+    <div class="thumbnail_slider"> 
+    <ul class="thumbnail-list u-ul-reset swiper-wrapper">
+      {% for image in product.images %}
+        <li class="swiper-slide">
+          <a href="{{ image.src | img_url: '480x480' }}" data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail{% if featured_image == image %} aria-current="true"{% endif %}>
+            <img class="product-single__thumbnail-image" src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    </div>
+  {% endif %}
+
+    <div class="product-template__meta">
+
+      <h1 class="product-title">{{ product.title }}</h1>      
+        {% if product.vendor != 'Confête' %}
+          <p class="vendor h3">{{ product.vendor }}</p>
+        {% endif %}
+
+      <div class="product-template__price" data-price-wrapper>
+        <span data-product-price>
+          {{ current_variant.price | money }}
+        </span>
+
+        {% if product.compare_at_price_max > product.price %}
+          <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+          <s data-compare-price>
+            {% if current_variant.compare_at_price > current_variant.price %}
+              {{ current_variant.compare_at_price | money }}
+            {% endif %}
+          </s>
+        {% endif %}
+      </div>
+
+{%- capture "form_ids" -%}js-ajax-form-{{- product.id -}}	
+            {%- endcapture -%}
+      
+      {% form 'product', product, id:form_ids, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
+     <input type="hidden" id="{{current_variant.id}}">
+          {% for option in product.options_with_values %}
+            
+            {% if option.name == "Size" %}
+              
+            <h3>{{ option.name }}</h3>
+            <div class="radio-container">
+              {% for value in option.values %}
+                <input type="radio" id="Option{{ option.position }}-{{ value }}" name="options[{{ option.name }}]" value="{{ value }}"{% if option.selected_value == value %} checked{% endif %}>
+                <label for="Option{{ option.position }}-{{ value }}">{{ value }}</label>
+              {% endfor %}
+            </div>
+
+            {% else %}
+              <label class="h3 u-block" for="Option{{ option.position }}">
+                {{ option.name }}
+              </label>
+
+              <select
+                id="Option{{ option.position }}"
+                name="options[{{ option.name | escape }}]">
+                {% for value in option.values %}
+                  <option
+                    value="{{ value | escape }}"
+                    {% if option.selected_value == value %}selected="selected"{% endif %}>
+                      {{ value }}
+                  </option>
+                {% endfor %}
+              </select>
+            {% endif %}
+          {% endfor %}
+         <select name="id" id="ProductSelect-{{ section.id }}" class="product-form__variants no-js">	
+            {% for variant in product.variants %}	
+            <option value="{{ variant.id }}"	
+                    {%- if variant == current_variant %} selected="selected" {%- endif -%}	
+                    >	
+              {{ variant.title }}  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}	
+                          </option>	
+            {% endfor %}	
+          </select>
+        <div class="quantity-container">
+          <label class="h3 u-block" for="Quantity">{{ 'products.product.quantity' | t }}</label>
+          <input type="number" id="quantity" name="quantity" value="1" min="1">
+        </div>
+
+        <div class="button-container glitter">
+          <button
+            class="btn btn-tertiary js-ajax-add-to-cart"
+            type="submit"
+            name="add"
+            data-submit-button
+            {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+              <span data-submit-button-text>
+                {% if current_variant.available %}
+                  {{ 'products.product.add_to_cart' | t }} {% render 'icon-bag' %}
+                {% else %}
+                  {{ 'products.product.sold_out' | t }}
+                {% endif %}
+              </span>
+          </button>
+          <img class="lazyload"
+       loading="lazy"
+       src="{{ 'loading-image.png' | asset_url }}"
+       data-src="{{ 'glitter.png' | asset_img_url: 'master' }}"
+       aria-hidden="hidden">
+        </div>
+      {{ form | payment_button }}
+      {% endform %}
+
+      <div class="cart-notification" data-cart-notification></div>
+      {% render 'new-product-tabs' %}
+     {% comment %}<a href="#details" class="details-link h3">Details and Fit</a> {% endcomment %}
+
+    {% comment %} {% assign out_of_stock = false %}
+    {% for variant in product.variants %}
+      {% if variant.inventory_quantity == 0 %}
+        {% assign out_of_stock = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if out_of_stock == true %}
+      <h3>Out of stock?</h3>
+      <a href="#" data-variant-id="{{ current.variant.id }}" data-stock-button id="BIS_trigger">Notify me</a>
+    {% endif %} {% endcomment %}
+
+    </div>
+
+  </div>
+
+  {% render 'shop-the-look' %}
+   {%  render 'about_the_brand' %}
+ {% comment %}
+  {% render 'product-tabs' %}
+
+ {% render 'about-the-brand' with product as product %} {% endcomment %}
+
+  </div>
+</section>

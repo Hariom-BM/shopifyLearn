@@ -1,0 +1,70 @@
+{% liquid
+  assign subheading = section.settings.subheading
+  assign heading = section.settings.heading
+  assign rich_text_start = section.settings.rich_text_start
+  assign image = section.settings.image
+  assign rich_text_end = section.settings.rich_text_end
+%}
+
+<section class="s-rich-text-and-images" style="background-image: url({{ 'background-our-story.png' | asset_img_url: '1600x' }});">
+
+  <div class="s-rich-text-and-images__container wrapper wrapper--tinyish">
+
+    <div class="s-rich-text-and-images__start">
+      <h3>{{subheading}}</h3>
+      <h2 class="h1">{{heading}}</h2>
+      {{rich_text_start}}
+    </div>
+
+    <div class="s-rich-text-and-images__middle">
+      <img src="{{ image | img_url: 'master' }}" alt="" class="u-block">
+    </div>
+
+    <div class="s-rich-text-and-images__end">
+      {{rich_text_end}}
+    </div>
+
+  </div>
+
+</section>
+
+{% schema %}
+
+{
+  "name": "Rich Text and Images",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "rich_text_start",
+      "label": "Text Start"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "rich_text_end",
+      "label": "Text End"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich Text and Images",
+      "category": "Hero"
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,44 @@
+{% paginate blog.articles by 6 %}
+
+  {%- assign blog_title = blog.title -%}
+  {% assign isCategoryTemplate = current_tags %}
+  {% if isCategoryTemplate %}
+    <ul class="category-list u-ul-reset">
+      {% for tag in current_tags %}
+        <li>
+          <a class="h3" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+        </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    {% section 'featured-post' %}
+    <div class="welcome-blog">
+      <img src="{{ 'welcome-blog.png' | asset_url }}" alt="{{ image.alt }}" class="u-block">
+    </div>
+
+    {% section 'blog-tags' %}
+  {% endif %}
+
+
+  <div class="blog-posts wrapper">
+  {% unless isCategoryTemplate %}
+    <h1 class="blog-title">
+      <span>
+      Latest Articles
+      </span>
+    </h1>
+  {% endunless %}
+    <div class="post-grid" id="posts">
+      {% for article in blog.articles %}
+        {% include 'preview' %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+
+{% endpaginate %}
+
+{% section 'instagram' %}

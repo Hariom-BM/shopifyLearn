@@ -1,0 +1,44 @@
+<script>
+  
+/****************  Spam Search Page Results Js Start ********************/
+if (window.location.search !== '' && window.location.search !== '?') {
+
+    const params = new URLSearchParams(window.location.search);
+
+    let queries = {};
+
+    for(var value of params.keys()) {
+
+         queries[value] = params.get(value);
+
+    }
+
+    let blacklist_words = [
+
+
+
+    ];
+
+    for (const [key, value] of Object.entries(queries)) {
+
+        if (
+
+            (/[^\x00-\x7F]+/.test( value ) && key === 'q') ||
+
+            (/[^\x00-\x7F]+/.test( value ) && key === 'search_query') ||
+
+            (/[^\x00-\x7F]+/.test( value ) && key === 's') ||
+
+            (blacklist_words.length && blacklist_words.includes(value))
+
+        ) {
+
+            window.location.href = window.location.href.split('?')[0]
+
+        }
+
+    }
+
+}
+/****************  Spam Search Page Results Js End ********************/
+</script>

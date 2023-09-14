@@ -1,0 +1,56 @@
+{% liquid
+  assign heading = section.settings.heading
+  assign text = section.settings.text
+  assign image = section.settings.image
+%}
+
+<section class="s-image-with-text-square">
+  <div class="confete-icon">
+    <img src="{{ 'confete-and-brush.png' | asset_url }}" class="u-block">
+  </div>
+  <div class="s-image-with-text-square__start">
+    <div class="s-image-with-text-square__start-inner">
+      <div class="champagne-svg">
+        {% render 'champagne' %}
+      </div>
+      {% if heading %}
+        <h2 class="h1">{{ heading }}</h2>
+      {% endif %}
+      {% if text %}
+        {{ text }}
+      {% endif %}
+    </div>
+  </div>
+  <div class="s-image-with-text-square__end">
+    <img src="{{ image.src | img_url: '1478x1500', crop: 'center' }}" alt="{{ image.alt }}" class="u-block">
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with text square",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text square",
+      "category": "Our Story"
+    }
+  ]
+}
+{% endschema %}

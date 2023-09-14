@@ -1,0 +1,148 @@
+{% liquid
+  assign sidebar_intro = section.settings.sidebar_intro
+  assign hours = section.settings.hours
+  assign email = section.settings.email
+  assign phone = section.settings.phone
+  assign sidebar_outro = section.settings.sidebar_outro
+  assign heading = section.settings.heading
+  assign text = section.settings.text
+%}
+
+<section class="s-contact-us" style="background-image: url({{ 'background-contact-form.jpg' | asset_img_url: '1600x' }});">
+  <div class="s-contact-us__container wrapper">
+    <div class="s-contact-us__start">
+      <span class="confete-contact-us">
+        {% render 'confete-contact-us' %}
+      </span>
+      <div class="intro">
+        <p>
+          {{ sidebar_intro | newline_to_br }}
+        </p>
+      </div>
+      <div class="hours">
+        <h3>Customer Service Hours</h3>
+        <p>
+          {{ hours | newline_to_br }}
+        </p>
+      </div>
+      <div class="email">
+        {% render 'icon-email' %}
+        <a href="mailto:{{ email }}">{{ email }}</a>
+      </div>
+      <div class="phone">
+        {% render 'icon-phone' %}
+       <a href="tel:{{ phone }}">{{ phone }}</a>
+      </div>
+      <div class="outro">
+        <p>
+          {{ sidebar_outro | newline_to_br }}
+        </p>
+      </div>
+    </div>
+    <div class="s-contact-us__end">
+      <div class="s-contact-us__top">
+        <h2 class="h1">{{ heading }}</h2>
+        {{ text }}
+      </div>
+      <div class="s-contact-us__form">
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <p class="form-success">
+              {{ 'contact.form.post_success' | t }}
+            </p>
+          {% endif %}
+          {{ form.errors | default_errors }}
+          <div class="contact-form__fields">
+            <div class="contact-form__start">
+              <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+              <input type="text"
+                name="contact[name]"
+                id="ContactFormName"
+                placeholder="Name"
+                value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+              <label for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
+              <input type="email"
+                name="contact[email]"
+                id="ContactFormEmail"
+                placeholder="Email"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                spellcheck="false"
+                autocapitalize="off">
+            </div>
+            <div class="contact-form__end">
+              <label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
+              <textarea rows="10"
+                name="contact[body]"
+                placeholder="Message"
+                id="ContactFormMessage"
+                >
+                {%- if form.body -%}
+                  {{- form.body -}}
+                {%- endif -%}
+              </textarea>
+            </div>
+          </div>
+          <span class="glitter">
+            <img class="lazyload"
+            loading="lazy"
+            src="{{ 'loading-image.png' | asset_url }}"
+            data-src="{{ 'glitter.png' | asset_img_url: 'master' }}"
+            aria-hidden="hidden">
+            <button type="submit" class="btn btn-primary">Send</button>
+          </span>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "Contact Form",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "sidebar_intro",
+      "label": "Sidebar intro"
+    },
+    {
+      "type": "textarea",
+      "id": "hours",
+      "label": "Hours"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone"
+    },
+    {
+      "type": "textarea",
+      "id": "sidebar_outro",
+      "label": "Sidebar outro"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Form",
+      "category": "Contact"
+    }
+  ]
+}
+
+{% endschema %}

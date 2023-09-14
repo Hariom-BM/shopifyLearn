@@ -1,0 +1,20 @@
+<div class="announcement-bar">
+  <div class="announcement-bar__container wrapper">
+  <a href="/pages/customer-support" class="announcement-bar__help u-regular">Need Help?</a>
+    <a href="mailto:{{section.settings.header_email}}" class="announcement_bar-email">
+      <div class="icon header-email-icon">{% render 'icon-email' %}
+    </div>
+      </a> 
+    <div class="announcement-bar__text">
+      {%- if section.settings.announcement_bar_link != blank -%}
+        <a class="h3 u-mb-0 u-medium" href="{{ section.settings.announcement_bar_link }}">
+          {{ section.settings.announcement_bar_text | escape }}
+        </a>
+      {%- else -%}
+        <p class="h3 u-mb-0 u-medium">{{ section.settings.announcement_bar_text | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    {% render 'search' with { id: 'js-header-search'} %}
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<span class="price">
+  {% if product.compare_at_price > product.price %}
+    <span>{{ product.price | money }}</span>
+    <small class="u-strikethrough">{{ product.compare_at_price | money }}</small>
+  {% else %}
+    {{ product.price | money }}
+  {% endif %}
+</span>

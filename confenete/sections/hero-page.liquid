@@ -1,0 +1,29 @@
+{% liquid
+  assign hero_image = section.settings.hero_image
+%}
+
+<section class="s-hero-page">
+  <img src="{{ hero_image | img_url: 'master' }}" alt="" class="u-block">
+{% include 'breadcrumbs' %}
+</section>
+
+{% schema %}
+
+{
+  "name": "Hero (Our Story)",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero (Our Story)",
+      "category": "Hero"
+    }
+  ]
+}
+
+{% endschema %}

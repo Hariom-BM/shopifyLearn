@@ -1,0 +1,71 @@
+<section class="s-obsessing">
+  <div class="s-obsessing__container wrapper">
+    <h2 class="h1">{{ section.settings.obsessing_heading | escape }}</h2>
+    <div class="s-obsessing__items">
+      {% for block in section.blocks %}
+        {% capture int_links %}
+          {% if block.settings.obsessing_link contains 'https://' or block.settings.obsessing_link contains 'http://' or block.settings.obsessing_link contains '#' %}{{block.settings.obsessing_link}}{% else %}{{shop.url}}{{block.settings.obsessing_link}}{% endif %}
+          {% endcapture %}
+        <div class="s-obsessing__item">
+          {%  if block.settings.obsessing_link != blank %}
+          <a href="{{int_links}}" {% if int_links contains shop.url or int_links contains '#' %}{% else %}target="_blank"{%endif%}>
+          {%  endif  %}
+          <img
+          src="{{ block.settings.obsessing_image.src | img_url: 'small' }}"
+          srcset="{{ block.settings.obsessing_image.src | img_url: '378x396'}} 378w, {{ block.settings.obsessing_image.src | img_url: '756x792'}} 756w"
+          sizes="20vw"
+          loading="lazy"
+          alt="{{ block.settings.obsessing_image.alt | escape }}"/>
+             {%  if block.settings.obsessing_link != blank %}
+          </a>
+                {%  endif  %}
+          <p>{{ block.settings.obsessing_text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "Obsessing",
+  "settings": [
+    {
+      "type": "text",
+      "id": "obsessing_heading",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "obsessing_image",
+          "label": "Image"
+        },
+         {
+          "type": "url",
+          "id": "obsessing_link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "obsessing_text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Obsessing",
+      "category": "Our Story"
+    }
+  ]
+}
+
+{% endschema %}

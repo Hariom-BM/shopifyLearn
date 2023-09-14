@@ -1,0 +1,33 @@
+<div class="product-tabs wrapper" id="details">
+
+  <div class="product-tabs__container">
+
+    <div class="product-tabs__buttons">
+      <button class="product-tabs__btn btn btn-product-tabs active" data-tab="details">Details</button>
+      <button class="product-tabs__btn btn btn-product-tabs" data-tab="size-fit">Size & Fit</button>
+      <button class="product-tabs__btn btn btn-product-tabs" data-tab="shipping">Shipping</button>
+      <button class="product-tabs__btn btn btn-product-tabs" data-tab="returns">Returns</button>
+    </div>
+
+    <div class="product-tabs__content">
+      <div class="product-tabs__item active" data-tab="details">
+        {{ product.description }}
+      </div>
+
+      <div class="product-tabs__item" data-tab="size-fit">
+        {{ product.metafields.size_and_fit.size_text }}
+      </div>
+
+      <div class="product-tabs__item" data-tab="shipping">
+        {{ product.metafields.shipping.shipping_text }}
+      </div>
+
+      <div class="product-tabs__item" data-tab="returns">
+        {{ product.metafields.returns.returns_text }}
+      </div>
+
+    </div>
+  
+  </div>
+
+</div>

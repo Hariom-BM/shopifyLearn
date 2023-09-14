@@ -1,0 +1,210 @@
+<div class="collection-image ">
+  <div class="collection-image-inner">
+    {% if collection.handle == 'all' %}
+      <img
+        class="lazyload"
+        loading="lazy"
+        src="{{ 'loading-image.png' | asset_url }}"
+        data-src="{{ 'background-our-story.jpg' | asset_img_url }}"
+      >
+      <noscript>
+        <img src="{{ 'background-our-story.jpg' | asset_img_url }}">
+      </noscript>
+    {% else %}
+      {% if collection.image %}
+        <picture>
+          <source media="(max-width: 767px)" srcset="{{ collection.image | img_url: '500x309', crop:'center'}} 500w">
+          <img
+            class="lazyload"
+            loading="lazy"
+            src="{{ 'loading-image.png' | asset_url }}"
+            data-src="{{ collection.image | img_url: '2000x910', crop:'center'}}"
+            alt="{{ collection.image.alt | escape }}"
+            width="1800"
+            height="428"
+          >
+          <noscript>
+            <img
+              src="{{ collection.image | img_url: '2000x910', crop:'center'}}"
+              alt="{{ collection.image.alt | escape }}"
+            >
+          </noscript>
+        </picture>
+      {% endif %}
+    {% endif %}
+
+    <div
+      class="collection-page-hero-description"
+      style="justify-content: {{section.settings.justify_direction }}; align-items: {{ section.settings.align_direction }};"
+    >
+      <div class="collection-page-hero-description-inner">
+        <h2 style="{{ template.settings.text_block_background_color }}">{{ collection.title }}</h2>
+        {% if collection.description != blank %}
+          {% assign descriptions = collection.description | split: '<!-- split -->' %}
+          {% assign short_desc = descriptions[0] %}
+          {% assign long_desc = descriptions[1] %}
+          <div class="collection-top-description rte">
+            {{ short_desc }}
+          </div>
+
+          <div class="toggle-desc more">READ MORE</div>
+          <div class="toggle-desc less">READ LESS</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "settings": [
+        {
+      "type": "select",
+      "label": "Justify Direction",
+      "id": "justify_direction",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center (Default)"
+        },
+        {
+          "value": "flex-start",
+          "label": "Flex Start"
+        },
+        {
+          "value": "flex-end",
+          "label": "Flex End"
+        }
+      ]
+        },
+     {
+      "type": "select",
+      "label": "Align Direction",
+      "id": "align_direction",
+      "options": [
+        {
+          "value": "center",
+          "label": "center (Default)"
+        },
+        {
+          "value": "flex-start",
+          "label": "Flex start"
+        },
+        {
+          "value": "flex-end",
+          "label": "Flex End"
+        }
+      ]
+     }
+  ],
+  "presets": [
+    {
+      "name": "Collection Banner",
+      "category": "collection"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  /* hero desc block  */
+
+
+  .collection-image-inner{
+    position:relative;
+
+  }
+
+  .collection-page-hero-description{
+    top: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+  }
+
+   .collection-page-hero-description-inner {
+     background: #FFF0E7;
+     max-width: 462px;
+     width: 100%;
+     padding: 20px;
+   }
+
+   .collection-page-hero-description h2 {
+
+     font-family: Libre Caslon Text;
+     font-size: 20px;
+     font-weight: 400;
+     line-height: 25px;
+     letter-spacing: 1px;
+     text-align: left;
+     margin: 0;
+     padding-bottom: 16px;
+   }
+
+   .collection-page-hero-description .collection-top-description p {
+
+     font-family: Inter;
+     font-size: 12px;
+     font-weight: 400;
+     line-height: 26px;
+     letter-spacing: 1.2999999523162842px;
+     text-align: left;
+     /* white-space: nowrap; */
+     text-overflow: ellipsis;
+     display: block;
+     width: 100%;
+     overflow: hidden;
+     display: -webkit-box;
+     -webkit-line-clamp: 2;
+     -webkit-box-orient: vertical;
+     margin-bottom: 0;
+
+   }
+
+   .toggle-desc {
+     color: var(--Mustard, #C0803B);
+     font-family: Inter;
+     font-size: 13px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: 16.3px;
+     /* 125.385% */
+     letter-spacing: 2.6px;
+     text-decoration-line: underline;
+     padding-top: 16px;
+     cursor: pointer;
+   }
+
+   .less {
+     display: none;
+   }
+
+   .collection-page-hero-description.col-hero-text--open .less {
+     display: block;
+   }
+
+   .collection-page-hero-description.col-hero-text--open .more {
+     display: none;
+   }
+
+
+
+   .collection-page-hero-description.col-hero-text--open .collection-top-description p {
+     white-space: break-spaces;
+     text-overflow: initial;
+     display: block;
+     width: 100%;
+     overflow: visible;
+   }
+
+   /* hero desc block  end */
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

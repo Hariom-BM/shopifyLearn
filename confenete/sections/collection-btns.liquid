@@ -1,0 +1,60 @@
+<div class="btn_section">
+  <div class="wrapper">
+  {% if section.settings.collection_heading != blank %}
+<h2>{{section.settings.collection_heading}}</h2>
+    {% endif %}
+  <div class="flex_column">
+{% for block in section.blocks %}
+{% if block.type == 'collection-btns' %}
+<!--------------Collections Buttons Start----------------->
+{% if  block.settings.collection_subheading != blank %}
+  
+  <div class="collection_btn">
+    <h3><a href="{{ block.settings.collection_link }}">{{block.settings.collection_subheading}}</a></h3>
+  </div>
+
+{% endif %}
+<!--------------Collections Buttons End----------------->
+{% endif %}
+  {% endfor %}
+  </div>
+</div>
+</div>
+  {% schema %}
+  {
+    "name": "Collection Buttons",
+    "settings": [
+      {
+            "id":"collection_heading",
+            "type":"text",
+           "label":"Heading"
+			}
+    ],
+    "blocks": [
+    {
+      "type":"collection-btns",
+      "name":"Collection Btns",   
+      "settings":[
+		  
+{
+            "id":"collection_subheading",
+            "type":"text",
+            "label":"Subheading"
+			}, 
+        {
+            "id":"collection_link",
+            "type":"url",
+            "label":"Link"
+			}
+
+]
+}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

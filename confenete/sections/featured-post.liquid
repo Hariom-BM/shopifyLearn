@@ -1,0 +1,65 @@
+{% liquid
+  assign article = articles[section.settings.featured_article]
+%}
+
+<section class="s-featured-post" style="background-image: url({{ 'background-featured-post.png' | asset_img_url: '1600x' }});">
+  <div class="s-featured-post__container wrapper">
+    <div class="s-featured-post__start">
+      {% if article.image %}
+        <a href="{{ article.url }}">
+          <img class="product-images__image" src="{{ article.image | img_url: '800x800', crop: 'center' }}" alt="{{ article.image.alt | escape }}">
+        </a>
+      {% endif %}
+    </div>
+    <div class="s-featured-post__end">
+      {% if article.tags.size > 0 %}
+        <ul class="s-featured-post__categories u-ul-reset">
+          {% for tag in article.tags %}
+            <li>
+              <a class="h3" href="{{ blog.url }}/tagged/{{ tag | handle }}#posts">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <h2 class="h1">
+        <a href="{{ article.url }}">{{ article.title }}</a>
+      </h2>
+      <div class="rte">
+        {% if article.excerpt.size > 0 %}
+          <p>
+            {{ article.excerpt }}
+          </p>
+        {% else %}
+          <p>
+            {{ article.content | strip_html | truncatewords: 20 }}
+          </p>
+        {% endif %}
+      </div>
+      {% render 'btn-primary' with {
+        url: article.url,
+        text: 'Read more'
+      } %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "Featured Post",
+  "settings": [
+    {
+      "type": "article",
+      "id": "featured_article",
+      "label": "Article to feature on the blog"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Post",
+      "category": "Blog"
+    }
+  ]
+}
+
+{% endschema %}

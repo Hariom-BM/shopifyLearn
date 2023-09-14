@@ -1,0 +1,99 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available when you add "Collection list" section in the Theme Editor.
+
+  Theme Store required settings
+  - Heading: title of the collection list section
+  - Collection
+{%- endcomment -%}
+
+<section class="collection-list" style="background-image: url({{ 'background-featured-collections.jpg' | asset_img_url: '1600x' }});">
+
+  <div class="collection-list__container wrapper wrapper--medium">
+
+    {% if section.settings.title != blank %}
+      <h2 class="h1 collection-list__title">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+
+    <div class="collection-list__products">
+    <div class="collection-list__grid swiper-container" id="collection-list-slider">
+      <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {%- assign collection = collections[block.settings.collection] -%}
+        <div class="swiper-slide">
+        <a href="{{ collection.url  }}" class="collection-list__item" {{ block.shopify_attributes }}>
+          <div class="collection-list__image">
+            <div class="collection-list__image-inner">
+              <img loading="lazy"
+                   src="{{ 'loading-image.png' | asset_url }}"
+                   data-src="{{ block.settings.image | img_url: '370x500', crop: 'center' }}"
+                   alt="{{ collection.title }}"
+                   class="u-block lazyload">
+              <noscript>
+              	<img src="{{ block.settings.image | img_url: '370x500', crop: 'center' }}" alt="{{ collection.title }}" class="u-block">
+              </noscript>
+            </div>
+          </div>
+          <h3>{{ collection.title  }}</h3>
+        </a>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+
+  </div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          },
+          {
+            "label": "Image",
+            "id": "image",
+            "type": "image_picker"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection list",
+        "category": "Collection",
+        "blocks": [
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          },
+          {
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
