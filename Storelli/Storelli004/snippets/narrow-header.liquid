@@ -1,0 +1,56 @@
+<header class="NarrowHeader">
+  <div class="NarrowHeader-background">
+    <div class="NarrowHeader-container">
+      <div class="NarrowHeader-sections">
+        <div class="NarrowHeader-controls NarrowHeader-controls--left">
+          <a class="js-offcanvas-trigger NarrowHeader-control NarrowHeader-control--menu" href="/collections/all" data-drawer-name="menu">
+            <div class="NarrowHeader-controlIcon NarrowHeader-controlIcon--menu">
+              {%- include 'svg-placeholder' with 'menu' -%}
+            </div>
+            <span class="u-vhide">Menu</span>
+          </a>
+        </div>
+
+        <div class="NarrowHeader-logo">
+          <a class="NarrowHeader-logoLink" href="/">
+            <div class="NarrowHeader-logoPlaceholder">
+              {%- include 'storelli-logo' -%}
+            </div>
+          </a>
+        </div>
+        <div class="city-site-sec NarrowHeader-controls NarrowHeader-controls--right">
+           <div class="item-box">
+              <a title="Stores" href="javascript:void(0)"><img src="https://cdn.shopify.com/s/files/1/0666/3189/3298/files/usa.png?v=1685517379" alt="flag_us" class="img-fluid" width="30" height="30"></a>
+            </div>
+            <div class="city-site-holder">
+              <div class="city-site-items">
+                <a class="flag_nav" title="USA"  href="javascript:void(0)" url="https://storelli.com/?SkipCozyRedirect=yes"><img src="https://cdn.shopify.com/s/files/1/0666/3189/3298/files/usa.png?v=1685517379" alt="flag_us" class="img-fluid" width="30" height="30"><span>USA</span></a>
+              </div>
+              <div class="city-site-items">
+                <a class="flag_nav" title="UK"  href="javascript:void(0)" url="https://storelli.co.uk/?SkipCozyRedirect=yes"><img src="https://cdn.shopify.com/s/files/1/0666/3189/3298/files/uk.png?v=1685517378" alt="flag_uk" class="img-fluid" width="30" height="30"><span>UK</span></a>
+              </div>
+              
+          <!--     <div class="city-site-items">
+                <a class="flag_nav" title="AU"  href="javascript:void(0)" url="https://storelli-australia.myshopify.com/?SkipCozyRedirect=yes"><img src="https://cdn.shopify.com/s/files/1/0666/3189/3298/files/australia.png?v=1685517379" alt="flag_au" class="img-fluid" width="30" height="30"><span>Australia</span></a>
+              </div> -->
+            </div>
+          </div>
+        <div class="NarrowHeader-controls NarrowHeader-controls--right">
+          <a class="NarrowHeader-control NarrowHeader-control--search" href="/search">
+            <div class="NarrowHeader-controlIcon NarrowHeader-controlIcon--search">
+              {%- include 'svg-placeholder' with 'search' -%}
+            </div>
+            <span class="u-vhide">Search</span>
+          </a>
+          <a class="js-cart-drawer-trigger js-cart-item-count NarrowHeader-control NarrowHeader-control--cart" href="/cart" data-item-count="{{ cart.item_count }}">
+            <div class="NarrowHeader-controlIcon NarrowHeader-controlIcon--cart">
+              {%- include 'svg-placeholder' with 'cart' -%}
+            </div>
+            <span class="u-vhide">Cart</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>

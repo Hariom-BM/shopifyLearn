@@ -1,0 +1,96 @@
+{% schema %}
+{
+    "name": "News",
+    "settings": [],
+    "blocks": [{
+        "type": "press_quote",
+        "name": "Press Quote",
+        "settings": [{
+            "type": "image_picker",
+            "id": "image",
+            "label": "Logo"
+        }, {
+            "type": "text",
+            "id": "quote",
+            "label": "Quote",
+            "info": "No quotation marks"
+        }]
+    }]
+}
+{% endschema %}
+
+{% if section.blocks.size > 0 %}
+    <div class="home-news">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="mb-6">News</h4>
+
+                    <!-- 1 PER SLIDE / Mobile -->
+                    <div id="news-carousel-mobile" class="carousel dark-carousel slide enabled d-block d-lg-none" data-ride="carousel">
+                        <div class="row carousel-inner">
+                            {%- for block in section.blocks -%}
+                                {% unless block.settings.quote == blank %}
+                                    <div class="col-12 carousel-item {% if forloop.first %}active{% endif %}">
+                                        {% if block.settings.image %}
+                                            <img class="img-fluid" src="{{ block.settings.image.src | img_url: '210x' }}">
+                                        {% endif %}
+                                        <p class="mt-3">{{ block.settings.quote }}</p>
+                                    </div>
+                                {% endunless %}
+                            {%- endfor -%}
+                        </div>
+                        <a class="carousel-control-prev" href="#news-carousel-mobile" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#news-carousel-mobile" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                    <!-- 3 PER SLIDE / Desktop -->
+                    <div id="news-carousel-desktop" class="carousel dark-carousel slide {% if section.blocks.size > 3 %}enabled{% endif %} d-none d-lg-block" data-ride="carousel">
+                        <div class="carousel-inner">
+                            {%- for block in section.blocks -%}
+                                {% assign row_open  = false  %}
+                                {% assign row_close = false  %}
+                                {% assign row_first = false  %}
+                                {% assign mod3 = forloop.index | modulo: 3 %}
+
+                                {% if forloop.index == 1 %}
+                                    {% assign row_open  = true  %}
+                                    {% assign row_first = true  %}
+                                {% else %}
+                                    {% if mod3 == 1 %}
+                                        {% assign row_open = true  %}
+                                    {% endif %}
+                                    {% if mod3 == 0 %}
+                                        {% assign row_close = true  %}
+                                    {% endif %}
+                                {% endif %}
+
+                                {% if row_open %}<div class="row carousel-item {% if row_first %}active{% endif %}">{% endif %}
+                                    <div class="col-4">
+                                        {% if block.settings.image %}
+                                            <img class="img-fluid" src="{{ block.settings.image.src | img_url: '210x' }}">
+                                        {% endif %}
+                                        <p class="mt-3">{{ block.settings.quote }}</p>
+                                    </div>
+                                {% if row_close %}</div>{% endif %}
+
+                            {%- endfor -%}
+
+                        </div>
+                        <a class="carousel-control-prev" href="#news-carousel-desktop" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#news-carousel-desktop" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

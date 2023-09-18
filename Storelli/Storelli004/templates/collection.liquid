@@ -1,0 +1,116 @@
+<div class="collection-header" {% if collection.image %}style="background-image:url({{ collection.image | img_url: '1920x' }})"{% endif %}>
+    <div class="container-fluid">
+        <div class="row align-items-center text-center">
+            <div class="col">
+                <h1>Shop {{ collection.title }}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-sm light-section">
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- SIDEBAR -->
+            <div class="col-12 col-md-3 col-xl-2 collection-nav">
+                <div class="row d-flex d-md-none">
+                    <div class="col-12">
+                        <a class="filter-btn" href="javascript:void(0)">
+                            Filters
+                            <i class="icon icon-chevron-light-down float-right"></i>
+                            <span class="clearfix"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="row filter-list">
+                    <div class="col-12 col-sm-4 col-md-12">
+                        <h4>Filters</h4>
+                        <hr class="mb-2 mt-0" />
+                        {%- if collection.all_tags.size > 0 -%}
+                            <ul class="selectable">
+                                {% assign sorted_tags = 'All,New Arrivals,Tops,Bottoms,Accessories' | split: ','  %}
+                                {% for tag in sorted_tags %}
+                                    {%- if current_tags contains tag -%}
+                                        <li class="selected">
+                                            {{ tag | link_to_remove_tag: tag | replace: 'title=', 'class="selected" title=' }}
+                                        </li>
+                                    {%- else -%}
+                                        <li>
+                                            {{ tag | link_to_tag: tag }}
+                                        </li>
+                                    {%- endif -%}
+                                {% endfor %}
+                                {% comment %}
+                                {%- for tag in collection.all_tags -%}
+                                    {%- unless tag contains 'KF' -%}
+                                        {%- if current_tags contains tag -%}
+                                            <li class="selected">
+                                                {{ tag | link_to_remove_tag: tag | replace: 'title=', 'class="selected" title=' | remove: 'KF: ' }}
+                                            </li>
+                                        {%- else -%}
+                                            <li>
+                                                {{ tag | link_to_tag: tag | remove: 'KF: ' }}
+                                            </li>
+                                        {%- endif -%}
+                                    {%- endunless -%}
+                                {%- endfor -%}
+                                {% endcomment %}
+                            </ul>
+                        {%- else -%}
+                            <div class="no-tags">No tags match the current filters</div>
+                        {%- endif -%}
+                    </div>
+                    <div class="col-12 col-sm-4 col-md-12">
+                        <h4>Tech</h4>
+                        <hr class="mb-2 mt-0" />
+                        {%- if shop.types.size > 0 -%}
+                            <ul class="selectable">
+                                {%- for type in shop.types -%}
+                                    {%- if type != blank -%}
+                                        {%- if collection.current_type contains type -%}
+                                            <li  class="selected">
+                                                {{ type | link_to_type | replace: 'title=', 'class="selected inactive" onclick="return false;" title=' }}
+                                            </li>
+                                        {%- else -%}
+                                            <li>
+                                                {{ type | link_to_type }}
+                                            </li>
+                                        {%- endif -%}
+                                    {%- endif -%}
+                                {%- endfor -%}
+                            </ul>
+                        {%- endif -%}
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="col-12 col-md-9 col-xl-10 collection-items">
+                <div class="row">
+
+                    {% paginate collection.products by 12 %}
+                        {% for product in collection.products %}
+                            {% include 'product-card'  %}
+                        {% else %}
+                            <div class="col-12">
+                                <div class="text-center text-muted">
+                                    {{ 'collections.general.no_matches' | t }}
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        {% if paginate.next %}
+                            <div class="col-12 text-center load-more-parent">
+                                <a class="load-more load-more-products btn btn-outline-dark btn-storelli btn-storelli-outline" href="{{ paginate.next.url }}&view=more">
+                                    Load More Products
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endpaginate %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

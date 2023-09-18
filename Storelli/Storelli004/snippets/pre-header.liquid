@@ -1,0 +1,27 @@
+{% if template contains 'index' %}
+<link rel="preload" as="image" href="{{ settings.Desk_img }}">
+<link rel="preload" as="image" href="{{ settings.mob_img }}">
+<link rel="preload" as="image" href="{{ settings.mob_img_2 }}">
+{% endif %}
+
+
+{% if template contains 'product' %}
+<link rel="preload" as="image" href="{{ product.featured_image | img_url: '800x' }}">
+{% endif %}
+
+{% if template contains 'collection' %}
+  {% if collection.image != blank %}
+  	<link rel="preload" as="image" href="{{ collection.image | img_url: '1800x' }}">
+  {% else %}
+  	<link rel="preload" as="image" href="{{ collection.products.first.featured_image | img_url: '500x' }}">
+  {% endif %}
+{% endif %}
+
+<link rel="preconnect" href="//fonts.shopifycdn.com/" crossorigin>
+<link rel="preconnect" href="//cdn.shopify.com/" crossorigin>
+<link rel="preconnect" href="//v.shopify.com/" crossorigin>
+<link rel="dns-prefetch" href="//{{shop.domain}}" crossorigin>
+<link rel="dns-prefetch" href="//{{shop.permanent_domain}}" crossorigin>
+<link rel="dns-prefetch" href="//cdn.shopify.com" crossorigin>
+<link rel="dns-prefetch" href="//v.shopify.com" crossorigin>
+<link rel="dns-prefetch" href="//fonts.shopifycdn.com" crossorigin>

@@ -1,0 +1,130 @@
+<div class="section-md">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-12">
+                <h1 class="h2 text-center">Store Locator</h2>
+                
+                <!-- FORM -->
+                <div class="row mt-3">
+                    <div class="col-12 col-xl-6 offset-xl-3">
+                        <form class="locator-filters">
+                            <div class="form-row">
+
+                                <div class="col form-group locator_country">
+                                    <label for="country" class="visually-hidden">Select Country</label>
+                                    <select id="country" class="form-control">
+                                        <option value="1-7" selected>Select Country</option>
+                                        <option value="3-3">Australia</option>
+                                        <option value="4-4">Canada</option>
+                                        <option value="5-5">Colombia</option>
+                                        <option value="7-7">Finland</option>
+                                        <option value="1-1">United States</option>
+                                        <option value="2-2">Italy</option>
+                                        <option value="6-6">South Korea</option>
+                                    </select>
+                                </div>
+
+                                <div class="col form-group locator_state hide">
+                                    <label for="state" class="visually-hidden">Select State</label>
+                                    <select id="state" class="form-control" disabled="true">
+                                        <option value="1-51" selected>Select State</option>
+                                        <option value="1-1">AL</option>
+                                        <option value="2-2">AK</option>
+                                        <option value="3-3">AZ</option>
+                                        <option value="4-4">AR</option>
+                                            <option value="5-5">CA</option>
+                                            <option value="6-6">CO</option>
+                                            <option value="7-7">CT</option>
+                                            <option value="8-8">DE</option>
+                                            <option value="9-9">DC</option>
+                                            <option value="10-10">FL</option>
+                                            <option value="11-11">GA</option>
+                                            <option value="12-12">HI</option>
+                                            <option value="13-13">ID</option>
+                                            <option value="14-14">IL</option>
+                                            <option value="15-15">IN</option>
+                                            <option value="16-16">IA</option>
+                                            <option value="17-17">KS</option>
+                                            <option value="18-18">KY</option>
+                                            <option value="19-19">LA</option>
+                                            <option value="20-20">ME</option>
+                                            <option value="21-21">MD</option>
+                                            <option value="22-22">MA</option>
+                                            <option value="23-23">MI</option>
+                                            <option value="24-24">MN</option>
+                                            <option value="25-25">MS</option>
+                                            <option value="26-26">MO</option>
+                                            <option value="27-27">MT</option>
+                                            <option value="28-28">NE</option>
+                                            <option value="29-29">NV</option>
+                                            <option value="30-30">NH</option>
+                                            <option value="31-31">NJ</option>
+                                            <option value="32-32">NM</option>
+                                            <option value="33-33">NY</option>
+                                            <option value="34-34">NC</option>
+                                            <option value="35-35">ND</option>
+                                            <option value="36-36">OH</option>
+                                            <option value="37-37">OK</option>
+                                            <option value="38-38">OR</option>
+                                            <option value="39-39">PA</option>
+                                            <option value="40-40">RI</option>
+                                            <option value="41-41">SC</option>
+                                            <option value="42-42">SD</option>
+                                            <option value="43-43">TN</option>
+                                            <option value="44-44">TX</option>
+                                            <option value="45-45">UT</option>
+                                            <option value="46-46">VT</option>
+                                            <option value="47-47">VA</option>
+                                            <option value="48-48">WA</option>
+                                            <option value="49-49">WV</option>
+                                            <option value="50-50">WI</option>
+                                            <option value="51-51">WY</option>
+                                    </select>
+                                </div>
+
+                                <div class="col form-group locator_region hide">
+                                    <label for="region" class="visually-hidden">Select Region</label>
+                                    <select id="region" class="form-control" disabled="true">
+                                        <option value="1-5" selected>Select Region</option>
+                                        <option value="1-1">EMI</option>
+                                        <option value="2-2">LAZ</option>
+                                        <option value="3-3">LOM</option>
+                                        <option value="4-4">PIE</option>
+                                        <option value="5-5">VEN</option>
+                                    </select>
+                                </div>
+
+                                <div class="col form-group">
+                                    <label for="search_box" class="visually-hidden">Zip code</label>
+                                    <input type="text" class="form-control" id="search_box" placeholder="ZIP Code" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-lg light-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-xl-6 offset-xl-3">
+                <div class="row" id="store-list"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="template">
+    <div class="col-6 col-sm-4 text-center mb-4">
+        <h4>{{"{{ title "}}}}</h4>
+        <p>
+            {{"{{ address "}}}}<br>
+            {{"{{ city "}}}} {{"{{ state.state "}}}} {{"{{ zip "}}}}<br>
+            {{"{{ phone "}}}}
+        </p>
+    </div>
+</script>

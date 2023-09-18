@@ -1,0 +1,122 @@
+{% schema %}
+{
+    "name": "Home Carousel",
+    "settings": [{
+        "type": "text",
+        "id": "speed",
+        "label": "Speed (seconds)",
+        "default": "5"
+    }],
+    "blocks": [{
+        "type": "carousel_item",
+        "name": "Carousel Slide",
+        "settings": [{
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }, {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Mobile Image (optional)",
+            "info": "Uses default image if not provided"
+        }, {
+            "type": "text",
+            "id": "player",
+            "label": "Player Caption"
+        }, {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        }, {
+            "type": "text",
+            "id": "content",
+            "label": "Content"
+        }, {
+            "type": "text",
+            "id": "link",
+            "label": "Link",
+            "placeholder": "Leave empty to hide the link text"
+        }, {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link Text",
+            "default": "Read More"
+        }]
+    }]
+}
+{% endschema %}
+
+
+
+<div id="home-slider" class="carousel" data-ride="carousel" data-pause="hover" data-interval="{{ section.settings.speed | times: 1000 }}">
+    <ol class="carousel-indicators">
+        {% for block in section.blocks %}
+            <li data-target="#home-slider" data-slide-to="{{ forloop.index0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+        {% endfor %}
+    </ol>
+    <div class="carousel-inner">
+        {% for block in section.blocks %}
+            {% if block.settings.link != blank %}
+                {% assign parts = block.settings.link | split: '.com'  %}
+                {% assign host  = parts[0]  %}
+            {% endif %}
+            {% if forloop.first == true %}
+              <style>
+              @media only screen and (max-width: 768px) {
+              .m_merox_background {
+                  background-image:url({{ block.settings.image_mobile.src | img_url : '1024x' }});
+                }
+              }
+               @media only screen and (min-width: 768px) {
+                 .m_merox_background {
+                    background-image:url({{ block.settings.image.src | img_url : '1920x' }});
+                 }
+              }
+              </style>  
+            <div class="m_merox_background carousel-item {% if forloop.first %}active{% endif %}" 
+                >
+                <div class="container-fluid container-fullbleed">
+                    <div class="row content">
+                        <div class="col-12 col-lg-6 offset-lg-3">
+                            <h1>{{ block.settings.title }}</h1>
+                            <p>{{ block.settings.content }}</p>
+                            {% if block.settings.link != blank %}
+                                <a class="light-link decorated-link featured-link" href="{{ block.settings.link }}" {% unless host contains 'storelli' %}target="_blank"{% endunless %}>
+                                    {{ block.settings.link_text }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="home-caption h4 sans">
+                        {{ block.settings.player }}
+                    </div>
+                </div>
+            </div>  
+            {% else %}  
+            <div class="carousel-item {% if forloop.first %}active{% endif %}" 
+                
+                {% if block.settings.image %}src-default="{{ block.settings.image.src | img_url: '1920x' }}"{% endif %}
+                {% if block.settings.image_mobile %}src-mobile="{{ block.settings.image_mobile.src | img_url: '1024x' }}"{% endif %}
+              
+                >
+                <div class="container-fluid container-fullbleed">
+                    <div class="row content">
+                        <div class="col-12 col-lg-6 offset-lg-3">
+                            <h1>{{ block.settings.title }}</h1>
+                            <p>{{ block.settings.content }}</p>
+                            {% if block.settings.link != blank %}
+                                <a class="light-link decorated-link featured-link" href="{{ block.settings.link }}" {% unless host contains 'storelli' %}target="_blank"{% endunless %}>
+                                    {{ block.settings.link_text }}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="home-caption h4 sans">
+                        {{ block.settings.player }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>

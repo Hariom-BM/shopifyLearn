@@ -1,0 +1,309 @@
+{% if template contains 'article' and blog.metafields.blogfeeder.use_canonical == 'yes' %}{% assign canonical_url = article.metafields.blogfeeder.canonical %}{% endif %}
+<!doctype html>
+<!--[if IE 9]><html class="ie9 no-js supports-no-cookies" lang="{{ shop.locale }}"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js supports-no-cookies" lang="{{ shop.locale }}">
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png">
+
+  <link rel="preconnect" href="https://cdn.shopify.com">
+<!--   <link rel="preconnect" href="https://cdn.polyfill.io"> -->
+  <link rel="preconnect" href="https://ajax.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+
+  <meta name="google-site-verification" content="iU-dqzBx3PaQDEj2MQcNhJ0RvdoZ_1HhzX7EM62zg04" />
+  <meta name="google-site-verification" content="I9dppBQTMpUhRk7zrFEBFT8vkHAJgsrino1tfPpQ5f4" />
+  <meta name="google-site-verification" content="iU-dqzBx3PaQDEj2MQcNhJ0RvdoZ_1HhzX7EM62zg04" />
+  <meta name="google-site-verification" content="ARuPflAIZbNwkOs2G78VtC6eKDDrHAkkKgpQ45kX5_g" />
+
+  {% include 'pluginseo' %}
+
+  {%- capture seo_title -%}
+      {{ page_title }}
+      {%- if current_tags -%}
+          {%- assign meta_tags = current_tags | join: ', ' %}
+          &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 -%}
+          &ndash; {{ 'general.meta.page' | t: page: current_page }}
+      {%- endif -%}
+      {%- unless page_title contains shop.name -%}
+          &ndash; {{ shop.name }}
+      {%- endunless -%}
+  {%- endcapture -%}
+  {% comment %}
+  <title>{{ seo_title }}</title>
+
+  {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+  {% endcomment %}
+
+  {% include 'social-meta-tags' %}
+
+  {{ 'theme.scss' | asset_url | stylesheet_tag }}
+
+  {% comment %}
+  {{ 'https://cdn.polyfill.io/v2/polyfill.min.js?features=default|gated,fetch|gated' | script_tag }} 
+  {% endcomment %}
+  
+  {{ 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' | script_tag }}
+	<script src="https://cdn.shopify.com/s/files/1/2325/8929/t/1/assets/ultimate-cart-drawer___app.js?shop={{shop.permanent_domain}}&t={{ 'now' | date: "%Y%m%d"}}-01" type="text/javascript" async="async"></script>
+  <script type="text/javascript">
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    window.theme = {
+        strings: {
+            addToCart: {{ 'products.product.add_to_cart' | t | json }},
+            addingToCart: {{ 'products.product.adding_to_cart' | t | json }},
+            addedToCart: {{ 'products.product.added_to_cart' | t | json }},
+            soldOut: {{ 'products.product.sold_out' | t | json }},
+            unavailable: {{ 'products.product.unavailable' | t | json }}
+        },
+        moneyFormat: {{ shop.money_format | json }}
+    };
+  </script>
+
+  {% if template.directory == 'customers' %}
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    <!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
+  {% endif %}
+
+  <script src="https://smarteucookiebanner.upsell-apps.com/gdpr_adapter.js?shop=storelli.myshopify.com" type="application/javascript"></script>
+  {% capture 'header_content' %}{{ content_for_header }}{% endcapture %}{{ header_content | replace: "trekkie.load(", "(window.deferTrekkie || trekkie.load)(" }}
+
+
+  <script type="text/javascript">
+    window['_fs_debug'] = false;
+    window['_fs_host'] = 'fullstory.com';
+    window['_fs_org'] = 'B4Z7F';
+    window['_fs_namespace'] = 'FS';
+    (function(m,n,e,t,l,o,g,y){
+        if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
+        g=m[e]=function(a,b){g.q?g.q.push([a,b]):g._api(a,b);};g.q=[];
+        o=n.createElement(t);o.async=1;o.src='https://'+_fs_host+'/s/fs.js';
+        y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+        g.identify=function(i,v){g(l,{uid:i});if(v)g(l,v)};g.setUserVars=function(v){g(l,v)};
+        y="rec";g.shutdown=function(i,v){g(y,!1)};g.restart=function(i,v){g(y,!0)};
+        g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
+        g.clearUserCookie=function(){};
+    })(window,document,window['_fs_namespace'],'script','user');
+  </script>
+  
+  <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"17117654"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
+
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="b78bf6a1-b5f0-441e-a008-a92bebf6b1ae" type="text/javascript" async></script>
+
+  {% include 'taboola-pixel' %}
+  {% include 'outbrain-pixel' %}
+  <!-- Reddit Pixel -->
+<script>
+!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','t2_32pw73v2');rdt('track', 'PageVisit');
+</script>
+<!-- DO NOT MODIFY -->
+<!-- End Reddit Pixel -->
+  
+
+
+  {% include "globale-js.liquid" %}
+<!-- GSSTART Show variants. Do not change -->
+{% if request.path contains "/products/" %}{% else %}{% endif %}
+<!-- Show variants code end. Do not change GSEND --></head>
+
+<body class="template-{{ template.name | handle }}">
+  <div class="u-vhide">
+    {%- include 'svg-sprite' -%}
+  </div>
+
+  {% section 'header' %}
+
+  <main id="site-content" role="main">
+      {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+  {% section 'drawer' %}
+
+  {% include 'offcanvas' %}
+
+  <!-- Theme Scripts -->
+
+  <script type="text/javascript">
+    function numericFilter(txb) {
+      txb.value = txb.value.replace(/[^\0-9]/gi, '');
+    }
+    jQuery(document).ready(function() {
+      jQuery('.number-wrapper .number-input input').bind('change paste keyup', function() {
+        var number_val = jQuery('.number-wrapper .number-input input').val();
+        jQuery('.number-wrapper .number-preview input').val(number_val);
+      });
+      jQuery('#add-a-player-number-for-free').click(function() {
+        if (jQuery('#add-a-player-number-for-free').is(':checked')) {
+          jQuery('form.add-form .number-wrapper').show();
+        } else {
+          jQuery('form.add-form .number-wrapper').hide();
+        }
+      });
+    });
+  </script>
+
+  <script type="text/javascript">
+    function setCookie(cname, cvalue, exdays) {
+      var d = new Date();
+      d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+      var expires = 'expires=' + d.toGMTString();
+      document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+    }
+
+    function getCookie(cname) {
+      var name = cname + '=';
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return '';
+    }
+
+    $(document).ready(function() {
+      var final_code = '';
+      var get_url = window.location.href;
+      if (get_url.indexOf('?discount') > -1) {
+        setCookie('coupen_code', final_code, -1);
+      }
+      var get_code = getCookie('coupen_code');
+
+      if (get_code) {
+        $('#cart_set_discount').val(get_code);
+      } else {
+        var filter_get_url = get_url.split('?');
+        var get_fist_part = filter_get_url[1];
+        var again_split = get_fist_part ? get_fist_part.split('&') : '';
+        var again_split1 = again_split ? again_split[0] : '';
+        var get_final_code = again_split1 ? again_split1.split('=') : '';
+        final_code = get_final_code ? get_final_code[1] : '';
+        if (final_code != '') {
+          setCookie('coupen_code', final_code, 2);
+        } else {
+        }
+      }
+    });
+  </script>
+
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  {{ 'vendor.js' | asset_url | script_tag }}
+  {{ 'theme.js' | asset_url | script_tag }}
+  {{ 'general.js' | asset_url | script_tag }}
+
+  {%- if template.name == 'search' or template.suffix == 'algolia' -%}
+    {{ 'algolia.js' | asset_url | script_tag }}
+  {%- endif -%}
+
+  <!-- Lazyload Script -->
+  {{ 'jQuery.loadScroll.js' | asset_url | script_tag }}
+  
+  <!-- Third-party Scripts -->
+
+  <script type="text/javascript">
+    var _learnq = _learnq || [];
+
+    _learnq.push(['account', 'Hvui6S']);
+
+    (function () {
+    var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+    b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+    var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+    })();
+  </script>
+  <script src='https://a.klaviyo.com/media/js/onsite/onsite.js'></script>
+  <script>
+    var klaviyo = klaviyo || [];
+    klaviyo.init({
+      account: 'Hvui6S',
+      platform: 'shopify'
+    });
+    klaviyo.enable('backinstock', {
+      trigger: {
+        product_page_text: 'Notify Me When Available',
+        product_page_class: 'btn',
+        product_page_text_align: 'center',
+        product_page_margin: '0px',
+        replace_anchor: false
+      },
+      modal: {
+        headline: '{product_name}',
+        body_content: 'Register to receive a notification when this item comes back in stock.',
+        button_label: 'Notify me when available',
+        footer_content: '',
+        additional_styles: "@import url('https://fonts.googleapis.com css?family=Helvetica+Neue');",
+        drop_background_color: '#000',
+        background_color: '#fff',
+        text_color: '#222',
+        button_text_color: '#fff',
+        button_background_color: '#439fdb',
+        close_button_color: '#ccc',
+        error_background_color: '#fcd6d7',
+        error_text_color: '#C72E2F',
+        success_background_color: '#d3efcd',
+        success_text_color: '#1B9500'
+      }
+    });
+  </script>
+  
+
+
+  {% include 'criteo-tracking' %}
+
+  <!-- RYVIU APP- Uninstalled APP By Client-4-3-2020 -->
+<!--   <script src="https://cdn.ryviu.com/js/reviews.js?shop=storelli.myshopify.com"></script> -->
+  <!-- / RYVIU APP -->
+
+  {% include 'linkedin-tracking' %}
+  {% include 'linkedin-tracking-yh' %}
+
+
+
+
+
+
+<!-- GSSTART Show variants BODY. Do not change -->{% if collection.products %}
+<div class="gsdatacontb" style="display: none !important;">
+  {% paginate collection.products by 52 %}{% for product in collection.products %}{% assign imagescount = product.images | size %}{% if imagescount > 1 %}
+  <div style="display: none !important;" class="gsProductVariants" optionnames="{{ product.options | join: ' | ' }}"  gsProductHandler="{{ product.handle }}" >{% assign variantImgsUsedStr = "" %} {% assign variantBySizeUsedStr = "" %}{% assign sizeoptionnr = 0 %}
+{% for option in product.options %}{% capture optioncaseins %}{{option | downcase}}{% endcapture %}{% if optioncaseins contains "size" or optioncaseins contains "rösse" or optioncaseins contains "uurus" or optioncaseins contains "المقاس" or optioncaseins contains "oko" or optioncaseins contains "eden" or optioncaseins contains "größe" or optioncaseins contains "éret" or optioncaseins contains "ozmiar" or optioncaseins contains "uantity" or optioncaseins contains "in option" or optioncaseins contains "torlek" or optioncaseins contains "aille" or optioncaseins contains "aglia" or optioncaseins contains "alla" or optioncaseins contains "amaño" or optioncaseins contains "גודל" or optioncaseins contains "サイズ" or optioncaseins contains "taille" or optioncaseins contains "eggiseno" or optioncaseins contains "aat" or optioncaseins contains "tamanho" or optioncaseins contains "rrelse" or optioncaseins contains "siza" %}{% assign sizeoptionnr = forloop.index %}{% if product.options.size == 1 %}{% endif %}{% if optioncaseins contains "color" or optioncaseins contains "colour" or optioncaseins contains "farge"  %}{% assign sizeoptionnr = 0 %}{% endif %}{% endif %}{% endfor %}
+    {% for variant in product.variants %}{% assign featuredImageSize = variant.featured_image | size %}{% if featuredImageSize > 0  %}{% if variantImgsUsedStr contains "IGNOREGS" %}{% else %}{% assign variantImgsUsedStr = variantImgsUsedStr | append: variant.featured_image %}{% assign canAddVariant = true %}{% if sizeoptionnr == 1 %}{% assign optionCheckVal = ";" | append: variant.option2 | append: variant.option3 | append: ";" %}{% if variantBySizeUsedStr contains optionCheckVal %}{% assign canAddVariant = false %}{% else %}{% assign variantBySizeUsedStr = variantBySizeUsedStr | append: ";" | append: variant.option2 | append: variant.option3 | append: ";" %}{% endif %}{% endif %}
+    {% if sizeoptionnr == 2 %}{% assign optionCheckVal = ";" | append: variant.option1 | append: variant.option3 | append: ";" %}{% if variantBySizeUsedStr contains optionCheckVal %}
+                {% assign canAddVariant = false %}{% else %}{% assign variantBySizeUsedStr = variantBySizeUsedStr | append: ";" | append: variant.option1 | append: variant.option3 | append: ";" %}{% endif %}{% endif %} {% if sizeoptionnr == 3 %}{% assign optionCheckVal = ";" | append: variant.option1 | append: variant.option2 | append: ";" %}{% if variantBySizeUsedStr contains optionCheckVal %}
+                {% assign canAddVariant = false %}{% else %}{% assign variantBySizeUsedStr = variantBySizeUsedStr | append: ";" | append: variant.option1 | append: variant.option2 | append: ";" %}{% endif %}{% endif %} {% if canAddVariant == true %}
+    <p vcontinue="{{ variant.inventory_policy }}" vquantity="{{ variant.inventory_quantity }}" vavailable="{{ variant.available }}" variantpriceid="{{ variant.id }}" originalcompprice='{{ product.compare_at_price_min | money_without_trailing_zeros | escape }}' originalprice='{{ product.price | money_without_trailing_zeros | escape }}' minprice='{{ product.price_min | money_without_trailing_zeros | escape }}' comparePrice='{{ variant.compare_at_price | money_without_trailing_zeros | escape }}' variantPrice='{{ variant.price | money_without_trailing_zeros | escape }}'></p>
+    <p varianttitleid="{{ variant.id }}"  sizeoptionnr="{{ sizeoptionnr }}" vsavailable="{{ variant.available }}" optionuidtwo="{{ product.id }}{{ variant.option2 | escape }}" optiontwo="{{ variant.option2 | escape }}" originaltitle="{{ product.title | escape }}" variantTitle="{{ variant.title | escape }}" optionuid="{{ product.id }}{{ variant.option1 | escape }}"></p>
+       <span variantid="{{ variant.id }}" imgwidth="{{ variant.featured_image.width }}" imgheight="{{ variant.featured_image.height }}" gsvariantimage="{{ variant.featured_image | img_url: '256x' }}"></span>
+    {% endif %}{% endif %}{% endif %}{% endfor %}
+  </div>{% endif %}{% endfor %}{% endpaginate %}{% endif %}
+  {% if collection.products %}
+        <div style="display: none !important;" class="gsProductImages" >
+        {% paginate collection.products by 52 %}{% for product in collection.products %} {% assign imagescount = product.images | size %}{% if imagescount > 1 %}{% for image in product.images  limit:1 %}
+                                        <span gsProductHandle="{{ product.handle }}" firstImage="{{ image | img_url: '256x' }}"></span>
+                                {% endfor %}{% endif %}{% endfor %}{% endpaginate %}
+  </div>
+  </div>
+    {% endif %} <!-- Show variants code end BODY. Do not change GSEND --></body>
+<script>
+  $(function() {  
+      // Custom fadeIn Duration
+      $('.lazyload_class').loadScroll(500);
+  });
+</script>
+</html>

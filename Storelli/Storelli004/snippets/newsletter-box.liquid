@@ -1,0 +1,12 @@
+{% unless shop.customer_accounts_enabled and customer and customer.accepts_marketing %}
+    <div id="NewsletterBox" class="home-newsletter d-none d-xl-block hide">
+        <a href="javascript:void(0)" class="dismiss">
+            <i class="icon icon-close-light-md"></i>
+        </a>
+        <div class="title">Never miss a step</div>
+        <div class="message mb-3">Sign up for our Newsletter and get 15% off your next order</div>
+       
+      
+       {% include "klaviyo-form" %}
+    </div>
+{% endunless %}

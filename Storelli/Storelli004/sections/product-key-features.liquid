@@ -1,0 +1,67 @@
+{% schema %}
+{
+    "name": "Product Key Features",
+    "settings": []
+}
+{% endschema %}
+
+{%- capture key_features -%}
+    {%- for tag in product.tags -%}
+        {%- if tag contains 'KF:' -%}
+            {%- assign id = tag | remove: 'KF:' | trim | handleize -%}
+            <li>
+                {% case id %}
+                    {% when 'anti-microbial' %}     {% include 'icon-kf-anti-microbial' %}      <div><b>Anti-Bacterial</b>      <br/>Enhanced with anti-bacterial treatment to reduce germs and odors</div>
+                    {% when 'anti-uv' %}            {% include 'icon-kf-anti-uv' %}             <div><b>UV Resistant</b>        <br/>Protects skin from harmful UV rays.</div>
+              		{% when 'concave-cut' %}       	{% include 'icon-kf-concave-cut' %}         <div><b>Stretch Sizing</b>      <br/>Concave Cut™ maximizes the curvature of the palm for controlling the ball and stretches to the size of your hand</div>
+              		{% when 'vtech' %}       		{% include 'icon-kf-vtech' %}             	<div><b>5-Star Rating</b>       <br/>Awarded top rank from Virginia Tech's Helmet Lab with an estimated 84% reduction in risk of head injuries</div>
+                    {% when 'military-grade' %}     {% include 'icon-kf-military-grade' %}      <div><b>Military Grade</b>      <br/>Team Wendy® Zorbium® Foam armors the helmets of the U.S. Army, Navy and Marine Corps</div>
+              		{% when 'impact-body' %}        {% include 'icon-kf-impact' %}              <div><b>Impact Resistant</b>    <br/>Armored with material that absorbs up to 90% of impact</div>
+                    {% when 'impact-finger' %}      {% include 'icon-kf-impact-head-new' %}     <div><b>Finger Spines</b>       <br/>Ergonomic plastic spines that protect the finger from jamming and bending backwards</div>
+                    {% when 'impact-head' %}        {% include 'icon-kf-impact' %}              <div><b>Impact Resistant</b>    <br/>Engineered to reduce g-forces to the head by up to 50%.</div>
+                    {% when 'impact-head-new' %}    {% include 'icon-kf-impact-head-new' %}     <div><b>Impact Resistant</b>    <br/>Foam is engineered specially for soccer to reduce g-forces to the head by up to 50%</div>
+              		{% when 'moisture-wicking' %}   {% include 'icon-kf-moisture-wicking' %}    <div><b>Sweat-Wicking</b>       <br/>Employs lightweight materials that wick moisture away from the body</div>
+                    {% when 'speedgrip' %}          {% include 'icon-kf-speedgrip' %}           <div><b>SpeedGrip</b>           <br/>Proprietary suede-like grip material that provides increased traction in both dry and wet conditions</div>
+              		{% when 'speedgrip-sicario' %}  {% include 'icon-kf-speedgrip-sicario' %}   <div><b>SpeedGrip®</b>          <br/>Inner palm lining keeps hands locked to the glove at all times</div>
+                    {% when 'spiral-wrist' %}       {% include 'icon-kf-spiral-wrist' %}        <div><b>Spiral Wrist Wrap</b>   <br/>Extra long strap that wraps twice around the wrist for superior fit and security</div>
+              		{% when 'punch-zone' %}       	{% include 'icon-kf-impact' %}     			<div><b>Signature Punch Zone</b> <br/>Polybutadiene hex-shaped punch zones to generate powerful rebound and grip</div>
+                    {% when 'team-wendy' %}         {% include 'icon-kf-team-wendy' %}         	<div><b>Team Wendy</b> 			<br/>Powered by Team Wendy® Zorbium® foam used in U.S. Army, Navy and Marine Corps helmets.</div>
+              		{% when 'turf-burn' %}          {% include 'icon-kf-turf-burn' %}           <div><b>Turf Burn Resistant</b> <br/>Stretchy, thin, flexible abrasion-resistant panels that withstand turf burns</div>
+              		{% when 'turf-burn-sicario' %}  {% include 'icon-kf-turf-burn' %}           <div><b>Abrasion Resistant</b> 	<br/>Moulded patch reinforces the palm to extend the lifespan of the glove</div>
+                    {% when 'uv-resistant' %}       {% include 'icon-kf-anti-uv' %}             <div><b>UV Resistant</b>        <br/>Protects skin from harmful UV rays.</div>
+              		{% when 'vt-5star' %}       	{% include 'icon-kf-vt-5star' %}            <div><b>5-Star Rating</b>        <br/>#1 rated by Virginia Tech Helmet Lab with an estimated 84% reduction in risk of head injuries</div>
+              		{% when 'astm' %}            	{% include 'icon-kf-astm' %}             	<div><b>ASTM Certified</b>      <br/>Compliant with ASTM, NFHS and FIFA Rule-4 standards</div>
+                {% endcase %}
+            </li>
+        {%- endif -%}
+    {%- endfor -%}
+{%- endcapture -%}
+
+{% assign key_features = key_features | trim %}
+
+{% unless key_features == blank %}
+    <h4>Key Features</h4>
+    <div class="key-features">
+        <ul>{{ key_features }}</ul>
+    </div>
+{% endunless %}
+
+{%- if product.tags contains "KF: vtech" -%}
+	<div>
+      <h4>CLINICAL DATA*</h4>
+      <p></p>
+      <p style="font-size: 14px;">
+        In a 2-year field study funded by NOCSAE and run by University of Wisconsin Madison with ~3,000 high school soccer players, the Storelli's ExoShield Head Guard reduced the relative risk of concussions by ~50% overall and 60% in females specifically (97-98% risk ratio statistical confidence). Of all the products included in the study, the ExoShield Head Guard was the only product to show any statistically significant benefits. 
+      </p>
+      <p style="font-size: 14px;">
+        To access the relevant data, click <a href="https://bjsm.bmj.com/content/bjsports/early/2019/06/26/bjsports-2018-100238/DC1/embed/inline-supplementary-material-1.pdf?download=true"><b>HERE</b></a> for the product-level results and <a href="https://bjsm.bmj.com/content/early/2019/06/26/bjsports-2018-100238" target="_blank"><b>HERE</b></a> for the broader paper. To read a blog post covering the data on soccer headgear (and open questions), click <a href="https://storelli.com/blogs/youthsoccer/head-protection-in-soccer-does-it-work" target="_blank"><b>HERE</b></a>
+      </p>
+      <p style="font-size: 14px;">The study above represents the largest field study ever conducted on the topic. While the results achieved by the Storelli ExoShield Head Guard are highly encouraging, Storelli believes more research should be conducted to solidify the industry's understanding of the value of headgear. For this reason, we are working to ensure more research is conducted.</p>
+      <p style="font-size: 14px;"> In addition, Storelli cares to emphasize that while top-quality headgear may indeed prove to reduce the relative risk of concussions, it will never fully abate risks. For example, a player may suffer a concussion after a hit to a part of the face not covered by headgear, or the impact may be too strong to be sufficiently absorbed by the protection. We believe we are making positive steps in the right direction, but it's important to understand the limitations of what head protection can do, and the need for more and deeper data analysis.</p>
+      <br/>
+      <h4>WARNING AND DISCLAIMER</h4>
+      <p></p>
+      <p style="font-size: 14px;">The Head Guard is designed to reduce the risks of cuts and impact to head during participation in soccer, but cannot and does not prevent all risk of head injuries. Participation in soccer and other sports exposes the participant to the risk of injuries, and participation in such sports implies acceptance of such risk.</p> 
+      <p style="font-size: 14px;">No helmet, head gear or head protection device can prevent all head, neck or facial injuries. A user may sustain head injuries (which may include concussions or other brain-related injuries) notwithstanding his or her use of the Head Guard, and there are areas of the head and face that are not covered or protected by the Head Guard. In addition, for maximum performance, the Head Guard must be sized and fitted properly, and replaced promptly if fit loosens over time or falls off during participation in soccer or other sports.</p>
+	</div>
+{%- endif -%}

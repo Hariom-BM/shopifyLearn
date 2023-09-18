@@ -1,0 +1,93 @@
+ <div class="collection-tiles">
+    <div class="collection-tiles-inner">
+      {% for block in section.blocks %}
+        <div class="tiles">
+            <a href="{{ block.settings.collection_link }}">
+              <img src="{{ block.settings.collection_poster | img_url: 'master' }}" alt="poster_image">
+              <span>{{ block.settings.collection_name }}</span>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% schema %}
+{
+  "name": "Collection Tiles",
+  "settings": [],
+  "blocks": [
+      {
+        "name": "Collection Tiles",
+        "type": "collection_tiles",
+        "settings": [
+          {
+          "id": "collection_link",
+          "type": "url",
+          "label": "Collection Link"
+        },
+        {
+          "id": "collection_poster",
+          "type": "image_picker",
+          "label": "Collection Poster"
+        },
+        {
+          "id": "collection_name",
+          "type": "text",
+          "label": "Collection Name"
+        }
+        ]
+      }
+    ]
+}
+{% endschema %}
+
+{% style %}
+  .collection-tiles-inner{
+    display: flex;
+}
+
+.collection-tiles-inner .tiles{
+    position: relative;
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+.collection-tiles-inner .tiles a{
+    display: block;
+}
+.collection-tiles-inner .tiles a img{
+   width:100%;
+}
+
+.collection-tiles-inner .tiles span{
+    position: absolute;   
+    left: 50%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: center;
+    text-transform: uppercase;
+    top: 95%;
+    transform: translate(-50%, -95%);
+
+}
+
+@media(max-width:990px){
+    .collection-tiles-inner .tiles{
+        flex: 0 0 50%;
+        max-width: 50%;    
+    }
+    .collection-tiles-inner .tiles:last-child{
+        max-width: 100%;
+        flex: 0 0 100%;     
+    }
+}
+@media(max-width:1200px){
+    .collection-tiles-inner{
+       flex-wrap: wrap;    
+    }
+}
+{% endstyle %}
+
+{% javascript %}
+{% endjavascript %}

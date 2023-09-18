@@ -1,0 +1,23 @@
+{% schema %}
+{
+    "name": "Drawer",
+    "settings": []
+}
+{% endschema %}
+
+<div id="site-drawer" class="cart-drawer" data-section-id="{{ section.id }}" data-section-type="cart-section">
+    <header>
+        <span class="h4 float-left">{{ 'cart.general.title' | t }}</span>
+        <a href="javascript:void(0)" class="h4 float-right dismiss">
+            Close {% comment %}<i class="icon icon-close-dark-sm"></i>{% endcomment %}
+        </a>
+        <div class="clearfix"></div>
+    </header>
+    
+    <div class="content">
+    </div>
+    <div class="loader d-flex align-items-center text-center">
+        <div>Updating</div>
+    </div>
+  
+</div>

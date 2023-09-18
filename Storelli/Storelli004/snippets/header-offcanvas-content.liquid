@@ -1,0 +1,11 @@
+{%- assign primary_menu = linklists[section.settings.primary_menu] -%}
+
+{%- capture header_offcanvas_content -%}
+  {%- include 'offcanvas-menu', menu: primary_menu -%}
+{%- endcapture -%}
+
+<script class="js-header-offcanvas-content" type="application/json">
+  {
+    "__html": {{ header_offcanvas_content | strip | json }}
+  }
+</script>

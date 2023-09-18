@@ -1,0 +1,55 @@
+{% assign p1h = related_products.product_1 %}
+{% assign p2h = related_products.product_2 %}
+{% assign p3h = related_products.product_3 %}
+
+{% assign has_products = false %}
+{% if p1h or p2h or p3h %}
+	{% assign has_products = true %}
+{% endif %}
+
+{% if has_products %}
+    <div class="article-cross-sell featured-collection">
+        <div class="container-fluid container-fullbleed">
+            <div class="row">
+                <div class="col-12 col-md-12 col-xl-3 cover">
+                    <h2 class="mb-0" style="text-transform: uppercase; letter-spacing: 1px">
+                        Featured<br /> 
+                        Performance<br /> 
+                        Layers
+                    </h2>
+                </div>
+
+				{% assign product = all_products[p1h] %}
+				<div class="col-12 col-md-4 col-xl-3 d-flex align-items-center product">
+				    <a href="{{ product.url | within: collection }}">
+				        {% if product.featured_image != blank %}
+				            {{ product.featured_image.src | img_url: '360x360' | img_tag: product.title }}
+				        {% endif %}
+				    </a>
+				    <a class="title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+				</div>
+
+				{% assign product = all_products[p2h] %}
+				<div class="col-12 col-md-4 col-xl-3 d-flex align-items-center product">
+				    <a href="{{ product.url | within: collection }}">
+				        {% if product.featured_image != blank %}
+				            {{ product.featured_image.src | img_url: '360x360' | img_tag: product.title }}
+				        {% endif %}
+				    </a>
+				    <a class="title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+				</div>
+
+				{% assign product = all_products[p3h] %}
+				<div class="col-12 col-md-4 col-xl-3 d-flex align-items-center product">
+				    <a href="{{ product.url | within: collection }}">
+				        {% if product.featured_image != blank %}
+				            {{ product.featured_image.src | img_url: '360x360' | img_tag: product.title }}
+				        {% endif %}
+				    </a>
+				    <a class="title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+				</div>
+
+            </div>
+        </div>
+    </div>
+{% endif %}

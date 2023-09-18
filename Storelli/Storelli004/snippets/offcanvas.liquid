@@ -1,0 +1,30 @@
+<div class="js-offcanvas-dimmer offcanvas-Dimmer"></div>
+
+<aside class="js-offcanvas-drawer offcanvas-Drawer offcanvas-Drawer--left" data-drawer-names="menu browse">
+  <div class="offcanvas-Drawer-controls">
+    <div class="offcanvas-Drawer-close">
+      <div class="offcanvas-Drawer-closeIcon">
+        {%- include 'svg-placeholder' with 'close' -%}
+      </div>
+      <button class="js-offcanvas-drawer-close offcanvas-Drawer-closeButton">
+        Close drawer
+      </button>
+    </div>
+  </div>
+
+  <div class="js-offcanvas-drawer-content offcanvas-Drawer-content"></div>
+  
+  <div class="offcanvas-SecondaryMenu">
+    <ul class="offcanvas-SecondaryMenu-items">       
+      {%- assign secondary_menu = linklists['secondary-menu'] -%}
+
+      {%- if secondary_menu.links.size > 0 -%}
+        {% for link in secondary_menu.links %}
+          <li class="offcanvas-SecondaryMenu-item">
+            <a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a>
+          </li>
+        {% endfor %}
+      {%- endif -%}
+    </ul>
+  </div>
+</aside>

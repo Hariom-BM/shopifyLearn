@@ -1,0 +1,63 @@
+{% schema %}
+{
+    "name": "Floating Story",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Background Image"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "content",
+            "label": "Content"
+        },
+        {
+            "type": "text",
+            "id": "link",
+            "label": "Link"
+        },
+        {
+            "type": "text",
+            "id": "link_text",
+            "label": "Link Text",
+            "default": "Read More"
+        }
+    ]
+}
+  
+{% endschema %}
+
+{% if section.settings.title != blank %}
+    <div class="-light-section floating-block floating-story">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+                    <div class="row">
+                        <div class="col-12 col-sm-5 col-lg-7">
+                            <img alt="player image" class="merox-lazy img-fluid" src="https://cdn.shopify.com/s/files/1/2624/8830/files/mountains_2_1728x_lazy-min.jpg?v=1658487576" data-src="{{ section.settings.image.src | img_url: '600x' }}" />
+                        </div>
+                        <div class="col-12 col-sm-7 col-lg-5 d-flex flex-column justify-content-center">
+                            <h2 class="float-story-h2">{{ section.settings.title }}</h2>
+                            <p>{{ section.settings.content }}</p>
+                            {% if section.settings.link != blank %}
+                                {% assign parts = section.settings.link | split: '.com'  %}
+                                {% assign host  = parts[0]  %}
+                                <div>
+                                    <a class="dark-link decorated-link featured-link" href="{{ section.settings.link }}" {% unless host contains 'storelli' %}target="_blank"{% endunless %}>
+                                        {{ section.settings.link_text }}
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

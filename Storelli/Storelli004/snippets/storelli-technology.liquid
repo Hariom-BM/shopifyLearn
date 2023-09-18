@@ -1,0 +1,36 @@
+<div class="container-fluid container-fullbleed light-section d-none d-sm-block">
+    <div class="row">
+        <div class="col-12 col-lg-6 home-technology">
+            <h4>Technology</h4>
+            <div class="row">
+                <div class="col-4 text-center text-xl-right"><a href="#" data-tech="1" class="tech-link selected">Impact <br class="d-sm-none" />Protection</a></div>
+                <div class="col-4 text-center"><a href="#" data-tech="2" class="tech-link">Turf Burn <br class="d-sm-none" />Protection</a></div>
+                <div class="col-4 text-center text-xl-left"><a href="#" data-tech="3" class="tech-link">SpeedGrip <sup>TM</sup></a></div>
+            </div>
+            <div data-tech="1" class="tech-content">
+                <div class="h1">Impact Protection</div>
+                <p>
+                    Soccer apparel armored with light, protective <br>
+                    materials that shield up to 90% of impact.
+                </p>
+            </div>
+            <div data-tech="2" class="tech-content hide">
+                <div class="h1">Anti Turf Burn</div>
+                <p>
+                    Stretchy reinforced base-layer panels that <br>
+                    resist turf burns to tackle and slide freely.
+                </p>
+            </div>
+            <div data-tech="3" class="tech-content hide">
+                <div class="h1">SpeedGrip <sup>TM</sup></div>
+                <p>
+                    Boot accessories that use a special suede-type grip <br>
+                    material to heighten shoe control and up your explosiveness.
+                </p>
+            </div>
+        </div>
+        <div data-tech="1" class="d-none d-lg-block col-lg-6 tech-content" style="background:url({{ 'storelli-tech-impact.jpg' | asset_img_url: '960x' }}) no-repeat bottom center"></div>
+        <div data-tech="2" class="d-none d-lg-block col-lg-6 tech-content hide" style="background:url({{ 'storelli-tech-abrasion.jpg' | asset_img_url: '960x' }}) no-repeat bottom center"></div>
+        <div data-tech="3" class="d-none d-lg-block col-lg-6 tech-content hide" style="background:url({{ 'storelli-tech-speedgrip.jpg' | asset_img_url: '960x' }}) no-repeat bottom center"></div>
+    </div>
+</div>

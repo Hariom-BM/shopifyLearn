@@ -1,0 +1,70 @@
+{%- assign primary_menu = linklists[section.settings.primary_menu] -%}
+{%- assign secondary_menu = linklists[section.settings.secondary_menu] -%}
+
+{%- assign dropdowns_render = '' -%}
+
+{%- capture primary_menu_render -%}
+  {%- include 'wide-header-menu', menu: primary_menu, align: 'left' -%}
+{%- endcapture -%}
+
+{%- capture secondary_menu_render -%}
+   <div class="city-site-sec">
+  <div class="item-box">
+    <a title="Stores" href="javascript:void(0)"><img src="https://cdn.shopify.com/s/files/1/0666/3189/3298/files/usa.png?v=1685517379" alt="flag_us" class="img-fluid" width="30" height="30"></a>
+  </div>
+  <div class="city-site-holder">
+    <div class="city-site-items">
+      <a class="flag_nav" title="USA"  href="javascript:void(0)" url="https://storelli.com/?SkipCozyRedirect=yes"><img src="https://cdn.shopify.com/s/files/1/0666/3189/3298/files/usa.png?v=1685517379" alt="flag_us" class="img-fluid" width="30" height="30"><span>USA</span></a>
+    </div>
+    <div class="city-site-items">
+      <a class="flag_nav" title="UK"  href="javascript:void(0)" url="https://storelli.co.uk/?SkipCozyRedirect=yes"><img src="https://cdn.shopify.com/s/files/1/0666/3189/3298/files/uk.png?v=1685517378" alt="flag_uk" class="img-fluid" width="30" height="30"><span>UK</span></a>
+    </div>
+    
+<!--     <div class="city-site-items">
+      <a class="flag_nav" title="AU"  href="javascript:void(0)" url="https://storelli-australia.myshopify.com/?SkipCozyRedirect=yes"><img src="https://cdn.shopify.com/s/files/1/0666/3189/3298/files/australia.png?v=1685517379" alt="flag_au" class="img-fluid" width="30" height="30"><span>Australia</span></a>
+    </div> -->
+  </div>
+</div>
+  {%- include 'wide-header-menu', menu: secondary_menu, align: 'right' -%}
+{%- endcapture -%}
+
+<header class="WideHeader">
+  <div class="WideHeader-background">
+    <div class="WideHeader-container">
+      <div class="WideHeader-sections">
+        {{- primary_menu_render -}}
+
+        <div class="WideHeader-logo">
+          <a class="WideHeader-logoLink" href="/">
+            <div class="WideHeader-logoPlaceholder">
+              {%- include 'storelli-logo' -%}
+            </div>
+          </a>
+        </div>
+
+        <div class="WideHeader-secondary">
+          {{- secondary_menu_render -}}
+
+          <div class="WideHeader-controls">
+            <a class="WideHeader-control WideHeader-control--search" href="/search">
+              <div class="WideHeader-controlIcon WideHeader-controlIcon--search">
+                {%- include 'svg-placeholder' with 'search' -%}
+              </div>
+              <span class="u-vhide">Search</span>
+            </a>
+            <a class="js-cart-item-count WideHeader-control WideHeader-control--cart open-drawer" href="/cart" data-item-count="{{ cart.item_count }}">
+              <div class="WideHeader-controlIcon WideHeader-controlIcon--cart">
+                {%- include 'svg-placeholder' with 'cart' -%}
+              </div>
+              <span class="u-vhide">Cart</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="WideHeader-dropdowns">
+    {{- dropdowns_render -}}
+  </div>
+</header>

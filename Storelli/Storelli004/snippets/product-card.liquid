@@ -1,0 +1,48 @@
+<div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+    <div class="product">
+        <div class="image-bg">
+            <div class="image d-flex align-items-center">
+                {% if product.featured_image != blank %}
+                    <a href="{{ product.url | within: collection }}">
+                        {{ product.featured_image.src | img_url: '480x480' | img_tag: product.featured_image.alt }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="data">
+            <div class="title">
+                <a class="dark-link" href="{{ product.url | within: collection }}">
+                    {{ product.title }}
+                </a>
+            </div>
+            <div class="price">
+                {% if product.compare_at_price > product.price %}
+                    {% if product.price_varies %}
+                        {%- assign sale_price = product.price | money -%}
+                        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                    {% else %}
+                        {{ 'products.product.on_sale' | t }}
+                        {{ product.price | money }}
+                    {% endif %}
+                {% else %}
+                    {% if product.price_varies %}
+                        {%- assign price = product.price | money -%}
+                        {{ 'products.product.from_text_html' | t: price: price }}
+                    {% else %}
+                        {{ product.price | money }}
+                    {% endif %}
+                {% endif %}
+
+                {% if product.compare_at_price > product.price %}
+                    <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+                    <s>{{ product.compare_at_price | money }}</s>
+                {% endif %}
+
+                {% unless product.available %}
+                    {{ 'products.product.sold_out' | t }}
+                {% endunless %}
+            </div>
+        </div>
+    </div>
+</div>

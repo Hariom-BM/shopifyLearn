@@ -1,0 +1,145 @@
+{% style %}
+
+.link-list-ul {
+    padding-inline-start: 0;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    list-style-type: none;
+    z-index: 5;
+    margin: 10px 0 20px 0;
+}
+.link-list-li {
+  padding: 25px 0 25px 0;
+  font-family: "StagSB", serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.link-list-btn {
+    font-family: "Stag", serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1;
+    letter-spacing: 1px;
+    background-color: #fff;
+    color: #252525;
+    border: 1px solid #fff;
+    border-radius: 25px;
+    padding: 15px 10px;
+}
+.link-list-btn span {
+  padding: 10px;
+}  
+.social-icon-list {
+    padding-inline-start: 0;
+    list-style-type: none;
+    position: relative;
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 0 20px 0;
+    z-index: 5;
+}
+.social-icon-list .icon {
+    display: inline-block;
+    height: 50px;
+    vertical-align: middle;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: none;
+	fill: #EEEEEE;
+}
+.social-icons .icon {
+    
+    height: 50px;
+    background: none;
+}
+
+{% endstyle %}
+
+<div class="section-lg dark-section page above">
+  <div class="container-fluid link-list-div">
+    <div class="row justify-content-center">
+      <div class="col justify-content-center main-content text-center">
+        <div class="row justify-content-center">
+            <ul class="link-list-ul text-center">
+              <a href="#glove-giveaway-form" class="link-list-link hide">
+                  <li class="link-list-li">
+                    <button class="link-list-btn" style="text-transform:uppercase" >
+                      <span>Win Free Gloves for a Year</span>
+                    </button>
+                  </li>
+                </a>
+              <a href="https://storelli.com/collections/shop-all" class="link-list-link">
+                  <li class="link-list-li">
+                    <button class="link-list-btn" style="text-transform:uppercase" >
+                      <span>Shop</span>
+                    </button>
+                  </li>
+                </a>
+              <a href="https://storelli.com/pages/help" class="link-list-link">
+                  <li class="link-list-li">
+                    <button class="link-list-btn" style="text-transform:uppercase" >
+                      <span>Customer Support</span>
+                    </button>
+                  </li>
+                </a>
+              <a href="https://storelli.com/collections/gloves" class="link-list-link">
+                  <li class="link-list-li">
+                    <button class="link-list-btn" style="text-transform:uppercase" >
+                      <span>Gloves</span>
+                    </button>
+                  </li>
+                </a>
+                
+            </ul>
+         
+        </div>
+        <div class="row justify-content-center">
+           {% render "social-icons-coded" %}
+        </div>
+      </div>
+      
+    </div>
+ 
+  </div>
+  <div class="container-fluid link-list-after">
+    <div class="row spacer-div" style="padding-bottom:50px;"></div>
+  </div>
+</div>
+<div class="section-lg light-section page hide">
+  <div class="container-fluid link-list-after">
+    <div class="row spacer-div" style="padding-bottom:50px;"></div>
+    <div id="glove-giveaway-form" class="row justify-content-center text-center email-form">
+       <h2 class="h2" style="padding-top:90px;">Enter to Win.</h2>
+    </div>
+    <div id="klav-form-basic" class="klaviyo-form-XAiAz5 hide"></div>
+    <div id="klav-form-fine-print" class="row justify-content-center text-center email-form hide">
+      <p class="col-10 col-lg-7 fine-print text-intake">By entering your phone number and submitting this form, you consent to receive marketing text messages (such as promotion codes and cart reminders) from Storelli at the number provided, including messages sent by autodialer. Consent is not a condition of any purchase. Message and data rates may apply. Message frequency varies. You can unsubscribe at any time by replying STOP or clicking the unsubscribe link (where available) in one of our messages. View our Privacy Policy and Terms of Service <a href="https://storelli.com/pages/privacy-and-terms">HERE</a></p>
+
+      <h4 class="col-10 col-lg-7" style="padding:20px15px; font-size:1REM;">Contest Details</h4>
+      <p class="col-10 col-lg-7 fine-print contest-details">Complete this form for a chance to win Free Storelli Gloves for a year.  Winner will receive two shipments of six pairs of the Storelli gloves of their choice. Winner is obligated to pay the cost of shipping for all products. Entries must be confirmed by text in order to enter. Contest runs October 11- November 15, 2022. The winner will be contacted via email by November 16, 2022</p>
+       <p class="col-10 col-lg-7 fine-print no-form">No form? Text 'GLOVES' to 1+(844) 916-2994 and respond 'YES' to confirm your entry (US & Canada only)</p>
+
+    </div>
+  </div>  
+</div>
+<div class="section-lg light-section page hide">
+	<div class="container-fluid">
+	    <div class="row">
+	        <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+	            <h1 class="h2">{{ page.title }}</h1>
+	            <hr>
+	            <div class="rte">
+	                {{ page.content }}
+	            </div>
+              
+	    </div>
+	</div>
+</div>

@@ -1,0 +1,23 @@
+
+{% if card_layout == blank %}
+    {% assign card_layout = 'col-12 col-sm-6 col-md-4' %}
+{% endif %}
+
+
+<div class="article {{ card_layout }}">
+    <a href="{{ article.url }}">
+        <div class="image o-placeholder lazyload o-placeholder_image">
+            {% if article.image %}
+                {% comment %} {{ article | img_url: '360x' | img_tag: article.title }} {% endcomment %}
+                <img class="lazyload_class lazyload" data-src="{{ article | img_url: '360x' }}" alt="{{ article.title }}" src="{{ 'loader.gif' | asset_url  }}"  />
+            {% else %}
+                <div class="no-image"></div>
+            {% endif %}
+            <script>loadmore();</script>
+        </div>
+    </a>
+    <div class="content">
+        <p class="h4 sans">{{ article.published_at | date: '%B %e, %Y' }}</p>
+        <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+{% schema %}
+{
+    "name": "Home Story",
+    "settings": [{
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+    }, {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+    }, {
+        "type": "text",
+        "id": "content",
+        "label": "Content"
+    }, {
+        "type": "text",
+        "id": "link",
+        "label": "Link"
+    }, {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link Text",
+        "default": "Read More"
+    }]
+}
+{% endschema %}
+
+{% assign story_class = 'home-story' %}
+{% assign story_settings = section.settings %}
+{% include 'story-home' with story_settings %}

@@ -1,0 +1,344 @@
+[
+  {
+    "name": "SEO - Page Titles",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Powered by Plug in SEO Plus"
+      },
+      {
+        "type": "paragraph",
+        "content": "Page titles are displayed in the web browser tab and as the blue underlined link text in search engines"
+      },
+      {
+        "type": "paragraph",
+        "content": "[Page titles help](https:\/\/help.pluginseo.com\/hc\/en-us\/articles\/209539509-Page-titles)"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitleTruncateChars",
+        "label": "Maximum length (characters)",
+        "default": "999"
+      },
+      {
+        "type": "header",
+        "content": "Appender"
+      },
+      {
+        "type": "checkbox",
+        "id": "pluginseo_pageTitleEnableAppender",
+        "label": "Append to short page titles?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitleAppenderTemplate",
+        "label": "Append",
+        "default": " | %% shop.name %%"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitleAppenderTargetLength",
+        "label": "Target length",
+        "default": "70"
+      },
+      {
+        "type": "header",
+        "content": "Page Title Templates"
+      },
+      {
+        "type": "checkbox",
+        "id": "pluginseo_pageTitleTemplateApplyToAll",
+        "label": "Also apply templates to manually entered page titles?",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitleDefaultTemplate",
+        "label": "Default",
+        "default": "%% page_title %%",
+        "info": "this template will apply to all blank page types below"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitleIndexTemplate",
+        "label": "Homepage",
+        "default": "%% shop.name %%"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitlePageTemplate",
+        "label": "Page"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitleSearchTemplate",
+        "label": "Search",
+        "default": "Buy %% search.terms %% from %% shop.name %%"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitleProductTemplate",
+        "label": "Product"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitleCollectionTemplate",
+        "label": "Collection"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitleBlogTemplate",
+        "label": "Blog"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitleArticleTemplate",
+        "label": "Article"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_pageTitle404Template",
+        "label": "404"
+      }
+    ]
+  },
+  {
+    "name": "MeroxIO Custom Settings",
+    "settings": [
+      {
+        "type": "text",
+        "id": "Desk_img",
+        "label": "Desktop Preload Image"
+      },
+      {
+        "type": "text",
+        "id": "mob_img",
+        "label": "Mobile Preload Image"
+      },
+      {
+        "type": "text",
+        "id": "mob_img_2",
+        "label": "Mobile Preload Image"
+      }
+    ]
+  },
+  {
+    "name": "SEO - Meta Descriptions",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Powered by Plug in SEO Plus"
+      },
+      {
+        "type": "paragraph",
+        "content": "Meta descriptions are displayed as the paragraph text in search engines"
+      },
+      {
+        "type": "paragraph",
+        "content": "[Meta descriptions help](https:\/\/help.pluginseo.com\/hc\/en-us\/articles\/209542049-Meta-descriptions)"
+      },
+      {
+        "type": "text",
+        "id": "pluginseo_metaDescriptionTruncateChars",
+        "label": "Maximum length (characters)",
+        "default": "170"
+      },
+      {
+        "type": "header",
+        "content": "Meta Description Templates"
+      },
+      {
+        "type": "checkbox",
+        "id": "pluginseo_metaDescriptionTemplateApplyToAll",
+        "label": "Also apply templates to manually entered meta descriptions?",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "pluginseo_metaDescriptionDefaultTemplate",
+        "label": "Default",
+        "default": "%% page_description %%",
+        "info": "this template will apply to all blank page types below"
+      },
+      {
+        "type": "textarea",
+        "id": "pluginseo_metaDescriptionIndexTemplate",
+        "label": "Homepage"
+      },
+      {
+        "type": "textarea",
+        "id": "pluginseo_metaDescriptionPageTemplate",
+        "label": "Page"
+      },
+      {
+        "type": "textarea",
+        "id": "pluginseo_metaDescriptionSearchTemplate",
+        "label": "Search"
+      },
+      {
+        "type": "textarea",
+        "id": "pluginseo_metaDescriptionProductTemplate",
+        "label": "Product"
+      },
+      {
+        "type": "textarea",
+        "id": "pluginseo_metaDescriptionCollectionTemplate",
+        "label": "Collection"
+      },
+      {
+        "type": "textarea",
+        "id": "pluginseo_metaDescriptionBlogTemplate",
+        "label": "Blog"
+      },
+      {
+        "type": "textarea",
+        "id": "pluginseo_metaDescriptionArticleTemplate",
+        "label": "Article"
+      },
+      {
+        "type": "textarea",
+        "id": "pluginseo_metaDescription404Template",
+        "label": "404"
+      }
+    ]
+  },
+  {
+    "name": "SEO - Structured Data",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Powered by Plug in SEO Plus"
+      },
+      {
+        "type": "paragraph",
+        "content": "Structured data allows search engines to better understand the content of your pages, enabling your shop to be displayed in more prominent ways"
+      },
+      {
+        "type": "paragraph",
+        "content": "[Structured data help](https:\/\/help.pluginseo.com\/hc\/en-us\/articles\/210282185-Structured-data)"
+      },
+      {
+        "type": "image",
+        "id": "pluginseo_structuredDataLogo.png",
+        "label": "Logo"
+      },
+      {
+        "type": "checkbox",
+        "id": "pluginseo_structuredDataDisplayLogo",
+        "label": "Include logo?",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Social Profile Links"
+      },
+      {
+        "type": "textarea",
+        "id": "pluginseo_structuredDataSocialProfileLinks",
+        "label": "Social profile links - one URL per line"
+      }
+    ]
+  },
+  {
+    "name": "theme_info",
+    "theme_name": "Storelli",
+    "theme_version": "0.1.0",
+    "theme_author": "Storelli",
+    "theme_documentation_url": "https:\/\/shopify.github.io\/slate\/",
+    "theme_support_url": "https:\/\/github.com\/Shopify\/slate"
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social sharing options"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_sharing_blog",
+        "label": "Enable sharing for blog articles",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Sharing links"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter link"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook link"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest link"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat link"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok link"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr link"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "Youtube link"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo link"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Enable cart notes",
+        "default": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,70 @@
+<div id="shop-modal">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row d-none d-md-flex">
+                <div class="col-12">
+                    <h4 class="mb-3">Popular</h4>
+                </div>
+            </div>
+
+			<div class="row d-none d-md-flex">
+                {% for block in section.blocks limit: 4 %}
+                    {%- assign collection = collections[block.settings.collection] -%}
+                    <div class="col-6 col-md-3" {{ block.shopify_attributes }}>
+                        <div class="collection">
+                            <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
+                                {% if collection.image != blank %}
+                                    {{ collection | img_url: 'x480' | img_tag: collection.title }}
+                                {% elsif collection.products.first != blank %}
+                                    {{ collection.products.first | img_url: 'x480' | img_tag: collection.title }}
+                                {% elsif collection == empty %}
+                                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                    {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                                {% endif %}
+                                <div class="title">
+                                    {% if collection == empty %}
+                                        {{ 'homepage.onboarding.collection_title' | t }}
+                                    {% else %}
+                                        {{ collection.title }}
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% cycle '', '<div class="w-100 mt-4 d-md-none"></div>'  %}
+                {% endfor %}
+			</div>
+
+			<div class="row">
+                {% for block in section.blocks limit: 4 offset: 4 %}
+                    {%- assign collection = collections[block.settings.collection] -%}
+                    <div class="col-6 col-sm-3" {{ block.shopify_attributes }}>
+                        <div class="mt-4 d-none d-md-block"></div>
+                        <h4>{{ collection.title }}</h4>
+                        <hr class="mt-1 mb-2">
+                        {% if collection.all_tags.size > 0 %}
+                            <ul>
+                                <li><a href="{{ collection.url }}">Shop All</a></li>
+                                {% assign sorted_tags = 'New Arrivals,Tops,Bottoms,Accessories' | split: ','  %}
+                                {% for tag in sorted_tags %}
+                                    <li><a href="{{ collection.url }}/{{ tag | handleize }}">{{ tag }}</a></li>                                   
+                                {% endfor %}
+                                {% comment %}
+                                {% for tag in collection.all_tags %}
+                                    {% if tag contains 'New Arrivals' or tag contains 'Tops' or tag contains 'Bottoms' or tag contains 'Accessories' %}
+                                        <li>
+                                            <a href="{{ collection.url }}/{{ tag | handleize }}">{{ tag | remove: 'KF: ' }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% endcomment %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    {% cycle '', '<div class="w-100 mt-4 d-sm-none"></div>'  %}
+                {% endfor %}
+			</div>
+
+		</div>
+    </div>
+</div>

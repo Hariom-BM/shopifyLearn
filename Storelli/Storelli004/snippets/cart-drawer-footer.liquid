@@ -1,0 +1,87 @@
+{% assign final_discount = cart.total_discounts | minus: intelligems_total %}
+<div class="footer">
+        <div class="subtotal">
+            <table width="100%">
+                <tr>
+                    <td width="50%">{{ 'cart.general.subtotal' | t }}</td>
+                    <td width="50%" class="text-right">{{ cart.total_price | money }}</td>
+                </tr>
+                {% if final_discount > 0 %}
+                    <tr>
+                        <td>{{ 'cart.general.savings' | t }}</td>
+                        <td class="text-right">{{ final_discount | money }}</td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <td colspan="2">
+                        <div class="shipping-note text-uppercase mt-2 {% if cart.total_price <= 7500 %}no-free-shipping{% endif %}">
+                            <i class="icon icon-shipping mr-2"></i> 
+                            <span class="h4 sans">USA Free Shipping</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- Corso -->
+        <div style="width:310px;float:right;margin-right:11px;">
+        	<div id="corso-protection-placeholder" style="display:none"></div>
+  		</div>
+  		<!-- End Corso -->
+        <div class="actions">
+            <table width="100%">
+<!--               <div class="route-div" desktop-align="right" opt-in></div> -->
+                <tr>
+                    <td width="30%">
+                        <a class="btn btn-block btn-outline-dark btn-storelli btn-storelli-outline" href="/cart">
+                            View Cart
+                        </a>
+                    </td>
+                    <td width="2%"></td>
+                    <td width="68%">
+                        <button id="drawer-cart-update" class="btn btn-block btn-danger btn-storelli mt-0 hide">
+                            {{ 'cart.general.update' | t }}
+                        </button>
+                        <input type="submit" id="drawer-cart-checkout" class="btn btn-block btn-dark btn-storelli mt-0" name="checkout" value="{{ 'cart.general.checkout' | t }}">
+                  <input id="cart_set_discount" type="hidden" name="discount" value="" />  
+                  </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="methods">
+            <h4 class="sans text-center">Supported</h4>
+            <div class="d-flex align-items-center justify-content-around">
+                {% comment %}<i class="icon-svg">{% include 'icon-visa' %}</i>{% endcomment %}
+                {% comment %}<i class="icon-svg">{% include 'icon-master' %}</i>{% endcomment %}
+                {% comment %}<i class="icon-svg">{% include 'icon-american-express' %}</i>{% endcomment %}
+                <i class="icon-svg">{% include 'icon-paypal' %}</i>
+                <i class="icon-svg">{% include 'icon-amazon-payments' %}</i>
+                <i class="icon-svg svg-inline venmo"></i>
+            </div>
+        </div>
+    </div>
+
+<!-- Route Custom Style -->
+<style>
+  .rw-route-logo-white {
+    min-width: unset !important;
+    max-width: unset !important;
+  }
+  .rw-route-logo {
+    min-width: unset !important;
+    max-width: unset !important;
+    margin-bottom: 10px !important;
+    margin-right: 2px !important;
+  }
+  .rw-on-text {
+    margin-left: 5px !important;
+  }
+  .rw-off-text {
+    margin-left: 17px !important;
+  }
+  .rw-info {
+    padding: 2px 5px 2px 4px !important;
+    margin-left: 5px !important;
+  }
+</style>
+<!-- End Route Custom Style -->

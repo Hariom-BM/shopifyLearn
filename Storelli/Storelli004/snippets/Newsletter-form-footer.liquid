@@ -1,0 +1,32 @@
+{% form 'customer', class: "mt-3" %}
+    {% if form.posted_successfully? %}
+        <div class="alert alert-light mb-0 newsletter-signed-up" role="alert">
+            {{ 'general.newsletter_form.confirmation' | t }}
+        </div>
+        {% include 'ga-signup-event' %}
+        {% include 'fb-lead-event' %}
+    {% else %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+       
+
+ <div class="input-group test" style="display:none;">
+            <input type="email" name="contact[email]" style="color:#000; background-color:#ffffff;" class="form-control" value="{% if customer %}{{ customer.contact.email }}{% elsif form.errors %}{{ form.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" autocorrect="off" autocapitalize="off">
+            <span class="input-group-append">
+                <button type="submit" name="commit" class="btn btn-dark mb-0" title="{{ 'general.newsletter_form.submit' | t }}">
+                    <i class="icon icon-arrow-light-md"></i>
+                </button>
+            </span>
+        </div>
+  
+   
+ 
+
+
+
+        {%- if form.errors -%}
+            <div class="alert alert-light text-danger mt-3 mb-0" role="alert">
+                {{ form.errors | default_errors }}
+            </div>
+        {%- endif -%}
+    {% endif %}
+{% endform %}

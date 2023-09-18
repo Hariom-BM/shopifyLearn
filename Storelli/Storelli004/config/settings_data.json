@@ -1,0 +1,1206 @@
+{
+  "current": {
+    "pluginseo_pageTitleTruncateChars": "999",
+    "pluginseo_pageTitleEnableAppender": false,
+    "pluginseo_pageTitleAppenderTemplate": "| Protective soccer layers to reduce injuries and improve performance",
+    "pluginseo_pageTitleAppenderTargetLength": "70",
+    "pluginseo_pageTitleTemplateApplyToAll": false,
+    "pluginseo_pageTitleDefaultTemplate": "%% page_title %%",
+    "pluginseo_pageTitleIndexTemplate": "%% shop.name %%",
+    "pluginseo_pageTitlePageTemplate": "",
+    "pluginseo_pageTitleSearchTemplate": "Buy %% search.terms %% from %% shop.name %%",
+    "pluginseo_pageTitleProductTemplate": "",
+    "pluginseo_pageTitleCollectionTemplate": "",
+    "pluginseo_pageTitleBlogTemplate": "",
+    "pluginseo_pageTitleArticleTemplate": "",
+    "pluginseo_pageTitle404Template": "",
+    "Desk_img": "https:\/\/cdn.shopify.com\/s\/files\/1\/2624\/8830\/files\/DSC06069101621_1_1920x.jpg?v=1645554424",
+    "mob_img": "https:\/\/cdn.shopify.com\/s\/files\/1\/2624\/8830\/files\/sliding_1024x.jpg?v=1645554792",
+    "mob_img_2": "https:\/\/storelli.com\/cdn\/shop\/files\/bothnologo_1024x_41a90596-5020-4528-9173-8b19b36fbd54_1024x.webp?v=1692386219",
+    "pluginseo_metaDescriptionTruncateChars": "320",
+    "pluginseo_metaDescriptionTemplateApplyToAll": false,
+    "pluginseo_metaDescriptionDefaultTemplate": "%% page_description %%",
+    "pluginseo_metaDescriptionIndexTemplate": "",
+    "pluginseo_metaDescriptionPageTemplate": "",
+    "pluginseo_metaDescriptionSearchTemplate": "",
+    "pluginseo_metaDescriptionProductTemplate": "",
+    "pluginseo_metaDescriptionCollectionTemplate": "",
+    "pluginseo_metaDescriptionBlogTemplate": "",
+    "pluginseo_metaDescriptionArticleTemplate": "",
+    "pluginseo_metaDescription404Template": "",
+    "pluginseo_structuredDataDisplayLogo": true,
+    "pluginseo_structuredDataSocialProfileLinks": "https:\/\/www.instagram.com\/storellisoccer\/\nhttps:\/\/www.facebook.com\/storellisports\/\nhttps:\/\/twitter.com\/storellisports",
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "https:\/\/twitter.com\/storellisports",
+    "social_facebook_link": "https:\/\/www.facebook.com\/storellisports\/",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/storellisoccer\/",
+    "social_snapchat_link": "",
+    "social_tiktok_link": "https:\/\/www.tiktok.com\/@storellisoccer",
+    "social_tumblr_link": "",
+    "social_youtube_link": "https:\/\/www.youtube.com\/user\/storellisoccer",
+    "social_vimeo_link": "",
+    "cart_notes_enable": true,
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo-b.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#f5f5f5",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#ffffff",
+    "checkout_heading_font": "Slabo 13px",
+    "checkout_body_font": "Open Sans",
+    "checkout_accent_color": "#252525",
+    "checkout_button_color": "#252525",
+    "checkout_error_color": "#ff6d6d",
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_linklist": "footer"
+        }
+      },
+      "featured-collection": {
+        "type": "featured-collection",
+        "settings": {
+          "collection": "womens"
+        }
+      },
+      "drawer": {
+        "type": "drawer",
+        "settings": {
+        }
+      },
+      "home-carousel": {
+        "type": "home-carousel",
+        "blocks": {
+          "0a61fac4-393e-423b-bd5a-af7763759b98": {
+            "type": "carousel_item",
+            "disabled": true,
+            "settings": {
+              "image": "shopify:\/\/shop_images\/R4_08749.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/R4_07032_1.jpg",
+              "player": "",
+              "title": "20% OFF EVERYTHING",
+              "content": "Discount automatically applied at checkout.",
+              "link": "https:\/\/storelli.com\/collections\/all-protective-and-performance-gear",
+              "link_text": "SHOP ALL"
+            }
+          },
+          "f856687b-ead6-4ae1-b3bd-70fa9b7a6003": {
+            "type": "carousel_item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/webbanner.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/bothnologo_1024x_41a90596-5020-4528-9173-8b19b36fbd54.webp",
+              "player": "",
+              "title": "Introducing Lightning & Electric",
+              "content": "2 gloves. 7 colorways.",
+              "link": "https:\/\/storelli.com\/collections\/gloves",
+              "link_text": "Shop Now"
+            }
+          },
+          "1580934809781": {
+            "type": "carousel_item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/R4_07167_1_bac82e2f-ce3e-47ae-8610-e987d89cf32b.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/R4_07167_1_bac82e2f-ce3e-47ae-8610-e987d89cf32b.jpg",
+              "player": "",
+              "title": "WE CALL IT #STORELLIMODE",
+              "content": "",
+              "link": "https:\/\/storelli.com\/collections\/all-protective-and-performance-gear",
+              "link_text": "Shop All"
+            }
+          },
+          "b5db6b8e-b92b-4038-84f0-831f085fe096": {
+            "type": "carousel_item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/R4_08753_1.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/R4_08753_1.jpg",
+              "player": "",
+              "title": "SOCCER PROTECTION & PERFORMANCE",
+              "content": "We protect. You perform.",
+              "link": "https:\/\/storelli.com\/collections\/all-protective-and-performance-gear",
+              "link_text": "SHOP ALL"
+            }
+          },
+          "d422800f-72e9-49eb-9144-da728bd5c414": {
+            "type": "carousel_item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/20220303_STORELLI_BALCER_JANEGPHOTO-71_1_1_393527a2-ef8c-4088-b59e-60c96ecc5c5b.jpg",
+              "player": "",
+              "title": "Proud to Protect Bethany Balcer",
+              "content": "",
+              "link": "https:\/\/storelli.com\/products\/exoshield-soccer-headguard",
+              "link_text": "Be like Bethany. Get your Head Guard."
+            }
+          },
+          "1c83c05c-fab9-42da-aacf-a56d214a3a3c": {
+            "type": "carousel_item",
+            "disabled": true,
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DSC04685111221_2.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/DSC04685111221_2_deb84188-207c-4476-a081-4181035b2ed4.jpg",
+              "player": "",
+              "title": "WIN FREE GLOVES FOR A YEAR",
+              "content": "It's simple. Enter to win by filling out the form below.",
+              "link": "https:\/\/storelli.com\/pages\/free-gloves#glove-giveaway-form",
+              "link_text": "ENTER NOW"
+            }
+          }
+        },
+        "block_order": [
+          "0a61fac4-393e-423b-bd5a-af7763759b98",
+          "f856687b-ead6-4ae1-b3bd-70fa9b7a6003",
+          "1580934809781",
+          "b5db6b8e-b92b-4038-84f0-831f085fe096",
+          "d422800f-72e9-49eb-9144-da728bd5c414",
+          "1c83c05c-fab9-42da-aacf-a56d214a3a3c"
+        ],
+        "settings": {
+          "speed": "12"
+        }
+      },
+      "home-story": {
+        "type": "home-story",
+        "settings": {
+          "title": "",
+          "content": "POWERFUL combination",
+          "link": "https:\/\/storelli.myshopify.com\/collections\/gloves",
+          "link_text": "SHOP gloves"
+        }
+      },
+      "product-main": {
+        "type": "product-main",
+        "settings": {
+        }
+      },
+      "product-key-features": {
+        "type": "product-key-features",
+        "settings": {
+        }
+      },
+      "product-cross-sell": {
+        "type": "product-cross-sell",
+        "settings": {
+        }
+      },
+      "news": {
+        "type": "news",
+        "settings": {
+        }
+      },
+      "landing-page-manager": {
+        "type": "landing-page-manager",
+        "blocks": {
+          "1525209899387": {
+            "type": "landing_page",
+            "settings": {
+              "page_handle": "training-introduction",
+              "title": "",
+              "content": "",
+              "image": "shopify:\/\/shop_images\/try2.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/Homepage-Mobile-Image1-SeamlessTransition.jpg",
+              "order_callout": "1",
+              "order_grid": "6",
+              "order_fullbleed": "6",
+              "order_floating_quote": "3",
+              "order_floating_story": "4",
+              "order_sbs_product": "2",
+              "order_sbs_story": "8",
+              "order_story": "7",
+              "callout_1_text": "",
+              "callout_1_style": "light",
+              "grid_product_1": "training-hoodie",
+              "grid_product_2": "training-long-sleeve-mock-t-undershirt",
+              "grid_product_3": "training-jersey",
+              "grid_product_4": "gift-card",
+              "grid_product_5": "",
+              "grid_product_6": "",
+              "grid_product_7": "",
+              "grid_product_8": "",
+              "fullbleed_image": "",
+              "floating_quote_statement": "The line follows one simple demand. If it doesn't work on the pitch, it doesn’t belong.",
+              "floating_quote_author": "Tom Marchesi, head of design",
+              "floating_quote_image": "shopify:\/\/shop_images\/Storelli_Training_02_2005.jpg",
+              "floating_story_title": "<br> This is soccer's technical alternative to training.",
+              "floating_story_content": "<br> We engineered all 3 piece using the same design principles that make Storelli the gold standard in minimalist soccer protection. <br> <br> ✔️ Soccer first design principles <br> ✔️ Seamless warp-knit construction <br> ✔️ Vented sponsor bar and sides",
+              "floating_story_link": "",
+              "floating_story_link_text": "",
+              "floating_story_image": "shopify:\/\/shop_images\/drtails_5ec57916-a059-435b-99ac-63526391f70d.jpg",
+              "sbs_product_image": "",
+              "sbs_product_product": "",
+              "sbs_story_title": "",
+              "sbs_story_content": "",
+              "sbs_story_link": "",
+              "sbs_story_link_text": "",
+              "sbs_story_image": "",
+              "sbs_story_style": "light",
+              "story_title": "prepare to go 90.",
+              "story_content": "We know what's required to go hard between the pitch and the gym.",
+              "story_link": "",
+              "story_link_text": "",
+              "story_image": "shopify:\/\/shop_images\/07-Desktop.gif"
+            }
+          },
+          "1520861691436": {
+            "type": "landing_page",
+            "settings": {
+              "page_handle": "prevent-youth-soccer-injuries",
+              "title": "Safety <br> and <br> performance<br> for youth soccer",
+              "content": "",
+              "image": "shopify:\/\/shop_images\/control_2.jpg",
+              "image_mobile": "",
+              "order_callout": "2",
+              "order_grid": "5",
+              "order_fullbleed": "4",
+              "order_floating_quote": "8",
+              "order_floating_story": "2",
+              "order_sbs_product": "7",
+              "order_sbs_story": "3",
+              "order_story": "3",
+              "callout_1_text": "Soccer injuries happen. <br><br>\nAs parents, the last thing we want is our kid missing out due to a preventable injury. <br><br> That's why we created the BodyShield line: to reduce the risk of injuries, add confidence and improve performance.",
+              "callout_1_style": "light",
+              "grid_product_1": "exoshield-soccer-headguard",
+              "grid_product_2": "bodyshield-field-player-sleeveless-undershirt-black",
+              "grid_product_3": "bodyshield-sliders",
+              "grid_product_4": "mens-bodyshield-abrasion-sliding-shorts-black",
+              "grid_product_5": "",
+              "grid_product_6": "",
+              "grid_product_7": "",
+              "grid_product_8": "",
+              "fullbleed_image": "",
+              "floating_quote_statement": "Storelli believes in out-smarting the opponents, not out-muscling. <br> I'm 128 lbs. <br> I'm all for that.",
+              "floating_quote_author": "Jesse Lingard,<br>Manchester United & England",
+              "floating_quote_image": "shopify:\/\/shop_images\/LINGARD_3b930680-974a-42da-9f00-ae9b0382d971.jpg",
+              "floating_story_title": "SOCCER IS A<br>CONTACT SPORT",
+              "floating_story_content": "<br>According to an NCAA study, on average there is 1 injury for every 2 players per season.  <br><br> On average, an injury causes 3 - 6 games missed, an eternity for any player.",
+              "floating_story_link": "",
+              "floating_story_link_text": "",
+              "floating_story_image": "shopify:\/\/shop_images\/slide_51336670-daa9-445a-9170-45ed80c445bc.jpg",
+              "sbs_product_image": "shopify:\/\/shop_images\/shin_pad.jpg",
+              "sbs_product_product": "soccer-leg-guard",
+              "sbs_story_title": "INJURIES HURT <br> THE MIND",
+              "sbs_story_content": "<br>An injured player has lower confidence, is less likely to enjoy the game and perform. <br> <br> As the Romans used to say: \"You need a healthy body to have a healthy mind.\"",
+              "sbs_story_link": "",
+              "sbs_story_link_text": "",
+              "sbs_story_image": "shopify:\/\/shop_images\/180308_Storelli_02B_0355.jpg",
+              "sbs_story_style": "light",
+              "story_title": "HEAD-TO-TOE PROTECTION<br> THAT WORKS",
+              "story_content": "Try our products with free U.S. shipping and easy returns",
+              "story_link": "https:\/\/storelli.com\/collections\/youth",
+              "story_link_text": "THE COLLECTION",
+              "story_image": "shopify:\/\/shop_images\/180308_Storelli_01D_0039.jpg"
+            }
+          },
+          "1524597636866": {
+            "type": "landing_page",
+            "settings": {
+              "page_handle": "protection-intro",
+              "title": "The pitch is your sanctuary, not a place to sweat injuries.",
+              "content": "",
+              "image": "shopify:\/\/shop_images\/multi.jpg",
+              "image_mobile": "",
+              "order_callout": "1",
+              "order_grid": "2",
+              "order_fullbleed": "3",
+              "order_floating_quote": "6",
+              "order_floating_story": "5",
+              "order_sbs_product": "7",
+              "order_sbs_story": "8",
+              "order_story": "6",
+              "callout_1_text": "",
+              "callout_1_style": "light",
+              "grid_product_1": "exoshield-soccer-headguard",
+              "grid_product_2": "soccer-leg-guard",
+              "grid_product_3": "bodyshield-sliders",
+              "grid_product_4": "bodyshield-field-player-sliders-eb16-white",
+              "grid_product_5": "womens-bodyshield-impact-sliders-black",
+              "grid_product_6": "bodyshield-field-player-sleeveless-undershirt-black",
+              "grid_product_7": "mens-turf-burn-leggings-black",
+              "grid_product_8": "bodyshield-leg-guard-black-2-pack",
+              "fullbleed_image": "",
+              "floating_quote_statement": "THE BodyShield makes you feel strong, like you have super-powers... I'M 128 LBS.  I'M ALL FOR THAT.",
+              "floating_quote_author": "JESSE LINGARD, <br> MANCHESTER UNITED & ENGLAND",
+              "floating_quote_image": "shopify:\/\/shop_images\/S18-Lingard-Lazer-R-1200x1200.jpg",
+              "floating_story_title": "soccer safety X <br> performance",
+              "floating_story_content": "<br> NCAA has reported 1 injury for every 2 players\/season and head injury rates comparable to American Football. <br> <br> Storelli BodyShield is built for the grind and pressure-tested for all conditions.",
+              "floating_story_link": "",
+              "floating_story_link_text": "Read More",
+              "floating_story_image": "shopify:\/\/shop_images\/S18-ON-OFF-4X5.gif",
+              "sbs_product_image": "shopify:\/\/shop_images\/Burst18_slow_lo-res_4573cfaa-4429-416a-8e12-0a797cd661b4.gif",
+              "sbs_product_product": "",
+              "sbs_story_title": "",
+              "sbs_story_content": "",
+              "sbs_story_link": "",
+              "sbs_story_link_text": "",
+              "sbs_story_image": "",
+              "sbs_story_style": "light",
+              "story_title": "There's only one storelli",
+              "story_content": "Add inner and outer strength to your kid's game.",
+              "story_link": "https:\/\/storelli.com\/collections\/womens",
+              "story_link_text": "Shop Women's",
+              "story_image": "shopify:\/\/shop_images\/DSC_6097_1.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "1525209899387",
+          "1520861691436",
+          "1524597636866"
+        ],
+        "settings": {
+        }
+      },
+      "product-story-manager": {
+        "type": "product-story-manager",
+        "blocks": {
+          "1521756883428": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-goalkeeper-jersey-coral",
+              "image": "shopify:\/\/shop_images\/PLP-NEWARRIVALS.jpg",
+              "title": "IMPACT PROTECTION",
+              "content": "Armored with material that absorbs up to 90% of impact.",
+              "link": "https:\/\/storelli.myshopify.com\/collections\/types?q=Impact%20Protection",
+              "link_text": "Shop Impact"
+            }
+          },
+          "1521765700914": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "soccer-leg-guard",
+              "image": "shopify:\/\/shop_images\/soccer-ankle-compression-leg-protection-sleeve-shin-guard-pocket-black-1.gif",
+              "title": "Reinforced Lower Body Protection",
+              "content": "Armored for inner and outer strength.",
+              "link": "https:\/\/storelli.com\/collections\/all\/bottoms",
+              "link_text": "Shop Lower Body Protection"
+            }
+          },
+          "1521827361338": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-goalkeeper-shorts",
+              "image": "shopify:\/\/shop_images\/Burst30.gif",
+              "title": "Impact Protection",
+              "content": "Armored for inner and outer strength.",
+              "link": "",
+              "link_text": ""
+            }
+          },
+          "1522104506831": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "",
+              "title": "",
+              "content": "",
+              "link": "",
+              "link_text": "Read More"
+            }
+          },
+          "1522117046025": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "",
+              "image": "shopify:\/\/shop_images\/Burst18_notag.gif",
+              "title": "Impact Protection",
+              "content": "Up your inner and outer strength.",
+              "link": "",
+              "link_text": ""
+            }
+          },
+          "1522118383628": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "",
+              "title": "",
+              "content": "",
+              "link": "",
+              "link_text": "Read More"
+            }
+          },
+          "1522118741322": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-jersey-hydra-blue",
+              "title": "THE FREI COLLECTION",
+              "content": "",
+              "link": "https:\/\/storelli.com\/collections\/stefan-frei-collection",
+              "link_text": "Shop now."
+            }
+          },
+          "1522180531581": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "mens-turf-burn-leggings-black",
+              "title": "Complete Turf Burn Protection",
+              "content": "Slide without hesitation.",
+              "link": "https:\/\/storelli.com\/collections\/types?q=Anti%20Turf%20Burn",
+              "link_text": "Shop Turf Burn Protection"
+            }
+          },
+          "1522178003384": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "bodyshield-leg-sleeve",
+              "image": "shopify:\/\/shop_images\/Gif08.gif",
+              "title": "Impact Protection",
+              "content": "Up your inner and outer strength.",
+              "link": "",
+              "link_text": ""
+            }
+          },
+          "1522178051396": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "bodyshield-leg-sleeve-white",
+              "image": "shopify:\/\/shop_images\/Gif08_e1144a14-ad1a-4960-8bea-5c7928f7481d.gif",
+              "title": "Impact Protection",
+              "content": "Up your inner and outer strength.",
+              "link": "",
+              "link_text": ""
+            }
+          },
+          "1522183149666": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-legend-1",
+              "image": "shopify:\/\/shop_images\/gladiator_360.gif",
+              "title": "Wrist Wrap",
+              "content": "Up your inner and outer strength.",
+              "link": "",
+              "link_text": ""
+            }
+          },
+          "1522278539160": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "speedgrip-insoles",
+              "image": "shopify:\/\/shop_images\/SpeedGripBootDevice-orig.gif",
+              "title": "Unparalleled Grip",
+              "content": "Up your explosiveness with the SpeedGrip™ Line",
+              "link": "https:\/\/storelli.com\/collections\/speedgrip",
+              "link_text": "The Collection"
+            }
+          },
+          "1522722934250": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "",
+              "title": "",
+              "content": "",
+              "link": "",
+              "link_text": "Read More"
+            }
+          },
+          "1522765249879": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "speedgrip-sock-white",
+              "image": "shopify:\/\/shop_images\/soccer-grip-socks-speedgrip-traction-STORY.gif",
+              "title": "unparalleled grip",
+              "content": "Up your explosiveness with the SpeedGrip™ Line",
+              "link": "https:\/\/storelli.com\/collections\/speedgrip",
+              "link_text": "Shop the collection"
+            }
+          },
+          "1522765719639": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "speedgrip-sock-black",
+              "image": "shopify:\/\/shop_images\/soccer-grip-socks-speedgrip-traction-STORY.gif",
+              "title": "UNPARALLELED GRIP",
+              "content": "Up your explosiveness with the SpeedGrip™ Line",
+              "link": "https:\/\/storelli.com\/collections\/speedgrip",
+              "link_text": "SHOP THE COLLECTION"
+            }
+          },
+          "1522996747066": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-legend-2",
+              "image": "shopify:\/\/shop_images\/soccer-goalkeeping-legend-glove-finger-spine-saver-latex-grip-STORY.jpg",
+              "title": "GK Glove Care",
+              "content": "Tips to Make Your Gloves Last Longer",
+              "link": "https:\/\/storelli.com\/blogs\/the-storelli-blog\/tips-to-make-your-gloves-last-a-message-from-claudio-storelli",
+              "link_text": "Glove care guide"
+            }
+          },
+          "1522996811721": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-challenger-2",
+              "image": "shopify:\/\/shop_images\/soccer-goalkeeping-legend-glove-finger-spine-saver-latex-grip-STORY.jpg",
+              "title": "GK Glove Care",
+              "content": "Tips to Make Your Gloves Last Longer",
+              "link": "https:\/\/storelli.com\/blogs\/the-storelli-blog\/tips-to-make-your-gloves-last-a-message-from-claudio-storelli",
+              "link_text": "Glove care guide"
+            }
+          },
+          "1522996860322": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-challenger-2-spineless",
+              "image": "shopify:\/\/shop_images\/soccer-goalkeeping-legend-glove-finger-spine-saver-latex-grip-STORY.jpg",
+              "title": "GK Glove Care",
+              "content": "Tips to Make Your Gloves Last Longer",
+              "link": "https:\/\/storelli.com\/blogs\/the-storelli-blog\/tips-to-make-your-gloves-last-a-message-from-claudio-storelli",
+              "link_text": "Glove care guide"
+            }
+          },
+          "1522997195131": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-elite-2",
+              "image": "shopify:\/\/shop_images\/191104_Storelli_04_0794.jpeg",
+              "title": "GK Glove Care",
+              "content": "Tips to Make Your Gloves Last Longer",
+              "link": "https:\/\/storelli.com\/blogs\/the-storelli-blog\/tips-to-make-your-gloves-last-a-message-from-claudio-storelli",
+              "link_text": "Glove care guide"
+            }
+          },
+          "1522997248984": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-elite-2-spineless",
+              "image": "shopify:\/\/shop_images\/soccer-goalkeeping-legend-glove-finger-spine-saver-latex-grip-STORY.jpg",
+              "title": "GK Glove Care",
+              "content": "Tips to Make Your Gloves Last Longer",
+              "link": "https:\/\/storelli.com\/blogs\/the-storelli-blog\/tips-to-make-your-gloves-last-a-message-from-claudio-storelli",
+              "link_text": "Glove care guide"
+            }
+          },
+          "1522997293893": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-pro-2-spineless",
+              "image": "shopify:\/\/shop_images\/soccer-goalkeeping-legend-glove-finger-spine-saver-latex-grip-STORY.jpg",
+              "title": "GK Glove Care",
+              "content": "Tips to Make Your Gloves Last Longer",
+              "link": "https:\/\/storelli.com\/blogs\/the-storelli-blog\/tips-to-make-your-gloves-last-a-message-from-claudio-storelli",
+              "link_text": "Glove care guide"
+            }
+          },
+          "1522997282469": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-pro-2",
+              "image": "shopify:\/\/shop_images\/GLOVE2.jpg",
+              "title": "IS THIS YOUR LEVEL?",
+              "content": "The finger-spine gladiator series starts at $49",
+              "link": "https:\/\/storelli.com\/collections\/goalkeeper",
+              "link_text": "SHOP NOW"
+            }
+          },
+          "1525269646129": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-soccer-headguard",
+              "title": "",
+              "content": "",
+              "link": "https:\/\/mail.google.com\/mail\/u\/0\/?view=cm&fs=1&tf=1&source=mailto&to=sales@storellisports.com",
+              "link_text": "CONTACT US"
+            }
+          },
+          "1525286612572": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "mens-bodyshield-abrasion-sliding-shorts-black",
+              "image": "shopify:\/\/shop_images\/16_lo-res.gif",
+              "title": "TURF BURN TECHNOLOGY",
+              "content": "Features stretchy, thin, flexible abrasion-resistant panels that withstand turf burns.",
+              "link": "https:\/\/storelli.com\/collections\/types?q=Anti%20Turf%20Burn",
+              "link_text": "The Collection"
+            }
+          },
+          "1525286928476": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "mens-bodyshield-abrasion-sliding-shorts-white",
+              "image": "shopify:\/\/shop_images\/16_lo-res_5a38820c-18b9-406b-b859-accbe288e4d7.gif",
+              "title": "turf burn technology",
+              "content": "Features stretchy, thin, flexible abrasion-resistant panels that withstand turf burns.",
+              "link": "https:\/\/storelli.com\/collections\/types?q=Anti%20Turf%20Burn",
+              "link_text": "The Collection"
+            }
+          },
+          "1528150270648": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "soccer-arm-guard",
+              "image": "shopify:\/\/shop_images\/soccer-arm-protection-sleeve-compression-elbow-padded-3.jpg",
+              "title": "Reinforced Elbow Protection",
+              "content": "Armored with material that absorbs up to 90% of impact.",
+              "link": "https:\/\/storelli.com\/collections\/types?q=Impact%20Protection",
+              "link_text": "Shop Impact Protection"
+            }
+          },
+          "1528151765185": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-jersey-strike",
+              "image": "shopify:\/\/shop_images\/soccer-youth-kids-goalkeeper-compression-shirt-padded--protection-34-black-strike-BURST.gif",
+              "title": "Reinforced GK Jersey",
+              "content": "Dive without hesitation",
+              "link": "https:\/\/storelli.com\/collections\/goalkeeper\/tops",
+              "link_text": "Shop GK Tops"
+            }
+          },
+          "1528210903227": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "bodyshield-leg-guard-white",
+              "image": "shopify:\/\/shop_images\/soccer-ankle-compression-leg-protection-sleeve-shin-guard-pocket-white-BURST.gif",
+              "title": "Reinforced Lower Body Protection",
+              "content": "Armored for inner and outer strength.",
+              "link": "https:\/\/storelli.com\/collections\/all\/bottoms",
+              "link_text": "shop lower body protection"
+            }
+          },
+          "1528222717780": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-goalkeeper-pants",
+              "image": "shopify:\/\/shop_images\/soccer-youth-kids-goalkeeper-pants-knee-panel-fitted-STORY.jpg",
+              "title": "REINFORCED GK LAYERS",
+              "content": "\"Our position definitely requires more specialized gear, especially when it comes to protection\" - MLS All-Star Goalkeeper Stefan Frei",
+              "link": "https:\/\/storelli.com\/collections\/stefan-frei-collection",
+              "link_text": "Stefan Frei collection"
+            }
+          },
+          "1528237297324": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "speedgrip-sock-liners-black-white-2-pack",
+              "image": "shopify:\/\/shop_images\/soccer-grip-socks-speedgrip-traction-STORY.gif",
+              "title": "UNPARALLELED GRIP",
+              "content": "Up your explosiveness with the SpeedGrip™ Line",
+              "link": "https:\/\/storelli.com\/collections\/speedgrip",
+              "link_text": "SHOP THE COLLECTION"
+            }
+          },
+          "1528237366282": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "speedgrip-sock-liners-black-3-pack",
+              "image": "shopify:\/\/shop_images\/soccer-grip-socks-speedgrip-traction-STORY.gif",
+              "title": "UNPARALLELED GRIP",
+              "content": "Up your explosiveness with the SpeedGrip™ Line",
+              "link": "https:\/\/storelli.com\/collections\/speedgrip",
+              "link_text": "Shop the collection"
+            }
+          },
+          "1528237439834": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "speedgrip-sock-liners-white-multi-pack",
+              "image": "shopify:\/\/shop_images\/soccer-grip-socks-speedgrip-traction-STORY.gif",
+              "title": "UNPARALLELED GRIP",
+              "content": "Up your explosiveness with the SpeedGrip™ Line",
+              "link": "https:\/\/storelli.com\/collections\/speedgrip",
+              "link_text": "SHOP THE COLLECTION"
+            }
+          },
+          "1528305878593": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "bodyshield-gk-3-4-undershirt-black",
+              "title": "ALL-STAR WORN",
+              "content": "\"Our position definitely requires more specialized gear, especially when it comes to protection\" <br> - MLS All-Star Goalkeeper Stefan Frei",
+              "link": "https:\/\/storelli.com\/collections\/goalkeeper\/tops",
+              "link_text": "Upgrade"
+            }
+          },
+          "1528313031219": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "bodyshield-goalkeeper-shorts",
+              "image": "shopify:\/\/shop_images\/soccer-youth-kids-goalkeeper-padded-compression-short-hip-protection-GKSTORY.jpg",
+              "title": "Absorbs high impact",
+              "content": "Dive without hesitation, leave without injury.",
+              "link": "https:\/\/storelli.com\/collections\/goalkeeper\/bottoms",
+              "link_text": "Shop lower body protection"
+            }
+          },
+          "1548799814802": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "legend-set",
+              "image": "shopify:\/\/shop_images\/gk2.jpg",
+              "title": "GK GLOVE CARE",
+              "content": "Tips to Make Your Gloves Last Longer",
+              "link": "https:\/\/storelli.com\/blogs\/the-storelli-blog\/tips-to-make-your-gloves-last-a-message-from-claudio-storelli",
+              "link_text": "GLOVE CARE GUIDE"
+            }
+          },
+          "1557420443104": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gk-3-4-pants-2",
+              "image": "shopify:\/\/shop_images\/canvas_tight_2.jpg",
+              "title": "Turf burn stopper",
+              "content": "Features updated fabric over the 5MM PORON XRD® hidden knee pads with high stock canvas to reduce turf burns.",
+              "link": "",
+              "link_text": ""
+            }
+          },
+          "1557420722971": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "soccer-knee-guard",
+              "image": "shopify:\/\/shop_images\/canvas_tight_2_473872b2-6191-4439-b86a-406cb56aa580.jpg",
+              "title": "Turf burn stopper",
+              "content": "Pads are covered in high stock canvas to reduce turf burns.",
+              "link": "",
+              "link_text": "Read More"
+            }
+          },
+          "1560188536328": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "bodyshield-gk-sliders-2",
+              "image": "shopify:\/\/shop_images\/story-sliders.jpg",
+              "title": "10MM EVA FOAM",
+              "content": "Always under. Get the slider that makes and takes an impact.",
+              "link": "",
+              "link_text": ""
+            }
+          },
+          "1560782443420": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "exoshield-gladiator-jersey-kepa-verde",
+              "image": "shopify:\/\/shop_images\/kepa-verde-8.jpg",
+              "title": "KEPA-TRUSTED",
+              "content": "\"With Storelli I feel safer. More protected.\" <br> - Kepa Arrizabalaga",
+              "link": "",
+              "link_text": ""
+            }
+          },
+          "1564671873009": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "bodyshield-gk-leggings-pad2",
+              "image": "shopify:\/\/shop_images\/KEPA2.jpg",
+              "title": "",
+              "content": "\"With Storelli I feel safer. More protected\" <br> - Kepa Arrizabalaga",
+              "link": "",
+              "link_text": "Read More"
+            }
+          },
+          "1565882153671": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "bodyshield-womens-goalkeeper-leggings",
+              "image": "shopify:\/\/shop_images\/WEB_BLOCK-WGK.jpg",
+              "title": "ABSORBS HIGH IMPACT",
+              "content": "Armed using 5MM XRD® Extreme Impact Protection",
+              "link": "",
+              "link_text": "Read More"
+            }
+          },
+          "1569358809515": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "training-long-sleeve-mock-t-undershirt",
+              "image": "shopify:\/\/shop_images\/mock_block_f07ef1e8-735e-4c72-aa62-cfb4c280ec11.jpg",
+              "title": "Relegate the rest.",
+              "content": "Seamlessly constructed for the pitch and the gym.",
+              "link": "https:\/\/storelli.com\/products\/exoshield-soccer-headguard",
+              "link_text": "Shop All Training"
+            }
+          },
+          "1569363994247": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "training-hoodie",
+              "image": "shopify:\/\/shop_images\/07-Desktop.gif",
+              "title": "",
+              "content": "Gym to the pitch. We engineered proper shirts and hoodies using the same design principles that make Storelli the gold standard in minimalist soccer protection.",
+              "link": "https:\/\/storelli.com\/collections\/most-popular\/products\/exoshield-soccer-headguard",
+              "link_text": "Shop All Training"
+            }
+          },
+          "1569364306056": {
+            "type": "product_story",
+            "settings": {
+              "product_handle": "training-jersey",
+              "image": "shopify:\/\/shop_images\/Homepage-Desktop-Image2.jpg",
+              "title": "Relegate the rest.",
+              "content": "Proper shirts and hoodies engineered using the same design principles that make Storelli the gold standard in minimalist soccer protection.",
+              "link": "https:\/\/storelli.com\/collections\/most-popular\/products\/exoshield-soccer-headguard",
+              "link_text": "Shop All Training"
+            }
+          }
+        },
+        "block_order": [
+          "1521756883428",
+          "1521765700914",
+          "1521827361338",
+          "1522104506831",
+          "1522117046025",
+          "1522118383628",
+          "1522118741322",
+          "1522180531581",
+          "1522178003384",
+          "1522178051396",
+          "1522183149666",
+          "1522278539160",
+          "1522722934250",
+          "1522765249879",
+          "1522765719639",
+          "1522996747066",
+          "1522996811721",
+          "1522996860322",
+          "1522997195131",
+          "1522997248984",
+          "1522997293893",
+          "1522997282469",
+          "1525269646129",
+          "1525286612572",
+          "1525286928476",
+          "1528150270648",
+          "1528151765185",
+          "1528210903227",
+          "1528222717780",
+          "1528237297324",
+          "1528237366282",
+          "1528237439834",
+          "1528305878593",
+          "1528313031219",
+          "1548799814802",
+          "1557420443104",
+          "1557420722971",
+          "1560188536328",
+          "1560782443420",
+          "1564671873009",
+          "1565882153671",
+          "1569358809515",
+          "1569363994247",
+          "1569364306056"
+        ],
+        "settings": {
+        }
+      },
+      "floating-story": {
+        "type": "floating-story",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/Screen_Shot_2020-10-06_at_5.20.13_PM.png",
+          "title": "IN THE PRESS: FORBES MAGAZINE",
+          "content": "On the value of headgear in soccer",
+          "link": "https:\/\/storelli.com\/blogs\/the-storelli-blog\/forbes-on-the-value-of-headgear-in-soccer",
+          "link_text": "Read the article"
+        }
+      },
+      "featured-product": {
+        "type": "featured-product",
+        "settings": {
+          "product": "electric-gk-glove",
+          "tag": "New Arrival"
+        }
+      },
+      "home-story-sbs": {
+        "type": "home-story-sbs",
+        "settings": {
+          "title": "",
+          "content": "",
+          "link": "",
+          "link_text": "Read More",
+          "style": "dark"
+        }
+      },
+      "algolia": {
+        "type": "algolia",
+        "blocks": {
+          "1542976260866": {
+            "type": "refinement",
+            "settings": {
+              "namespace": "named_tags",
+              "key": "PLAYER_TYPE",
+              "title": "Player Type",
+              "priority_values": "Men, Women, Youth"
+            }
+          },
+          "1542976282292": {
+            "type": "refinement",
+            "settings": {
+              "namespace": "named_tags",
+              "key": "PRODUCT_TYPE",
+              "title": "Product Type",
+              "priority_values": ""
+            }
+          },
+          "1542976292536": {
+            "type": "refinement",
+            "settings": {
+              "namespace": "named_tags",
+              "key": "SPECIALTY",
+              "title": "Specialty",
+              "priority_values": ""
+            }
+          },
+          "1542976302748": {
+            "type": "refinement",
+            "settings": {
+              "namespace": "options",
+              "key": "size",
+              "title": "Size",
+              "priority_values": "XS, YS, S, S (6-9.5 US), YM, M, M (9.5-12.5 US), YL, L, L(12.5-15 US), XL, XXL, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12"
+            }
+          }
+        },
+        "block_order": [
+          "1542976260866",
+          "1542976282292",
+          "1542976292536",
+          "1542976302748"
+        ],
+        "settings": {
+          "app_id": "MYNBGNMMCT",
+          "api_key": "30322b7a1f2c7a136ebe391d08b18d3b",
+          "index_name": "shopify_products",
+          "image": "shopify:\/\/shop_images\/new-arrivals.jpg",
+          "title": "All Products"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "primary_menu": "new-website-update-menu",
+          "secondary_menu": "secondary-menu",
+          "fallback_dropdown_item_image": "shopify:\/\/shop_images\/dropdown-default.png",
+          "offer_bar_enabled": true,
+          "offer_bar_content": "<p>FREE SHIPPING ORDERS $75+<\/p>"
+        }
+      },
+      "floating-store-inverse": {
+        "type": "floating-store-inverse",
+        "settings": {
+          "image": "",
+          "title": "",
+          "content": "",
+          "link": "",
+          "link_text": ""
+        }
+      },
+      "carousel": {
+        "type": "carousel",
+        "blocks": {
+          "1569365308968": {
+            "type": "carousel_item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/mock_block_f07ef1e8-735e-4c72-aa62-cfb4c280ec11.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/Homepage-Mobile-Image2-TechicalAlternative_2bd3c1ae-32c7-41cb-a1be-d9bada503d54.jpg",
+              "player": "",
+              "title": "",
+              "content": "",
+              "link": "",
+              "link_text": "Read More"
+            }
+          },
+          "1569365328811": {
+            "type": "carousel_item",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/07-Desktop.gif",
+              "image_mobile": "shopify:\/\/shop_images\/07-Desktop.gif",
+              "player": "",
+              "title": "",
+              "content": "",
+              "link": "",
+              "link_text": "Read More"
+            }
+          }
+        },
+        "block_order": [
+          "1569365308968",
+          "1569365328811"
+        ],
+        "settings": {
+          "speed": "3"
+        }
+      },
+      "featured-collection-product-page": {
+        "type": "featured-collection-product-page",
+        "settings": {
+          "collection": ""
+        }
+      },
+      "product-main-video": {
+        "type": "product-main-video",
+        "settings": {
+        }
+      },
+      "1606242982d1e3465f": {
+        "type": "instafeed",
+        "settings": {
+          "heading_size": 20,
+          "feed_width": 100,
+          "html_area": ""
+        }
+      },
+      "image_with_text_banner": {
+        "type": "image_with_text_banner",
+        "settings": {
+          "banner_image": "shopify:\/\/shop_images\/image_15.png",
+          "review_star_image": "shopify:\/\/shop_images\/stars_2.png",
+          "review-text": "Over 5,000 5-star reviews",
+          "Heading": "HIGH-PERFORMANCE SOCCER PROTECTION",
+          "description": "Gear for world-class performers. Enjoy the game to the fullest.",
+          "banner_button_text": "SHOP NOW",
+          "banner_button_url": "https:\/\/storelli.com\/collections\/all",
+          "desktop_heading_size": 48,
+          "mobile_heading_size": 30
+        }
+      },
+      "animated-scroll-text": {
+        "type": "animated-scroll-text",
+        "blocks": {
+          "96809b0e-05c0-49f3-a3a6-5e4760c33f9d": {
+            "type": "text",
+            "settings": {
+              "title": "Anti-Bacterial"
+            }
+          },
+          "566737a5-962b-4e8d-ade2-b1941041c914": {
+            "type": "text",
+            "settings": {
+              "title": "Impact Resistant"
+            }
+          },
+          "023ae80b-c21c-4f60-abd5-8e9b62671f3a": {
+            "type": "text",
+            "settings": {
+              "title": "Sweat-Wicking"
+            }
+          },
+          "1eda3059-be94-4d11-a38b-639e49f66679": {
+            "type": "text",
+            "settings": {
+              "title": "Maximum Comfort"
+            }
+          },
+          "9b670753-0e85-42d8-83ec-15cd7cbbc350": {
+            "type": "text",
+            "settings": {
+              "title": "30-Day Easy Returns"
+            }
+          }
+        },
+        "block_order": [
+          "96809b0e-05c0-49f3-a3a6-5e4760c33f9d",
+          "566737a5-962b-4e8d-ade2-b1941041c914",
+          "023ae80b-c21c-4f60-abd5-8e9b62671f3a",
+          "1eda3059-be94-4d11-a38b-639e49f66679",
+          "9b670753-0e85-42d8-83ec-15cd7cbbc350"
+        ],
+        "settings": {
+          "animated_bg": "",
+          "title_color": "#252525"
+        }
+      },
+      "collection-tiles": {
+        "type": "collection-tiles",
+        "blocks": {
+          "b193f93f-18d2-4b94-a1fb-9e1612f73c17": {
+            "type": "collection_tiles",
+            "settings": {
+              "collection_link": "shopify:\/\/collections\/men",
+              "collection_poster": "shopify:\/\/shop_images\/Image_13.png",
+              "collection_name": "MEN"
+            }
+          },
+          "db799029-bedc-4e39-b346-87609cb9d81e": {
+            "type": "collection_tiles",
+            "settings": {
+              "collection_link": "shopify:\/\/collections\/womens",
+              "collection_poster": "shopify:\/\/shop_images\/Iamge.png",
+              "collection_name": "WOMEN"
+            }
+          },
+          "3f8f2c53-4cf4-49bd-9523-2aee4e6c4dd2": {
+            "type": "collection_tiles",
+            "settings": {
+              "collection_link": "shopify:\/\/collections\/youth",
+              "collection_poster": "shopify:\/\/shop_images\/Image_14.png",
+              "collection_name": "YOUTH"
+            }
+          },
+          "16a9ea43-6ebb-4be4-9a55-8e240446dde0": {
+            "type": "collection_tiles",
+            "settings": {
+              "collection_link": "shopify:\/\/collections\/gloves",
+              "collection_poster": "shopify:\/\/shop_images\/Image_15_1c051f92-f3a4-495e-aa1c-2ca152e76e54.png",
+              "collection_name": "GLOVES"
+            }
+          },
+          "edac6df2-825b-4c05-9ffb-6aa95739d125": {
+            "type": "collection_tiles",
+            "settings": {
+              "collection_link": "shopify:\/\/collections\/head-guard",
+              "collection_poster": "shopify:\/\/shop_images\/Image_16.png",
+              "collection_name": "HEAD GUARD"
+            }
+          }
+        },
+        "block_order": [
+          "b193f93f-18d2-4b94-a1fb-9e1612f73c17",
+          "db799029-bedc-4e39-b346-87609cb9d81e",
+          "3f8f2c53-4cf4-49bd-9523-2aee4e6c4dd2",
+          "16a9ea43-6ebb-4be4-9a55-8e240446dde0",
+          "edac6df2-825b-4c05-9ffb-6aa95739d125"
+        ],
+        "settings": {
+        }
+      }
+    },
+    "content_for_index": [
+      "1606242982d1e3465f"
+    ],
+    "blocks": {
+      "8195150229771406018": {
+        "type": "shopify:\/\/apps\/cozy-country-redirect\/blocks\/CCR_currency_selector\/7b44aa65-e072-42a4-8594-17bbfd843785",
+        "disabled": true,
+        "settings": {
+          "czcrd_custom_css": ""
+        }
+      },
+      "13057235355128461448": {
+        "type": "shopify:\/\/apps\/cozy-country-redirect\/blocks\/CozyStaticScript\/7b44aa65-e072-42a4-8594-17bbfd843785",
+        "disabled": false,
+        "settings": {
+        }
+      },
+      "6174324309569838175": {
+        "type": "shopify:\/\/apps\/smile-loyalty-rewards\/blocks\/smile-shopify-app\/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "sections": {
+        "featured-collection": {
+          "type": "featured-collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "featured-product": {
+          "type": "featured-product",
+          "settings": {
+          }
+        }
+      },
+      "content_for_index": [
+        "featured-collection",
+        "featured-product"
+      ]
+    }
+  }
+}

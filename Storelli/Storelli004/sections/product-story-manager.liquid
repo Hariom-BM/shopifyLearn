@@ -1,0 +1,56 @@
+{% schema %}
+{
+    "name": "Products Story Manager",
+    "settings": [],
+    "blocks": [{
+        "type": "product_story",
+        "name": "Product Story",
+        "settings": [
+            {
+                "type": "product",
+                "id": "product_handle",
+                "label": "Product",
+                "info": "Select the product this story will apply to."
+            },
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Background Image"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "text",
+                "id": "content",
+                "label": "Content"
+            },
+            {
+                "type": "text",
+                "id": "link",
+                "label": "Link"
+            },
+            {
+                "type": "text",
+                "id": "link_text",
+                "label": "Link Text",
+                "default": "Read More"
+            }
+        ]
+    }]
+}
+{% endschema %}
+
+{%- assign product_handle = product.handle -%}
+
+{%- if section.blocks.size > 0 -%}
+    {%- for block in section.blocks -%}
+        {%- if block.settings.product_handle == product_handle -%}
+            {% assign story_class = 'product-story' %}
+            {% assign story_settings = block.settings %}
+            {% include 'story' with story_settings %}
+        {%- endif -%}
+    {%- endfor -%}
+{%- endif -%}

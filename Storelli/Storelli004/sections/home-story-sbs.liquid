@@ -1,0 +1,38 @@
+{% schema %}
+{
+    "name": "Side by Side Story",
+    "settings": [{
+        "type": "image_picker",
+        "id": "image",
+        "label": "Background Image"
+    }, {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+    }, {
+        "type": "text",
+        "id": "content",
+        "label": "Content"
+    }, {
+        "type": "text",
+        "id": "link",
+        "label": "Link"
+    }, {
+        "type": "text",
+        "id": "link_text",
+        "label": "Link Text",
+        "default": "Read More"
+    }, {
+        "type": "select",
+        "id": "style",
+        "label": "Style",
+        "options": [
+            { "value": "light", "label": "Light" },
+            { "value": "dark",  "label": "Dark" }
+        ]
+    }]
+}
+{% endschema %}
+
+{% assign story_settings = section.settings %}
+{% include 'story-sbs' with story_settings %}

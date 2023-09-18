@@ -1,0 +1,615 @@
+{%- assign page_handle = page.handle -%}
+
+{%- if section.blocks.size > 0 -%}
+	{%- for block in section.blocks -%}
+		{%- if block.settings.page_handle == page_handle -%}
+
+			{%- assign b = block.settings -%}
+
+			{%- assign has_callout         = false -%}
+			{%- assign has_products_grid   = false -%}
+			{%- assign has_fullbleed_image = false -%}
+			{%- assign has_floating_quote  = false -%}
+			{%- assign has_floating_story  = false -%}
+			{%- assign has_sbs_product     = false -%}
+			{%- assign has_sbs_story       = false -%}
+			{%- assign has_story           = false -%}
+
+			{% if b.callout_1_text != blank %}           {%- assign has_callout = true -%}         {% endif %}
+			{% if b.fullbleed_image != blank %}          {%- assign has_fullbleed_image = true -%} {% endif %}
+			{% if b.floating_quote_statement != blank %} {%- assign has_floating_quote = true -%}  {% endif %}
+			{% if b.floating_story_title != blank %}     {%- assign has_floating_story = true -%}  {% endif %}
+			{% if b.sbs_product_product != blank %}      {%- assign has_sbs_product = true -%}     {% endif %}
+			{% if b.sbs_story_title != blank %}          {%- assign has_sbs_story = true -%}       {% endif %}
+			{% if b.story_title != blank %}              {%- assign has_story = true -%}           {% endif %}
+
+			{%- for i in (1..8) -%}
+				{%- assign id = "grid_product_" | append:i %}
+				{%- if b[id] != blank -%}
+					{%- assign has_products_grid = true %}
+					{%- break %}
+				{%- endif -%}
+			{%- endfor -%}
+
+			{%- break -%}
+
+		{%- endif -%}
+	{%- endfor -%}
+{%- endif -%}
+
+{%- if b -%}
+	
+	<!-- HEADER -->
+	<div class="hero home-hero">
+
+		<div id="home-slider" class="carousel slide">
+		    <div class="carousel-inner">
+	            <div class="carousel-item active" 
+                     {% if b.image %}style="background-image:url({{ b.image.src | img_url: '1920x' }})"{% endif %}
+                     {% if b.image_mobile %}style="background-image:url({{ b.image_mobile.src | img_url: '1024x' }})"{% endif %}
+                     >
+	                <div class="container-fluid container-fullbleed">
+	                    <div class="row content">
+	                        <div class="col-12 col-lg-6 offset-lg-3">
+	                            <h1>{{ b.title }}</h1>
+								{%- if b.content != blank -%}
+									<p>{{ b.content }}</p>
+								{%- endif -%}
+	                        </div>
+	                    </div>
+	                    <div class="home-caption h4 sans">
+	                        {{ block.settings.player }}
+	                    </div>
+	                </div>
+	            </div>
+		    </div>
+		</div>
+
+		{% include 'newsletter-box' %}
+	</div>
+
+	<div class="page-landing">
+		
+      
+
+		<!-- CALLOUT-->
+		<div style="order: {{ b.order_callout }}">
+			{%- if has_callout -%}
+				<div class="light-section callout {{ b.callout_1_style }}">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12 col-lg-8 offset-lg-2">
+								<div class="row">
+									{{ b.callout_1_text }}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{%- endif -%}
+		</div>
+
+		<!-- PRODUCTS GRID -->
+		<div style="order: {{ b.order_grid }}">
+			{%- if has_products_grid -%}
+				{% assign diff = b.order_callout | minus: b.order_grid %}
+				{% if has_callout and b.callout_1_style == 'light' and diff == -1  %}
+					{% assign padding = 'pt-0'  %}
+				{% endif %}
+				<div class="collection-items light-section section-lg {{ padding }} pb-0">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12 col-xl-10 offset-xl-1">
+								<div class="row">
+									{%- for i in (1..8) -%}
+										{%- assign id = "grid_product_" | append:i %}
+										{%- if b[id] != blank -%}
+											{%- assign product = all_products[ b[id] ] %}
+											{%- assign current_variant = product.selected_or_first_available_variant -%}
+											<div class="col-12 col-sm-6 col-md-4 col-lg-3">
+												<div class="product">
+													<div class="image-bg">
+		                                    			<div class="image d-flex align-items-center">
+															{% if product.featured_image != blank %}
+																<a href="{{ product.url | within: collection }}">
+																	{{ product.featured_image.src | img_url: '320x320' | img_tag: product.featured_image.alt }}
+																</a>
+															{% endif %}
+														</div>
+													</div>
+													<div class="data">
+														<div class="title">
+															<a class="dark-link" href="{{ product.url | within: collection }}">
+																{{ product.title }}
+															</a>
+														</div>
+														<div class="price igPrice">
+															{% if product.price_varies %}
+																{%- assign price = product.price | money -%}
+																{{ 'products.product.from_text_html' | t: price: price }}
+															{% else %}
+																{{ product.price | money }}
+															{% endif %}
+														</div>
+													</div>
+												</div>
+											</div>
+										{%- endif -%}
+									{%- endfor -%}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{%- endif -%}
+		</div>
+
+		<!-- FULLBLEED IMAGE -->
+		<div style="order: {{ b.order_fullbleed }}">
+			{%- if has_fullbleed_image -%}
+				<div class="featured-image" style="order:2">
+	                <img src="{{ b.fullbleed_image.src | img_url: '1920x1080' }}" />
+	            </div>
+			{%- endif -%}
+		</div>
+
+		<!-- FLOATING QUOTE -->
+		<div style="order: {{ b.order_floating_quote }}">
+			{% if has_floating_quote %}
+				<div class="light-section floating-block floating-quote">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+								<div class="row">
+									<div class="col-12 col-sm-7 col-lg-5 d-flex flex-column justify-content-center">
+										<blockquote style="padding-top: 20px">{{ b.floating_quote_statement }}</blockquote>
+										<small style="padding-bottom: 20px">{{ b.floating_quote_author }}</small>
+									</div>	
+                                  
+                                  <div class="col-12 col-sm-5 col-lg-7">
+										<img class="img-fluid" src="{{ b.floating_quote_image.src | img_url: '600x' }}" />
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+
+		<!-- FLOATING STORY -->
+		<div style="order: {{ b.order_floating_story }}">
+			{% if has_floating_story %}
+				<div class="light-section floating-block floating-story">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+								<div class="row" style="padding-top: 30px">
+									<div class="col-12 col-sm-5 col-lg-7 order-sm-0">
+										<img class="img-fluid" src="{{ b.floating_story_image.src | img_url: '600x' }}" />
+									</div>
+									<div class="col-12 col-sm-7 col-lg-5 d-flex flex-column justify-content-center order-sm-1">
+										<h2 style="text-align: left">{{ b.floating_story_title }}</h2>
+		                				<p style="text-align: left">{{ b.floating_story_content }}</p>
+		                				{% if b.floating_story_link != blank %}
+											{% assign parts = b.floating_story_link | split: '.com'  %}
+											{% assign host  = parts[0]  %}
+											<div>
+			            				    	<a class="dark-link decorated-link featured-link" href="{{ b.floating_story_link }}" {% unless host contains 'storelli' %}target="_blank"{% endunless %}>
+			            				    		{{ b.floating_story_link_text }}
+			            				    	</a>
+											</div>
+										{% endif %}
+									</div>
+                                  
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+
+		<!-- SIDE BY SIDE PRODUCT -->
+		<div style="order: {{ b.order_sbs_product }}">
+			{% if has_sbs_product %}
+				{%- assign product = all_products[b.sbs_product_product]  -%}
+				<div class="light-section side-by-side">
+					<div class="container-fluid container-fullbleed">
+						<div class="row">
+							<div class="d-none d-lg-flex col-lg-6 image" style="background-image: url({{ b.sbs_product_image.src | img_url: '960x' }});">
+							</div>
+							<div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+								<div class="content-product">
+									<img class="img-fluid" src="{{ product.featured_image.src | img_url: '320x' }}" />
+	    					    	<div><h2 class="sans">{{ product.title }}</h2></div>
+	    					    	<div class="mt-3"></div>
+	    					    	<a class="dark-link decorated-link featured-link" href="{{ product.url | within: collection }}">
+	    					    		Shop Now
+	    					    	</a>
+	    					    	<div class="mt-3"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+
+		<!-- SIDE BY SIDE STORY -->
+		<div style="order: {{ b.order_sbs_story }}">
+			{% if has_sbs_story %}
+				{% assign story_settings = b %}
+				{% include 'story-sbs' with	story_settings  %}
+			{% endif %}
+		</div>
+
+		<!-- FULBLEED STORY -->
+		<div style="order: {{ b.order_story }}">
+			{% if has_story %}
+				{% assign story_class = 'home-story' %}
+				{% assign story_settings = b %}
+				{% include 'story' with	story_settings  %}
+			{% endif %}
+		</div>
+			</div>
+
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Landing Page Manager",
+    "settings": [],
+    "blocks": [{
+        "type": "landing_page",
+        "name": "Landing Page",
+        "settings": [
+        	{
+				"type": "page",
+				"id": "page_handle",
+				"label": "Page",
+				"info": "Select the page this settings will apply to."
+			},
+			{
+				"type": "text",
+				"id": "title",
+				"label": "Cover Heading"
+			},
+			{
+				"type": "textarea",
+				"id": "content",
+				"label": "Cover Content"
+			},
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Cover Image"
+            },
+			{
+				"type": "image_picker",
+                "id": "image_mobile",
+                "label": "Mobile Image (optional)",
+                "info": "Uses default image if not provided"
+			},
+
+            {
+				"type": "select",
+				"id": "order_callout",
+				"label": "Position - Callout",
+				"options": [
+					{ "value": "1", "label": "1" },
+					{ "value": "2", "label": "2" },
+					{ "value": "3", "label": "3" },
+					{ "value": "4", "label": "4" },
+					{ "value": "5", "label": "5" },
+					{ "value": "6", "label": "6" },
+					{ "value": "7", "label": "7" },
+					{ "value": "8", "label": "8" }
+				],
+				"default": "1"
+			},
+            {
+				"type": "select",
+				"id": "order_grid",
+				"label": "Position - Products Grid",
+				"options": [
+					{ "value": "1", "label": "1" },
+					{ "value": "2", "label": "2" },
+					{ "value": "3", "label": "3" },
+					{ "value": "4", "label": "4" },
+					{ "value": "5", "label": "5" },
+					{ "value": "6", "label": "6" },
+					{ "value": "7", "label": "7" },
+					{ "value": "8", "label": "8" }
+				],
+				"default": "2"
+			},
+			{
+				"type": "select",
+				"id": "order_fullbleed",
+				"label": "Position - Fullbleed Image",
+				"options": [
+					{ "value": "1", "label": "1" },
+					{ "value": "2", "label": "2" },
+					{ "value": "3", "label": "3" },
+					{ "value": "4", "label": "4" },
+					{ "value": "5", "label": "5" },
+					{ "value": "6", "label": "6" },
+					{ "value": "7", "label": "7" },
+					{ "value": "8", "label": "8" }
+				],
+				"default": "3"
+			},
+            {
+				"type": "select",
+				"id": "order_floating_quote",
+				"label": "Position - Floating Quote",
+				"options": [
+					{ "value": "1", "label": "1" },
+					{ "value": "2", "label": "2" },
+					{ "value": "3", "label": "3" },
+					{ "value": "4", "label": "4" },
+					{ "value": "5", "label": "5" },
+					{ "value": "6", "label": "6" },
+					{ "value": "7", "label": "7" },
+					{ "value": "8", "label": "8" }
+				],
+				"default": "4"
+			},
+			{
+				"type": "select",
+				"id": "order_floating_story",
+				"label": "Position - Floating Story",
+				"options": [
+					{ "value": "1", "label": "1" },
+					{ "value": "2", "label": "2" },
+					{ "value": "3", "label": "3" },
+					{ "value": "4", "label": "4" },
+					{ "value": "5", "label": "5" },
+					{ "value": "6", "label": "6" },
+					{ "value": "7", "label": "7" },
+					{ "value": "8", "label": "8" }
+				],
+				"default": "5"
+			},
+			{
+				"type": "select",
+				"id": "order_sbs_product",
+				"label": "Position - Side by Side Product",
+				"options": [
+					{ "value": "1", "label": "1" },
+					{ "value": "2", "label": "2" },
+					{ "value": "3", "label": "3" },
+					{ "value": "4", "label": "4" },
+					{ "value": "5", "label": "5" },
+					{ "value": "6", "label": "6" },
+					{ "value": "7", "label": "7" },
+					{ "value": "8", "label": "8" }
+				],
+				"default": "6"
+			},
+			{
+				"type": "select",
+				"id": "order_sbs_story",
+				"label": "Position - Side by Side Story",
+				"options": [
+					{ "value": "1", "label": "1" },
+					{ "value": "2", "label": "2" },
+					{ "value": "3", "label": "3" },
+					{ "value": "4", "label": "4" },
+					{ "value": "5", "label": "5" },
+					{ "value": "6", "label": "6" },
+					{ "value": "7", "label": "7" },
+					{ "value": "8", "label": "8" }
+				],
+				"default": "7"
+			},
+			{
+				"type": "select",
+				"id": "order_story",
+				"label": "Position - Fullbleed Story",
+				"options": [
+					{ "value": "1", "label": "1" },
+					{ "value": "2", "label": "2" },
+					{ "value": "3", "label": "3" },
+					{ "value": "4", "label": "4" },
+					{ "value": "5", "label": "5" },
+					{ "value": "6", "label": "6" },
+					{ "value": "7", "label": "7" },
+					{ "value": "8", "label": "8" }
+				],
+				"default": "8"
+			},
+
+
+            {
+                "type": "textarea",
+                "id": "callout_1_text",
+                "label": "Callout - Text"
+            },
+            {
+				"type": "select",
+                "id": "callout_1_style",
+                "label": "Callout - Style",
+				"options": [
+					{ "value": "light", "label": "Light" },
+					{ "value": "dark",  "label": "Dark" },
+					{ "value": "black", "label": "Black" }
+				]
+            },
+
+
+            {
+                "type": "product",
+                "id": "grid_product_1",
+                "label": "Products Grid - #1"
+            },
+            {
+                "type": "product",
+                "id": "grid_product_2",
+                "label": "Products Grid - #2"
+            },
+            {
+                "type": "product",
+                "id": "grid_product_3",
+                "label": "Products Grid - #3"
+            },
+            {
+                "type": "product",
+                "id": "grid_product_4",
+                "label": "Products Grid - #4"
+            },
+			{
+                "type": "product",
+                "id": "grid_product_5",
+                "label": "Products Grid - #5"
+            },
+            {
+                "type": "product",
+                "id": "grid_product_6",
+                "label": "Products Grid - #6"
+            },
+            {
+                "type": "product",
+                "id": "grid_product_7",
+                "label": "Products Grid - #7"
+            },
+            {
+                "type": "product",
+                "id": "grid_product_8",
+                "label": "Products Grid - #8"
+            },
+
+
+            {
+		        "type": "image_picker",
+		        "id": "fullbleed_image",
+		        "label": "Fullbleed Image"
+		    },
+
+
+		    {
+		        "type": "text",
+		        "id": "floating_quote_statement",
+		        "label": "Floating Quote - Statement"
+		    },
+		    {
+		        "type": "text",
+		        "id": "floating_quote_author",
+		        "label": "Floating Quote - Author"
+		    },
+			{
+		        "type": "image_picker",
+		        "id": "floating_quote_image",
+		        "label": "Floating Quote - Image"
+		    },
+
+
+		    {
+		        "type": "text",
+		        "id": "floating_story_title",
+		        "label": "Floating Story - Title"
+		    },
+		    {
+		        "type": "text",
+		        "id": "floating_story_content",
+		        "label": "Floating Story - Content"
+		    },
+		    {
+		        "type": "text",
+		        "id": "floating_story_link",
+		        "label": "Floating Story - Link"
+		    },
+		    {
+		        "type": "text",
+		        "id": "floating_story_link_text",
+		        "label": "Floating Story - Link Text",
+		        "default": "Read More"
+		    },
+		    {
+		        "type": "image_picker",
+		        "id": "floating_story_image",
+		        "label": "Floating Story - Image"
+		    },
+
+		    {
+		        "type": "image_picker",
+		        "id": "sbs_product_image",
+		        "label": "Side by Side Product - Image"
+		    },
+		    {
+		        "type": "product",
+		        "id": "sbs_product_product",
+		        "label": "Side by Side Product - Product"
+		    },
+
+
+			{
+		        "type": "text",
+		        "id": "sbs_story_title",
+		        "label": "Side by Side Story - Title"
+		    },
+		    {
+		        "type": "text",
+		        "id": "sbs_story_content",
+		        "label": "Side by Side Story - Content"
+		    },
+			{
+		        "type": "text",
+		        "id": "sbs_story_link",
+		        "label": "Side by Side Story - Link"
+		    },
+		    {
+		        "type": "text",
+		        "id": "sbs_story_link_text",
+		        "label": "Side by Side Story - Link Text",
+		        "default": "Read More"
+		    },
+            {
+		        "type": "image_picker",
+		        "id": "sbs_story_image",
+		        "label": "Side by Side Story - Image"
+		    },
+		    {
+				"type": "select",
+                "id": "sbs_story_style",
+                "label": "Side by Side Story - Style",
+				"options": [
+					{ "value": "light", "label": "Light" },
+					{ "value": "dark",  "label": "Dark" }
+				]
+            },
+
+
+		    {
+		        "type": "text",
+		        "id": "story_title",
+		        "label": "Fullbleed Story - Title"
+		    },
+		    {
+		        "type": "text",
+		        "id": "story_content",
+		        "label": "Fullbleed Story - Content"
+		    },
+			{
+		        "type": "text",
+		        "id": "story_link",
+		        "label": "Fullbleed Story - Link"
+		    },
+		    {
+		        "type": "text",
+		        "id": "story_link_text",
+		        "label": "Fullbleed Story - Link Text",
+		        "default": "Read More"
+		    },
+            {
+		        "type": "image_picker",
+		        "id": "story_image",
+		        "label": "Fullbleed Story - Background Image"
+		    }
+        ]
+    }]
+}
+
+{% endschema %}

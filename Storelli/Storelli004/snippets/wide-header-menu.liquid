@@ -1,0 +1,125 @@
+{%- comment -%}
+Parameters:
+  menu = linklist
+  align = 'left' | 'right'
+
+Globals:
+  dropdowns_render = string
+{%- endcomment -%}
+
+{%- assign fallback_dropdown_item_image = section.settings.fallback_dropdown_item_image -%}
+
+{%- if menu.links.size > 0 -%}
+  <nav class="WideHeaderMenu" role="navigation">
+    <ul class="WideHeaderMenu-items {{ align | default: 'left' | handle | capitalize | prepend: 'WideHeaderMenu-items--align' }}">
+      {%- for toplink in menu.links -%}
+        {%- assign toplink_uid = toplink.title | handle | sha256 -%}
+        <li class="WideHeaderMenu-item">
+          <a class="js-wide-header-menu-link WideHeaderMenu-itemLink {% if toplink.links.size > 0 %}WideHeaderMenu-itemLink--expandable{% endif %} {% if toplink.active %}WideHeaderMenu-itemLink--active{% endif %}" href="{{ toplink.url }}" data-dropdown-id="{{ toplink_uid }}">
+            {{ toplink.title }}
+          </a>
+        </li>
+
+        {%- capture dropdown_render -%}
+          {%- if toplink.links.size > 0 -%}
+            <nav class="js-wide-header-menu-dropdown WideHeaderDropdown" data-dropdown-id="{{ toplink_uid }}">
+              <div class="WideHeaderDropdown-sections">
+                {%- if toplink.type == 'collection_link' -%}
+                  <div class="WideHeaderDropdown-allItems">
+                    <a class="WideHeaderDropdown-allItemsLink" href="{{ toplink.url }}">
+                      {%- assign all_items_link_title = '' -%}
+                      {%- assign toplink_title_handle = toplink.title | handle -%}
+                      {%- if toplink_title_handle != 'shop' -%}
+                        {%- assign all_items_link_title = toplink.title -%}
+                      {%- endif -%}
+                      {{ all_items_link_title | prepend: 'Shop All ' }}
+                    </a>
+                  </div>
+                {%- endif -%}
+
+                {%- assign dropdown_item_with_image_count = 0 -%}
+                {%- capture dropdown_items_render -%}
+                  {%- for midlink in toplink.links -%}
+                    {%- assign image = nil -%}
+
+                    {%- if midlink.type == 'collection_link' -%}
+                      {%- if midlink.object.all_products_count > 0 -%}
+                        {%- for prd in midlink.object.products -%}
+                          {%- if image -%}
+                            {%- break -%}
+                          {%- endif -%}
+                          {%- assign image = prd.featured_image -%}
+                        {%- endfor -%}
+                      {%- endif -%}
+                    {%- endif -%}
+
+                    {%- if midlink.type == 'product_link' -%}
+                      {%- assign image = midlink.object.featured_image -%}
+                    {%- endif -%}
+
+                    {%- assign image_override = midlink.object.metafields.theme_e23039c36d.dropdown_item_image | default: '' | strip_newlines | strip -%}
+
+                    {%- if image or image_override != blank -%}
+                      {%- assign dropdown_item_with_image_count = dropdown_item_with_image_count | plus: 1 -%}
+                    {%- elsif fallback_dropdown_item_image -%}
+                      {%- assign image = fallback_dropdown_item_image -%}
+                    {%- endif -%}
+
+                    {%- assign sizes = '100,160,320,480,640' | split: ',' -%}
+                    {%- assign image_sizes = '' -%}
+                    {%- if image -%}
+                      {%- capture image_sizes -%}
+                        {%- for size in sizes -%}
+                          {%- assign width = size | round -%}
+                          {%- assign size_request = width | append: 'x' | append: width -%}
+                          {{- image | img_url: size_request, crop: 'center' | append: ' ' | append: width | append: 'w' -}}
+                          {%- unless forloop.last -%},{%- endunless -%}
+                        {%- endfor -%}
+                      {%- endcapture -%}
+                      {%- assign image_sizes = image_sizes | strip_newlines | strip -%}
+                    {%- endif -%}
+
+                    {%- if image_override != blank -%}
+                      {%- capture image_sizes -%}
+                        {%- for size in sizes -%}
+                          {%- assign width = size | round -%}
+                          {%- assign size_request = width | times: 1.25 | round | append: 'x' -%}
+                          {{- image_override | file_img_url: size_request | append: ' ' | append: width | append: 'w' -}}
+                          {%- unless forloop.last -%},{%- endunless -%}
+                        {%- endfor -%}
+                      {%- endcapture -%}
+                      {%- assign image_sizes = image_sizes | strip_newlines | strip -%}
+                    {%- endif -%}
+
+                    <li class="WideHeaderDropdown-item">
+                      <a class="WideHeaderDropdown-itemLink {% if midlink.active %}WideHeaderDropdown-itemLink--active{% endif %}" href="{{ midlink.url }}">
+                        <div class="WideHeaderDropdown-itemImage">
+                          <div class="WideHeaderDropdown-itemImagePlaceholder o-placeholder {% if image_sizes != blank %}lazyload{% endif %}" data-bgset="{{ image_sizes }}" data-sizes="auto"></div>
+                        </div>
+                        <h4 class="WideHeaderDropdown-itemTitle">
+                          {{ midlink.title }}
+                        </h4>
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                {%- endcapture -%}
+
+                {%- assign dropdown_images_enabled = false -%}
+                {%- assign dropdown_item_image_visibility_threshold = 0.6 -%}
+                {%- assign dropdown_item_image_visibility_average = dropdown_item_with_image_count | times: 1.0 | divided_by: toplink.links.size -%}
+                {%- if dropdown_item_image_visibility_average >= dropdown_item_image_visibility_threshold -%}
+                  {%- assign dropdown_images_enabled = true -%}
+                {%- endif -%}
+
+                <ul class="WideHeaderDropdown-items {% unless dropdown_images_enabled %}WideHeaderDropdown-items--noImages{% endunless %}">
+                  {{- dropdown_items_render -}}
+                </ul>
+              </div>
+            </nav>
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- assign dropdowns_render = dropdowns_render | append: dropdown_render | strip -%}
+      {%- endfor -%}
+    </ul>
+  </nav>
+{%- endif -%}

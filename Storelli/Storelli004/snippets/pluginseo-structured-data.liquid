@@ -1,0 +1,311 @@
+
+{% comment %}
+  ----------------------------------------------------------------------------------
+   Plug in SEO Plus for Shopify
+
+   Copyright (c) 2018 Pemberton Rank Ltd, a company registered in England 7341337
+
+   This file is subject to the license at https://www.pluginseo.com/eula
+  ----------------------------------------------------------------------------------
+{% endcomment %}
+
+{% assign logoUrl = 'pluginseo_structuredDataLogo.png' | asset_img_url  %}
+
+{% assign shopName = shop.name  %}
+{% assign shopDescription = shop.description  %}
+{% if hasLangify == true and language != shop.metafields["languages"]["default"] %}
+ {% assign shopName = langify_shop_name  %}
+ {% assign shopDescription = langify_shop_description  %}
+{% endif %}
+
+{% comment %}
+  https://developers.google.com/search/docs/data-types/articles
+{% endcomment %}
+{% if rootTemplate == 'article' %}
+
+ {% assign articleTitle = article.title  %}
+ {% assign articleContent = article.content  %}
+ {% if hasLangify == true and language != shop.metafields["languages"]["default"] %}
+  {% assign articleTitle = langify_title  %}
+  {% assign articleContent = langify_description  %}
+ {% endif %}
+
+  <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ shop.url }}"
+    },
+    "headline": "{{ articleTitle }}",
+    {% if article.image %}
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:{{ article | img_url: '800x800' }}",
+      "height": "800px",
+      "width": "800px"
+    },
+    {% endif %}
+    "dateModified": "{{ article.published_at }}",
+    "datePublished": "{{ article.created_at }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ article.author }}"
+    },
+     "publisher": {
+      "@type": "Organization",
+      "name": "{{ shopName }}"
+      {% if settings.pluginseo_structuredDataDisplayLogo == true  %}
+        ,"logo": {
+          "@type": "ImageObject",
+          "url": "https:{{ logoUrl }}"
+        }
+      {% endif %}
+    },
+    "description": "{{ articleContent | strip_html | escape | truncate: 163 }}"
+    }
+  </script>
+{% endif %}
+
+{% comment %}
+https://developers.google.com/search/docs/data-types/breadcrumbs
+https://help.shopify.com/themes/customization/navigation/add-breadcrumbs
+{% endcomment %}
+
+{% unless rootTemplate == 'index' or rootTemplate == 'cart' or rootTemplate == 'list-collections' %}
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {% if rootTemplate == 'page' %}
+      {% assign pageTitle = page.title  %}
+      {% if hasLangify == true and language != shop.metafields["languages"]["default"] %}
+       {% assign pageTitle = langify_title  %}
+      {% endif %}
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "{{ shop.url }}{{ page.url }}",
+          "name": "{{ pageTitle }}"
+        }
+      }
+    {% elsif rootTemplate == 'product' %}
+      {% assign productTitle = product.title  %}
+      {% if hasLangify == true and language != shop.metafields["languages"]["default"] %}
+       {% assign productTitle = langify_title  %}
+      {% endif %}
+      {% if collection.url %}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "{{ shop.url }}{{ collection.url }}",
+            "name": "{{ collection.title }}"
+          }
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@id": "{{ shop.url }}{{ product.url }}",
+            "name": "{{ productTitle }}"
+          }
+        }
+      {% else %}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "{{ shop.url }}{{ product.url }}",
+            "name": "{{ productTitle }}"
+          }
+        }
+      {% endif %}
+    {% elsif template contains 'collection' and collection.handle %}
+      {% assign collectionTitle = collection.title  %}
+      {% if hasLangify == true and language != shop.metafields["languages"]["default"] %}
+       {% assign collectionTitle = langify_title  %}
+      {% endif %}
+      {% if current_tags %}
+        {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "{{ shop.url }}{{ url }}",
+            "name": "{{ collectionTitle }} {{ current_tags | join: " + " }}"
+          }
+        }
+      {% else %}
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@id": "{{ shop.url }}{{ collection.url }}",
+            "name": "{{ collectionTitle }}"
+          }
+        }
+      {% endif %}
+    {% elsif rootTemplate == 'blog' %}
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "{{ shop.url }}{{ blog.url }}",
+          "name": "{{ blog.title }}"
+        }
+      }
+    {% elsif rootTemplate == 'article' %}
+      {% assign articleTitle = article.title  %}
+      {% if hasLangify == true and language != shop.metafields["languages"]["default"] %}
+       {% assign articleTitle = langify_title  %}
+      {% endif %}
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "{{ shop.url }}{{ blog.url }}",
+          "name": "{{ blog.title }}"
+        }
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@id": "{{ shop.url }}{{ article.url }}",
+          "name": "{{ articleTitle }}"
+        }
+      }
+    {% else %}
+
+    {% endif %}
+  ]
+}
+</script>
+
+{% endunless %}
+
+
+{% comment %}
+  https://developers.google.com/search/docs/data-types/logo
+  https://developers.google.com/search/docs/data-types/corporate-contacts
+  https://developers.google.com/search/docs/data-types/social-profile-links
+{% endcomment %}
+
+{% assign links = settings.pluginseo_structuredDataSocialProfileLinks | newline_to_br | strip_newlines | split: '<br />' %}
+
+<script type="application/ld+json">
+  { "@context" : "http://schema.org",
+    "@type" : "Organization",
+    "name" : "{{ shopName }}",
+    "url" : "{{ shop.url }}",
+    {% if settings.pluginseo_structuredDataDisplayLogo == true  %}
+      "logo": "https:{{ logoUrl }}",
+    {% endif %}
+    "sameAs" : [
+      {% for sociallink in links %}
+        "{{ sociallink }}"{% if forloop.last == false %},{% endif %}
+      {% endfor %}
+    ]
+  }
+</script>
+
+{% comment %}
+  https://developers.google.com/search/docs/data-types/products
+{% endcomment %}
+{% if rootTemplate == 'product' %}
+  {% assign productTitle = product.title %}
+  {% assign productDescription = product.description  %}
+  {% if hasLangify == true and language != shop.metafields["languages"]["default"] %}
+   {% assign productTitle = langify_title %}
+   {% assign productDescription = langify_description %}
+  {% endif %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org/",
+      "@type": "Product",
+      "name": "{{ productTitle }}",
+      "image": "https:{{ product.featured_image | product_img_url: '450x450' }}",
+      "description": {{ productDescription | strip_html | json }},
+      "mpn": "{{ product.id }}",
+      "brand": {
+        "@type": "Thing",
+        "name": "{{ product.vendor }}"
+      },
+	  {% if product.metafields.spr.reviews %}
+      	{% comment %}
+          These are perhaps legacy...
+        {% endcomment %}
+        {% assign sprAverage = product.metafields.spr.reviews | split: '<meta itemprop="average" content="' %}
+	 	{% assign sprAverage = sprAverage[1] | split: '" />' %}
+        {% assign sprVotes = product.metafields.spr.reviews | split: '<meta itemprop="votes" content="' %}
+	 	{% assign sprVotes = sprVotes[1] | split: '" />' %}
+        {% assign sprBest = product.metafields.spr.reviews | split: '<meta itemprop="best" content="' %}
+	 	{% assign sprBest = sprBest[1] | split: '" />' %}
+        {% assign sprWorst = product.metafields.spr.reviews | split: '<meta itemprop="worst" content="' %}
+	 	{% assign sprWorst = sprWorst[1] | split: '" />' %}
+        {% if sprAverage[0] %}
+		  "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{ sprAverage[0] }}",
+            "ratingCount": "{{ sprVotes[0] }}",
+            "reviewCount": "{{ sprVotes[0] }}",
+            "bestRating": "{{ sprBest[0] }}",
+            "worstRating": "{{ sprWorst[0] }}"
+          },
+        {% else %}
+          {% comment %}
+            ...and these are perhaps new:
+          {% endcomment %}
+          {% assign sprBestRating = product.metafields.spr.reviews | split: '<meta itemprop="bestRating" content="' %}
+          {% assign sprBestRating = sprBestRating[1] | split: '">' %}
+          {% assign sprWorstRating = product.metafields.spr.reviews | split: '<meta itemprop="worstRating" content="' %}
+          {% assign sprWorstRating = sprWorstRating[1] | split: '">' %}
+          {% assign sprReviewCount = product.metafields.spr.reviews | split: '<meta itemprop="reviewCount" content="' %}
+          {% assign sprReviewCount = sprReviewCount[1] | split: '">' %}
+          {% assign sprRatingValue = product.metafields.spr.reviews | split: '<meta itemprop="ratingValue" content="' %}
+          {% assign sprRatingValue = sprRatingValue[1] | split: '">' %}
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{ sprRatingValue[0] }}",
+            "ratingCount": "{{ sprReviewCount[0] }}",
+            "reviewCount": "{{ sprReviewCount[0] }}",
+            "bestRating": "{{ sprBestRating[0] }}",
+            "worstRating": "{{ sprWorstRating[0] }}"
+          },
+        {% endif %}
+      {% endif %}
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "{{ shop.currency }}",
+        "price": "{{ product.selected_or_first_available_variant.price | money_without_currency | remove: "," }}",
+        "availability": "{% if product.selected_or_first_available_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+        "seller": {
+          "@type": "Organization",
+          "name": "{{ shopName }}"
+        }
+      }
+    }
+  </script>
+{% endif %}
+
+
+{% comment %}
+https://developers.google.com/search/docs/data-types/sitename
+https://developers.google.com/search/docs/data-types/sitelinks-searchbox
+{% endcomment %}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "{{ shopName }}",
+    "url": "{{ shop.url }}",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "{{ shop.url }}/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script>

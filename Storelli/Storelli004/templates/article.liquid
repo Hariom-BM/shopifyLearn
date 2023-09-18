@@ -1,0 +1,81 @@
+{% assign related_products = article.metafields.storelli  %}
+
+<div class="hero article-hero d-flex justify-content-center align-items-center" {% if article.image %}style="background-image: url({{ article | img_url: '1920x' }})"{% endif %}></div>
+
+<div class="light-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="article-content light-section col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+
+                <article role="article" itemscope itemtype="http://schema.org/Article">
+                    
+                    <div class="article-header">
+                        <div class="h3 blog-link"><a class="dark-link decorated-link" href="{{ blog.url }}">{{ blog.title }}</a></div>
+                        <h1>{{ article.title }}</h1>
+                        <p class="h4 sans">{{ article.published_at | date: '%b %e, %Y' }}</p>
+                        <hr>
+                    </div>
+
+                    <div class="article-body rte" itemprop="articleBody">
+                        {{ article.content }}
+                    </div>
+
+                    <div class="article-footer">
+{% include 'related-products-list' %}
+                        <h4 class="sans d-inline-block mr-4" style="font-weight:400">Share</h4>
+                        {% if settings.social_sharing_blog %}
+                            {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+                        {% endif %}
+           
+                        {% assign newer  = false %}
+                        {% assign newest = false %}
+                        {% for a in blog.articles %}
+                            {% if a.id == article.id %}
+                                {% break %}
+                            {% endif %}
+                            {% assign newer  = newest %}
+                            {% assign newest = a %}
+                        {% endfor %}
+
+                        {% if newest %}
+                            <h3 class="next-up">Next Up</h3>
+                            <div class="article-list">
+                                <div class="row">
+                                    {% if newer %}
+                                        {% assign card_layout = 'col-12 col-lg-6' %}
+                                    {% else %}
+                                        {% assign card_layout = 'col-12 col-lg-6 offset-lg-3' %}
+                                    {% endif %}
+
+                                    {% if newest %}
+                                        {% assign article = newest %}
+                                        {% include 'article-card' with card_layout  %}
+                                    {% endif %}
+
+                                    {% if newer %}
+                                        {% assign article = newer %}
+                                        {% include 'article-card' with card_layout  %}
+                                    {% endif %}
+                                </div>
+                            </div>                            
+                        {% endif %}
+
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+    {% include 'article-products' %}
+</div>
+<style>
+
+  .full-width-list .item p{
+  	font-size:14px;
+  }
+  .zestard-productlist .caption h4 {
+  	font-size:15px;
+  }
+  .zestard-productlist .flex-text {
+  	display:none;
+  }
+</style>

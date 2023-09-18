@@ -1,0 +1,101 @@
+{% schema %}
+{
+    "name": "Product Cross Sell",
+    "settings": []
+}
+{% endschema %}
+
+
+{% comment %}
+================================================================================
+SETTINGS
+================================================================================
+{% endcomment %}
+
+{%- assign same_vendor = true -%}
+{%- assign same_type = false -%}
+{%- assign exclude = 'frontpage,all' | split: ',' -%}
+
+{% comment %}
+================================================================================
+FIND COLLECTION
+================================================================================
+{% endcomment %}
+
+{%- if product.metafields.c_f['Related Products'] -%}
+    {%- assign collection = collections[product.metafields.c_f['Related Products']] -%}
+{%- endif -%}
+
+{% assign found_collection = false %}
+
+{% if collection and collection.all_products_count > 1 %}
+    {% unless exclude contains collection.handle %}
+        {% assign found_collection = true %}
+    {% endunless %}
+{% endif %}
+
+{% unless found_collection %}
+    {% for c in product.collections %}
+        {% unless exclude contains c.handle or c.all_products_count < 2 %}
+            {% assign found_collection = true %}
+            {% assign collection = c %}
+            {% break %}
+        {% endunless %}
+    {% endfor %}
+{% endunless %}
+
+{% comment %}
+================================================================================
+FIND ITEMS
+================================================================================
+{% endcomment %}
+
+{% if found_collection %}
+    {% assign counter = 0 %}
+    {% assign break_at = 3 %}
+    {% assign current_product = product %}
+
+    {% capture related_items %}
+        {% for product in collection.products %}
+            {% unless product.handle == current_product.handle %}
+                {% unless same_vendor and current_product.vendor != product.vendor %}
+                    {% unless same_type and current_product.type != product.type %}
+                        <div class="col-12 col-md-4 col-xl-3 d-flex align-items-center product">
+                            <a href="{{ product.url | within: collection }}">
+                                {% if product.featured_image != blank %}
+                                    {% comment %} {{ product.featured_image.src | img_url: '360x360' | img_tag: product.title }} {% endcomment %}
+                                    <img class="lazyload_class lazyload" data-src="{{ product.featured_image.src | img_url: '360x360' }}" alt="{{ product.featured_image.alt }}" src="{{ 'loader.gif' | asset_url  }}"  />
+                                {% endif %}
+                            </a>
+                            <a class="title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                        </div>
+                        {% assign counter = counter | plus: 1 %}
+                        {% if counter == break_at %}
+                            {% break %}
+                        {% endif %}
+                    {% endunless %}
+                {% endunless %}
+            {% endunless %}
+        {% endfor %}
+    {% endcapture %}
+
+    {% assign related_items = related_items | trim %}
+
+    {% unless related_items == blank %}
+        <div class="product-cross-sell featured-collection">
+            <div class="container-fluid container-fullbleed">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-xl-3 cover">
+                        <h2 class="mb-0">
+                            You<br /> 
+                            might<br /> 
+                            also<br /> 
+                            like
+                        </h2>
+                    </div>
+                    {{ related_items }}
+                </div>
+            </div>
+        </div>
+    {% endunless %}
+{% endif %}

@@ -1,0 +1,72 @@
+<div class="hero home-hero">
+
+    <!-- {% section 'home-carousel'  %} -->
+{% section 'image_with_text_banner'  %}
+   {% comment %} <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                {% include 'newsletter-box' %}
+            </div>
+        </div>
+    </div>
+  
+  {% endcomment %}
+</div>
+{% section 'animated-scroll-text' %}
+{% section 'collection-tiles' %}
+
+
+<div class="home-quote">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="home-quote-inner">
+                    We build gear that arms you with the inner and outer strength <br class="d-none d-lg-block" /> to perform and enjoy the game to the fullest.
+                    <small class="h4">- Claudio Storelli, Founder</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% section 'home-story' %}
+{% section 'featured-product' %}
+{% section 'floating-story' %}
+{% section 'home-story-sbs' %}
+{% section 'featured-collection' %}
+{% include 'storelli-guarantee' %}
+
+{% comment %}
+
+<div class="home-instagram-feed light-section">
+    <div class="container-fluid container-fullbleed">
+        <div class="row" id="insta-feed"></div>
+        <div class="row">
+            <div class="col-12 text-center pt-5 pb-5">
+                <a href="https://www.instagram.com/storellisoccer/" target="_blank">
+                    @STORELLISOCCER ON INSTAGRAM
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endcomment %}
+
+<div class="container-fluid container-fullbleed insta-title">
+  <div class="row">
+    <div class="col-12 text-center pt-5 pb-5">
+      <a href="https://www.instagram.com/storellisoccer/" target="_blank" class="insta-link">
+        @STORELLISOCCER ON INSTAGRAM
+      </a>
+    </div>
+  </div>
+</div>
+
+{% section 'news' %}
+
+{{ content_for_index }}
+
+{% comment %}
+{% include 'storelli-technology' %}
+{% endcomment %}

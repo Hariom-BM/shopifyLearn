@@ -1,0 +1,83 @@
+<div class="blog-header container-fluid light-section">
+    <div class="row">
+        <div class="col-12">
+            {% comment %}
+            {%- assign blog_title = blog.title -%}
+            {% if current_tags %}
+                {% capture blog_title %}{{ blog.title | link_to: blog.url }} #{{ current_tags.first }}{% endcapture %}
+            {% endif %}
+            {% endcomment %}
+            <h1 class="text-center">{{ blog.title }}</h1>
+        </div>
+    </div>
+</div>
+
+{% for article in blog.articles limit: 1 %}
+    <div class="article-first dark-section">
+        <div class="container-fluid container-fullbleed">
+            <div class="row">
+                <div class="col-12 col-lg-6 col-xl-8 image" {% if article.image %}style="background-image: url({{ article | img_url: '1600x' }})"{% endif %}></div>
+                <div class="col-12 col-lg-6 col-xl-4 d-flex align-items-center">
+                    <div class="content">
+                        <h4>Featured</h4>
+                        <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                        <p class="h4 sans date">{{ article.published_at | date: '%b %e, %Y' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+<div class="section-md light-section">
+    <div class="container-fluid -container-fullbleed">
+        <div class="row">
+            <div class="col-12 col-lg-10 offset-lg-1">
+                <div class="article-list row">
+                    {% assign all_articles = blog.articles %}
+                    {% paginate blog.articles by 12 %}
+
+                        {% for article in blog.articles %}
+                            {% unless forloop.first %}
+                                {% include 'article-card'  %}
+                            {% endunless %}
+                        {% endfor %}
+
+                        {% assign orhpan_ix = paginate.page_size  %}
+                        {% assign article = all_articles[orhpan_ix]  %}
+                        {% include 'article-card'  %}
+
+                        {% if paginate.next %}
+                            <div class="col-12 text-center load-more-parent">
+                                <a class="load-more load-more-articles btn btn-outline-dark btn-storelli btn-storelli-outline" href="{{ paginate.next.url }}&view=more">
+                                    Load More Stories
+                                </a>
+                            </div>
+                        {% endif %}
+
+                    {% endpaginate %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function loadmore() {  
+        // Custom fadeIn Duration
+        $('.lazyload_class').loadScroll(500);
+    }
+</script>
+{% comment %}
+{% if blog.all_tags.size > 0 %}
+    <h2>{{ 'blogs.general.categories' | t }}</h2>
+    <ul>
+        {% for tag in blog.all_tags %}
+            {% if current_tags contains tag %}
+                <li>{{ tag }}</li>
+            {% else %}
+                <li>{{ tag | link_to_tag: tag }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endcomment %}

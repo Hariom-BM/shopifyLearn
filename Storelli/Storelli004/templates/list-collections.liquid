@@ -1,0 +1,27 @@
+{% comment %}
+  This page represents the /collections and /products pages.
+{% endcomment %}
+
+
+<h1>{{ page_title }}</h1>
+
+{% for collection in collections %}
+  {% unless collection.handle == 'frontpage' %}
+    <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">
+      {% if collection.image != blank %}
+        {% comment %} {{ collection | img_url: '480x480' | img_tag: collection.title }} {% endcomment %}
+        <img class="lazyload_class lazyload" data-src="{{ collection | img_url: '480x480' }}" alt="{{ collection.title }}" src="{{ 'loader.gif' | asset_url  }}"  />
+      {% elsif collection.products.first != blank %}
+        {% comment %} {{ collection.products.first | img_url: '480x480' | img_tag: collection.title }} {% endcomment %}
+        <img class="lazyload_class lazyload" data-src="{{ collection.products.first | img_url: '480x480' }}" alt="{{ collection.title }}" src="{{ 'loader.gif' | asset_url  }}"  />
+      {% else %}
+        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+        {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+      {% endif %}
+    </a>
+
+    <p>
+      <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">{{ collection.title }}</a>
+    </p>
+  {% endunless %}
+{% endfor %}

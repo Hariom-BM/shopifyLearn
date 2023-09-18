@@ -1,0 +1,295 @@
+   <div id="section-storelli-banner">
+        <div class="st_container">
+            <div class="banner-container">
+                <div class="banner-text">
+                    <div class="content">
+                        <div class="reviews">
+                          {% if section.settings.review_star_image != blank %}
+                            <div class="review-img">
+                                <img src="{{ section.settings.review_star_image | img_url: 'master' }}"
+                                    alt="star_img">
+                            </div>
+                          {% endif %}
+                          {% if section.settings.review-text != blank %}
+                            <div class="review-text">{{ section.settings.review-text }}</div>
+                          {% endif %}
+                        </div>
+                        <div class="text-container">
+                          {% if section.settings.Heading != blank %}
+                            <h2 class="text-head">{{ section.settings.Heading }}</h2>
+                          {% endif %}
+                          {% if section.settings.description != blank %}
+                            <p class="para">{{ section.settings.description }}</p>
+                            {% endif %}
+                            {% if section.settings.banner_button_text != blank %}
+                            <div class="btn">
+                                <a href="{{ section.settings.banner_button_url }}">{{ section.settings.banner_button_text }}</a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-image">
+                    <img src="{{ section.settings.banner_image | img_url: 'master' }}" alt="img">
+                </div>
+            </div>
+        </div>
+    </div>
+{% schema %}
+  {
+    "name": "Banner",
+    "settings": [ 
+          {
+           "type" : "image_picker",
+           "id" : "banner_image",
+           "label": "Banner Image"  
+          },
+          {
+           "type" : "image_picker",
+           "id" : "review_star_image",
+           "label": "Review Star Image"  
+          },
+          {
+           "type" : "text",
+           "id" : "review-text",
+           "label": "Review Text"  
+          },
+          {
+           "type" : "textarea",
+           "id" : "Heading",
+           "label": "Heading"  
+          },
+          {
+           "type" : "textarea",
+           "id" : "description",
+           "label": "Description"  
+          },
+          {
+           "type" : "text",
+           "id" : "banner_button_text",
+           "label": "Banner Button Text"  
+          },
+          {
+           "type" : "url",
+           "id" : "banner_button_url",
+           "label": "Banner Button URL"  
+          },
+          {
+          "type": "range",
+          "id": "desktop_heading_size",
+          "min": 13,
+          "max": 72,
+          "step": 1,
+          "unit": "px",
+          "label": "Heading size In Desktop",
+          "default": 48
+          },
+          {
+          "type": "range",
+          "id": "mobile_heading_size",
+          "min": 13,
+          "max": 45,
+          "step": 1,
+          "unit": "px",
+          "label": "Heading Size On Mobile",
+          "default": 36
+         }
+    ],
+    "presets": [
+      {
+        "name": "Banner",
+        "settings": {}
+      }
+    ]
+  }
+{% endschema %}
+
+{% style %}
+  .template-index .Header-sticky--transparent:not(.is-stuck):not(.is-expanded) .WideHeader-background {
+    background: #fff;
+}
+ .template-index .Header-sticky--transparent:not(.is-stuck) .NarrowHeader-background {
+    background: #fff; 
+  }
+
+.template-index .Header-sticky--inverted:not(.is-stuck):not(.is-expanded) .WideHeaderMenu-itemLink {
+    color: #000;
+}
+
+.template-index .Header-sticky--inverted:not(.is-stuck):not(.is-expanded) .WideHeader-logoPlaceholder > svg {
+    fill: #000;
+}
+.template-index .Header-sticky--inverted:not(.is-stuck) .NarrowHeader-logoPlaceholder > svg {
+    fill: #000;
+}
+
+.template-index .Header-sticky--inverted:not(.is-stuck) .NarrowHeader-controlIcon svg {
+    fill: #000;
+}
+.template-index #section-storelli-banner {
+    padding-top: 3em;
+}
+   #section-storelli-banner .banner-container {
+    display: flex;
+    justify-content: center;
+}
+
+ #section-storelli-banner .banner-container .banner-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 15px 30px;
+    width: 50%;
+    background-color: #242424;
+    color: #fff;
+}
+#section-storelli-banner .banner-container .banner-text .text-container .btn {
+    padding-left: 0;
+}
+ #section-storelli-banner .banner-container .banner-text .content {
+    max-width: 515px;
+    margin: auto;
+   padding-bottom: 3em;
+}
+
+ #section-storelli-banner .banner-container .banner-text .reviews {
+    display: flex;
+    gap: 5px;
+}
+
+ #section-storelli-banner .banner-container .banner-text .reviews .review-img {
+    max-width: 103.11px;
+}
+
+ #section-storelli-banner .banner-container .banner-text .reviews .review-img img {
+    width: 100%;
+}
+
+ #section-storelli-banner .banner-container .banner-text .reviews .review-text {
+    color: #FFF;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    /* 25.2px */
+    letter-spacing: 0.36px;
+}
+
+ #section-storelli-banner .banner-container .banner-text .text-container .text-head {
+    color: #FFF;
+    font-size: {{section.settings.desktop_heading_size}}px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 110%;
+    padding: 16px 0px;
+    margin-bottom: 0;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+}
+
+ #section-storelli-banner .banner-container .banner-text .text-container .para {
+    color: #BCBCBC;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    max-width: 413px;
+}
+
+ #section-storelli-banner .banner-container .banner-text .text-container .btn>a {
+    color: #0F0F0F;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    border-radius: 2px;
+    margin-top: 8px;
+    padding: 12px 60px;
+    background-color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase
+}
+
+ #section-storelli-banner .banner-container .banner-image {
+    width: 50%;
+}
+ #section-storelli-banner .banner-container .banner-image img {
+    width: 100%;
+}
+
+@media(max-width:768px) {
+
+  #section-storelli-banner .banner-container .banner-text .text-container .para{
+    margin-bottom: 0;
+  }
+    #section-storelli-banner .banner-container .banner-text .reviews .review-text {
+        font-size: 16px;
+    }
+
+     #section-storelli-banner {
+        background: #393838;
+        color: white;
+    }
+#section-storelli-banner .banner-container .banner-text .content{
+      padding-bottom: 0;
+}
+#section-storelli-banner .banner-container .banner-text .text-container .btn{
+  padding-left: 0;
+    display: block;
+    padding-right: 0;
+}
+     #section-storelli-banner .banner-container .banner-text .text-container .btn>a {
+        color: #393838;
+        background: #FFFFFF;
+        margin-top: 16px;
+        width: 100%;
+        text-align: center;
+    }
+
+     #section-storelli-banner .banner-container .banner-text .text-container .text-head {
+        padding: 16px 0px;
+    }
+}
+
+@media (max-width: 999px) {
+  #section-storelli-banner .banner-container .banner-text .content {
+    padding-bottom: 0em;
+  }
+       #section-storelli-banner .banner-container .banner-text {
+        width: 100%;
+        order: 2;
+        padding: 16px 15px 30px;
+    }
+
+
+     #section-storelli-banner .banner-container .banner-image {
+        width: 100%;
+    }
+
+     #section-storelli-banner .banner-container .banner-text .text-container .para {
+        font-size: 16px;
+        line-height: 20px;
+    }
+       #section-storelli-banner .banner-container {
+        flex-direction: column;
+    }
+
+     #section-storelli-banner .banner-container .banner-text .content {
+        max-width: inherit;
+    }
+
+     #section-storelli-banner .banner-container .banner-text .text-container .text-head {
+        font-size: {{section.settings.mobile_heading_size}}px;
+        line-height: 40px;
+        padding: 16px 0px;
+    }
+  .template-index #site-content .hero {
+    height: auto;
+}
+}
+{% endstyle %}
+
+{% javascript %}
+{% endjavascript %}

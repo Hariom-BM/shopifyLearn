@@ -1,0 +1,44 @@
+
+{% schema %}
+{
+    "name": "Featured collection",
+    "settings": [{
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+    }]
+}
+{% endschema %}
+
+{%- assign collection = collections[section.settings.collection] -%}
+{%- if section.settings.collection != empty -%}
+    <div class="featured-collection">
+        <div class="container-fluid container-fullbleed">
+            <div class="row">
+
+                <div class="col-12 col-md-12 col-xl-3 cover">
+                    <p class="featured-collection-heading">Featured</p>
+                    <h1>{{ collection.title }}</h1>
+                    <a href="{{ collection.url }}">View full collection</a>
+                </div>
+
+                {% for product in collection.products limit: 3 %}
+                    <div class="col-12 col-md-4 col-xl-3 d-flex align-items-center product">
+                        <a href="{{ product.url | within: collection }}">
+                            {% if product.featured_image != blank %}
+                                {{ product.featured_image.src | img_url: '360x360' | img_tag: product.title }}
+                            {% endif %}
+                        </a>
+                        <a class="title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                    </div>
+                {% else %}
+                    {% for i in (1..3) %}
+                        <div class="col-12 col-md-4 col-xl-3 d-flex align-items-center product"></div>
+                    {% endfor %}
+                {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{%- endif -%}

@@ -1,0 +1,44 @@
+{% comment %}
+	Override variables for landing page stories that have other settings IDs
+{% endcomment %}
+{% if story_settings.story_title != blank %}
+	{% assign image     = story_settings.story_image  %}
+	{% assign title     = story_settings.story_title  %}
+	{% assign content   = story_settings.story_content  %}
+	{% assign link      = story_settings.story_link  %}
+	{% assign link_text = story_settings.story_link_text  %}
+{% else %}
+	{% assign image     = story_settings.image  %}
+	{% assign title     = story_settings.title  %}
+	{% assign content   = story_settings.content  %}
+	{% assign link      = story_settings.link  %}
+	{% assign link_text = story_settings.link_text  %}
+{% endif %}
+
+{% comment %}
+	Used to set link taget to blank
+{% endcomment %}
+{% if link != blank %}
+	{% assign parts = link | split: '.com'  %}
+	{% assign host  = parts[0]  %}
+{% endif %}
+
+{% unless title == blank %}  
+	<div class="story d-flex align-items-center {{ story_class }}" {% if image %}style="background-image:url({{ image.src | img_url: '1920x' }})"{% endif %}>
+	    <div class="container-fluid">
+	        <div class="row">
+	            <div class="col-12 col-lg-6 offset-lg-3">
+                  <h2>{{ title }}</h2>
+	                <p>{{ content }}</p>
+                  <br/>
+                  <br/>
+	                {% if link != blank %}
+		                <a class="light-link decorated-link featured-link" href="{{ link }}" {% unless host contains 'storelli' %}target="_blank"{% endunless %}>
+		                	{{ link_text }}
+		                </a>
+					{% endif %}
+	            </div>
+	        </div>
+	    </div>
+	</div>
+{% endunless %}

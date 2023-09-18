@@ -1,0 +1,186 @@
+{% assign related_products = article.metafields.storelli  %}
+
+<div class="hero article-hero d-flex justify-content-center align-items-center" {% if article.image %}style="background-image: url({{ article | img_url: '1920x' }})"{% endif %}></div>
+
+<div class="light-section">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="article-content light-section col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+
+        <article role="article" itemscope itemtype="http://schema.org/Article">
+
+          <div class="article-header">
+            <div class="h3 blog-link"><a class="dark-link decorated-link" href="{{ blog.url }}">{{ blog.title }}</a></div>
+            <h1>{{ article.title }}</h1>
+            <p class="h4 sans">{{ article.published_at | date: '%b %e, %Y' }}</p>
+           <hr>
+            <div class="custom_parent_blog custom_bottom_content">{{article.excerpt}}</div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+{% assign related_products = article.metafields.storelli  %}
+
+<div class="custom_parent_article">
+  <div class="custom_light-section">
+
+    <div class="custom_row">
+      <div class="single_details_custom">
+
+
+        <div class="article-body rte" itemprop="articleBody">
+          {{ article.content }}
+        
+        </div>
+
+        <div class="article-footer">
+
+          <h4 class="sans d-inline-block mr-4">Share</h4>
+          {% if settings.social_sharing_blog %}
+          {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+          {% endif %}
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+
+    {% include 'article-products' %}
+  </div>
+</div>
+
+<style>
+ .bottom_peragraph > p {
+    font-size: 1.125rem;
+    color: black;
+    text-align: left;
+}
+  
+  .custom_bottom_content p {
+    margin: 0;
+  }
+.custom_parent_blog.custom_bottom_content {
+    min-height: unset;
+    margin: 0;
+    width: 100%;
+    color: black;
+    font-size: 1.125rem;
+    text-align: left !important;
+}
+
+  .custom_parent_blog > .row {
+    margin: 0 0 55px;
+    padding: 0;
+  }
+  .custom_set_left {
+    padding: 0;
+  }
+  .custom_set_table {
+    padding: 0;
+    text-align: left;
+  }
+
+  .article-body.rte {
+    margin: 75px 0 50px;
+  }
+  .custom_parent_article {
+    background: rgb(255, 255, 255) none repeat scroll 0 0;
+    text-align: center;
+  }
+  .custom_parent_blog {
+    margin: auto;
+    max-width: 1100px;
+    min-height: 320px;
+    position: relative;
+    width: 80%;
+  }
+  .custom_right_content {
+    display: table-cell;
+    padding-left: 55px;
+    vertical-align: middle;
+  }
+  .custom_set_table .content {
+    display: table;
+    height: 100%;
+    width: 100%;
+  }
+ .custom_right_content h2 {
+    color: black;
+    font-size: 1.125rem;
+    font-weight: bolder;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    text-transform: unset;
+    font-family: "StagSans", Helvetica, Arial, sans-serif;
+    letter-spacing: normal;
+}
+.custom_right_content > p {
+    color: black;
+    font-size: 1.125rem;
+    margin-bottom: 10px;
+    font-family: "StagSans", Helvetica, Arial, sans-serif;
+}
+  .single_details_custom article {
+    padding-top: 100px;
+  }
+  .social-sharing .dark-link {
+    margin-right: 30px;
+  }
+  .article-footer {
+    display: inline-block;
+    margin-top: 50px;
+  }
+  .single_details_custom .article-body.rte {
+    margin: 0px 0 50px;
+  }
+.bottom_peragraph {
+    padding: 0px 10px;
+}
+  .custom_right_content a {
+    color: #007bff;
+}
+  .bottom_peragraph a {
+    color: #007bff;
+}
+  @media only screen and (max-width: 767px) {
+    .article-header h1 {
+      width: 96%;
+    }
+    .article-header > p {
+      width: 90%;
+    }
+    .custom_right_content {
+      padding-left: 10px;
+      padding-top: 20px;
+    }
+    .custom_parent_blog.custom_bottom_content {
+	margin-bottom: 20px;
+}
+  }   
+    @media only screen and (min-width: 1700px) {
+.bottom_peragraph.light-section.offset-xl-2 {
+    margin: 0;
+    width: 100%;
+    max-width: unset;
+}
+  }
+</style>

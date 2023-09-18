@@ -1,0 +1,101 @@
+{% include 'product-content.zipifypages', contentprt: 'header' %}{% section 'product-customizable-template' %}
+
+<div class="product-details light-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-6 col-xl-4 offset-xl-1 content">
+                {% if product.metafields.storelli.details %}
+                    <h4>Details</h4>
+                    <p class="mb-6">{{ product.metafields.storelli.details }}</p>
+                {% endif %}
+
+                {% section 'product-key-features' %}
+
+                {% if product.metafields.storelli.materials or product.metafields.storelli.care %}
+                    <h4>Materials and Care</h4>
+                    {% if product.metafields.storelli.materials %}
+                        <p>{{ product.metafields.storelli.materials }}</p>
+                    {% endif %}
+                    {% if product.metafields.storelli.care %}
+                        <p>{{ product.metafields.storelli.care }}</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="col-12 col-lg-5 offset-lg-1">
+                {% for image in product.images %}
+                    {%- if image.alt contains "details:" -%}
+                        <img class="img-fluid" src="{{ image.src | img_url: '600x800' }}" alt="{{ image.alt | escape | remove: 'details:' }}" />
+                        {%- break -%}
+                    {%- endif -%}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% section 'product-story-manager' %}
+
+{% if product.metafields.storelli.video and product.metafields.storelli.video contains 'youtube' %}
+    {% assign url = product.metafields.storelli.video | replace: 'watch?v=', 'embed/' %}
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="{{ url }}" frameborder="0" allowfullscreen></iframe>
+    </div>
+{% else %}
+    {% for image in product.images %}
+        {%- if image.alt contains "fullbleed:" -%}
+            <div class="featured-image">
+                <img src="{{ image.src | img_url: '1920x1080' }}" alt="{{ image.alt | escape | remove: 'fullbleed:' }}" />
+            </div>
+            {%- break -%}
+        {%- endif -%}
+    {% endfor %}
+{% endif %}
+
+<a id="reviews-anchor" name="reviews"></a>
+<div class="product-reviews light-section">
+    <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+    <div class="container-fluid hide">
+        <div class="row">
+            <div class="col-3 offset-3">
+                <a href="#" class="btn btn-dark btn-block">See All Reviews</a>
+            </div>
+            <div class="col-3">
+                <a href="#" class="btn btn-dark btn-block">Write a review</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% section 'product-cross-sell' %}
+
+<!--Klaviyo Product Tracking Code-->
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>
+<!--End Product klaviyo Tracking Code-->
+{% include 'product-content.zipifypages', contentprt: 'footer' %}

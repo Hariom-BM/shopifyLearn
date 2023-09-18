@@ -1,0 +1,12 @@
+{%- assign image = print-image-sizes -%}
+{%- assign sizes = '40,80,160,320,480,640,800,960,1024,1280' | split: ',' -%}
+{%- capture image_sizes -%}
+  {%- for size in sizes -%}
+    {%- assign size_request = size | round | append: 'x' -%}
+    {{- image | img_url: size_request | append: ' ' | append: size | append: 'w' -}}
+    {%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign image_sizes = image_sizes | strip_newlines | strip -%}
+{{- image_sizes -}}
+

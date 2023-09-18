@@ -1,0 +1,323 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content"
+    },
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    },
+    "404": {
+      "title": "Page Not Found",
+      "subtext_html": "The page you requested does not exist. <a class=\"decorated-link\" href=\"\/collections\/all\">Continue shopping<\/a> or search for products"
+    },
+    "password_page": {
+      "opening_soon": "Opening Soon",
+      "spread_the_word": "Spread the word",
+      "login_form_heading": "Enter store using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_heading": "Find out when we open",
+      "signup_form_email_label": "Email",
+      "signup_form_email_placeholder": "Your email",
+      "signup_form_submit": "Submit",
+      "signup_form_success": "We will send you an email right before we open!",
+      "admin_link_html": "Are you the store owner? <a href=\"\/admin\">Log in here<\/a>",
+      "password_link": "Enter using password",
+      "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
+    },
+    "newsletter_form": {
+      "confirmation": "You are now subscribed to our newsletter",
+      "email_placeholder": "Enter Your Email",
+      "submit": "Subscribe"
+    },
+    "social": {
+      "share_on_facebook": "Share",
+      "share_on_twitter": "Tweet",
+      "share_on_pinterest": "Pin it",
+      "alt_text": {
+        "share_on_facebook": "Share on Facebook",
+        "share_on_twitter": "Tweet on Twitter",
+        "share_on_pinterest": "Pin on Pinterest"
+      }
+    },
+    "search": {
+      "no_results_html": "No search results for <b>{{ terms }}<\/b>",
+      "results_for_html": "Search results for <b>{{ terms }}<\/b>",
+      "title": "Search for products",
+      "placeholder": "Search our store",
+      "submit": "Search",
+      "cancel": "Cancel"
+    }
+  },
+  "blogs": {
+    "article": {
+      "author_on_date_html": "Posted by {{ author }} on {{ date }}",
+      "comment_meta_html": "{{ author }} on {{ date }}",
+      "read_more": "Read more"
+    },
+    "comments": {
+      "title": "Leave a comment",
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "post": "Post comment",
+      "moderated": "Please note, comments must be approved before they are published",
+      "success_moderated": "Your comment was posted successfully. We will publish it in a little while, as our blog is moderated.",
+      "success": "Your comment was posted successfully! Thank you!",
+      "with_count": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    },
+    "general": {
+      "categories": "Categories"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "remove": "Remove",
+      "update_item": "Update",
+      "note": "Special instructions for seller",
+      "subtotal": "Subtotal",
+      "shipping_at_checkout": "Shipping & taxes calculated at checkout",
+      "update": "Update Cart",
+      "checkout": "Checkout",
+      "empty": "Your cart is currently empty.",
+      "cookies_required": "Enable cookies to use the shopping cart",
+      "continue_browsing_html": "Continue browsing <a href=\"\/collections\/all\">here<\/a>.",
+      "item_quantity": "Item quantity",
+      "savings": "You're saving"
+    },
+    "label": {
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "discounted_price": "Discounted price",
+      "original_price": "Original price"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_matches": "Sorry, there are no products in this collection",
+      "link_title": "Browse our {{ title }} collection"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "message": "Message",
+      "send": "Send",
+      "post_success": "Thanks for contacting us. We'll get back to you as soon as possible."
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "My Account",
+      "details": "Account Details",
+      "view_addresses": "View Addresses",
+      "edit_addresses": "Edit Addresses",
+      "return": "Return to My Account"
+    },
+    "activate_account": {
+      "title": "Activate Account",
+      "subtext": "Create your password to activate your account.",
+      "password": "Password",
+      "password_confirm": "Confirm Password",
+      "submit": "Activate Account",
+      "cancel": "Decline Invitation"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "default": "Default",
+      "add_new": "Add a New Address",
+      "edit_address": "Edit address",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2",
+      "city": "City",
+      "country": "Country",
+      "province": "Province",
+      "zip": "Postal\/Zip Code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "add": "Add Address",
+      "update": "Update Address",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you wish to delete this address?"
+    },
+    "login": {
+      "title": "Sign In",
+      "email": "Email",
+      "password": "Password",
+      "forgot_password": "Forgot password?",
+      "sign_in": "Sign In",
+      "cancel": "Return to Store",
+      "guest_title": "Continue as a guest",
+      "guest_continue": "Continue"
+    },
+    "orders": {
+      "title": "Order History",
+      "order_number": "Order",
+      "date": "Date",
+      "payment_status": "Payment Status",
+      "fulfillment_status": "Fulfillment Status",
+      "total": "Total",
+      "none": "You haven't placed any orders yet."
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date": "Placed on {{ date }}",
+      "cancelled": "Order Cancelled on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}",
+      "billing_address": "Billing Address",
+      "payment_status": "Payment Status",
+      "shipping_address": "Shipping Address",
+      "fulfillment_status": "Fulfillment Status",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "fulfilled_at": "Date fulfilled",
+      "track_shipment": "Track shipment",
+      "tracking_url": "Tracking link",
+      "tracking_company": "Carrier",
+      "tracking_number": "Tracking number",
+      "subtotal": "Subtotal"
+    },
+    "recover_password": {
+      "title": "Reset your password",
+      "email": "Email",
+      "submit": "Submit",
+      "cancel": "Back to Sign In",
+      "subtext": "We will send you an email to reset your password.",
+      "success": "We've sent you an email with a link to update your password."
+    },
+    "reset_password": {
+      "title": "Reset account password",
+      "subtext": "Enter a new password for {{ email }}",
+      "password": "Password",
+      "password_confirm": "Confirm Password",
+      "submit": "Reset Password"
+    },
+    "register": {
+      "title": "Create Account",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create Account",
+      "cancel": "Return to Store"
+    }
+  },
+  "homepage": {
+    "onboarding": {
+      "product_title": "Example Product Title",
+      "collection_title": "Example Collection Title",
+      "no_content": "This section doesn’t currently include any content. Add content to this section using the sidebar."
+    }
+  },
+  "layout": {
+    "cart": {
+      "title": "Cart",
+      "items_count": {
+        "one": "item",
+        "other": "items"
+      }
+    },
+    "customer": {
+      "account": "Account",
+      "logged_in_as_html": "Logged in as {{ first_name }}",
+      "log_out": "Sign out",
+      "log_in": "Sign in",
+      "create_account": "Create account"
+    },
+    "footer": {
+      "social_platform": "{{ name }} on {{ platform }}",
+      "copyright": "Copyright",
+      "payment_methods": "Payment methods accepted"
+    }
+  },
+  "products": {
+    "product": {
+      "regular_price": "Regular price",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "on_sale": "On Sale",
+      "on_sale_from_html": "From {{ price }}",
+      "from_text_html": "From {{ price }}",
+      "quantity": "Quantity",
+      "add_to_cart": "Add to Cart",
+      "adding_to_cart": "Adding to Cart",
+      "added_to_cart": "Added to Cart"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "title": "Here's your {{ value }} gift card for {{ shop }}!",
+      "subtext": "Here's your gift card!",
+      "disabled": "Disabled",
+      "expired": "Expired on {{ expiry }}",
+      "active": "Expires on {{ expiry }}",
+      "redeem": "Use this code at checkout to redeem your gift card",
+      "shop_link": "Start shopping",
+      "print": "Print",
+      "remaining_html": "{{ balance }} left",
+      "add_to_apple_wallet": "Add to Apple Wallet",
+      "initial_value": "Gift card value: {{ value }}"
+    }
+  },
+  "date_formats": {
+    "month_day_year": "%B %d, %Y"
+  },
+  "shopify": {
+    "checkout": {
+      "shipping": {
+        "title": "Shipping Method",
+        "shipping_method_title": "Shipping Method ",
+        "cheapest_rate_label": "Cheapest",
+        "estimated_delivery_date": {
+          "one": "1 day to process + 1 business day (friday orders ship monday, no weekend delivery)",
+          "other": "1 day to process + {{count}} business days (friday orders ship monday, no weekend delivery)"
+        },
+        "estimated_delivery_date_range": "1 day to process + {{minimum}} to {{maximum}} business days (friday orders ship monday, no weekend delivery)",
+        "shipping_method_notice": "Carrier estimates, not guaranteed. Same day shipping cutoff is 12pm EST Monday-Friday (orders placed after the Friday cutoff or over the weekend are shipped Monday)."
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "----> Keep me up to date on news and exclusive offers for www.storelli.com.\n______________________________________________________________________________________\nI agree to allow Storelli.com to send me marketing emails, and share my email with Facebook and\/or other third parties solely for the purposes of marketing Storelli.com."
+      },
+      "contact": {
+        "optional_phone_label": "Phone for support, chat and special offers",
+        "phone_tooltip": "In case you want us to contact you about discounts and recommendations"
+      },
+      "shipping_errors": {
+        "shipping_method_not_available": "Ugh... we're actually out of stock in your country for one or all items in your cart. Really really sorry... please email support@storellisports.com if you'd like to back-order or ship from our warehouse abroad"
+      },
+      "tips": {
+        "title": "Add tip to help us fund R&D",
+        "description": "Show your support for the R&D team at {{ shop_name }}",
+        "custom_label": "Custom donation",
+        "message": "We really appreciate your help ❤️ - we will put it to good use! "
+      }
+    }
+  },
+  "sections": {
+    "wonderment-featured-collection": {
+      "sold_out": "Sold Out",
+      "sale": "Sale"
+    }
+  }
+}

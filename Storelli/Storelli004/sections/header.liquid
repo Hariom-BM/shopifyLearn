@@ -1,0 +1,208 @@
+{%- assign offer_bar_enabled = section.settings.offer_bar_enabled | default: false -%}
+{%- assign offer_bar_content = section.settings.offer_bar_content | default: '' -%}
+
+<header class="Header-container">
+  {%- if offer_bar_enabled and offer_bar_content != blank -%}
+    <aside class="js-offer-bar OfferBar">
+      <div class="OfferBar-container">
+        <div class="OfferBar-innerContainer">
+          <div class="OfferBar-content o-rte">
+            {{- offer_bar_content -}}
+          </div>
+          <div class="OfferBar-close">
+            {%- include 'svg-placeholder' with 'close' -%}
+
+            <button class="js-offer-bar-close OfferBar-closeButton">
+              Dismiss offer information
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+  {%- endif -%}
+
+  <div class="js-header-sticky-trigger Header-stickyTrigger"></div>
+  <div class="js-header-placeholder Header-placeholder">
+    <div class="js-header-sticky Header-sticky {% if template.name == 'index' %}Header-sticky--inverted Header-sticky--transparent{% endif %}" data-section-id="{{ section.id }}">
+      {%- include 'narrow-header' -%}
+      {%- include 'wide-header' -%}
+    </div>
+  </div>
+
+  {%- include 'header-offcanvas-content' -%}
+</header>
+
+{%- schema -%}
+{
+  "name": "Header",
+  "class": "js-header Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Menus"
+    },
+    {
+      "type": "link_list",
+      "id": "primary_menu",
+      "label": "Primary menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "secondary_menu",
+      "label": "Secondary menu"
+    },
+    {
+      "type": "header",
+      "content": "Drop-down menus"
+    },
+    {
+      "type": "paragraph",
+      "content": "The drop-down menu item will show the image of the first product of the collection if the item is a collection link, or the product image if the item is a product link."
+    },
+    {
+      "type": "paragraph",
+      "content": "To show a custom dropdown item image, first [upload the image here](/admin/settings/files), then open one of the bulk editor links below and copy/paste the image filename (not URL) into your item's field:"
+    },
+    {
+      "type": "paragraph",
+      "content": "[Edit collection dropdown images](/admin/bulk?resource_name=Collection&edit=metafields.theme_e23039c36d.dropdown_item_image:string&metafield_titles[metafields.theme_e23039c36d.dropdown_item_image]=Dropdown%20Item%20Image%20Filename&return_to=/admin/collections)"
+    },
+    {
+      "type": "paragraph",
+      "content": "[Edit product dropdown images](/admin/bulk?resource_name=Product&edit=metafields.theme_e23039c36d.dropdown_item_image:string&metafield_titles[metafields.theme_e23039c36d.dropdown_item_image]=Dropdown%20Item%20Image%20Filename&return_to=/admin/products)"
+    },
+    {
+      "type": "paragraph",
+      "content": "[Edit page dropdown images](/admin/bulk?resource_name=Page&edit=metafields.theme_e23039c36d.dropdown_item_image:string&metafield_titles[metafields.theme_e23039c36d.dropdown_item_image]=Dropdown%20Item%20Image%20Filename&return_to=/admin/pages)"
+    },
+    {
+      "type": "paragraph",
+      "content": "The drop-down menu will not show images if less than three-fifth of the items have a picture."
+    },
+    {
+      "type": "image_picker",
+      "id": "fallback_dropdown_item_image",
+      "label": "Fallback image"
+    },
+    {
+      "type": "header",
+      "content": "Offer Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "offer_bar_enabled",
+      "label": "Show offer bar",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "offer_bar_content",
+      "label": "Offer text",
+      "default": "<p>Free Exchanges &amp; Easy Returns</p>"
+    }
+  ]
+}
+{% endschema -%}
+
+<style>
+  .mobile-small-menu{
+    margin-bottom:30px;
+  }
+
+  .mobile-small-menu ul li a{
+    font-size:12px;
+  }
+
+  
+.site-nav.style--sidebar .menu-promotion .rte p{
+  font-size:16px;
+}
+.city-site-sec .city-site-holder{
+       display:none;
+       position:absolute;
+       z-index:99999;
+       transition:all 1s;
+       background-color:#fff;
+       padding:0px;
+       box-shadow: 0 0 4px 0 #000;
+       top:65px;
+       width:170px;
+        left:-20px;
+     }
+     .city-site-sec .item-box{
+       padding:10px 12px;
+     }
+     .city-site-sec .city-site-holder.open{
+       display:flex;
+       flex-direction:column;
+       border-top:1px solid #ddd;
+     }
+     .city-site-sec .city-site-holder.open .city-site-items a{
+       display:flex;
+       align-items:center;
+     }
+     .city-site-sec .city-site-holder.open .city-site-items{
+       padding:5px 12px;
+       border-bottom:1px solid #ddd;
+     }
+     .city-site-items a img{
+        width:20px;
+        height:20px;
+/*         margin-right:10px; */
+        box-shadow: 0 0 5px -1px #000;
+        border-radius: 100%;
+       margin-right:15px;
+      }
+      .city-site-items a span{
+        font-size:12px;
+      }
+     .city-site-sec .item-box img{
+      width:20px;
+      height:20px;
+/*       margin-right:10px; */
+    }
+    .city-site-sec{
+      position:relative;
+    }
+@media (max-width:767px){
+  .city-site-sec .item-box img, .city-site-items a img{
+        width:23px;
+        height:23px;
+      }
+  .city-site-sec .city-site-holder{
+    left:-25px;
+  }
+}
+</style>
+<script>
+  $(document).ready(function() {
+  $('.item-box').on('click', function () {
+      if($(this).hasClass('active')){
+        $('.city-site-sec .city-site-holder').removeClass('open');
+        $('.item-box').removeClass('active');
+      }else{
+        $('.city-site-sec .city-site-holder').addClass('open');
+        $('.item-box').addClass('active');
+      }
+	});
+  
+    $('.city-site-items').on('click', function () {
+    	$('.city-site-sec .city-site-holder').removeClass('open');
+      
+	});
+  });
+  $(document).mouseup(e => {
+      console.log('mouseup');
+       if (!$('.city-site-sec .city-site-holder').is(e.target) // if the target of the click isn't the container...
+       && $('.city-site-sec .city-site-holder').has(e.target).length === 0) // ... nor a descendant of the container
+       {
+         $('.city-site-sec .city-site-holder').removeClass('open');
+      }
+     });
+     $('.flag_nav').on('click', function () {
+    	window.location.href=$(this).attr('url');
+      
+	});
+</script>
+

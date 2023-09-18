@@ -1,0 +1,15 @@
+<div class='zestard-productlist' store_id='zeFFIiURmUt6Y' blog_id='{{ article.id }}'>
+    <div class="loader"><img height="130" width="130" src='https://zestardshop.com/shopifyapp/related-products-and-blogs/public/image/loader_new.svg'/></div>
+</div>
+<script type="text/javascript" src="https://zestardshop.com/shopifyapp/related-products-and-blogs/public/js/related-products-and-blogs.js"></script>
+<script>
+  var timer = setInterval(function(){
+    if($(".product_selector").length > 0){
+      	$(".thumbnail").each(function(){
+            var name = $(this).find(".product_selector").val();
+            $(this).children(".caption").children("h4").children("a").text(name);
+        })
+    	clearInterval(timer);
+    }
+  },200)
+</script>

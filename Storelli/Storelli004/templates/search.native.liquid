@@ -1,0 +1,58 @@
+<div class="section-md">
+    <div class="container-fluid">
+        <div class="row align-items-center text-center">
+            <div class="col-12">
+                <h1 class="h2">
+                    {% if search.performed %}
+                        {% if search.results_count == 0 %}
+                            {{ 'general.search.no_results_html' | t: terms: search.terms }}
+                        {% else %}
+                            {{ 'general.search.results_for_html' | t: terms: search.terms }}
+                        {% endif %}
+                    {% else %}
+                        {{ 'general.search.title' | t }}
+                    {% endif %}
+                </h2>
+                <form action="/search" class="d-flex justify-content-center" method="get" role="search">
+                    <input type="hidden" name="type" value="product" />
+                    <div class="input-group col-12 col-md-8 col-xl-3">
+                        <label for="page-search" class="label-hidden">{{ 'general.search.placeholder' | t }}</label>
+                        <input type="search" name="q" class="form-control" id="page-search" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" />
+                        <span class="input-group-append">
+                            <button type="submit" class="btn btn-dark" title="{{ 'general.search.submit' | t }}">
+                                <i class="icon icon-arrow-light-md position-relative" style="top:3px"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if search.performed and search.results_count != 0 %}
+<div class="section-sm light-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 collection-items">
+                <div class="row">
+                {% paginate search.results by 10 %}
+                    {% if search.performed %}
+                        {% for product in search.results %}
+                            {% include 'product-card'  %}
+                        {% endfor %}
+
+                        {% if paginate.pages > 1 %}
+                            <div class="col-12 mb-0">
+                                {% include 'pagination' %}
+                            </div>
+                        {% endif %}
+
+                    {% endif %}
+                {% endpaginate %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

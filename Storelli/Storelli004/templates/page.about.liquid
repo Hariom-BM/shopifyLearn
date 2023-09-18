@@ -1,0 +1,49 @@
+{% assign cnt = page.content  %}
+{% assign cnt = cnt | replace: '<iframe', '[SPLIT-TAG]<iframe class="embed-responsive-item"' %}
+{% assign cnt = cnt | replace: '</iframe>', '</iframe>>[SPLIT-TAG]' %}
+{% assign parts = cnt | split: '[SPLIT-TAG]' %}
+
+<div class="section-lg light-section page page-about">
+	<div class="container-fluid">
+	    <div class="row">
+	        <div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+        		<h1>{{ page.title }}</h1>
+        		<hr>
+        		{% for part in parts %}
+					{% unless part contains 'iframe' %}
+	            		<div class="rte">{{ part }}</div>
+					{% endunless %}
+				{% endfor %}
+				<hr>
+				<div class="row about-info">
+					<div class="col-4">
+						<h4>Support</h4>
+						<a class="decorated-link" href="mailto:support@storellisports.com">support@storellisports.com</a>
+					</div>
+					<div class="col-4">
+						<h4>Sales</h4>
+						<a class="decorated-link" href="mailto:sales@storellisports.com">sales@storellisports.com</a>
+					</div>
+					<div class="col-4">
+						<h4>Careers</h4>
+						<a class="decorated-link" href="mailto:careers@storellisports.com">careers@storellisports.com</a>
+					</div>
+					<div class="col-12 hide">
+						<div class="d-none d-xl-block mt-6"></div>
+						<h4>Return Address</h4>
+						<p class="mb-0">Storelli Sports Return</p>
+						<p class="mb-0">18 Bridge Street #41</p>
+						<p class="mb-0">Brooklyn, NY 11201</p>
+					</div>
+				</div>
+	        </div>
+	    </div>
+	</div>
+	{% for part in parts %}
+		{% if part contains 'iframe' %}
+			<div class="video embed-responsive embed-responsive-16by9">
+    			{{ part }}
+    		</div>
+		{% endif %}
+	{% endfor %}
+</div>

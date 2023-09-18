@@ -1,0 +1,339 @@
+{% schema %}
+  {
+    "name": "Product Card",
+    "settings": []
+  }
+{% endschema %}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+
+{% assign stripe_images = 0 %}
+{% for image in product.images %}
+  {%- if image.alt contains "sizechart:" or image.alt contains "details:" or image.alt contains "fullbleed:" -%}
+    {%- continue -%}
+  {%- endif -%}
+  {% assign stripe_images = stripe_images | plus: 1 %}
+{% endfor %}
+
+<div
+  class="product-main"
+  data-section-id="{{ section.id }}"
+  data-section-type="product"
+  itemscope
+  itemtype="http://schema.org/Product">
+  <meta itemprop="name" content="{{ product.title }}{% unless product.has_only_default_variant %} - {{ current_variant.title }}{% endunless %}">
+  <meta itemprop="url" content="{{ shop.url }}{{ current_variant.url }}">
+  <meta itemprop="brand" content="Storelli">
+  <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
+  <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-12 product-breadcrumb">
+        <a href="/">Home</a>
+        /
+        {% if collection %}
+          <a href="{{ collection.url }}">{{ collection.title }}</a>
+          /
+        {% endif %}
+        {{ product.title }}
+      </div>
+
+      <div class="col-12">
+        <div class="product-main-content">
+
+          <div class="product-info">
+            <div
+              itemprop="offers"
+              itemscope
+              itemtype="http://schema.org/Offer">
+              <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+              <meta itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+              <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
+
+              <h1 class="title">{{ product.title }}</h1>
+
+
+              <span
+                class="stamped-product-reviews-badge stamped-main-badge"
+                data-id="{{ product.id }}"
+                data-product-title="{{ product.title | escape }}"
+                style="display: block;"></span>
+
+              <div class="price" data-price-wrapper>
+                <span
+                  data-product-price
+                  class="igPrice"
+                  data-product-id="{{ product.id }}">{{ current_variant.price | money }}</span>
+                {% if product.compare_at_price_max > product.price %}
+                  <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                  <s
+                    data-compare-price
+                    class="igComparePrice"
+                    data-product-id="{{ product.id }}">
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      {{ current_variant.compare_at_price | money }}
+                    {% endif %}
+                  </s>
+                {% endif %}
+                <span class="stock-alert hide"></span>
+              </div>
+
+              <!--<span class="shopify-product-reviews-badge" data-id="{{ product.id }}">&nbsp;</span>-->
+
+              <div class="description rte">
+                {% assign desc = product.description %}
+                {% assign desc = desc | replace: '<style', '<ignore' %}
+                {% assign desc = desc | replace: '</style>', '</ignore>' %}
+                {% assign desc = desc | replace: '<meta charset="utf-8">', '' %}
+                {% assign clean = '' %}
+                {{ desc }}
+              </div>
+
+              <form
+                class="add-form"
+                action="/cart/add"
+                method="post"
+                enctype="multipart/form-data">
+                <div class="form-row">
+
+                  <div class="col no-js">
+                    <div class="form-group">
+                      <label for="SingleOptionSelector">Size</label>
+                      <select
+                        name="id"
+                        class="form-control form-control-xl mb-0"
+                        id="SingleOptionSelector"
+                        data-product-select>
+                        {% for variant in product.variants %}
+                          <option value="{{ variant.id }}"data-q="{{ variant.inventory_quantity }}"{% if variant == current_variant %}selected="selected"{% endif %} {% unless variant.available %}disabled="disabled"{% endunless %}>
+                            {{ variant.title }}
+                          </option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      <div class="col js {% if option.values.size < 2 %}d-none{% endif %}">
+                        <div class="form-group">
+                          {% capture fit_guide %}
+                            {%- if option.name == 'Size' -%}
+                              {%- for image in product.images -%}
+                                {%- if image.alt contains "sizechart:" -%}
+                                  <a class="fit-guide" href="javascript:void(0)">View Fit Guide</a>
+                                  {%- break -%}
+                                {%- endif -%}
+                              {%- endfor -%}
+                            {%- endif -%}
+                          {% endcapture %}
+                          <label for="SingleOptionSelector-{{ forloop.index0 }}">{{ option.name }} {{ fit_guide }}</label>
+                          <select
+                            class="form-control form-control-xl mb-0"
+                            id="SingleOptionSelector-{{ forloop.index0 }}"
+                            data-single-option-selector
+                            data-index="option{{ option.position }}">
+                            {%- for value in option.values -%}
+                              {%- assign disabled = false -%}
+                              {%- for v in product.variants -%}
+                                {%- if v.option1 == value -%}
+                                  {%- unless v.available -%}
+                                    {%- assign disabled = true -%}
+                                  {%- endunless -%}
+                                {%- endif -%}
+                              {%- endfor -%}
+                              <option
+                                value="{{ value | escape }}"
+                                {% if option.selected_value == value %}selected="selected"{% endif %}
+                                {% if disabled %}disabled="disabled"{% endif %}>
+                                {{ value }}
+                                {% if disabled %}(Sold out){% endif %}
+                              </option>
+                            {%- endfor -%}
+                          </select>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  {% endunless %}
+
+                  <div class="col">
+                    <div class="form-group">
+                      <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+                      <div class="inum">
+                        <input
+                          type="number"
+                          class="form-control form-control-xl mb-0 text-center"
+                          id="Quantity"
+                          name="quantity"
+                          value="1"
+                          min="1" />
+                        <div class="inum-btn inum-inc">+</div>
+                        <div class="inum-btn inum-dec">-</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <button
+                  onclick="obApi('track', 'Add To Cart');"
+                  type="submit"
+                  class="btn btn-block btn-dark btn-storelli"
+                  id="AddToCart"
+                  name="add"
+                  data-add-to-cart
+                  {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+                  <span data-add-to-cart-text>
+                    {% if current_variant.available %}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {% else %}
+                      {{ 'products.product.sold_out' | t }}
+                    {% endif %}
+                  </span>
+                </button>
+                <div class="alert alert-danger mt-3 add-error hide"></div>
+              </form>
+
+              <script
+                src="https://widget.measmerize.com/embed"
+                async
+                data-meas-embed="true"
+                data-brand-id="6b3c5ef3-1911-4431-9a7f-52696b9f81ea"
+                data-garment-code="{{ product.variants.first.sku }}"></script>
+
+              <li class="h4 sans" style="list-style-type: none">
+                <i class="icon icon-shipping float-left"></i>
+                <span style="padding-left: 10px">Free USA Shipping</span>
+                <i
+                  class="icon icon-info"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Free ground shipping for U.S. orders $75+"></i>
+                <div class="clearfix"></div>
+              </li>
+              <li class="h4 sans" style="list-style-type: none">
+                <i class="icon icon-returns float-left"></i>
+                <span style="padding-left: 12px">30-day easy returns</span>
+                <i
+                  class="icon icon-info"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Easily return unused products that don't fit within 30 days"></i>
+                <div class="clearfix"></div>
+              </li>
+
+              <!--  <script src="https://widget.measmerize.com/embed" async data-meas-embed="true" data-brand-id="6b3c5ef3-1911-4431-9a7f-52696b9f81ea" data-garment-code="{{ product.variants.first.sku }}"></script> -->
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="product-gallery">
+
+            <div class="viewer position-relative o-placeholder lazyload o-placeholder_viewer">
+              {% for image in product.images %}
+                {%- if image.alt contains "sizechart:" or image.alt contains "details:" or image.alt contains "fullbleed:" -%}
+                  {%- continue -%}
+                {%- endif -%}
+                {%- capture hidden_class -%}
+                  {%- if forloop.first == false -%}
+                    hide
+                  {%- endif -%}
+                {%- endcapture -%}
+                {%- capture zoom_attr -%}
+                  {%- if forloop.first == true -%}
+                    data-zoom="{{ image.src | img_url: '2048x2048' }}"
+                  {%- endif -%}
+                {%- endcapture -%}
+                {% if image.alt contains 'youtube' %}
+                  <iframe
+                    width="600px"
+                    height="600px"
+                    src="{{image.alt}}?autoplay=1&amp;showinfo=0&amp;controls=0&amp;modestbranding=1&amp;rel=0"
+                    frameborder="0"
+                    allowfullscreen></iframe>
+                {% else %}
+                  <img
+                    {{ zoom_attr }}
+                    src="{{ image.src | img_url: '1024x1024' }}"
+                    alt="{{ image.alt | escape }}"
+                    data-id="{{ image.id }}"
+                    class="{{ hidden_class }}"
+                    data-product-featured-image>
+                {% endif %}
+              {% endfor %}
+
+              {%- if product.metafields.storelli.astm and product.metafields.storelli.astm != '_sample_' -%}
+                <div class="astm-badge">
+                  <img
+                    src="{{ 'logo-astm.png' | asset_url }}"
+                    alt="ASTM International"
+                    class="astm" />
+                  <br/>
+                  <a
+                    href="javacript:void()"
+                    data-toggle="tooltip"
+                    data-container=".product-main"
+                    data-placement="bottom"
+                    data-html="true"
+                    title="<h4>{{ product.metafields.storelli.astm }}</h4> ASTM International is an international standards organization that publishes technical standards">Learn More</a>
+                </div>
+              {%- endif -%}
+            </div>
+
+            <div class="thumbnails" {% if stripe_images < 2 %}style="display:none"{% endif %}>
+              <a class="carousel-nav carousel-v-prev" href="javascript:void(0)">
+                <i class="icon icon-chevron-light-up"></i>
+              </a>
+              <a class="carousel-nav carousel-h-prev" href="javascript:void(0)">
+                <i class="icon icon-chevron-light-left"></i>
+              </a>
+              <div class="carousel">
+                {% assign image_ix = 0 %}
+                {% for image in product.images %}
+                  {%- if image.alt contains "sizechart:" or image.alt contains "details:" or image.alt contains "fullbleed:" -%}
+                    {%- continue -%}
+                  {%- endif -%}
+                  {% assign image_ix = image_ix | plus: 1 %}
+                  <a
+                    href="javascript:void(0)"
+                    data-id="{{ image.id }}"
+                    data-ix="{{ image_ix }}"
+                    data-product-single-thumbnail>
+                    <img src="{{ image.src | img_url: '90x90' }}" alt="{{ image.alt | escape }}">
+                  </a>
+                {% endfor %}
+              </div>
+              <a class="carousel-nav carousel-v-next" href="javascript:void(0)">
+                <i class="icon icon-chevron-light-down"></i>
+              </a>
+              <a class="carousel-nav carousel-h-next" href="javascript:void(0)">
+                <i class="icon icon-chevron-light-right"></i>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {% unless product == empty %}
+    <script type="application/json" data-product-json>
+      {{ product | json }}
+    </script>
+  {% endunless %}
+</div>
+
+{% for image in product.images %}
+  {%- if image.alt contains "sizechart:" -%}
+    <div class="site-modal d-flex justify-content-center align-items-center sizechart">
+      <img src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt | escape | remove:'sizechart:' }}" />
+    </div>
+    {%- break -%}
+  {%- endif -%}
+{% endfor %}

@@ -1,0 +1,122 @@
+{% schema %}
+{
+    "name": "Footer",
+    "settings": [{
+        "type": "link_list",
+        "id": "footer_linklist",
+        "label": "First menu",
+        "default": "footer"
+    }]
+}
+{% endschema %}
+
+<footer id="site-footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-xl-3 offset-xl-2">
+                <div class="mb-2">
+                    Stay in touch! Sign up for our newsletter.
+                </div>
+              
+              
+              {% comment %}
+              	{% include 'ga-signup-event' %} 
+                {% include 'fb-lead-event' %}
+              {% endcomment %}
+              
+            
+              
+             
+          
+             {% include "klaviyo-footer-form" %}
+              
+                <div class="mb-6 d-xl-none"></div>
+            </div>
+
+            <div class="col-12 col-xl-5 offset-xl-1">
+                <div class="row">
+                  <div class="col-6 col-sm-3 mb-3 sitemap-group text-left-xl">	
+<h4 class="sans">Shop</h4>
+                        <ul>
+                            <li><a href="/collections/men" title="men">Men</a></li>
+                            <li><a href="/collections/womens" title="women">Women</a></li>
+                            <li><a href="/collections/youth" title="youth">Youth</a></li>
+                            <li><a href="/collections/goalkeeper" title="goalkeeper">Goalkeeper</a></li>
+                        </ul>
+</div>
+                                       <div class="col-6 col-sm-3 mb-3 sitemap-group text-left-xl">
+                        <h4 class="sans">Account</h4>
+                        <ul>
+                            {% if shop.customer_accounts_enabled %}
+                                {% if customer %}
+                                    <li><a href="/account">My Orders</a></li>
+                                    <li><a href="/account/logout">{{ 'layout.customer.log_out' | t }}</a></li>
+                                {% else %}
+                                    <li><a href="/account/register">{{ 'layout.customer.create_account' | t}}</a></li>
+                                {% endif %}
+                                {% comment %}
+                                <li><a class="disabled" href="javascript:void(0)">Refer Friends</a></li>
+                                {% endcomment %}
+                          
+                                <li><a href="/pages/returns-and-exchanges">Returns & Exchanges</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="col-6 col-sm-3 mb-3 sitemap-group text-left-xl">
+                        <h4 class="sans">Community</h4>
+                        <ul>
+                            <li><a href="/pages/store-locator">Stores</a></li>
+                            {% comment %}
+                            <li><a class="disabled" href="javascript:void(0)">Events</a></li>
+                            {% endcomment %}
+                            <li><a href="https://www.instagram.com/storellisoccer/" target="_blank">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-sm-3 mb-3 sitemap-group text-left-xl">
+                        <h4 class="sans">Resources</h4>
+                        <ul>
+                            <li><a href="/pages/about-us">About us</a></li>
+                            <li><a href="/blogs/the-storelli-blog">Blog</a></li>
+                            <li><a href="/pages/help">Help / FAQ</a></li>
+                          <li><a href="/pages/gdpr">Terms of Use</a></li>
+                          <li><a href="https://storelli.com/pages/privacy-policy">Privacy Policy</a></li>
+                          <li><a href="/pages/privacy-policy#interest-based-ads">Interest-Based Ads</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 pt-5 pb-5 text-right">
+                <p class="copy">&copy;{{ 'now' | date: "%Y" }} {{ shop.name }}. All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<span id="mq-detector">
+    <span class="visible-xs           d-inline d-sm-none"></span>
+    <span class="visible-sm d-none d-sm-inline d-md-none"></span>
+    <span class="visible-md d-none d-md-inline d-lg-none"></span>
+    <span class="visible-lg d-none d-lg-inline d-xl-none"></span>
+    <span class="visible-xl d-none d-xl-inline"></span>
+</span>
+
+<div id="outdated-browser" class="alert alert-warning mb-0">
+    <b>Your browser is outdated</b>. Please update for a better browsing experience.
+    <a class="btn btn-sm btn-link ml-3" href="https://www.google.com/chrome/" target="_blank">Google Chrome</a>
+    <a class="btn btn-sm btn-link" href="https://www.mozilla.org/firefox/new/" target="_blank">Mozilla Firefox</a>
+    <a class="btn btn-sm btn-link" href="https://support.microsoft.com/en-us/help/17621/internet-explorer-downloads" target="_blank">Internet Explorer 11+</a>
+</div>
+
+{%- comment %}
+{%- assign footer_linklist = section.settings.footer_linklist -%}
+{% if linklists[footer_linklist].links.size > 0 %}
+    <ul>
+        {% for link in linklists[footer_linklist].links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+        <li class="copy">&copy;{{ 'now' | date: "%Y" }} {{ shop.name | link_to: '/' }}</li>
+    </ul>
+{% endif %}
+{% endcomment -%}

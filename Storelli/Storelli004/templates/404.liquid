@@ -1,0 +1,22 @@
+<div class="section-lg">
+	<div class="container-fluid">
+	    <div class="row">
+	        <div class="col-12 col-xl-8 offset-xl-2">
+	            <h1 class="h2 mb-6 text-center">{{ 'general.404.title' | t }}</h1>
+	            <p class="text-center mb-4">{{ 'general.404.subtext_html' | t }}</p>
+	            <form action="/search" class="d-flex justify-content-center" method="get" role="search">
+                    <input type="hidden" name="type" value="product" />
+                    <div class="input-group col-12 col-md-8 col-xl-6">
+                        <label for="page-search" class="label-hidden">{{ 'general.search.placeholder' | t }}</label>
+                        <input type="search" name="q" class="form-control" id="page-search" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" />
+                        <span class="input-group-append">
+                            <button type="submit" class="btn btn-dark" title="{{ 'general.search.submit' | t }}">
+                                <i class="icon icon-arrow-light-md position-relative" style="top:3px"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+	        </div>
+	    </div>
+	</div>
+</div>

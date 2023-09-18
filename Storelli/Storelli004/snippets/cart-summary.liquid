@@ -1,0 +1,54 @@
+<!-- SUBTOTAL -->
+<tr class="cart-summary {% if summary == 'inline' %}d-none d-lg-table-row{% endif %}" style="border-top: 1px solid #dee2e6">
+    {% if summary == 'inline' %}
+        <td class="d-none d-sm-table-cell pl-0 image"></td>
+        <td class="pl-0"></td>
+        <td width="100"></td>
+    {% endif %}
+    <td width="220" class="{% if summary == 'full' %}pl-0{% endif %}">{{ 'cart.general.subtotal' | t }}</td>
+    <td width="100" class="text-right pr-0 igSubtotal">{{ cart.total_price | money }}</td>
+</tr>
+
+{% assign final_discount = cart.total_discounts | minus: intelligems_total %}
+
+<!-- DISCOUNT -->
+{% if final_discount > 0 %}
+    <tr class="cart-summary {% if summary == 'inline' %}d-none d-lg-table-row{% endif %}">
+    {% if summary == 'inline' %}
+        <td class="d-none d-sm-table-cell pl-0"></td>
+        <td class="pl-0"></td>
+        <td></td>
+    {% endif %}
+        <td class="{% if summary == 'full' %}pl-0{% endif %}">{{ 'cart.general.savings' | t }}</td>
+        <td class="text-right pr-0">{{ final_discount | money }}</td>
+    </tr>
+{% endif %}
+
+<!-- TAXES -->
+<tr class="cart-summary {% if summary == 'inline' %}d-none d-lg-table-row{% endif %}">
+    {% if summary == 'inline' %}
+        <td class="d-none d-sm-table-cell pl-0"></td>
+        <td class="pl-0"></td>
+        <td></td>
+    {% endif %}
+    <td class="pr-0 {% if summary == 'full' %}pl-0{% endif %}" colspan="2">
+        <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
+      	<!-- Corso -->
+      	<div style="margin-right: 0px;">
+        	<div id="corso-protection-placeholder" style="display:none;"></div>
+      	</div>
+      	<!-- End Corso -->
+    </td>
+</tr>
+<!-- BUTTON -->
+<tr class="cart-summary {% if summary == 'inline' %}d-none d-lg-table-row{% endif %}">
+    {% if summary == 'inline' %}
+        <td class="d-none d-sm-table-cell pl-0"></td>
+        <td class="pl-0"></td>
+        <td></td>
+    {% endif %}
+    <td class="pr-0 {% if summary == 'full' %}pl-0{% endif %}" colspan="2">
+<!--       <div class="route-div" opt-in></div> -->
+        <input type="submit" class="btn btn-block btn-dark btn-storelli" name="checkout" value="{{ 'cart.general.checkout' | t }}">
+    </td>
+</tr>

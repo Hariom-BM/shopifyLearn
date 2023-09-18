@@ -1,0 +1,138 @@
+{%- assign image_url = nil -%}
+{%- if section.settings.image -%}
+  {%- assign image_url = section.settings.image | img_url: '999x' | replace: '_999x', '' -%}
+{%- endif -%}
+
+{%- assign col_image_url = nil -%}
+{%- if collection.image -%}
+  {%- assign col_image_url = collection.image | img_url: '999x' | replace: '_999x', '' -%}
+{%- endif -%}
+
+{%- assign col_title = collection.title | default: 'All' | prepend: 'Shop ' -%}
+{%- assign title = section.settings.title | default: 'Search' -%}
+
+{%- capture sort_order_json -%}
+{
+{%- if collection.products.size > 0 -%}
+  {%- paginate collection.products by 50 -%}
+    {%- for product in collection.products -%}
+      {%- assign sort_position = forloop.index -%}
+      {{ product.handle | json }}: {{ sort_position | json }}
+      {%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  {%- endpaginate -%}
+{%- endif -%}
+}
+{%- endcapture -%}
+
+<script type="application/json">
+  {
+    "moneyFormat": {{ shop.money_format | json }},
+    "collection": {{ collection.handle | json }},
+    "shopifySectionId": {{ section.id | json }},
+    "sortOrder": {{ sort_order_json }},
+    "colTitle": {{ col_title | json }},
+    "colImageUrl": {{ col_image_url | json }},
+    "imageUrl": {{ image_url | json }},
+    "title": {{ title | json }},
+    "appId": {{ section.settings.app_id | default: 'none' | json }},
+    "apiKey": {{ section.settings.api_key | default: 'none' | json }},
+    "indexName": {{ section.settings.index_name | default: 'shopify_products' | json }},
+    "filters": [
+      {%- for block in section.blocks -%}
+        {{ block.settings | json }}{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  }
+</script>
+
+{%- schema -%}
+{
+  "name": "Algolia Search",
+  "class": "js-algolia algolia-Main",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Algolia configuration",
+      "info": "All fields are required."
+    },
+    {
+      "type": "text",
+      "id": "app_id",
+      "label": "Application ID",
+      "placeholder": "e.g., MYNBGNMMCT",
+      "default": "MYNBGNMMCT"
+    },
+    {
+      "type": "text",
+      "id": "api_key",
+      "label": "Search API key",
+      "default": "30322b7a1f2c7a136ebe391d08b18d3b"
+    },
+    {
+      "type": "text",
+      "id": "index_name",
+      "label": "Index name",
+      "placeholder": "e.g., shopify_products",
+      "default": "shopify_products"
+    },
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "placeholder": "e.g., Search",
+      "default": "Search our products"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "refinement",
+      "name": "Filter",
+      "settings": [
+        {
+          "type": "select",
+          "id": "namespace",
+          "label": "Type",
+          "options": [
+            { "value": "named_tags", "label": "Named tag" },
+            { "value": "options", "label": "Product option" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "key",
+          "label": "Key",
+          "placeholder": "e.g., SPECIALTY"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "placeholder": "e.g., Specialty"
+        },
+        {
+          "type": "header",
+          "content": "Advanced"
+        },
+        {
+          "type": "text",
+          "id": "priority_values",
+          "label": "Priority filter values",
+          "placeholder": "e.g., Men, Women, Youth",
+          "info": "Optional. Provide a comma-separated list of values that should appear first in the filter values list. Leave blank to use default sorting"
+        }
+      ]
+    }
+  ]
+}
+{% endschema -%}

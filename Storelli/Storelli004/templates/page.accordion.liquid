@@ -1,0 +1,38 @@
+{% assign cnt = page.content  %}
+{% assign cnt = cnt | replace: '<h2', '[SPLIT-TAG]<h2' %}
+{% assign cnt = cnt | replace: '</h2>', '</h2>[SPLIT-TAG]' %}
+{% assign parts = cnt | split: '[SPLIT-TAG]' %}
+
+<div class="section-lg light-section page page-accordion">
+	<div class="container-fluid">
+	    <div class="row">
+			<div class="col-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
+				<h1 class="h2 mb-6">{{ page.title }}</h1>
+
+				<div id="accordion">
+					{% assign id = 1 %}
+		            {% for part in parts %}
+
+		            	{% if forloop.index0 == 0 %}{% continue %}{% endif %}
+		            	{% assign mod = forloop.index0 | modulo: 2 %}
+
+						{% if mod == 1 %}
+		            		<a class="section-link dark-link collapsed" href="javscript:void(0)" data-toggle="collapse" data-target="#help-{{ id }}">
+		            			<div class="heading">{{ part }}</div>
+		            			<i class="icon icon-chevron-light-down float-right"></i>
+		            		</a>
+						{% endif %}
+						
+						{% if mod == 0 %}
+							<div id="help-{{ id }}" class="section-content collapse" data-parent="#accordion">
+								<div class="pt-5 pb-3">{{ part }}</div>
+							</div>
+							{% assign id = id | plus: 1 %}
+						{% endif %}
+
+		            {% endfor %}
+		        </div>
+	        </div>
+	    </div>
+	</div>
+</div>

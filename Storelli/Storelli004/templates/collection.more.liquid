@@ -1,0 +1,16 @@
+{% layout false %}
+
+{% paginate collection.products by 12 %}
+    {% for product in collection.products %}
+		{% include 'product-card'  %}
+    {% endfor %}
+
+    {% if paginate.next %}
+        <div class="col-12 text-center load-more-parent">
+            <a class="load-more load-more-products btn btn-outline-dark btn-storelli btn-storelli-outline" href="{{ paginate.next.url }}">
+                Load More Products
+            </a>
+        </div>
+    {% endif %}
+
+{% endpaginate %}
