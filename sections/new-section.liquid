@@ -1,6 +1,91 @@
+   <div class="hero">
+<div class="hero-inner">
+  <h1>Echo Hydrogen water</h1>
+  <div class="hero-content">
+    <div class="text-block">
+      <h2>Welcome to Echo Hydrogen Water</h2>
+      <p>
+        Welcome to a world where health, healing, and hydration
+        harmoniously blend to create a symphony of well-being
+      </p>
+      <div class="button-block">
+        <button>Shop Now</button>
+        <button>See video</button>
+      </div>
+    </div>
+  </div>
+  <div class="product-slider">
+    <div
+      class="slide"
+      img-src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png"
+    >   <img src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png" alt=""> </div>
+    <div
+      class="slide"
+      img-src="https://i.ibb.co/h7tRGP6/image-373.png"
+    ><img src="https://i.ibb.co/h7tRGP6/image-373.png" alt=""></div>
+    <div
+      class="slide"
+      img-src="https://i.ibb.co/Q6xbg0p/Echo-h2-Server-1.png"
+    ><img src="https://i.ibb.co/Q6xbg0p/Echo-h2-Server-1.png" alt=""></div>
+    <div
+      class="slide"
+      img-src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png"
+    ><img src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png" alt=""></div>
+    <div
+    class="slide"
+    img-src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png"
+  ><img src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png" alt=""></div>
+  <div
+  class="slide"
+  img-src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png"
+><img src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png" alt=""></div>
+<div
+class="slide"
+img-src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png"
+><img src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png" alt=""></div>
+  </div>
+  <div class="image-block"></div>
+</div>
+</div>
+
+
+
+
 {% schema %}
   {
     "name": "Section name",
     "settings": []
   }
 {% endschema %}
+
+
+<script>
+  function live(selector, event, callback, context) {
+    /****Helper Functions****/
+    // helper for enabling IE 8 event bindings
+    function addEvent(el, type, handler) {
+      if (el.attachEvent) el.attachEvent('on' + type, handler);
+      else el.addEventListener(type, handler);
+    }
+    // live binding helper using matchesSelector
+    function live(selector, event, callback, context) {
+      addEvent(context || document, event, (e) => {
+        let found,
+          el = e.target || e.srcElement;
+        while (el && el.matches && el !== context && !(found = el.matches(selector))) el = el.parentElement;
+        if (found) callback.call(el, e);
+      });
+    }
+    live(selector, event, callback, context);
+  }
+
+
+live('.slide', 'click', function () {
+   var descId = this.getAttribute("img-src");
+
+   document.querySelector('.image-block').style.backgroundImage = `url('${descId}')`;
+
+
+
+});
+</endscript>
