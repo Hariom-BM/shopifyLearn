@@ -24,6 +24,7 @@
     </div>
   </div>
   <div class="product-slider">
+      <div class="product-slider-innner">
     <div
       class="slide"
       img-src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png"
@@ -53,6 +54,7 @@ class="slide"
 img-src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png"
 ><img src="https://i.ibb.co/sWggswL/Echo-H2-Machine-1.png" alt=""></div>
   </div>
+      </div>
   <div class="image-block"></div>
 </div>
 </div>
@@ -170,4 +172,30 @@ live('.slide', 'click', function () {
 
 
 });
+
+
+
+  const swiper = new Swiper('.product-slider', {
+  // Optional parameters
+  direction: 'vertical',
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+
+  
 {% endjavascript %}
