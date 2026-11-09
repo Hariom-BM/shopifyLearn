@@ -1,220 +1,201 @@
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-price.css' | asset_url | stylesheet_tag }}
-{{ 'section-related-products.css' | asset_url | stylesheet_tag }}
+  {% if section.settings.show_related_products == true %}
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
+  <div class="related-products" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+    <div class="related-products__container">
+  
+  {% comment %}
+    Number of related items per row,
+    and number of rows.
+  {% endcomment %}
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
+  {% assign number_of_related_products_per_row = section.settings.related_grid_num %}
+  {% assign number_of_rows = section.settings.related_grid_row %}
 
-<div class="color-{{ section.settings.color_scheme }} gradient no-js-hidden">
-  <product-recommendations
-    class="related-products page-width section-{{ section.id }}-padding isolate"
-    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ section.settings.products_to_show }}"
-  >
-    {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h2 class="related-products__heading {{ section.settings.heading_size }}">
-        {{ section.settings.heading }}
-      </h2>
-      <ul
-        class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-        role="list"
-      >
-        {% for recommendation in recommendations.products %}
-          <li class="grid__item">
-            {% render 'card-product',
-              card_product: recommendation,
-              media_aspect_ratio: section.settings.image_ratio,
-              show_secondary_image: section.settings.show_secondary_image,
-              show_vendor: section.settings.show_vendor,
-              show_rating: section.settings.show_rating
-            %}
-          </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </product-recommendations>
+  {% comment %}
+    Heading.
+    Leave blank if you don't need one.
+  {% endcomment %}
+
+  {% assign heading = section.settings.related_title %}
+
+  {% comment %}
+    Set either or both to true, if you want
+    to limit yourself to items with same vendor, and/or type.
+  {% endcomment %}
+
+  {% assign same_vendor = false %}
+  {% assign same_type = false %}
+
+  {% comment %}
+    Collections to ignore.
+    Never pick related items from those.
+  {% endcomment %}
+
+  {% assign exclusions = 'frontpage,all' | split: ',' %}
+
+  {% comment %}
+    Looking for a relevant collection.
+  {% endcomment %}
+
+  {% if product.metafields.c_f['Related Products'] %}
+    {% assign collection = collections[product.metafields.c_f['Related Products']] %}
+  {% endif %}
+
+  {% assign found_a_collection = false %}
+  {% if collection and collection.all_products_count > 1 %}
+    {% unless exclusions contains collection.handle %}
+      {% assign found_a_collection = true %}
+    {% endunless %}
+  {% endif %}
+  {% unless found_a_collection %}
+    {% for c in product.collections %}
+      {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+        {% assign found_a_collection = true %}
+        {% assign collection = c %}
+        {% break %}
+      {% endunless %}
+    {% endfor %}
+  {% endunless %}
+
+  {% comment %}
+    If we have a relevant collection.
+  {% endcomment %}
+
+  {% if found_a_collection %}
+
+    {% assign counter = 0 %}
+    {% assign break_at = number_of_rows | times: number_of_related_products_per_row %}
+    {% assign current_product = product %}
+
+      {% case number_of_related_products_per_row %}
+      {% when '1' %}
+        {% assign grid_item_width = '' %}
+      {% when '2' %}
+        {% assign grid_item_width = 'large--one-half medium--one-half' %}
+      {% when '3' %}
+        {% assign grid_item_width = 'large--one-third medium--one-half' %}
+      {% when '4' %}
+        {% assign grid_item_width = 'large--one-quarter medium--one-third small--one-half' %}
+      {% when '5' %}
+        {% assign grid_item_width = 'large--one-fifth medium--one-third small--one-half' %}
+      {% when '6' %}
+        {% assign grid_item_width = 'large--one-sixth medium--one-third small--one-half' %}
+      {% else %}
+        {% assign grid_item_width = 'large--one-quarter medium--one-third small--one-half' %}
+    {% endcase %}
+
+
+    {% capture related_items %}
+      {% for product in collection.products %}
+        {% unless product.handle == current_product.handle %}
+          {% unless same_vendor and current_product.vendor != product.vendor %}
+            {% unless same_type and current_product.type != product.type %}
+
+              {% render 'product-preview' with product, product: product %}
+
+              {% assign counter = counter | plus: 1 %}
+              {% if counter == break_at %}
+                {% break %}
+              {% endif %}
+            {% endunless %}
+          {% endunless %}
+        {% endunless %}
+      {% endfor %}
+    {% endcapture %}
+
+    {% assign related_items = related_items | trim %}
+    
+    {% unless related_items == blank %}
+
+        {% unless heading == blank %}
+          <div class="related-products__start">
+            <h3 class="related-products__title text-center">{{ heading }}</h3>
+          </div>
+        {% endunless %}
+        <div class="related-products__products four-product-grid">
+          {{ related_items }}
+        </div>
+
+
+    {% endunless %}
+      
+  {% endif %}
+    
+  </div>
+
+
 </div>
+{% endif %}
 
 {% schema %}
 {
-  "name": "t:sections.related-products.name",
-  "tag": "section",
-  "class": "section",
+  "name": "Related products",
   "settings": [
     {
-      "type": "paragraph",
-      "content": "t:sections.related-products.settings.paragraph__1.content"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "heading",
-      "default": "You may also like",
-      "label": "t:sections.related-products.settings.heading.label"
-    },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        }
-      ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
-    },
-    {
-      "type": "range",
-      "id": "products_to_show",
-      "min": 2,
-      "max": 10,
-      "step": 1,
-      "default": 4,
-      "label": "t:sections.related-products.settings.products_to_show.label"
-    },
-    {
-      "type": "range",
-      "id": "columns_desktop",
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "default": 4,
-      "label": "t:sections.related-products.settings.columns_desktop.label"
-    },
-    {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.all.colors.accent_1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.all.colors.accent_2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.all.colors.background_1.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.all.colors.background_2.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.all.colors.inverse.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.all.colors.label",
-      "info": "t:sections.all.colors.has_cards_info"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.related-products.settings.header__2.content"
-    },
-    {
-      "type": "select",
-      "id": "image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.related-products.settings.image_ratio.options__1.label"
-        },
-        {
-          "value": "portrait",
-          "label": "t:sections.related-products.settings.image_ratio.options__2.label"
-        },
-        {
-          "value": "square",
-          "label": "t:sections.related-products.settings.image_ratio.options__3.label"
-        }
-      ],
-      "default": "adapt",
-      "label": "t:sections.related-products.settings.image_ratio.label"
-    },
-    {
       "type": "checkbox",
-      "id": "show_secondary_image",
-      "default": false,
-      "label": "t:sections.related-products.settings.show_secondary_image.label"
+      "id": "show_related_products",
+      "label": "Show related products",
+      "default": false
     },
     {
-      "type": "checkbox",
-      "id": "show_vendor",
-      "default": false,
-      "label": "t:sections.related-products.settings.show_vendor.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_rating",
-      "default": false,
-      "label": "t:sections.related-products.settings.show_rating.label",
-      "info": "t:sections.related-products.settings.show_rating.info"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.related-products.settings.header_mobile.content"
+      "id": "related_title",
+      "type": "text",
+      "label": "Section title",
+      "default": "Other fine products"
     },
     {
       "type": "select",
-      "id": "columns_mobile",
-      "default": "2",
-      "label": "t:sections.related-products.settings.columns_mobile.label",
+      "id": "related_grid_num",
+      "label": "Products per row (Desktop)",
+      "default": "4",
       "options": [
-        {
-          "value": "1",
-          "label": "t:sections.related-products.settings.columns_mobile.options__1.label"
-        },
         {
           "value": "2",
-          "label": "t:sections.related-products.settings.columns_mobile.options__2.label"
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
         }
       ]
     },
     {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "type": "select",
+      "id": "related_grid_row",
+      "label": "Number of rows (Desktop)",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        }
+      ]
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-preview' with {product: product} %}"
+  to: "{% render 'product-preview' with product, product: product %}"
+  position: 3173..3234
+{%- endcomment -%}

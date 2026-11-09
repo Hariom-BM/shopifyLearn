@@ -1,0 +1,18 @@
+<div class="newsletter-modal" id="js-newsletter-modal">
+  <div class="newsletter-modal__container">
+    {% render 'close-button' with id, id: 'js-newsletter-close' %}
+    {% render 'newsletter' %}
+  </div>
+</div>
+<style type="text/css">
+  .newsletter-modal.active { display:none !important; }
+</style>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'close-button' with {id: 'js-newsletter-close'} %}"
+  to: "{% render 'close-button' with id, id: 'js-newsletter-close' %}"
+  position: 104..166
+{%- endcomment -%}
